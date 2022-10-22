@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+Proyecto final:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Especificaciones Técnicas:
 
-## Available Scripts
+Sprint 1 - Diseño de producto
 
-In the project directory, you can run:
+● Se elegirá lo siguiente:
 
-### `npm start`
+○ Rol de Scrum Master (administra la metodología Scrum, administra las
+reuniones)
+○ Rol de Tech Lead (el dueño del repositorio, el que aprueba los pr)
+○ Nombre del equipo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+● Se diseñará el producto asignado al grupo, que saldrá de los siguientes posibles:
+○ Blog - News
+○ Blog - Sports
+○ Blog - Films
+○ Blog - Show
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+● El Scrum Master creará el tablero Trello con los siguientes requisitos (todos son
+obligatorios):
 
-### `npm test`
+○ Columna de info del proyecto que incluya estas cards:
+■ Logo
+■ Paleta de colores (máximo recomendado 4 colores)
+■ Mock del diseño de la app, el formato puede ser cualquiera de imagen
+■ Sitios benchmark enviados a los que se apunta en función del proyecto
+(ejemplo, si me toco un ECommerce, puedo poner una captura de
+Mercado Libre y apuntar a ese formato y calidad)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+○ Columna de reuniones que incluya las siguientes cards:
+■ Evidencia de cada Daily/ Reunión de equipo, detallada con fecha y
+contenido de la reunión
 
-### `npm run build`
+● Columna de tareas con los siguientes estados (todos obligatorios):
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+○ Backlog (de donde estarán todas las tareas inicialmente)
+○ To Do (donde estarán inicialmente todas las tareas cuando ya están asignadas)
+○ In Progress (donde cada integrante pondrá la tarea que haya iniciado)
+○ Blocked (donde cada integrante pondrá la tarea que tenga bloqueada)
+○ Ready to Test (donde cada integrante dejará las tareas para que un compañero
+que elija la testeé) le asignará el ticket cuando lo pase a esta columna, este
+tester dejará en el comentario si la tarea está Ok para que el integrante la pase a
+Done luego del pull request.
+○ Done (donde cada integrante dejará su tarea cuando ya esté el pr aprobado)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Sprint 2 - Desarrollo Front End
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Stack de tecnologías obligatorias:
 
-### `npm run eject`
+● React
+● Diseño responsive
+● Referido al código, todo debe ser expresado en inglés, los comentarios pueden ser en
+castellano.
+● El estilado del código debe ser hecho con la configuración básica de Prettier (2 espacios
+para el indentado, etc etc).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Sesion:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+● Login*
+● Registro*
+● Recuperar Contraseña**
+*Login y registro con modal.
+**Recuperar Contraseña -> página aparte
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Header:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+● logo + social icons + búsqueda (búsqueda debe arrojar resultados al hacer enter o click
+en el botón de buscar, redireccionando a una página de resultados)
+Nav Sticky
 
-## Learn More
+● Home
+● Destacado
+● Contacto
+● Me gusta (debería agregarse un icono con la cantidad de favoritos que se agregan
+-badge-)
+● Icono de Contacto (icono a la derecha) que nos va a llevar al formulario de contacto.
+Mobile:
+- logo + menú hamburguesa ( con buscador ) (referencia página la gaceta)
+Artículos destacados con Slider:
+● Libre
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Grilla de articulos:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+● En Web: 3 filas con 5 artículos por fila + paginación. (debe tener un tilde al hacer click
+en boton comprar y en fav)
+● Tablet: 4 filas con 3 productos por fila + paginación.
+● En Celular: 5 filas con 2 productos por fila + paginación
+Publicidad:
+● Libre - ocupa el 100% de pantalla del container
+Categorias
+● Botones en bloque + Collapse ( abajo)
+● Publicidad ( en el panel derecho)
+Mobile:
+○ Publicidad no se muestra.
 
-### Code Splitting
+Footer
+● Web Logo a la izq
+● 2 columnas de links
+● 1 columna con redes sociales + info contacto
+● Fila con info copyright
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Mobile:
+● Redes sociales (iconos) centrado
+● Logo centrado
 
-### Analyzing the Bundle Size
+Article Page: A discreción del cliente
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Página de resultado de búsqueda de header. Linkeado a una búsqueda por defecto
+Likes Page: similar a la página de productos pero mostrando un listado de favoritos
+Se hereda header, footer y nav en páginas paralelas
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
