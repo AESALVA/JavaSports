@@ -1,12 +1,21 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import Footer from './Footer'
-import Landing from './Landing'
+import Footer from '../components/Footer'
+import Landing from '../components/Landing'
 
-const Main = () => {
+const Main = (auth,
+  login,
+  logout,
+  validate,
+  setAuth) => {
   return (
     <Container fluid className="min-vh-100 d-flex ">
-    <Landing />
+    <Landing login={login}
+        logout={logout}
+        setAuth={setAuth}
+        validate={validate}
+        auth={auth}
+        />
     <Footer />
     </Container>
   )

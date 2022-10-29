@@ -5,14 +5,22 @@ import LoginModal from "./LoginModal";
 
 
 
-const Landing = () => {
+const Landing = (auth,
+  login,
+  logout,
+  validate,
+  setAuth) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <div>
-  <LoginModal />
+  <LoginModal login={login}
+        logout={logout}
+        setAuth={setAuth}
+        validate={validate}
+        auth={auth} />
   </div>
   )
 }

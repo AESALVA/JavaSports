@@ -3,11 +3,21 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form';
 import ModalDialog from 'react-bootstrap/ModalDialog'
+import {Link, useNavigate} from "react-router-dom";
 
 
 
-const LoginModal = () => {
+
+const LoginModal = (auth,
+  login,
+  logout,
+  validate,
+  setAuth) => {
   const [show, setShow] = useState(false);
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
+  const navigate = useNavigate();
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,12 +43,12 @@ const LoginModal = () => {
         <Modal.Body className="mb-3 py-4 px-4 bg-dark">
         <Form>
       <Form.Group className="mb-3 bg-dark" controlId="formBasicEmail">
-        <Form.Label>Email o Usuario</Form.Label>
-        <Form.Control className="p-3" type="email" placeholder="JavaSports@gmail.com" />
+        <Form.Label>Usuario</Form.Label>
+        <Form.Control value={name} className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Contraseña</Form.Label>
-        <Form.Control className="p-3" type="password" placeholder="***** JavaSports *****" />
+        <Form.Control value={pass} className="p-3" type="password" placeholder="***** JavaSports *****" />
       </Form.Group>
       <Form.Text className="text-danger">
         Olvidé mi contraseña
