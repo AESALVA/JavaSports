@@ -12,9 +12,9 @@ import Footer from './Footer';
 const PassRecovery = () => {
     const [show, setShow] = useState(true);
 
-  return (
-    <div className=' d-none d-xl-block border-0 mx-auto '>
-        <img className='FondoPass' src='/img/FondoPass.jpg' />
+  return (<>
+    <div className='FondoPass d-none d-xl-block border-0 mx-auto'>
+        <img className='' src='/img/FondoPass.jpg' /></div>
     <Modal show={show} contentClassName="bg-black ModalPass">
         <Modal.Header className="border-danger bg-black">
           <Link className="mx-auto" to="/"><img className="bg-dark logo" src="/img/LogoJS.jpg"width="100"height="100"/></Link>
@@ -36,7 +36,7 @@ const PassRecovery = () => {
             <h4 className="m-auto py-2 px-4">Recuperar Contraseña</h4>
           </Button>
       </Modal>
-      </div>
+      </>
   )
 }
 
