@@ -31,8 +31,8 @@ const logout = () => {
 
 
   return (
-  
     <BrowserRouter>
+
       <Main login={login}
         logout={logout}
         setAuth={setAuth}

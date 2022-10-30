@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import { Link, Route, Routes } from 'react-router-dom'
@@ -7,12 +8,14 @@ import Aboutus from '../components/Aboutus'
 import Register from '../components/Register'
 import PassRecovery from '../components/PassRecovery';
 
+
 const Main = (auth,
   login,
   logout,
   validate,
   setAuth) => {
   return (
+
     <Container fluid className="min-vh-100 d-flex flex-column">
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
@@ -26,8 +29,9 @@ const Main = (auth,
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
         </Routes>
     <Footer />
-    </Container>
-  )
-}
 
-export default Main
+    </Container>
+  );
+};
+
+export default Main;
