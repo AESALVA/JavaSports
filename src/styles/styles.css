@@ -1,21 +1,29 @@
-*{
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    color:white;
+:root {
+  --darkColor: #33313b;
+  --grayColor: #413f4a;
+  --redColor: #d05037;
+  --orangeColor: #ff4c29;
 }
-.logo{
-    border-radius: 50%;
-    margin: 1rem;
+
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
-.modal_styles{
-    text-decoration: none;
+.logo {
+  border-radius: 50%;
+  margin: 1rem;
 }
-.ModalPass{
-    opacity:.8;
+.modal_styles {
+  text-decoration: none;
 }
-.FondoPass{
-    overflow: hidden;
-    filter: saturate(20%) contrast(1.7);
-    max-height: 92vh;
+.ModalPass {
+  opacity: 0.8;
+}
+.FondoPass {
+  overflow: hidden;
+  filter: saturate(20%) contrast(1.7);
+  max-height: 92vh;
 }

@@ -1,0 +1,21 @@
+.colorNav {
+  background-color: var(--darkColor);
+}
+
+#headerLogo {
+  width: 40px;
+  height: 40px;
+}
+
+/* cambio el color del boton menu hamburguesa */
+span .navbar-Toggle {
+  border: none;
+}
+.navbar-toggler-icon {
+  background-image: url(../img/menu_hamburguesa.png);
+  background-size: 48px;
+}
+
+#headerLinks .nav-link {
+  color: white;
+}
