@@ -27,3 +27,14 @@
   filter: saturate(20%) contrast(1.7);
   max-height: 92vh;
 }
+
+/* titulos */
+.title {
+  font-weight: 700;
+  color: var(--orangeColor);
+}
+
+/* color de fondo oscuro */
+.dark-background-color {
+  background-color: var(--darkColor);
+}

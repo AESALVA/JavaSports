@@ -1,10 +1,7 @@
-.colorNav {
-  background-color: var(--darkColor);
-}
-
 #headerLogo {
   width: 40px;
   height: 40px;
+  border-radius: 100%;
 }
 
 /* cambio el color del boton menu hamburguesa */
@@ -18,4 +15,32 @@ span .navbar-Toggle {
 
 #headerLinks .nav-link {
   color: white;
+}
+
+#header-social-icons {
+  display: flex;
+  justify-content: space-between;
+}
+#header-social-icons a {
+  margin: 3px;
+  padding: 5px;
+}
+
+.header-form {
+  margin-left: 10px;
+}
+.header-form input {
+  background-color: var(--grayColor);
+  border: 1px solid var(--darkColor);
+  width: 150px;
+}
+/* BREAKPOINTS */
+
+/* MD */
+@media (min-width: 767.98px) {
+  .header-border {
+    border-right: 0.5px solid var(--redColor);
+    border-left: 0.5px solid transparent;
+    margin: 0px;
+  }
 }
