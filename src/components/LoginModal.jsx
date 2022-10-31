@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import ModalDialog from 'react-bootstrap/ModalDialog'
 import {Link, useNavigate} from "react-router-dom";
 import { NavLink } from "react-bootstrap";
+import validator from "validator";
+import { useEffect } from "react";
 
 
 
@@ -17,6 +19,8 @@ const LoginModal = (auth,
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
+  const [firstName, setFirstName] = useState(true);
+  const [firstPass, setFirstPass] = useState(true);
   const navigate = useNavigate();
   const handleValidation = (e) => {
     e.preventDefault();
@@ -25,6 +29,17 @@ const LoginModal = (auth,
       navigate("/");
     }
   };
+  const validateName = (n) => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 5, max: 36})
+    );
+  };
+  const validatePass = (n) => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 8, max: 20})
+    );
+  };
+  useEffect(() => {}, [name, pass]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -50,12 +65,18 @@ const LoginModal = (auth,
         <Modal.Body className="mb-3 py-4 px-4 bg-dark">
         <Form>
       <Form.Group className="mb-3 bg-dark" controlId="formBasicEmail">
-        <Form.Label>Usuario</Form.Label>
-        <Form.Control value={name} onInput={(e) => setName(e.target.value)} className="p-3" type="text" placeholder="JavaSports" />
+        <Form.Label>Usuario {" "}
+            {!validateName(name) && !firstName && (
+              <span className="text-danger">Debe llenar este campo</span>
+            )}</Form.Label>
+        <Form.Control value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)}  className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control value={pass} onInput={(e) => setPass(e.target.value)} className="p-3" type="password" placeholder="***** JavaSports *****" />
+        <Form.Label>Contraseña  {" "}
+            {!validatePass(pass) && !firstPass && (
+              <span className="text-danger">Debe llenar este campo</span>
+            )}</Form.Label>
+        <Form.Control value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
       </Form.Group>
       <Form.Text className="text-danger">
         <Link to="/PassRecovery" className="text-danger modal_styles" >Olvidé mi contraseña</Link>
