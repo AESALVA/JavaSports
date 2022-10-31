@@ -5,12 +5,20 @@ import Form from 'react-bootstrap/Form';
 import {Link, useNavigate} from "react-router-dom";
 import ModalDialog from 'react-bootstrap/ModalDialog';
 import Footer from './Footer';
+import validator from 'validator';
 
 
 
 
 const PassRecovery = () => {
     const [show, setShow] = useState(true);
+    const [mail, setMail] = useState("");
+    const [firstMail, setFirstMail] = useState(true);
+    const validateMail = (n) => {
+      return (
+        validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
+      );
+    };
 
   return (<>
     <div className='FondoPass d-none d-xl-block border-0 mx-auto'>
@@ -25,8 +33,10 @@ const PassRecovery = () => {
         <Form>
       <Form.Group className="my-5" controlId="formBasicPassword">
         <h6 className='text-center pb-5'>Ingresa tu Email y te ayudaremos</h6>
-        <Form.Label>Email</Form.Label>
-        <Form.Control  className="p-3" type="email" placeholder="Java@Sports.com" />
+        <Form.Label>Email{" "}
+            {!validateMail(mail) && !firstMail && (
+              <span className="text-danger">Debe llenar este campo con su Email</span>)}</Form.Label>
+        <Form.Control value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}  className="p-3" type="email" placeholder="Java@Sports.com" />
       </Form.Group>
      
       
