@@ -47,9 +47,10 @@ const LoginModal = (auth,
 
   return (
     <>
-      <Button variant="outline-secondary" onClick={handleShow}>
+      <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
         Ingresar
       </Button>
+      <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>
 
       <Modal
         show={show}
@@ -61,7 +62,7 @@ const LoginModal = (auth,
           <Link className="mx-auto" to="/"><img className="bg-dark logo" src="/img/LogoJS.jpg"width="100"height="100"/></Link>
         </Modal.Header>
         <h2 className="mx-auto mt-4">Iniciar Sesión</h2>
-        <Modal.Body className="mx-auto bg-dark">¿ No tienes cuenta ? <Link onClick={handleClose} className="text-danger modal_styles" to="/Register" >Registráte</Link> </Modal.Body>
+        <Modal.Body className="mx-auto bg-dark">¿ No tienes cuenta ? <Link onClick={handleClose} className=" modal_styles" to="/Register" >Registráte</Link> </Modal.Body>
         <Modal.Body className="mb-3 py-4 px-4 bg-dark">
         <Form>
       <Form.Group className="mb-3 bg-dark" controlId="formBasicEmail">
@@ -79,7 +80,7 @@ const LoginModal = (auth,
         <Form.Control value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
       </Form.Group>
       <Form.Text className="text-danger">
-        <Link to="/PassRecovery" onClick={handleClose} className="text-danger modal_styles" >Olvidé mi contraseña</Link>
+        <Link to="/PassRecovery" onClick={handleClose} className="modal_styles" >Olvidé mi contraseña</Link>
         </Form.Text>
     </Form>
         </Modal.Body>

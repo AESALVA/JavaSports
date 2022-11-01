@@ -18,6 +18,10 @@
 }
 .modal_styles {
   text-decoration: none;
+  color: var(--redColor);
+}
+.modal_styles:hover{
+  color: var(--orangeColor);
 }
 .ModalPass {
   opacity: 0.8;
@@ -55,4 +59,18 @@
 
 .gray-background-color {
   background-color: var(--grayColor);
+}
+
+
+/* BREAKPOINTS */
+
+@media (max-width: 767.98px){
+  .btn-login{
+    display: none;
+  }
+}
+@media (min-width: 767.98px){
+.link_styles{
+  display: none;
+}
 }
