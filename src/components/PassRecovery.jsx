@@ -21,7 +21,7 @@ const PassRecovery = () => {
     };
 
   return (<>
-    <div className='FondoPass d-none d-xl-block border-0 mx-auto'>
+    <div className='FondoPass d-none d-xl-block mx-auto'>
         <img className='' src='/img/FondoPass.jpg' /></div>
     <Modal show={show} contentClassName="bg-black ModalPass">
         <Modal.Header className="border-danger bg-black">
