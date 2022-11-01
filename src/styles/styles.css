@@ -21,11 +21,17 @@
 }
 .ModalPass {
   opacity: 0.8;
+  margin-top: 7rem;
 }
 .FondoPass {
-  overflow: hidden;
+  overflow:hidden;
   filter: saturate(20%) contrast(1.7);
-  max-height: 92vh;
+  max-height: 80vh;
+}
+
+.FondoPass img{
+  position: relative;
+  top:-12rem;
 }
 
 /* titulos */
