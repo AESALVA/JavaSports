@@ -24,14 +24,14 @@
   margin-top: 7rem;
 }
 .FondoPass {
-  overflow:hidden;
+  overflow: hidden;
   filter: saturate(20%) contrast(1.7);
   max-height: 80vh;
 }
 
-.FondoPass img{
+.FondoPass img {
   position: relative;
-  top:-12rem;
+  top: -12rem;
 }
 
 /* titulos */
@@ -43,4 +43,16 @@
 /* color de fondo oscuro */
 .dark-background-color {
   background-color: var(--darkColor);
+}
+
+.orange-background-color {
+  background-color: var(--orangeColor);
+}
+
+.red-background-color {
+  background-color: var(--redColor);
+}
+
+.gray-background-color {
+  background-color: var(--grayColor);
 }
