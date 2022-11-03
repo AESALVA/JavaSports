@@ -22,8 +22,8 @@ const Sections = () => {
   ];
 
   return (
-    <Container className='sections'>
-      <Card className='mx-auto text-center sections border-0'>
+    <Container className='sections pb-5'>
+      <Card className='mx-auto text-center sections border-0 '>
         <Card.Title className='sections-fonts'>
 Gabriel Jesus is not the perfect striker but he may be just perfect for Arsenal</Card.Title>
         <Card.Img  variant="top" src="/img/imgSection.webp" />
