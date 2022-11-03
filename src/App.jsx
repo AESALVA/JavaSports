@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Main from "./views/Main";
+import Main from "./views/main";
 
 
 function App() {
