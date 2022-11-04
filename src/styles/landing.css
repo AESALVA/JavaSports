@@ -1,3 +1,16 @@
 .colorFonts {
   color: var(--grayColor) !important;
 }
+
+.card-max {
+  height: 900px !important;
+}
+
+.oneSection {
+  max-height: 815px;
+  margin-bottom: 3rem;
+}
+
+.bigCard {
+  min-height: 815px !important;
+}

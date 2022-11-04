@@ -6,12 +6,12 @@ import "../styles/landing.css";
 
 const NewsList = () => {
   return (
-    <Container>
-      {/* 1er seccion */}
-      <Row className="g-4">
+    <Container className="d-flex justify-content-center flex-column ">
+      <Row className="g-4 seconSection">
+        {/* 1er columna */}
         <Col xs={6} md={8} className="">
           <Row>
-            <Col md={12}>
+            <Col>
               <News />
             </Col>
             <Col xs={12} className="d-md-none">
@@ -19,6 +19,7 @@ const NewsList = () => {
             </Col>
           </Row>
         </Col>
+        {/* 2da columna */}
         <Col xs={6} md={4}>
           <Row>
             <Col>
@@ -31,6 +32,11 @@ const NewsList = () => {
         </Col>
       </Row>
       {/* 2da seccion */}
+      <Row className="g-4 seconSection d-md-none">
+        <Col>
+          <News />
+        </Col>
+      </Row>
     </Container>
   );
 };

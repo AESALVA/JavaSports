@@ -9,7 +9,7 @@ import CarouselHome from "./CarouselHome";
 const Landing = () => {
   return (
     <>
-      {/* <CarouselHome /> */}
+      <CarouselHome />
       <NewsList />
     </>
   );
