@@ -6,7 +6,7 @@ import "../styles/landing.css";
 
 const NewsList = () => {
   return (
-    <Container className="d-flex justify-content-center flex-column ">
+    <Container className="mb-5 d-flex justify-content-center flex-column ">
       <Row className="g-4 seconSection">
         {/* 1er columna */}
         <Col xs={6} md={8} className="">

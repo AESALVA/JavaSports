@@ -1,17 +1,17 @@
-import { Container } from "react-bootstrap";
+import { Container, Nav } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+import SectionsContainer from "./SectionsContainer";
 
-const News = ({ bigCard }) => {
-  let styleCard = "";
-  if (bigCard == "S") {
-    styleCard = "bigCard";
-  }
+const News = () => {
   return (
     <>
-      <Card className={styleCard}>
+      <Card className="background-card m-2">
         <Container>
-          <Card.Img variant="top" src="./img/LogoJS.jpg" />
+          <Link to="/SectionsContainer">
+            <Card.Img variant="top" src="./img/LogoJS.jpg" />
+          </Link>
         </Container>
         <Card.Body>
           <Card.Title className="text-dark text-center">Noticias</Card.Title>

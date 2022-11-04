@@ -1,6 +1,9 @@
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import LoginModal from "./LoginModal";
+import Sections from "./Sections";
+import SectionsContainer from "./SectionsContainer";
+
 import "../styles/landing.css";
 
 import NewsList from "./NewsList";
@@ -14,5 +17,4 @@ const Landing = () => {
     </>
   );
 };
-
 export default Landing;

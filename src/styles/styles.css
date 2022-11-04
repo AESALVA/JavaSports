@@ -12,6 +12,9 @@
   color: white;
   font-family: "Poppins", sans-serif;
 }
+body {
+  background-color: #151515d0;
+}
 .logo {
   border-radius: 50%;
   margin: 1rem;
@@ -37,7 +40,23 @@
   position: relative;
   top: -12rem;
 }
-
+.sections {
+  background-color: var(--grayColor);
+}
+.sections-fonts {
+  margin: 2rem 0;
+}
+.commentArea-container {
+  background-color: var(--darkColor);
+  padding: 2rem;
+  min-height: 20rem;
+}
+.comments-title {
+  border-bottom: 2px solid var(--orangeColor);
+}
+.input-comments:focus {
+  outline: 1px solid var(--grayColor);
+}
 /* titulos */
 .title {
   font-weight: 700;
