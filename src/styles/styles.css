@@ -81,6 +81,40 @@ outline:1px solid var(--grayColor);
 }
 
 
+.ContainerSectionsList{
+  display: flex;
+}
+.SectionOne{
+  width: 70%;
+  padding: 2rem;
+}
+.SectionOnePlus{
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SectionTwo{
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.SectionTwoPlus{
+  width: 70%;
+  padding: 2rem;
+}
+.SectionCard{
+  
+}
+.ContainerGridSections{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
 /* BREAKPOINTS */
 
 @media (max-width: 767.98px){
