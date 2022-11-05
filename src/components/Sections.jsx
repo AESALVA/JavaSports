@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const Sections = ({article}) => {
   const comments = [
@@ -29,6 +30,15 @@ const Sections = ({article}) => {
         "Lorem ipsum dolor sit amet consectetur Laboriosam in, adipisci placeat debitis provident quo, ",
     },
   ];
+
+  const [comment, setComment] = useState([]);
+  const [showComment, setShowComment] = useState();
+  
+
+const addComment = (c)=>{
+  const newComments = setComment([...comment, c]);
+  console.log(newComments);
+}
 
   return (
     <Container className="sections pb-5">
@@ -59,12 +69,15 @@ const Sections = ({article}) => {
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
           type="text"
+          value={comment}
+          onInput={(e)=>setComment(e.target.value)}
+          
         />
         <Button
           variant="secondary"
           className="mt-2"
-          onClick={() => console.log("works")}
-        >
+          onClick={() => addComment(comment)}
+          >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
         {comments.map((comment, i) => (
@@ -75,6 +88,7 @@ const Sections = ({article}) => {
             <span> {comment.comment}</span>
           </Row>
         ))}
+        {showComment}
       </div>
     </Container>
   );
