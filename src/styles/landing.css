@@ -2,15 +2,45 @@
   color: var(--grayColor) !important;
 }
 
-.card-max {
-  height: 900px !important;
-}
-
-.oneSection {
-  max-height: 815px;
+.container-grid {
   margin-bottom: 3rem;
+  display: grid;
+
+  grid-template-areas:
+    "one-card     two-card"
+    "three-card   four-card"
+    "five-card    five-card"
+    "six-card     seven-card"
+    "six-card     eight-card";
 }
 
-.bigCard {
-  min-height: 815px !important;
+.container-grid div {
+  margin: 5%;
+}
+
+#one-card {
+  grid-area: one-card;
+}
+#two-card {
+  grid-area: two-card;
+}
+#three-card {
+  grid-area: three-card;
+}
+#four-card {
+  grid-area: four-card;
+}
+#five-card {
+  grid-area: five-card;
+  padding: 2rem;
+}
+#six-card {
+  grid-area: six-card;
+  margin: 0;
+}
+#seven-card {
+  grid-area: seven-card;
+}
+#eight-card {
+  grid-area: eight-card;
 }

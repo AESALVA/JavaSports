@@ -6,37 +6,17 @@ import "../styles/landing.css";
 
 const NewsList = () => {
   return (
-    <Container className="mb-5 d-flex justify-content-center flex-column ">
-      <Row className="g-4 seconSection">
-        {/* 1er columna */}
-        <Col xs={6} md={8} className="">
-          <Row>
-            <Col>
-              <News />
-            </Col>
-            <Col xs={12} className="d-md-none">
-              <News />
-            </Col>
-          </Row>
-        </Col>
-        {/* 2da columna */}
-        <Col xs={6} md={4}>
-          <Row>
-            <Col>
-              <News />
-            </Col>
-            <Col>
-              <News />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      {/* 2da seccion */}
-      <Row className="g-4 seconSection d-md-none">
-        <Col>
-          <News />
-        </Col>
-      </Row>
+    <Container className="container-grid g-3">
+      <News id="one-card" />
+      <News id="two-card" />
+      <News id="three-card" />
+      <News id="four-card" />
+      <div id="five-card">PUBLICIDAD</div>
+      <div id="six-card">
+        <News />
+      </div>
+      <News id="seven-card" />
+      <News id="eight-card" />
     </Container>
   );
 };
