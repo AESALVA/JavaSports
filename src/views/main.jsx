@@ -7,6 +7,8 @@ import Aboutus from "../components/Aboutus";
 import Register from "../components/Register";
 import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
+import SectionsContainer from "../components/SectionsContainer";
+import SectionsList from "../components/SectionsList";
 
 const Main = (auth, login, logout, validate, setAuth) => {
   return (
@@ -17,6 +19,8 @@ const Main = (auth, login, logout, validate, setAuth) => {
         <Route element={<Landing />} path="/"></Route>
         <Route element={<Register />} path="/Register"></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
+        <Route element={<SectionsContainer />} path="/SectionsContainer"></Route>
+        <Route element={<SectionsList />} path="/SectionsList" ></Route>
       </Routes>
       <Footer />
     </Container>
