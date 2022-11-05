@@ -111,9 +111,7 @@ outline:1px solid var(--grayColor);
   width: 70%;
   padding: 2rem;
 }
-.SectionCard{
-  
-}
+
 .ContainerGridSections{
   display: flex;
   flex-direction: column;
@@ -125,6 +123,16 @@ outline:1px solid var(--grayColor);
 
 }
 /* BREAKPOINTS */
+
+@media (max-width: 990px) {
+  .ContainerSectionsList{
+    flex-direction: column;
+  }
+  .SectionOne, .SectionTwo, .SectionOnePlus, .SectionTwoPlus{
+    width: 100%;
+  }
+}
+
 
 @media (max-width: 767.98px){
   .btn-login{
