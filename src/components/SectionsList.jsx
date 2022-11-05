@@ -7,63 +7,122 @@ import CardGroup from "react-bootstrap/CardGroup";
 
 const SectionsList = () => {
   return (
-    <>
-      <Container className="ContainerSectionsList">
+    <Container>
+      <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
           <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </div>
         <div className="SectionTwo">
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </div>
       </Container>
-      <Container className="ContainerGridSections">
-        <CardGroup className="p-2 ">
-          <Card className="m-2 ">
+      <Container className="ContainerGridSections text-center">
+        <CardGroup className="p-2">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
-          <Card className="m-2 ">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
-          <Card className="m-2">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </CardGroup>
-        <CardGroup className="p-2">
-          <Card className="m-2">
+        <CardGroup className="p-2 Card">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
-          <Card className="m-2">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
-          <Card className="m-2">
+          <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </CardGroup>
       </Container>
-      <Container className="ContainerSectionsList">
+      <Container className="ContainerSectionsList text-center">
         <div className="SectionOnePlus">
-          
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </div>
         <div className="SectionTwoPlus">
         <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
+            <Card.Title>Article Title</Card.Title>
+            <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
           </Card>
         </div>
       </Container>
-    </>
+    </Container>
   );
 };
 

@@ -83,6 +83,10 @@ outline:1px solid var(--grayColor);
 
 .ContainerSectionsList{
   display: flex;
+  padding: 0;
+}
+.ContainerSectionsList div{
+  background-color: var(--darkColor);
 }
 .SectionOne{
   width: 70%;
@@ -114,6 +118,11 @@ outline:1px solid var(--grayColor);
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  background-color: var(--darkColor);
+}
+.ContainerGridSections .Card{
+  background-color: var(--darkColor);
+
 }
 /* BREAKPOINTS */
 
