@@ -28,17 +28,16 @@ body{
 }
 .ModalPass {
   opacity: 0.8;
-  margin-top: 7rem;
 }
 .FondoPass {
   overflow: hidden;
   filter: saturate(20%) contrast(1.7);
-  max-height: 80vh;
+    max-height: 60vh;
 }
 
 .FondoPass img {
   position: relative;
-  top: -12rem;
+  top: -12rem;  
 }
 .sections{
   background-color: var(--grayColor);
