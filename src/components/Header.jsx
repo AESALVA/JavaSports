@@ -7,6 +7,7 @@ import { useState } from "react";
 import LoginModal from "./LoginModal";
 import Form from "react-bootstrap/Form";
 import "../styles/header.css";
+import { Link } from "react-router-dom";
 
 const Header = (auth, login, logout, validate, setAuth) => {
   const [show, setShow] = useState(false);
@@ -132,7 +133,7 @@ const Header = (auth, login, logout, validate, setAuth) => {
                   id="basic-nav-dropdown"
                   className="header-border"
                 >
-                  <NavDropdown.Item href="#action/3.1">Fútbol</NavDropdown.Item>
+                  <NavDropdown.Item ><Link to="/SectionsList"> Fútbol</Link></NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Hockey</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Tenis</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.4">Boxeo</NavDropdown.Item>

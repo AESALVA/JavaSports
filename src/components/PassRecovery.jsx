@@ -22,7 +22,7 @@ const PassRecovery = () => {
 
   return (<>
     <div className='FondoPass d-none d-xl-block mx-auto'>
-        <img className='' src='/img/FondoPass.jpg' /></div>
+        <img className='w-100' src='/img/FondoPass.jpg' /></div>
     <Modal show={show} contentClassName="bg-black ModalPass">
         <Modal.Header className="border-danger bg-black">
           <Link className="mx-auto" to="/"><img className="bg-dark logo" src="/img/LogoJS.jpg"width="100"height="100"/></Link>
@@ -31,7 +31,7 @@ const PassRecovery = () => {
         <h5 className="mx-auto pt-2">¡ No te preocupes !</h5>
         <Modal.Body className="mb-3 py-4 px-4 bg-black">
         <Form>
-      <Form.Group className="my-5" controlId="formBasicPassword">
+      <Form.Group className="my-2" controlId="formBasicPassword">
         <h6 className='text-center pb-5'>Ingresa tu Email y te ayudaremos</h6>
         <Form.Label>Email{" "}
             {!validateMail(mail) && !firstMail && (
