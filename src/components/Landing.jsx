@@ -5,7 +5,7 @@ import Sections from "./Sections";
 import SectionsContainer from "./SectionsContainer";
 
 const Landing = () => {
-  return <div><SectionsContainer /></div>;
+  return <div>LANDING</div>;
 };
 
 export default Landing;
