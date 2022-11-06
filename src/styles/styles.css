@@ -12,8 +12,8 @@
   color: white;
   font-family: "Poppins", sans-serif;
 }
-body{
-  background-color: #151515;
+body {
+  background-color: #151515d0;
 }
 .logo {
   border-radius: 50%;
@@ -23,7 +23,7 @@ body{
   text-decoration: none;
   color: var(--redColor);
 }
-.modal_styles:hover{
+.modal_styles:hover {
   color: var(--orangeColor);
 }
 .ModalPass {
@@ -39,22 +39,22 @@ body{
   position: relative;
   top: -12rem;  
 }
-.sections{
+.sections {
   background-color: var(--grayColor);
 }
-.sections-fonts{
+.sections-fonts {
   margin: 2rem 0;
 }
-.commentArea-container{
+.commentArea-container {
   background-color: var(--darkColor);
   padding: 2rem;
   min-height: 20rem;
 }
-.comments-title{
-border-bottom: 2px solid var(--orangeColor);
+.comments-title {
+  border-bottom: 2px solid var(--orangeColor);
 }
-.input-comments:focus{
-outline:1px solid var(--grayColor);
+.input-comments:focus {
+  outline: 1px solid var(--grayColor);
 }
 /* titulos */
 .title {
@@ -80,9 +80,12 @@ outline:1px solid var(--grayColor);
 }
 
 
-.ContainerSectionsList{
-  display: flex;
-  padding: 0;
+
+@media (max-width: 767.98px) {
+  /* .btn-login { */
+  .ContainerSectionsList{
+    display: flex;
+    padding: 0;
 }
 .ContainerSectionsList div{
   background-color: var(--darkColor);
@@ -138,8 +141,8 @@ outline:1px solid var(--grayColor);
     display: none;
   }
 }
-@media (min-width: 767.98px){
-.link_styles{
-  display: none;
-}
+@media (min-width: 767.98px) {
+  .link_styles {
+    display: none;
+  }
 }
