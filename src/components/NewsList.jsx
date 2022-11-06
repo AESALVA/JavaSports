@@ -1,42 +1,61 @@
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import News from "./News";
 import "../styles/landing.css";
 
 const NewsList = () => {
   return (
-    <Container className="mb-5 d-flex justify-content-center flex-column ">
-      <Row className="g-4 seconSection">
-        {/* 1er columna */}
-        <Col xs={6} md={8} className="">
-          <Row>
-            <Col>
-              <News />
-            </Col>
-            <Col xs={12} className="d-md-none">
-              <News />
-            </Col>
-          </Row>
-        </Col>
-        {/* 2da columna */}
-        <Col xs={6} md={4}>
-          <Row>
-            <Col>
-              <News />
-            </Col>
-            <Col>
-              <News />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      {/* 2da seccion */}
-      <Row className="g-4 seconSection d-md-none">
-        <Col>
-          <News />
-        </Col>
-      </Row>
+    <Container className="container-grid g-3">
+      <div id="one-card">
+        <News sizeCard="" />
+      </div>
+      <div id="two-card">
+        <News sizeCard="" />
+      </div>
+      <div id="three-card">
+        <News sizeCard="" />
+      </div>
+      <div id="four-card">
+        <News sizeCard="" />
+      </div>
+      <div id="five-card" className="card-publicity">
+        PUBLICIDAD
+      </div>
+      <div id="six-card">
+        <News sizeCard="" />
+      </div>
+      <div id="seven-card">
+        <News sizeCard="card-big" />
+      </div>
+      <div id="eight-card">
+        <News sizeCard="" />
+      </div>
+      <div id="nine-card">
+        <News sizeCard="" />
+      </div>
+      <div id="ten-card" className="card-publicity">
+        PUBLICIDAD
+      </div>
+      <div id="eleven-card">
+        <News sizeCard="" />
+      </div>
+      <div id="twelve-card">
+        <News sizeCard="" />
+      </div>
+      <div id="thirteen-card">
+        <News sizeCard="" />
+      </div>
+      <div id="fourteen-card">
+        <News sizeCard="" />
+      </div>
+      <div id="fifteen-card">
+        <News sizeCard="" />
+      </div>
+      <div id="sixteen-card" className="card-publicity">
+        PUBLICIDAD
+      </div>
+      <div id="seventeen-card">
+        <News sizeCard="" />
+      </div>
     </Container>
   );
 };

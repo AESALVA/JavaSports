@@ -3,17 +3,16 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import SectionsContainer from "./SectionsContainer";
+import NewsList from "./NewsList";
 
-const News = () => {
+const News = ({ sizeCard }) => {
   return (
     <>
-      <Card className="background-card m-2">
-        <Container>
-          <Link to="/SectionsContainer">
-            <Card.Img variant="top" src="./img/LogoJS.jpg" />
-          </Link>
-        </Container>
-        <Card.Body>
+      <Card className={`${sizeCard} cardImagen`}>
+        <Link to="/SectionsContainer">
+          <Card.Img variant="top" src="./img/LogoJS.jpg" className="fluid" />
+        </Link>
+        <Card.Body className="">
           <Card.Title className="text-dark text-center">Noticias</Card.Title>
           <Card.Text>
             <p className="text-dark d-none d-md-block text-center">
