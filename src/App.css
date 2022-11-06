@@ -40,3 +40,8 @@
     transform: rotate(360deg);
   }
 }
+@media (max-widht: 768px) {
+  #logocontainer{
+    border: none;
+  }
+}
