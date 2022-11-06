@@ -15,7 +15,6 @@ import LikeCounter from "./LikeCounter";
 const Sections = ({ article }) => {
   const [comment, setComment] = useState({ comment: "", user: "Eduardo" });
   const [showComment, setShowComment] = useState([]);
-
   
 
   const addComment = () => {
@@ -52,7 +51,7 @@ const Sections = ({ article }) => {
         <Button
           variant="secondary"
           className="mt-2"
-          onClick={() => addComment()}
+          onClick={() =>comment.comment && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
