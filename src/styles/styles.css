@@ -121,6 +121,11 @@ outline:1px solid var(--grayColor);
   background-color: var(--darkColor);
 
 }
+.Mg{
+  background-color: var(--orangeColor);
+}
+
+
 /* BREAKPOINTS */
 
 @media (max-width: 990px) {
