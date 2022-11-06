@@ -28,17 +28,16 @@ body {
 }
 .ModalPass {
   opacity: 0.8;
-  margin-top: 7rem;
 }
 .FondoPass {
   overflow: hidden;
   filter: saturate(20%) contrast(1.7);
-  max-height: 80vh;
+    max-height: 60vh;
 }
 
 .FondoPass img {
   position: relative;
-  top: -12rem;
+  top: -12rem;  
 }
 .sections {
   background-color: var(--grayColor);
@@ -80,10 +79,65 @@ body {
   background-color: var(--grayColor);
 }
 
-/* BREAKPOINTS */
+
 
 @media (max-width: 767.98px) {
-  .btn-login {
+  /* .btn-login { */
+  .ContainerSectionsList{
+    display: flex;
+    padding: 0;
+}
+.ContainerSectionsList div{
+  background-color: var(--darkColor);
+}
+.SectionOne{
+  width: 70%;
+  padding: 2rem;
+}
+.SectionOnePlus{
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SectionTwo{
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.SectionTwoPlus{
+  width: 70%;
+  padding: 2rem;
+}
+
+.ContainerGridSections{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: var(--darkColor);
+}
+.ContainerGridSections .Card{
+  background-color: var(--darkColor);
+
+}
+/* BREAKPOINTS */
+
+@media (max-width: 990px) {
+  .ContainerSectionsList{
+    flex-direction: column;
+  }
+  .SectionOne, .SectionTwo, .SectionOnePlus, .SectionTwoPlus{
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 767.98px){
+  .btn-login{
     display: none;
   }
 }
