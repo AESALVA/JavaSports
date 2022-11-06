@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Sections = ({article}) => {
   const comments = [
@@ -31,13 +32,13 @@ const Sections = ({article}) => {
     },
   ];
 
-  const [comment, setComment] = useState([]);
-  const [showComment, setShowComment] = useState();
+  const [comment, setComment] = useState({comment:"", user:"Eduardo"});
+  const [showComment, setShowComment] = useState([]);
   
 
-const addComment = (c)=>{
-  const newComments = setComment([...comment, c]);
-  console.log(newComments);
+const addComment = ()=>{  
+setShowComment([...showComment, comment]);
+setComment({comment:"",user:"eduardo"});
 }
 
   return (
@@ -63,24 +64,23 @@ const addComment = (c)=>{
       <div className="commentArea-container sections">
         <h4 className="comments-title">
           All Comments {""}
-          {comments.length}
+          {showComment.length}
         </h4>
         <input
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
           type="text"
-          value={comment}
-          onInput={(e)=>setComment(e.target.value)}
-          
+          value={comment.comment}
+          onChange={(e)=>setComment({comment: e.target.value, user:"Eduardo"})} 
         />
         <Button
           variant="secondary"
           className="mt-2"
-          onClick={() => addComment(comment)}
+          onClick={() => addComment()}
           >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
-        {comments.map((comment, i) => (
+        {showComment.map((comment, i) => (
           <Row key={i} className="p-4">
             <Col>
               <FontAwesomeIcon icon={faUser} /> ({comment.user})
@@ -88,7 +88,6 @@ const addComment = (c)=>{
             <span> {comment.comment}</span>
           </Row>
         ))}
-        {showComment}
       </div>
     </Container>
   );
