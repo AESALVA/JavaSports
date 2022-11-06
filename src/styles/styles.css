@@ -32,12 +32,12 @@ body {
 .FondoPass {
   overflow: hidden;
   filter: saturate(20%) contrast(1.7);
-    max-height: 60vh;
+  max-height: 60vh;
 }
 
 .FondoPass img {
   position: relative;
-  top: -12rem;  
+  top: -12rem;
 }
 .sections {
   background-color: var(--grayColor);
@@ -79,22 +79,21 @@ body {
   background-color: var(--grayColor);
 }
 
-
-
 @media (max-width: 767.98px) {
   /* .btn-login { */
-  .ContainerSectionsList{
+  .ContainerSectionsList {
     display: flex;
     padding: 0;
+  }
 }
-.ContainerSectionsList div{
+.ContainerSectionsList div {
   background-color: var(--darkColor);
 }
-.SectionOne{
+.SectionOne {
   width: 70%;
   padding: 2rem;
 }
-.SectionOnePlus{
+.SectionOnePlus {
   width: 30%;
   padding: 2rem;
   display: flex;
@@ -102,42 +101,43 @@ body {
   justify-content: space-between;
 }
 
-.SectionTwo{
+.SectionTwo {
   width: 30%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.SectionTwoPlus{
+.SectionTwoPlus {
   width: 70%;
   padding: 2rem;
 }
 
-.ContainerGridSections{
+.ContainerGridSections {
   display: flex;
   flex-direction: column;
   padding: 2rem;
   background-color: var(--darkColor);
 }
-.ContainerGridSections .Card{
+.ContainerGridSections .Card {
   background-color: var(--darkColor);
-
 }
 /* BREAKPOINTS */
 
 @media (max-width: 990px) {
-  .ContainerSectionsList{
+  .ContainerSectionsList {
     flex-direction: column;
   }
-  .SectionOne, .SectionTwo, .SectionOnePlus, .SectionTwoPlus{
+  .SectionOne,
+  .SectionTwo,
+  .SectionOnePlus,
+  .SectionTwoPlus {
     width: 100%;
   }
 }
 
-
-@media (max-width: 767.98px){
-  .btn-login{
+@media (max-width: 767.98px) {
+  .btn-login {
     display: none;
   }
 }
