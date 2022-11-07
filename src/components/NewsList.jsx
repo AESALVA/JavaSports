@@ -18,8 +18,9 @@ const NewsList = () => {
       <div id="four-card">
         <News sizeCard="" />
       </div>
-      <div id="five-card" className="card-publicidad">
-        <Publicity sizeCard="horizontal" />
+      <div id="five-card" className="card-publicidad text-center pb-5">
+        PUBLICIDAD
+        {/* <Publicity sizeCard="horizontal" /> */}
       </div>
       <div id="six-card">
         <News sizeCard="" />
@@ -33,8 +34,9 @@ const NewsList = () => {
       <div id="nine-card">
         <News sizeCard="" />
       </div>
-      <div id="ten-card" className="card-publicidad">
-        <Publicity sizeCard="vertical" />
+      <div id="ten-card" className="card-publicidad text-center">
+        PUBLICIDAD
+        {/* <Publicity sizeCard="vertical" /> */}
       </div>
       <div id="eleven-card">
         <News sizeCard="" />
@@ -48,13 +50,17 @@ const NewsList = () => {
       <div id="fourteen-card">
         <News sizeCard="" />
       </div>
-      <div id="fifteen-card" className="card-publicidad">
-        <Publicity sizeCard="vertical" />
+      <div id="fifteen-card" className="card-publicidad text-center">
+        PUBLICIDAD
+        {/* <Publicity sizeCard="vertical" /> */}
       </div>
       <div id="sixteen-card">
         <News sizeCard="" />
       </div>
       <div id="seventeen-card">
+        <News sizeCard="" />
+      </div>
+      <div id="eighteen-card" className="d-none d-md-block">
         <News sizeCard="" />
       </div>
     </Container>

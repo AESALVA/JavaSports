@@ -8,10 +8,6 @@
   /* width: 12rem; */
 }
 
-.card-big {
-  height: 100% !important;
-}
-
 .container-grid {
   margin-bottom: 3rem;
   display: grid;
@@ -29,7 +25,8 @@
     "eleven-card    twelve-card"
     "thirteen-card  fourteen-card"
     "fifteen-card   sixteen-card"
-    "fifteen-card   seventeen-card";
+    "fifteen-card   seventeen-card"
+    "eighteen-card eighteen-card ";
 }
 
 #one-card {
@@ -95,6 +92,10 @@
   grid-area: seventeen-card;
 }
 
+#eighteen-card {
+  grid-area: eighteen-card;
+}
+
 /* BREAKPOITS */
 
 @media (min-width: 768px) {
@@ -107,7 +108,10 @@
       "ten-card     ten-card        ten-card"
       "eleven-card  twelve-card     thirteen-card"
       "fifteen-card    fourteen-card   sixteen-card"
-      "fifteen-card    seventeen-card  seventeen-card";
+      "fifteen-card    seventeen-card  eighteen-card";
+  }
+  .card-big {
+    height: 100% !important;
   }
 }
 
