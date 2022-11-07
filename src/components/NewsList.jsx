@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import News from "./News";
 import "../styles/landing.css";
+import Publicity from "./Publicity";
 
 const NewsList = () => {
   return (
@@ -18,7 +19,7 @@ const NewsList = () => {
         <News sizeCard="" />
       </div>
       <div id="five-card" className="card-publicidad">
-        PUBLICIDAD
+        <Publicity sizeCard="horizontal" />
       </div>
       <div id="six-card">
         <News sizeCard="" />
@@ -33,7 +34,7 @@ const NewsList = () => {
         <News sizeCard="" />
       </div>
       <div id="ten-card" className="card-publicidad">
-        PUBLICIDAD
+        <Publicity sizeCard="vertical" />
       </div>
       <div id="eleven-card">
         <News sizeCard="" />
@@ -48,7 +49,7 @@ const NewsList = () => {
         <News sizeCard="" />
       </div>
       <div id="fifteen-card" className="card-publicidad">
-        PUBLICIDAD
+        <Publicity sizeCard="vertical" />
       </div>
       <div id="sixteen-card">
         <News sizeCard="" />

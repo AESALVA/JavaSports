@@ -1,11 +1,23 @@
 .colorFonts {
   color: var(--grayColor) !important;
 }
+.cardImagen {
+  display: flex;
+  justify-content: center;
+  /* margin: 0.1rem; */
+  /* width: 12rem; */
+}
+
+.card-big {
+  height: 100% !important;
+}
 
 .container-grid {
   margin-bottom: 3rem;
   display: grid;
-  justify-content: center;
+  justify-content: space-around;
+  align-content: space-around;
+  margin: 1%;
   grid-template-areas:
     "one-card       two-card"
     "three-card     four-card"
@@ -18,16 +30,6 @@
     "thirteen-card  fourteen-card"
     "fifteen-card   sixteen-card"
     "fifteen-card   seventeen-card";
-}
-
-.container-grid div {
-  /* margin: 5%; */
-}
-.cardImagen {
-  display: flex;
-  justify-content: center;
-  margin: 0.1rem;
-  /* width: 12rem; */
 }
 
 #one-card {
@@ -93,20 +95,6 @@
   grid-area: seventeen-card;
 }
 
-/* estilos a card grande */
-.card-publicidad {
-  padding: 0 calc(var(--bs-gutter-x) * 0.5);
-  width: 100%;
-}
-.card-publicity-horizontal {
-  padding: 2rem;
-  background-color: var(--orangeColor);
-  text-align: center;
-}
-.card-publicity-vertical {
-  background-color: var(--orangeColor);
-  text-align: center;
-}
 /* BREAKPOITS */
 
 @media (min-width: 768px) {
@@ -121,25 +109,10 @@
       "fifteen-card    fourteen-card   sixteen-card"
       "fifteen-card    seventeen-card  seventeen-card";
   }
-
-  .card-big {
-    height: 100% !important;
-  }
 }
 
 @media (min-width: 992px) {
   .cardImagen {
     width: 22rem;
-  }
-  .container-grid {
-    grid-template-areas:
-      "one-card     two-card        three-card"
-      "four-card    six-card        five-card"
-      "seven-card   seven-card      eight-card"
-      "seven-card   seven-card      nine-card"
-      "ten-card     ten-card        ten-card"
-      "eleven-card  twelve-card     thirteen-card"
-      "fifteen-card    fourteen-card   sixteen-card"
-      "fifteen-card    seventeen-card  seventeen-card";
   }
 }
