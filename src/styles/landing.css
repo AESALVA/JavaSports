@@ -5,7 +5,7 @@
 .container-grid {
   margin-bottom: 3rem;
   display: grid;
-  justify-content: space-evenly;
+  justify-content: center;
   grid-template-areas:
     "one-card       two-card"
     "three-card     four-card"
@@ -17,11 +17,17 @@
     "eleven-card    twelve-card"
     "thirteen-card  fourteen-card"
     "fifteen-card   sixteen-card"
-    "fifteen-card   eleven-card";
+    "fifteen-card   seventeen-card";
 }
 
 .container-grid div {
-  margin: 2%;
+  /* margin: 5%; */
+}
+.cardImagen {
+  display: flex;
+  justify-content: center;
+  margin: 0.1rem;
+  /* width: 12rem; */
 }
 
 #one-card {
@@ -88,28 +94,34 @@
 }
 
 /* estilos a card grande */
-
-.card-publicity {
+.card-publicidad {
+  padding: 0 calc(var(--bs-gutter-x) * 0.5);
+  width: 100%;
+}
+.card-publicity-horizontal {
   padding: 2rem;
+  background-color: var(--orangeColor);
+  text-align: center;
+}
+.card-publicity-vertical {
+  background-color: var(--orangeColor);
+  text-align: center;
 }
 /* BREAKPOITS */
 
 @media (min-width: 768px) {
   .container-grid {
     grid-template-areas:
-      "one-card   two-card  three-card"
-      "four-card  five-card six-card"
-      "seven-card   seven-card  eight-card"
-      "seven-card   seven-card  nine-card"
-      "ten-card     ten-card      ten-card"
-      "eleven-card  twelve-card   thirteen-card"
-      "fourteen-card" "fiveteen-card" "sixteen-card"
-      "fourteen-card" "seventeen-card" "seventeen-card";
+      "one-card     two-card        three-card"
+      "four-card    six-card        five-card"
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
+      "ten-card     ten-card        ten-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  seventeen-card";
   }
 
-  .cardImagen {
-    width: 18rem;
-  }
   .card-big {
     height: 100% !important;
   }
@@ -118,5 +130,16 @@
 @media (min-width: 992px) {
   .cardImagen {
     width: 22rem;
+  }
+  .container-grid {
+    grid-template-areas:
+      "one-card     two-card        three-card"
+      "four-card    six-card        five-card"
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
+      "ten-card     ten-card        ten-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  seventeen-card";
   }
 }

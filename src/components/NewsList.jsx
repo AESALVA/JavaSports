@@ -4,7 +4,7 @@ import "../styles/landing.css";
 
 const NewsList = () => {
   return (
-    <Container className="container-grid g-3">
+    <Container className="container-grid my-5">
       <div id="one-card">
         <News sizeCard="" />
       </div>
@@ -17,7 +17,7 @@ const NewsList = () => {
       <div id="four-card">
         <News sizeCard="" />
       </div>
-      <div id="five-card" className="card-publicity">
+      <div id="five-card" className="card-publicidad">
         PUBLICIDAD
       </div>
       <div id="six-card">
@@ -32,7 +32,7 @@ const NewsList = () => {
       <div id="nine-card">
         <News sizeCard="" />
       </div>
-      <div id="ten-card" className="card-publicity">
+      <div id="ten-card" className="card-publicidad">
         PUBLICIDAD
       </div>
       <div id="eleven-card">
@@ -47,11 +47,11 @@ const NewsList = () => {
       <div id="fourteen-card">
         <News sizeCard="" />
       </div>
-      <div id="fifteen-card">
-        <News sizeCard="" />
-      </div>
-      <div id="sixteen-card" className="card-publicity">
+      <div id="fifteen-card" className="card-publicidad">
         PUBLICIDAD
+      </div>
+      <div id="sixteen-card">
+        <News sizeCard="" />
       </div>
       <div id="seventeen-card">
         <News sizeCard="" />
