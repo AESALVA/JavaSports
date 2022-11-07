@@ -10,11 +10,15 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 
 const Landing = () => {
+
+  return <div>LANDING</div>;
+
   return (
     <>
       <CarouselHome />
       <NewsList />
     </>
   );
+
 };
 export default Landing;
