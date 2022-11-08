@@ -4,18 +4,18 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import CardGroup from "react-bootstrap/CardGroup";
+import { Link } from "react-router-dom";
 
-const SectionsList = () => {
+const SectionsList = ({MockSections}) => {
   return (
     <Container>
       <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
           <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
-            <Card.Title>Article Title</Card.Title>
+            <Card.Title>{MockSections.title}</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </div>
@@ -24,16 +24,14 @@ const SectionsList = () => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </div>
@@ -44,24 +42,21 @@ const SectionsList = () => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </CardGroup>
@@ -70,24 +65,21 @@ const SectionsList = () => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </CardGroup>
@@ -98,16 +90,14 @@ const SectionsList = () => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </div>
@@ -116,8 +106,7 @@ const SectionsList = () => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
           </Card>
         </div>

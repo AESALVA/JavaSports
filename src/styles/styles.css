@@ -122,6 +122,11 @@ body {
 .ContainerGridSections .Card {
   background-color: var(--darkColor);
 }
+.Mg{
+  background-color: var(--orangeColor);
+}
+
+
 /* BREAKPOINTS */
 
 @media (max-width: 990px) {
