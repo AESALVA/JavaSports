@@ -68,8 +68,7 @@ const Mock =
       </BrowserRouter>
     
 
-      />
-    </BrowserRouter>
+
 
   );
 }
