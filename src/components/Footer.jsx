@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './logoJScopia.png';
+import logo from '../images/logoJScopia.png';
 
 
 
