@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import News from "./News";
 import "../styles/landing.css";
 import Publicity from "./Publicity";
+import { Col, Row } from "react-bootstrap";
 
 const NewsList = () => {
   return (
@@ -18,14 +19,14 @@ const NewsList = () => {
       <div id="four-card">
         <News sizeCard="" />
       </div>
-      <div id="five-card" className="card-publicidad text-center pb-5">
-        PUBLICIDAD
-        {/* <Publicity sizeCard="horizontal" /> */}
+      <div id="five-card" className="card-publicidad text-center">
+        {/* PUBLICIDAD */}
+        <Publicity publicityType="horizontal" />
       </div>
       <div id="six-card">
         <News sizeCard="" />
       </div>
-      <div id="seven-card">
+      <div id="seven-card" className="mb-4">
         <News sizeCard="card-big" />
       </div>
       <div id="eight-card">
@@ -35,8 +36,8 @@ const NewsList = () => {
         <News sizeCard="" />
       </div>
       <div id="ten-card" className="card-publicidad text-center">
-        PUBLICIDAD
-        {/* <Publicity sizeCard="vertical" /> */}
+        {/* PUBLICIDAD */}
+        <Publicity publicityType="vertical" />
       </div>
       <div id="eleven-card">
         <News sizeCard="" />
@@ -51,17 +52,41 @@ const NewsList = () => {
         <News sizeCard="" />
       </div>
       <div id="fifteen-card" className="card-publicidad text-center">
-        PUBLICIDAD
-        {/* <Publicity sizeCard="vertical" /> */}
+        {/* PUBLICIDAD */}
+        <Publicity publicityType="vertical" />
       </div>
       <div id="sixteen-card">
         <News sizeCard="" />
       </div>
       <div id="seventeen-card">
-        <News sizeCard="" />
+        <News sizeCard="card-big" />
       </div>
       <div id="eighteen-card" className="d-none d-md-block">
         <News sizeCard="" />
+      </div>
+      <div
+        id="nineteen-card"
+        className="d-flex d-none d-lg-flex align-items-center"
+      >
+        <Row>
+          <Col>
+            <News sizeCard="square" />
+          </Col>
+          <Col>
+            <News sizeCard="square" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <News sizeCard="square" />
+          </Col>
+          <Col>
+            <News sizeCard="square" />
+          </Col>
+        </Row>
+      </div>
+      <div id="twenty-card" className="d-none d-lg-block">
+        <News sizeCard="card-big" />
       </div>
     </Container>
   );

@@ -8,7 +8,7 @@ import NewsList from "./NewsList";
 const News = ({ sizeCard }) => {
   return (
     <>
-      <Container className={`${sizeCard} cardImagen mb-5`}>
+      <Container className={`${sizeCard} cardImagen my-4`}>
         <Card>
           <Link to="/SectionsContainer" className="">
             <Card.Img variant="top" src="./img/LogoJS.jpg" className="fluid" />
