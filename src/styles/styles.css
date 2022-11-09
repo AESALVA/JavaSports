@@ -81,10 +81,12 @@ body {
 
 @media (max-width: 767.98px) {
   /* .btn-login { */
-  .ContainerSectionsList {
-    display: flex;
-    padding: 0;
-  }
+ 
+}
+
+.ContainerSectionsList {
+  display: flex;
+  padding: 0;
 }
 .ContainerSectionsList div {
   background-color: var(--darkColor);

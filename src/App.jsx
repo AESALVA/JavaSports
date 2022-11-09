@@ -24,14 +24,12 @@ function App() {
 
 
 
-
     setAuth({ user: userFound.user, role: userFound.role });
   };
-
-
   const logout = () => {
     setAuth({ user: "", role: "" });
   };
+
 
 // MOCK
 const Mock = 
@@ -69,8 +67,6 @@ const Mock =
         />
       </BrowserRouter>
     
-
-
 
   );
 }

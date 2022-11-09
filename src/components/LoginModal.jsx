@@ -39,7 +39,9 @@ const LoginModal = (auth,
       validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 8, max: 20})
     );
   };
+  
   useEffect(() => {}, [name, pass]);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
