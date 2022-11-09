@@ -23,6 +23,14 @@ function App() {
     const userFound = USERS.find((user) => user.user === u);
 
 
+
+    setAuth({ user: userFound.user, role: userFound.role });
+  };
+  const logout = () => {
+    setAuth({ user: "", role: "" });
+  };
+
+
 // MOCK
 const Mock = 
     {
@@ -47,14 +55,6 @@ const Mock =
     setMockSections(Mock)
   }, [])
   
-
-    setAuth({ user: userFound.user, role: userFound.role });
-  };
-  const logout = () => {
-    setAuth({ user: "", role: "" });
-  };
-
-
   return (
     <BrowserRouter>
       <Main
