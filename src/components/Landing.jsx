@@ -4,8 +4,21 @@ import LoginModal from "./LoginModal";
 import Sections from "./Sections";
 import SectionsContainer from "./SectionsContainer";
 
-const Landing = () => {
-  return <div>LANDING</div>;
-};
+import "../styles/landing.css";
 
+import NewsList from "./NewsList";
+import CarouselHome from "./CarouselHome";
+
+const Landing = () => {
+
+  return <div>LANDING</div>;
+
+  return (
+    <>
+      <CarouselHome />
+      <NewsList />
+    </>
+  );
+
+};
 export default Landing;
