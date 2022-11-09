@@ -1,5 +1,5 @@
 import './App.css';
-import  Footer from './components/Footer';
+import  Footer from './components/Footer.jsx';
 import E404 from './components/E404';
 
 
