@@ -36,7 +36,7 @@ const LoginModal = (auth,
   };
   const validatePass = (n) => {
     return (
-      validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 8, max: 20})
+       validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1})
     );
   };
   
