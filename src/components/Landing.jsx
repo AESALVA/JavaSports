@@ -10,8 +10,7 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 
 const Landing = () => {
-
-  return <div>LANDING</div>;
+  // return <div>LANDING</div>;
 
   return (
     <>
@@ -19,6 +18,5 @@ const Landing = () => {
       <NewsList />
     </>
   );
-
 };
 export default Landing;
