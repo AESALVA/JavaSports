@@ -1,17 +1,32 @@
 .colorFonts {
   color: var(--grayColor) !important;
 }
+.cardImagen {
+  display: flex;
+  justify-content: center;
+  /* margin: 0.1rem; */
+  /* width: 12rem; */
+}
 
 .container-grid {
   margin-bottom: 3rem;
   display: grid;
 
   grid-template-areas:
-    "one-card     two-card"
-    "three-card   four-card"
-    "five-card    five-card"
-    "six-card     seven-card"
-    "six-card     eight-card";
+    "one-card       two-card"
+    "three-card     four-card"
+    "five-card      five-card"
+    "six-card       seven-card"
+    "eight-card     eight-card"
+    "eight-card     eight-card"
+    "nine-card      ten-card"
+    "eleven-card    twelve-card"
+    "thirteen-card  fourteen-card"
+    "fifteen-card   sixteen-card"
+    "seventeen-card   seventeen-card"
+    "eighteen-card eighteen-card "
+    "nineteen-card  nineteen-card"
+    "twenty-card  twenty-card";
 }
 
 .container-grid div {
@@ -43,4 +58,134 @@
 }
 #eight-card {
   grid-area: eight-card;
+}
+#six-card {
+  grid-area: six-card;
+}
+
+#seven-card {
+  grid-area: seven-card;
+}
+
+#eight-card {
+  grid-area: eight-card;
+}
+
+#nine-card {
+  grid-area: nine-card;
+}
+
+#ten-card {
+  grid-area: ten-card;
+}
+
+#eleven-card {
+  grid-area: eleven-card;
+}
+
+#twelve-card {
+  grid-area: twelve-card;
+}
+
+#thirteen-card {
+  grid-area: thirteen-card;
+}
+
+#fourteen-card {
+  grid-area: fourteen-card;
+}
+
+#fifteen-card {
+  grid-area: fifteen-card;
+}
+
+#sixteen-card {
+  grid-area: sixteen-card;
+}
+
+#seventeen-card {
+  grid-area: seventeen-card;
+}
+
+#eighteen-card {
+  grid-area: eighteen-card;
+}
+
+#nineteen-card {
+  grid-area: nineteen-card;
+}
+#twenty-card {
+  grid-area: twenty-card;
+}
+
+/* BREAKPOITS */
+
+@media (min-width: 768px) {
+  .container-grid {
+    grid-template-areas:
+      "one-card     two-card        three-card"
+      "four-card    six-card        ten-card"
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
+      "five-card     five-card        five-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  eighteen-card"
+      "nineteen-card  nineteen-card   twenty-card";
+  }
+  .card-big {
+    height: 100%;
+  }
+  #seventeen-card .card-big {
+    height: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .cardImagen {
+    width: 20rem;
+  }
+  .container-grid {
+    grid-template-areas:
+      "one-card     two-card        three-card"
+      "nineteen-card  nineteen-card   twenty-card"
+      "four-card    six-card        ten-card"
+      "seven-card   eight-card      nine-card"
+      "seven-card   eight-card      nine-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "five-card     five-card        five-card"
+      "fourteen-card    seventeen-card   sixteen-card"
+      "fifteen-card    seventeen-card  eighteen-card";
+  }
+  .card-big {
+    height: 94%;
+  }
+  .square {
+    width: 17rem;
+    height: 23rem;
+  }
+  .square p {
+    display: none;
+  }
+
+  #seven-card .card-big {
+    height: auto;
+  }
+  #seventeen-card .card-big {
+    height: 95.5%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .cardImagen {
+    width: 23rem;
+  }
+  .square {
+    width: 24rem;
+    height: 27rem;
+  }
+}
+
+.img-big img {
+  /* height: 25rem; */
 }

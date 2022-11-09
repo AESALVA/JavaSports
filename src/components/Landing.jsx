@@ -15,7 +15,7 @@ const Landing = () => {
 
   return (
     <>
-      <CarouselHome />
+      {/* <CarouselHome /> */}
       <NewsList />
     </>
   );
