@@ -49,11 +49,10 @@ const Mock =
     }
   ;
 
-  const [MockSections, setMockSections] = useState({});
-  
+  const [mockSections, setMockSections] = useState({});
   useEffect(() => {
     setMockSections(Mock)
-  }, [])
+  }, []);
   
   return (
     <BrowserRouter>
@@ -64,11 +63,10 @@ const Mock =
         validate={validate}
         auth={auth}
 
-        MockSections={MockSections}
+        mockSections={mockSections}
         />
       </BrowserRouter>
     
-
 
   );
 }

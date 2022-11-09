@@ -10,15 +10,13 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 
 const Landing = () => {
-
-  return <div>LANDING</div>;
+  // return <div>LANDING</div>;
 
   return (
     <>
-      <CarouselHome />
+      {/* <CarouselHome /> */}
       <NewsList />
     </>
   );
-
 };
 export default Landing;

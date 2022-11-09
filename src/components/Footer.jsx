@@ -12,17 +12,17 @@ const Footer = () => {
     {/* col2 */}
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
-            <h3>Home</h3>            
-            <h3>Secciones</h3>
-            <h3>Buscar</h3>
+            <h4>Home</h4>            
+            <h4>Secciones</h4>
+            <h4>Buscar</h4>
         </ul>
     </div>
         {/* col3 */}
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
-            <h3>Favoritos</h3>
-            <h3>Sobre nosotros</h3>
-            <h3>Contacto</h3>
+            <h4>Favoritos</h4>
+            <h4>Sobre nosotros</h4>
+            <h4>Contacto</h4>
         </ul>
     </div>    
         {/* col4 */}

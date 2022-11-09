@@ -6,14 +6,14 @@ import Row from "react-bootstrap/Row";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Link } from "react-router-dom";
 
-const SectionsList = ({MockSections}) => {
+const SectionsList = ({mockSections}) => {
   return (
     <Container>
       <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
           <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
-            <Card.Title>{MockSections.title}</Card.Title>
+            <Card.Title>{mockSections.title}</Card.Title>
             <Card.Text>
             Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
           </Card.Text>
