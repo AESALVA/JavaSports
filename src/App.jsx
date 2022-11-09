@@ -49,6 +49,7 @@ const Mock =
   ;
 
   const [MockSections, setMockSections] = useState({});
+  
   useEffect(() => {
     setMockSections(Mock)
   }, [])
