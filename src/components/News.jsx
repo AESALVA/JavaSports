@@ -16,10 +16,10 @@ const News = ({ sizeCard }) => {
           <Card.Body className="">
             <Card.Title className="text-dark text-center">Noticias</Card.Title>
             <Card.Text>
-              <p className="text-dark d-none d-md-block text-center">
+              <span className="text-dark d-none d-md-block text-center">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
-              </p>
+              </span>
             </Card.Text>
           </Card.Body>
         </Card>

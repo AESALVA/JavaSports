@@ -18,23 +18,37 @@ const Header = (auth, login, logout, validate, setAuth) => {
           <div className="d-flex justify-content-center">
             <div>
               <Nav.Link>
-                <img
-                  alt="logo"
-                  src="../img/LogoJS.jpg"
-                  width="40"
-                  height="40"
-                  className="d-inline-block align-top rounded-circle"
-                />
+                <Link to="/">
+                  <img
+                    alt="logo"
+                    src="../img/LogoJS.jpg"
+                    width="40"
+                    height="40"
+                    className="d-inline-block align-top rounded-circle"
+                  />
+                </Link>
               </Nav.Link>
             </div>
             <div className="d-flex header-form">
-              <Form size="sm" className="">
+              <Form size="sm" className="d-flex">
                 <Form.Control
                   type="search"
                   placeholder="Buscar"
                   className=""
                   aria-label="Search"
                 />
+                <Button className="btn-search" size="sm">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </Button>
               </Form>
             </div>
           </div>
