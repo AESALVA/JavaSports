@@ -124,7 +124,9 @@ const Header = (auth, login, logout, validate, setAuth) => {
       <Navbar className="dark-background-color" expand="md">
         <Container className="">
           <Navbar.Brand className="d-md-none">
-            <img src="../img/LogoJS.jpg" alt="logo" id="headerLogo" />
+            <Link to="/">
+              <img src="../img/LogoJS.jpg" alt="logo" id="headerLogo" />
+            </Link>
           </Navbar.Brand>
           <span>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
