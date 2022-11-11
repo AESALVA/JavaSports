@@ -1,43 +1,16 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import Main from "./views/main";
+import { useParams } from "react-router-dom";
+import Sections from "./Sections";
 
-function App() {
-  // LOGIN
-  const USERS = [
-    { user: "admin", pass: "admin", role: "admin" },
-    { user: "user", pass: "user", role: "user" },
-  ];
-
-  const [auth, setAuth] = useState({ user: "", role: "" });
-
-  const validate = (u, p) => {
-    const userFound = USERS.find((user) => user.user === u);
-    const passOk = p === userFound.pass;
-
-    return userFound && passOk;
-  };
-  const login = (u) => {
-    const userFound = USERS.find((user) => user.user === u);
-
-
-
-    setAuth({ user: userFound.user, role: userFound.role });
-  };
-  const logout = () => {
-    setAuth({ user: "", role: "" });
-  };
-
-
-// MOCK
-const Mock = 
+const SectionsContainer = () => {
+  const MockArticle = 
     {
       id: "1",
       categories: "football",
       title:
-        "Gabriel Jesus is not the perfect striker but..",
+        "Gabriel Jesus is not the perfect striker but he may be just perfect for Arsenal",
       img: "/img/imgSection.webp",
       imgTitle:
         "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -49,27 +22,20 @@ const Mock =
     }
   ;
 
-  const [mockSections, setMockSections] = useState({});
+  const [article, setArticle] = useState({});
+  const params = useParams();
+
   useEffect(() => {
-    setMockSections(Mock)
+    setArticle(MockArticle);
   }, []);
-  
+
   return (
-    <BrowserRouter>
-      <Main
-        login={login}
-        logout={logout}
-        setAuth={setAuth}
-        validate={validate}
-        auth={auth}
-
-        mockSections={mockSections}
-        />
-      </BrowserRouter>
-    
-
-
+    <>
+      <Sections
+        article={article}
+      />
+    </>
   );
-}
+};
 
-export default App;
+export default SectionsContainer;

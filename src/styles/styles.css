@@ -1,0 +1,155 @@
+:root {
+  --darkColor: #33313b;
+  --grayColor: #413f4a;
+  --redColor: #d05037;
+  --orangeColor: #ff4c29;
+}
+
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #151515d0;
+}
+.logo {
+  border-radius: 50%;
+  margin: 1rem;
+}
+.modal_styles {
+  text-decoration: none;
+  color: var(--redColor);
+}
+.modal_styles:hover {
+  color: var(--orangeColor);
+}
+.ModalPass {
+  opacity: 0.8;
+}
+.FondoPass {
+  overflow: hidden;
+  filter: saturate(20%) contrast(1.7);
+  max-height: 60vh;
+}
+
+.FondoPass img {
+  position: relative;
+  top: -12rem;
+}
+.sections {
+  background-color: var(--grayColor);
+}
+.sections-fonts {
+  margin: 2rem 0;
+}
+.commentArea-container {
+  background-color: var(--darkColor);
+  padding: 2rem;
+  min-height: 20rem;
+}
+.comments-title {
+  border-bottom: 2px solid var(--orangeColor);
+}
+.input-comments:focus {
+  outline: 1px solid var(--grayColor);
+}
+/* titulos */
+.title {
+  font-weight: 700;
+  color: var(--orangeColor);
+}
+
+/* color de fondo oscuro */
+.dark-background-color {
+  background-color: var(--darkColor);
+}
+
+.orange-background-color {
+  background-color: var(--orangeColor);
+}
+
+.red-background-color {
+  background-color: var(--redColor);
+}
+
+.gray-background-color {
+  background-color: var(--grayColor);
+}
+
+@media (max-width: 767.98px) {
+  /* .btn-login { */
+ 
+}
+
+.ContainerSectionsList {
+  display: flex;
+  padding: 0;
+}
+.ContainerSectionsList div {
+  background-color: var(--darkColor);
+}
+.SectionOne {
+  width: 70%;
+  padding: 2rem;
+}
+.SectionOnePlus {
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SectionTwo {
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.SectionTwoPlus {
+  width: 70%;
+  padding: 2rem;
+}
+
+.ContainerGridSections {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: var(--darkColor);
+}
+.ContainerGridSections .Card {
+  background-color: var(--darkColor);
+}
+.Mg{
+  background-color: var(--orangeColor);
+}
+
+
+/* BREAKPOINTS */
+
+@media (max-width: 990px) {
+  .ContainerSectionsList {
+    flex-direction: column;
+  }
+  .SectionOne,
+  .SectionTwo,
+  .SectionOnePlus,
+  .SectionTwoPlus {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .btn-login {
+    display: none;
+  }
+}
+@media (min-width: 767.98px) {
+  .link_styles {
+    display: none;
+  }
+}
