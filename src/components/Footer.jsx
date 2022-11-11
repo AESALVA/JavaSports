@@ -1,6 +1,8 @@
 import React from "react";
 import logo from '../components/img/logoJScopia.png';
 import { Link } from "react-router-dom";
+/* import "../styles/joaquin.css"; */
+
 
 
 
@@ -13,9 +15,6 @@ function Footer() {
     <div className="row">
         {/* col1 */}
 
-    <div className="col-md d-flex justify-content-center align-items-center border-end border-danger" id="logocontainer">
-        <img src={logo} className='' alt="logo" width={150}/>
-
     <div className="col-md d-flex justify-content-center align-items-center border-end border-danger ">
         <img src='/img/LogoJS.jpg' className='logo' alt="logo" width={150}/>
 
@@ -25,11 +24,9 @@ function Footer() {
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
 
-            <h4>Home</h4>            
-            <h4>Secciones</h4>
-            <h4>Buscar</h4>
 
-            <Link to="/"><h4>Home</h4></Link>            
+
+            <Link to="/" className="no-underline"><h4>Home</h4></Link>            
             <Link to="/SectionsList"><h4>Secciones</h4></Link>
             <Link to=""><h4>Buscar</h4></Link>
 
@@ -38,10 +35,6 @@ function Footer() {
         {/* col3 */}
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
-
-            <h4>Favoritos</h4>
-            <h4>Sobre nosotros</h4>
-            <h4>Contacto</h4>
 
             <Link to=""><h4>Favoritos</h4></Link>
             <Link to=""><h4>Sobre nosotros</h4></Link>
@@ -68,7 +61,7 @@ function Footer() {
         </p>
     </div>
 
-    </div>    
+        
     </div>    
     </div>
     </div>
