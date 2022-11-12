@@ -7,15 +7,16 @@ import Main from "./views/main";
 function App() {
   // LOGIN
   const USERS = [
-    { user: "admin", pass: "admin", role: "admin" },
-    { user: "JavaSports", pass: "JavaSports_1", role: "admin" },
+    { user: "JavaSports", pass: "JavaSports_1", role: "admin" }
   ];
+  const [users, setUsers] = useState([{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }]);
 
   const [auth, setAuth] = useState({ user: "", role: "" });
 
   const validate = (u, p) => {
     const userFound = USERS.find((user) => user.user === u);
     const passOk = p === userFound.pass;
+    
 
     return userFound && passOk;
   };

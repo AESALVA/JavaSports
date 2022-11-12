@@ -19,7 +19,7 @@ const Main = ({auth, login, logout, validate, setAuth, mockSections}) => {
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route element={<Landing />} path="/"></Route>
-        <Route element={<Register />} path="/Register"></Route>
+        <Route element={<Register setAuth={setAuth}/>} path="/Register"></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
         <Route element={<SectionsContainer auth={auth}/>} path="/SectionsContainer"></Route>
         <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>

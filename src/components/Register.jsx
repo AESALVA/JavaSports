@@ -8,14 +8,14 @@ import { useEffect } from 'react';
 import validator from 'validator';
 
 
-const Register = () => {
+const Register = ({setAuth}) => {
     const [show, setShow] = useState(true);
 
     const handleClose = () => setShow(false);
     const navigate = useNavigate();
 
 
-    const [name, setName] = useState([]);
+    const [name, setName] = useState("");
     const [mail, setMail] = useState("");
     const [pass, setPass] = useState("");
     const [firstName, setFirstName] = useState(true);
@@ -36,6 +36,15 @@ const Register = () => {
         validator.matches(n, "[a-zA-Z ]") && validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1})
       );
     };
+
+    const handleClick = (e)=>{
+      e.preventDefault();
+      setAuth({ user: name, role: "user" });
+      navigate("/");
+    }
+
+
+
 
     useEffect(() => {}, [name, pass,mail]);
   return (
@@ -70,7 +79,7 @@ const Register = () => {
       
     </Form>
         </Modal.Body>
-        <Button className="m-auto px-5 mb-5" size="lg"  type="submit" variant="danger" onClick={()=>console.log("hola")}>
+        <Button className="m-auto px-5 mb-5" size="lg"  type="submit" variant="danger" onClick={(e)=>handleClick(e)}>
             <h4 className="m-auto py-1 px-4">Registrarme</h4>
           </Button>
       </Modal>
