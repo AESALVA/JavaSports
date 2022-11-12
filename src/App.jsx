@@ -11,17 +11,22 @@ function App() {
   ];
   const [users, setUsers] = useState([{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }]);
 
-  const [auth, setAuth] = useState({ user: "", role: "" });
+  const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
+
+const addUser = (u)=>{
+  setUsers([...users, u]);
+  
+}
 
   const validate = (u, p) => {
-    const userFound = USERS.find((user) => user.user === u);
+    const userFound = users.find((user) => user.user === u);
     const passOk = p === userFound.pass;
     
 
     return userFound && passOk;
   };
   const login = (u) => {
-    const userFound = USERS.find((user) => user.user === u);
+    const userFound = users.find((user) => user.user === u);
 
 
 
@@ -30,8 +35,6 @@ function App() {
   const logout = () => {
     setAuth({ user: "", role: "" });
   };
-
-  console.log(auth.user)
 // MOCK
 const Mock = 
     {
@@ -63,6 +66,7 @@ const Mock =
         setAuth={setAuth}
         validate={validate}
         auth={auth}
+        addUser={addUser}
 
         mockSections={mockSections}
         />

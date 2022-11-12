@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import validator from 'validator';
 
 
-const Register = ({setAuth}) => {
+const Register = ({setAuth, addUser}) => {
     const [show, setShow] = useState(true);
 
     const handleClose = () => setShow(false);
@@ -39,7 +39,8 @@ const Register = ({setAuth}) => {
 
     const handleClick = (e)=>{
       e.preventDefault();
-      setAuth({ user: name, role: "user" });
+      setAuth({ user: name, pass: pass, role: "user" });
+      addUser({ user: name, pass: pass, role: "user" });
       navigate("/");
     }
 
