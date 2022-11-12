@@ -12,16 +12,18 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
 
-const Sections = ({ article, auth }) => {
+const Sections = ({ article, auth, setCommentsContainer }) => {
   const [comment, setComment] = useState({ comment: "", user: "" });
   const [showComment, setShowComment] = useState([]);
   
-
+  const addCommentsContainer = ()=>{
+    setCommentsContainer([...showComment, comment]);
+  }
   const addComment = () => {
     setShowComment([...showComment, comment]);
     setComment({ comment: "", user: auth.user });
+    addCommentsContainer();
   };
-
   return (
     <Container className="sections pb-5">
       <Card className="mx-auto text-center sections border-0 ">
@@ -42,10 +44,11 @@ const Sections = ({ article, auth }) => {
         <input
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
+          maxLength={100}
           type="text"
           value={comment.comment}
           onChange={(e) =>
-            setComment({ comment: e.target.value, user: auth })
+            setComment({ comment: e.target.value, user: auth.user })
           }
         />
         <Button
@@ -58,7 +61,7 @@ const Sections = ({ article, auth }) => {
         {showComment.map((comment, i) => (
           <Row key={i} className="p-4">
             <Col>
-              <FontAwesomeIcon icon={faUser} /> ({auth.user})
+              <FontAwesomeIcon icon={faUser} /> ({comment.user})
             </Col>
             <span> {comment.comment}</span>
             <span><LikeCounter /></span>

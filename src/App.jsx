@@ -53,11 +53,17 @@ const Mock =
     }
   ;
 
+  // Comments Container
+
+  const [commentsContainer, setCommentsContainer] = useState([]);
+
   const [mockSections, setMockSections] = useState({});
   useEffect(() => {
     setMockSections(Mock)
   }, []);
-  
+
+
+  console.log(commentsContainer)
   return (
     <BrowserRouter>
       <Main
@@ -67,7 +73,7 @@ const Mock =
         validate={validate}
         auth={auth}
         addUser={addUser}
-
+        setCommentsContainer={setCommentsContainer}
         mockSections={mockSections}
         />
       </BrowserRouter>
