@@ -11,9 +11,11 @@ import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
 
 const Main = ({auth, login, logout, validate, setAuth, mockSections}) => {
+
+  console.log(auth.user)
   return (
     <Container fluid className="min-vh-100 d-flex flex-column p-0">
-      <Header />
+      <Header validate={validate} login={login} auth={auth}/>
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route element={<Landing />} path="/"></Route>

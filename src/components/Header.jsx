@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 
-const Header = (auth, login, logout, validate, setAuth) => {
+const Header = ({auth, login, logout, validate, setAuth}) => {
   return (
     <>
       <Navbar className="dark-background-color d-none d-md-block mx-0 d-flex ">

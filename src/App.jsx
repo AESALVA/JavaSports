@@ -8,7 +8,7 @@ function App() {
   // LOGIN
   const USERS = [
     { user: "admin", pass: "admin", role: "admin" },
-    { user: "user", pass: "user", role: "user" },
+    { user: "JavaSports", pass: "JavaSports_1", role: "user" },
   ];
 
   const [auth, setAuth] = useState({ user: "", role: "" });
@@ -30,7 +30,7 @@ function App() {
     setAuth({ user: "", role: "" });
   };
 
-
+  console.log(auth.user)
 // MOCK
 const Mock = 
     {

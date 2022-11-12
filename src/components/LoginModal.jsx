@@ -11,11 +11,11 @@ import { useEffect } from "react";
 
 
 
-const LoginModal = (auth,
+const LoginModal = ({auth,
   login,
   logout,
   validate,
-  setAuth) => {
+  setAuth}) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
@@ -46,12 +46,17 @@ const LoginModal = (auth,
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   return (
     <>
+      {!auth.user? (
       <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
-        Ingresar
-      </Button>
+       Ingresar
+      </Button>):(
+        <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
+        {auth.user}
+       </Button>)
+      }  
+      
       <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>
 
       <Modal
