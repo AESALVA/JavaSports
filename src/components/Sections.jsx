@@ -12,7 +12,7 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
 
-const Sections = ({ article }) => {
+const Sections = ({ article, auth }) => {
   const [comment, setComment] = useState({ comment: "", user: "Eduardo" });
   const [showComment, setShowComment] = useState([]);
   
@@ -58,7 +58,7 @@ const Sections = ({ article }) => {
         {showComment.map((comment, i) => (
           <Row key={i} className="p-4">
             <Col>
-              <FontAwesomeIcon icon={faUser} /> ({comment.user})
+              <FontAwesomeIcon icon={faUser} /> ({auth.user})
             </Col>
             <span> {comment.comment}</span>
             <span><LikeCounter /></span>

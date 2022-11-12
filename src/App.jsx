@@ -8,7 +8,7 @@ function App() {
   // LOGIN
   const USERS = [
     { user: "admin", pass: "admin", role: "admin" },
-    { user: "JavaSports", pass: "JavaSports_1", role: "user" },
+    { user: "JavaSports", pass: "JavaSports_1", role: "admin" },
   ];
 
   const [auth, setAuth] = useState({ user: "", role: "" });

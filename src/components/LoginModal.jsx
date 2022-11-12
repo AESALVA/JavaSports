@@ -7,6 +7,8 @@ import {Link, useNavigate} from "react-router-dom";
 import { NavLink } from "react-bootstrap";
 import validator from "validator";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -27,6 +29,7 @@ const LoginModal = ({auth,
     if (validate(name, pass)) {
       login(name);
       navigate("/");
+      handleClose();
     }
   };
   const validateName = (n) => {
@@ -41,7 +44,10 @@ const LoginModal = ({auth,
   };
   
   useEffect(() => {}, [name, pass]);
-
+  
+  const handleClick = () => {
+    logout();
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -52,8 +58,8 @@ const LoginModal = ({auth,
       <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
        Ingresar
       </Button>):(
-        <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
-        {auth.user}
+        <Button className="btn-login" variant="outline-danger" onClick={handleClick}>
+        <FontAwesomeIcon icon={faUser} />{' '}{auth.user}
        </Button>)
       }  
       
