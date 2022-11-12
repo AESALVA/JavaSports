@@ -62,8 +62,10 @@ const LoginModal = ({auth,
         <FontAwesomeIcon icon={faUser} />{' '}{auth.user}
        </Button>)
       }  
-      
-      <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>
+      {!auth.user? (
+      <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>):(
+        <Link className="modal_styles link_styles" onClick={handleClick}><FontAwesomeIcon icon={faUser} />{' '}{auth.user}</Link>)
+      }
 
       <Modal
         show={show}
