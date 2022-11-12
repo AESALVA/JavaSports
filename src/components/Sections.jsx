@@ -7,15 +7,15 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-  import { useState } from "react";
+import { useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
+// import Sections from "./Sections";
 
 const Sections = ({ article }) => {
   const [comment, setComment] = useState({ comment: "", user: "Eduardo" });
   const [showComment, setShowComment] = useState([]);
-  
 
   const addComment = () => {
     setShowComment([...showComment, comment]);
@@ -37,7 +37,7 @@ const Sections = ({ article }) => {
       <div className="commentArea-container sections">
         <h4 className="comments-title">
           All Comments {""}
-          {showComment.length>0 && showComment.length}
+          {showComment.length > 0 && showComment.length}
         </h4>
         <input
           className="w-100 sections input-comments mt-3"
@@ -51,7 +51,7 @@ const Sections = ({ article }) => {
         <Button
           variant="secondary"
           className="mt-2"
-          onClick={() =>comment.comment && addComment()}
+          onClick={() => comment.comment && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
@@ -61,11 +61,12 @@ const Sections = ({ article }) => {
               <FontAwesomeIcon icon={faUser} /> ({comment.user})
             </Col>
             <span> {comment.comment}</span>
-            <span><LikeCounter /></span>
+            <span>
+              <LikeCounter />
+            </span>
           </Row>
         ))}
       </div>
-      
     </Container>
   );
 };

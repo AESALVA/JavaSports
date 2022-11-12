@@ -9,7 +9,11 @@ import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 
-const Header = (auth, login, logout, validate, setAuth) => {
+const Header = ({ auth, login, logout, validate, setAuth, page, setPage }) => {
+  const updatePage = () => {
+    page === 1 ? setPage(2) : setPage(1);
+  };
+
   return (
     <>
       <Navbar className="dark-background-color d-none d-md-block mx-0 d-flex ">
@@ -17,17 +21,17 @@ const Header = (auth, login, logout, validate, setAuth) => {
           {/* LOGO */}
           <div className="d-flex justify-content-center">
             <div>
-              <Nav.Link>
-                <Link to="/">
-                  <img
-                    alt="logo"
-                    src="../img/LogoJS.jpg"
-                    width="40"
-                    height="40"
-                    className="d-inline-block align-top rounded-circle"
-                  />
-                </Link>
-              </Nav.Link>
+              {/* <Nav.Link> */}
+              <Link to="/">
+                <img
+                  alt="logo"
+                  src="../img/LogoJS.jpg"
+                  width="40"
+                  height="40"
+                  className="d-inline-block align-top rounded-circle"
+                />
+              </Link>
+              {/* </Nav.Link> */}
             </div>
             <div className="d-flex header-form">
               <Form size="sm" className="d-flex">
@@ -37,7 +41,11 @@ const Header = (auth, login, logout, validate, setAuth) => {
                   className=""
                   aria-label="Search"
                 />
-                <Button className="btn-search" size="sm">
+                <Button
+                  className="btn-search"
+                  onClick={() => updatePage()}
+                  size="sm"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -137,9 +145,11 @@ const Header = (auth, login, logout, validate, setAuth) => {
           >
             <div className="links-header">
               <Nav className="me-auto" id="headerLinks">
-                <Nav.Link className="header-border">
-                  <Link to="/">Home</Link>
-                </Nav.Link>
+                {/* <Nav.Link className="header-border"> */}
+                <Link to="/" className="header-border">
+                  Home
+                </Link>
+                {/* </Nav.Link> */}
                 <NavDropdown
                   title="Secciones"
                   id="basic-nav-dropdown"
