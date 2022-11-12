@@ -33,7 +33,7 @@ const Register = ({setAuth, addUser}) => {
     };
     const validatePass = (n) => {
       return (
-        validator.matches(n, "[a-zA-Z ]") && validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1})
+        validator.matches(n, "[a-zA-Z]") && validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1})
       );
     };
 
@@ -63,19 +63,19 @@ const Register = ({setAuth, addUser}) => {
         <Form.Label>Usuario {" "}
             {!validateName(name) && !firstName && (
               <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={name} onInput={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)} className="p-3" type="text" placeholder="JavaSports" />
+        <Form.Control maxlength="40" value={name} onInput={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)} className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formEmail">
         <Form.Label>Email{" "}
             {!validateMail(mail) && !firstMail && (
               <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)} className="p-3" type="Email" placeholder="Java@Sports.com" />
+        <Form.Control maxlength="40" value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)} className="p-3" type="Email" placeholder="Java@Sports.com" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Contraseña{" "}
             {!validatePass(pass) && !firstPass && (
-              <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={pass} onInput={(e) => setPass(e.target.value)} onBlur={()=> setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
+              <span className="text-danger">La contraseña debe contar al menos con 1 mayus 1 minus 1 num entre 8 y 20 caracteres</span>)}</Form.Label>
+        <Form.Control maxlength="25" value={pass} onInput={(e) => setPass(e.target.value)} onBlur={()=> setFirstPass(false)} className="p-3" type="password" placeholder="1mayus 1minus 1num entre 8 y 20 caracteres" />
       </Form.Group>
       
     </Form>

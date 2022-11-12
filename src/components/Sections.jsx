@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
 
 const Sections = ({ article, auth }) => {
-  const [comment, setComment] = useState({ comment: "", user: "Eduardo" });
+  const [comment, setComment] = useState({ comment: "", user: "" });
   const [showComment, setShowComment] = useState([]);
   
 
   const addComment = () => {
     setShowComment([...showComment, comment]);
-    setComment({ comment: "", user: "Eduardo" });
+    setComment({ comment: "", user: auth.user });
   };
 
   return (
@@ -45,7 +45,7 @@ const Sections = ({ article, auth }) => {
           type="text"
           value={comment.comment}
           onChange={(e) =>
-            setComment({ comment: e.target.value, user: "Eduardo" })
+            setComment({ comment: e.target.value, user: auth })
           }
         />
         <Button
