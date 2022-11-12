@@ -36,7 +36,7 @@ const PassRecovery = () => {
         <Form.Label>Email{" "}
             {!validateMail(mail) && !firstMail && (
               <span className="text-danger">Debe llenar este campo con su Email</span>)}</Form.Label>
-        <Form.Control maxlength="40" value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}  className="p-3" type="email" placeholder="Java@Sports.com" />
+        <Form.Control maxLength="40" value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}  className="p-3" type="email" placeholder="Java@Sports.com" />
       </Form.Group>
      
       

@@ -85,14 +85,14 @@ const LoginModal = ({auth,
             {!validateName(name) && !firstName && (
               <span className="text-danger">Debe llenar este campo</span>
             )}</Form.Label>
-        <Form.Control maxlength="40" value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)}  className="p-3" type="text" placeholder="JavaSports" />
+        <Form.Control maxLength="40" value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)}  className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Contraseña  {" "}
             {!validatePass(pass) && !firstPass && (
               <span className="text-danger">Debe llenar este campo</span>
             )}</Form.Label>
-        <Form.Control maxlength="40" value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
+        <Form.Control maxLength="40" value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
       </Form.Group>
       <Form.Text className="text-danger">
         <Link to="/PassRecovery" onClick={handleClose} className="modal_styles" >Olvidé mi contraseña</Link>
