@@ -45,7 +45,9 @@ span .navbar-Toggle {
 .sectionLinks a {
   color: var(--grayColor);
 }
-
+.no-underline{
+  text-decoration: none;
+}
 /* BREAKPOINTS */
 
 /* MD */

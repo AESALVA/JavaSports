@@ -9,6 +9,7 @@ import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
 import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
+import E404 from "../components/E404";
 
 const Main = ({auth, login, logout, validate, setAuth, mockSections}) => {
   return (
@@ -21,6 +22,7 @@ const Main = ({auth, login, logout, validate, setAuth, mockSections}) => {
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
         <Route element={<SectionsContainer />} path="/SectionsContainer"></Route>
         <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
+        <Route element={<E404/>} path="/404"></Route>
       </Routes>
       <Footer />
     </Container>
