@@ -127,6 +127,15 @@ body {
 .Mg{
   background-color: var(--orangeColor);
 }
+.container-aboutus{
+  margin:1rem  15rem;
+}
+.integrante{
+  border-bottom:1px solid #d05037;
+}
+.titulo-aboutus{
+  text-decoration: underline solid var(--orangeColor);
+}
 
 
 /* BREAKPOINTS */
