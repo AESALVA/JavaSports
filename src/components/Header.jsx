@@ -145,11 +145,9 @@ const Header = ({ auth, login, logout, validate, setAuth, page, setPage }) => {
           >
             <div className="links-header">
               <Nav className="me-auto" id="headerLinks">
-                {/* <Nav.Link className="header-border"> */}
-                <Link to="/" className="header-border">
+                <Link to="/" className="header-border p-2">
                   Home
                 </Link>
-                {/* </Nav.Link> */}
                 <NavDropdown
                   title="Secciones"
                   id="basic-nav-dropdown"
