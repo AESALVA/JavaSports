@@ -4,14 +4,14 @@
 .cardImagen {
   display: flex;
   justify-content: center;
-  /* margin: 0.1rem; */
+  margin: 0.1rem;
   /* width: 12rem; */
 }
 
 .container-grid {
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
   display: grid;
-
+  justify-content: center;
   grid-template-areas:
     "one-card       two-card"
     "three-card     four-card"
@@ -27,10 +27,6 @@
     "eighteen-card eighteen-card "
     "nineteen-card  nineteen-card"
     "twenty-card  twenty-card";
-}
-
-.container-grid div {
-  /* margin: 5%; */
 }
 
 #one-card {
@@ -160,10 +156,10 @@
   .card-big {
     height: 94%;
   }
-  .square {
-    width: 17rem;
+  /* .square {
+    width: 18rem;
     height: 23rem;
-  }
+  } */
   .square p {
     display: none;
   }
@@ -180,10 +176,10 @@
   .cardImagen {
     width: 23rem;
   }
-  .square {
+  /* .square {
     width: 24rem;
     height: 27rem;
-  }
+  } */
 }
 
 .img-big img {

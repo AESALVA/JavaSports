@@ -23,7 +23,7 @@ const Sections = ({ article, auth }) => {
   };
 
   return (
-    <Container className="sections pb-5">
+    <Container className="sections py-5">
       <Card className="mx-auto text-center sections border-0 ">
         <Card.Title className="sections-fonts">{article.title}</Card.Title>
         <Card.Img variant="top" src={article.img} />
@@ -44,13 +44,11 @@ const Sections = ({ article, auth }) => {
           placeholder="Ingrese su comentario"
           type="text"
           value={comment.comment}
-          onChange={(e) =>
-            setComment({ comment: e.target.value, user: auth })
-          }
+          onChange={(e) => setComment({ comment: e.target.value, user: auth })}
         />
         <Button
           variant="secondary"
-          className="mt-2"
+          className="my-3"
           onClick={() => comment.comment && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar

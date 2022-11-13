@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 
 const NewsList = () => {
   return (
-    <Container className="container-grid my-5">
+    <Container className="container-grid ">
       <div id="one-card">
         <News sizeCard="" />
       </div>
@@ -64,25 +64,14 @@ const NewsList = () => {
       <div id="eighteen-card" className="d-none d-md-block">
         <News sizeCard="" />
       </div>
-      <div
-        id="nineteen-card"
-        className="d-flex d-none d-lg-flex align-items-center"
-      >
-        <Row>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
+      <div id="nineteen-card" className="d-flex d-none d-lg-block">
+        <Row className="justify-content-center">
+          <News sizeCard="square" />
+          <News sizeCard="square" />
         </Row>
-        <Row>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
+        <Row className="justify-content-center">
+          <News sizeCard="square" />
+          <News sizeCard="square" />
         </Row>
       </div>
       <div id="twenty-card" className="d-none d-lg-block">

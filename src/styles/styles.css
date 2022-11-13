@@ -40,18 +40,21 @@ body {
   top: -12rem;
 }
 .sections {
-  background-color: var(--grayColor);
+  background-color: transparent;
 }
 .sections-fonts {
   margin: 2rem 0;
 }
 .commentArea-container {
-  background-color: var(--darkColor);
+  background-color: rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--darkColor);
   padding: 2rem;
   min-height: 20rem;
 }
 .comments-title {
-  border-bottom: 2px solid var(--orangeColor);
+  color: var(--redColor);
+  padding: 0.1rem;
+  border-bottom: 0.1px solid var(--darkColor);
 }
 .input-comments:focus {
   outline: 1px solid var(--grayColor);
@@ -81,7 +84,6 @@ body {
 
 @media (max-width: 767.98px) {
   /* .btn-login { */
- 
 }
 
 .ContainerSectionsList {
@@ -124,10 +126,9 @@ body {
 .ContainerGridSections .Card {
   background-color: var(--darkColor);
 }
-.Mg{
+.Mg {
   background-color: var(--orangeColor);
 }
-
 
 /* BREAKPOINTS */
 
