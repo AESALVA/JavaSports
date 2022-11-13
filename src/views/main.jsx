@@ -9,19 +9,46 @@ import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
 import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
+import { useState } from "react";
+import Sections from "../components/Sections";
 
-const Main = ({auth, login, logout, validate, setAuth, mockSections, addUser}) => {
-
+const Main = ({
+  auth,
+  login,
+  logout,
+  validate,
+  setAuth,
+  mockSections,
+  addUser,
+  page,
+  setPage,
+}) => {
   return (
     <Container fluid className="min-vh-100 d-flex flex-column p-0">
-      <Header validate={validate} login={login} auth={auth} logout={logout}/>
+      <Header
+        validate={validate}
+        login={login}
+        auth={auth}
+        logout={logout}
+        page={page}
+        setPage={setPage}
+      />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
-        <Route element={<Landing />} path="/"></Route>
-        <Route element={<Register setAuth={setAuth} addUser={addUser}/>} path="/Register"></Route>
+        <Route element={<Landing page={page} />} path="/"></Route>
+        <Route
+          element={<Register setAuth={setAuth} addUser={addUser} />}
+          path="/Register"
+        ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route element={<SectionsContainer auth={auth}/>} path="/SectionsContainer"></Route>
-        <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
+        <Route
+          element={<SectionsContainer auth={auth} />}
+          path="/SectionsContainer"
+        ></Route>
+        <Route
+          element={<SectionsList mockSections={mockSections} />}
+          path="/SectionsList"
+        ></Route>
       </Routes>
       <Footer />
     </Container>

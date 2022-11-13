@@ -8,15 +8,12 @@ import "../styles/landing.css";
 
 import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
+import SearchPage from "./SearchPage";
 
-const Landing = () => {
-  // return <div>LANDING</div>;
+const Landing = ({ page }) => {
+  // La cascara es Landing.
+  // Si se presiona buscar - el contenido de la cascara se actualiza a página de buscador
 
-  return (
-    <>
-      {/* <CarouselHome /> */}
-      <NewsList />
-    </>
-  );
+  return <>{page === 1 ? <NewsList /> : <SearchPage />}</>;
 };
 export default Landing;

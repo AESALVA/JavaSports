@@ -9,7 +9,11 @@ import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({auth, login, logout, validate, setAuth}) => {
+const Header = ({ auth, login, logout, validate, setAuth, page, setPage }) => {
+  const updatePage = () => {
+    page === 1 ? setPage(2) : setPage(1);
+  };
+
   return (
     <>
       <Navbar className="dark-background-color d-none d-md-block mx-0 d-flex ">
@@ -17,7 +21,8 @@ const Header = ({auth, login, logout, validate, setAuth}) => {
           {/* LOGO */}
           <div className="d-flex justify-content-center">
             <div>
-              <Nav.Link>
+              {/* <Nav.Link> */}
+              <Link to="/">
                 <img
                   alt="logo"
                   src="../img/LogoJS.jpg"
@@ -25,16 +30,33 @@ const Header = ({auth, login, logout, validate, setAuth}) => {
                   height="40"
                   className="d-inline-block align-top rounded-circle"
                 />
-              </Nav.Link>
+              </Link>
+              {/* </Nav.Link> */}
             </div>
             <div className="d-flex header-form">
-              <Form size="sm" className="">
+              <Form size="sm" className="d-flex">
                 <Form.Control
                   type="search"
                   placeholder="Buscar"
                   className=""
                   aria-label="Search"
                 />
+                <Button
+                  className="btn-search"
+                  onClick={() => updatePage()}
+                  size="sm"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </Button>
               </Form>
             </div>
           </div>
@@ -110,7 +132,9 @@ const Header = ({auth, login, logout, validate, setAuth}) => {
       <Navbar className="dark-background-color" expand="md">
         <Container className="">
           <Navbar.Brand className="d-md-none">
-            <img src="../img/LogoJS.jpg" alt="logo" id="headerLogo" />
+            <Link to="/">
+              <img src="../img/LogoJS.jpg" alt="logo" id="headerLogo" />
+            </Link>
           </Navbar.Brand>
           <span>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -121,9 +145,11 @@ const Header = ({auth, login, logout, validate, setAuth}) => {
           >
             <div className="links-header">
               <Nav className="me-auto" id="headerLinks">
-                <Nav.Link className="header-border">
-                  <Link to="/">Home</Link>
-                </Nav.Link>
+                {/* <Nav.Link className="header-border"> */}
+                <Link to="/" className="header-border">
+                  Home
+                </Link>
+                {/* </Nav.Link> */}
                 <NavDropdown
                   title="Secciones"
                   id="basic-nav-dropdown"

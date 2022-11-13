@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Link } from "react-router-dom";
 
-const SectionsList = ({mockSections}) => {
+const SectionsList = ({ mockSections }) => {
   return (
     <Container>
       <Container className="ContainerSectionsList text-center">
@@ -15,8 +15,10 @@ const SectionsList = ({mockSections}) => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>{mockSections.title}</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </div>
         <div className="SectionTwo">
@@ -24,15 +26,19 @@ const SectionsList = ({mockSections}) => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </div>
       </Container>
@@ -42,22 +48,28 @@ const SectionsList = ({mockSections}) => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </CardGroup>
         <CardGroup className="p-2 Card">
@@ -65,22 +77,28 @@ const SectionsList = ({mockSections}) => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="m-2 Card">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </CardGroup>
       </Container>
@@ -90,24 +108,30 @@ const SectionsList = ({mockSections}) => {
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
           <Card className="SectionCard ">
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </div>
         <div className="SectionTwoPlus">
-        <Card>
+          <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title>Article Title</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.{' '}<Link to="/SectionsContainer">Ver Más</Link>
-          </Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.{" "}
+              <Link to="/SectionsContainer">Ver Más</Link>
+            </Card.Text>
           </Card>
         </div>
       </Container>
