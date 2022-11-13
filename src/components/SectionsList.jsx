@@ -5,21 +5,25 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Link } from "react-router-dom";
+import News from "./News";
 
 const SectionsList = ({ mockSections }) => {
   return (
     <Container>
       <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
-          <Card>
+          <News sizeCard="" mockSections={mockSections} />
+          {/* <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
-            <Card.Title>{mockSections.title}</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.{" "}
-              <Link to="/SectionsContainer">Ver Más</Link>
-            </Card.Text>
-          </Card>
+            <Card.Title className="">{mockSections.title}</Card.Title>
+            <Card.Body className="">
+              <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.{" "}
+                <Link to="/SectionsContainer">Ver Más</Link>
+              </Card.Text>
+            </Card.Body>
+          </Card> */}
         </div>
         <div className="SectionTwo">
           <Card className="SectionCard ">
