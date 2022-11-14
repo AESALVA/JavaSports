@@ -35,6 +35,9 @@
     "nineteen-card"
     "twenty-card";
 }
+.spaceNews {
+  margin-bottom: 1rem;
+}
 
 #one-card {
   grid-area: one-card;
@@ -52,16 +55,7 @@
   grid-area: five-card;
   padding: 2rem;
 }
-#six-card {
-  grid-area: six-card;
-  margin: 0;
-}
-#seven-card {
-  grid-area: seven-card;
-}
-#eight-card {
-  grid-area: eight-card;
-}
+
 #six-card {
   grid-area: six-card;
 }
@@ -69,7 +63,6 @@
 #seven-card {
   grid-area: seven-card;
 }
-
 #eight-card {
   grid-area: eight-card;
 }
@@ -126,16 +119,17 @@
 @media (min-width: 768px) {
   .container-grid {
     grid-template-areas:
-      "one-card     two-card        three-card"
       "four-card    six-card        ten-card"
       "seven-card   seven-card      eight-card"
       "seven-card   seven-card      nine-card"
+      "one-card     two-card        three-card"
       "five-card     five-card        five-card"
       "eleven-card  twelve-card     thirteen-card"
       "fifteen-card    fourteen-card   sixteen-card"
       "fifteen-card    seventeen-card  eighteen-card"
       "nineteen-card  nineteen-card   twenty-card";
   }
+
   .card-big {
     height: 100%;
   }

@@ -7,11 +7,11 @@ import NewsList from "./NewsList";
 
 const News = ({ sizeCard, mockSections, view }) => {
   let stylesAtHome = "";
-  view === "Home" && (stylesAtHome = `cardImagen my-4`);
+  view === "Home" && (stylesAtHome = `cardImagen`);
   return (
     <>
-      <Container className={`${stylesAtHome}`}>
-        <Card className={`${sizeCard}`}>
+      <Container className={`${stylesAtHome} ${sizeCard}`}>
+        <Card>
           <Link to="/SectionsContainer" className="">
             <Card.Img
               variant="top"
