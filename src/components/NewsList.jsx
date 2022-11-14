@@ -8,8 +8,7 @@ const NewsList = () => {
   const MockArticle = {
     id: "1",
     categories: "football",
-    title:
-      "Gabriel Jesus is not the perfect striker but he may be just perfect for Arsenal",
+    title: "Gabriel Jesus is not the perfect",
     img: "/img/imgSection.webp",
     imgTitle:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -19,78 +18,110 @@ const NewsList = () => {
     synopsis:
       "Of course, as anyone who has seen Jesus play will be able to tell you, this is not all you get. One of the reasons it feels unfair judging Jesus by the output of a conventional striker is that his input is not that of a conventional striker. Of his 72 touches, only 16 came in the Forest penalty area. Thirteen were in his own half. The vast majority, in fact, were on the left wing, with another little cluster around the left edge of the centre circle. He attempted more tackles than any other Arsenal player. Jesus is, in effect, a ball-winning wide midfielder who does striking for a little extra cash.",
   };
+
   return (
-    <Container className="container-grid ">
-      <div id="one-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="two-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="three-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="four-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="five-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="horizontal" />
-      </div>
-      <div id="six-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="seven-card" className="mb-4">
-        <News sizeCard="card-big" mockSections={MockArticle} />
-      </div>
-      <div id="eight-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="nine-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="ten-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="vertical" />
-      </div>
-      <div id="eleven-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="twelve-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="thirteen-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="fourteen-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="fifteen-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="vertical" />
-      </div>
-      <div id="sixteen-card">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
-      <div id="seventeen-card">
-        <News sizeCard="card-big" mockSections={MockArticle} />
-      </div>
-      <div id="eighteen-card" className="d-none d-md-block">
-        <News sizeCard="" mockSections={MockArticle} />
-      </div>
+    <Container className="container-grid my-5">
+      <News id="one-card" sizeCard="" mockSections={MockArticle} view="Home" />
+      <News id="two-card" sizeCard="" mockSections={MockArticle} view="Home" />
+      <News
+        id="three-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News id="four-card" sizeCard="" mockSections={MockArticle} view="Home" />
+      {/* PUBLICIDAD */}
+      {/* <Publicity id="five-card" publicityType="horizontal" /> */}
+      <News id="five-card" sizeCard="" mockSections={MockArticle} view="Home" />
+      <News id="six-card" sizeCard="" mockSections={MockArticle} view="Home" />
+      <News
+        id="seven-card"
+        sizeCard="card-big"
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News
+        id="eight-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News id="nine-card" sizeCard="" mockSections={MockArticle} view="Home" />
+
+      {/* PUBLICIDAD */}
+      {/* <Publicity id="ten-card" publicityType="vertical" /> */}
+      <News id="ten-card" sizeCard="" mockSections={MockArticle} view="Home" />
+
+      <News
+        id="eleven-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News
+        id="twelve-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News
+        id="thirteen-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+
+      <News
+        id="fourteen-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+
+      {/* PUBLICIDAD */}
+      {/* <Publicity id="fifteen-card" publicityType="vertical" /> */}
+      <News
+        id="fifteen-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+
+      <News
+        id="sixteen-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News
+        id="seventeen-card"
+        sizeCard="card-big"
+        mockSections={MockArticle}
+        view="Home"
+      />
+      <News
+        id="eighteen-card"
+        sizeCard=""
+        mockSections={MockArticle}
+        view="Home"
+      />
+      {/* </div> */}
       <div id="nineteen-card" className="d-flex d-none d-lg-block">
         <Row className="justify-content-center">
-          <News sizeCard="square" mockSections={MockArticle} />
-          <News sizeCard="square" mockSections={MockArticle} />
+          <News sizeCard="square" mockSections={MockArticle} view="Home" />
+          <News sizeCard="square" mockSections={MockArticle} view="Home" />
         </Row>
         <Row className="justify-content-center">
-          <News sizeCard="square" mockSections={MockArticle} />
-          <News sizeCard="square" mockSections={MockArticle} />
+          <News sizeCard="square" mockSections={MockArticle} view="Home" />
+          <News sizeCard="square" mockSections={MockArticle} view="Home" />
         </Row>
       </div>
-      <div id="twenty-card" className="d-none d-lg-block">
-        <News sizeCard="card-big" mockSections={MockArticle} />
-      </div>
+      <News
+        id="twenty-card"
+        sizeCard="card-big"
+        mockSections={MockArticle}
+        view="Home"
+      />
     </Container>
   );
 };

@@ -12,8 +12,7 @@ const SectionsList = ({ mockSections }) => {
     <Container>
       <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
-          <News sizeCard="" mockSections={mockSections} />
-          {/* <Card>
+          <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
             <Card.Title className="">{mockSections.title}</Card.Title>
             <Card.Body className="">
@@ -23,7 +22,7 @@ const SectionsList = ({ mockSections }) => {
                 <Link to="/SectionsContainer">Ver Más</Link>
               </Card.Text>
             </Card.Body>
-          </Card> */}
+          </Card>
         </div>
         <div className="SectionTwo">
           <Card className="SectionCard ">

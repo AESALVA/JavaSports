@@ -4,7 +4,8 @@
 .cardImagen {
   display: flex;
   justify-content: center;
-  margin: 0.1rem;
+  /* margin: 0.1rem; */
+  /* height: 100%; */
   /* width: 12rem; */
 }
 
@@ -13,20 +14,26 @@
   display: grid;
   justify-content: center;
   grid-template-areas:
-    "one-card       two-card"
-    "three-card     four-card"
-    "five-card      five-card"
-    "six-card       seven-card"
-    "eight-card     eight-card"
-    "eight-card     eight-card"
-    "nine-card      ten-card"
-    "eleven-card    twelve-card"
-    "thirteen-card  fourteen-card"
-    "fifteen-card   sixteen-card"
-    "seventeen-card   seventeen-card"
-    "eighteen-card eighteen-card "
-    "nineteen-card  nineteen-card"
-    "twenty-card  twenty-card";
+    "one-card"
+    "two-card"
+    "three-card"
+    "four-card"
+    "five-card"
+    "six-card"
+    "seven-card"
+    "eight-card"
+    "nine-card"
+    "ten-card"
+    "eleven-card"
+    "twelve-card"
+    "thirteen-card"
+    "fourteen-card"
+    "fifteen-card"
+    "sixteen-card"
+    "seventeen-card"
+    "eighteen-card"
+    "nineteen-card"
+    "twenty-card";
 }
 
 #one-card {
@@ -154,12 +161,9 @@
       "fifteen-card    seventeen-card  eighteen-card";
   }
   .card-big {
-    height: 94%;
+    height: 100%;
   }
-  /* .square {
-    width: 18rem;
-    height: 23rem;
-  } */
+
   .square p {
     display: none;
   }
@@ -176,12 +180,4 @@
   .cardImagen {
     width: 23rem;
   }
-  /* .square {
-    width: 24rem;
-    height: 27rem;
-  } */
-}
-
-.img-big img {
-  /* height: 25rem; */
 }

@@ -8,8 +8,7 @@ const SearchPageList = ({ matchList }) => {
   const MockArticle = {
     id: "1",
     categories: "football",
-    title:
-      "Gabriel Jesus is not the perfect striker but he may be just perfect for Arsenal",
+    title: "Gabriel Jesus is not the perfect ",
     img: "/img/imgSection.webp",
     imgTitle:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -25,7 +24,7 @@ const SearchPageList = ({ matchList }) => {
       <h2 className="text-center mb-5 title-search">RESULTADOS</h2>
       <Row className="g-4" md={4} xs={2}>
         {matchList.map((news, i) => (
-          <News sizeCard="" mockSections={MockArticle} />
+          <News sizeCard="" mockSections={MockArticle} view="Home" />
         ))}
       </Row>
     </Container>
