@@ -16,6 +16,14 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
   const [comment, setComment] = useState({ comment: "", user: "" });
   const [showComment, setShowComment] = useState([]);
   
+  const addLikes = ()=>{
+    const aux = [...showComment];
+      aux.map((a)=>{
+      a.likes = [...a.likes, auth.user]
+    })
+   setShowComment([...aux]);
+  }
+console.log(showComment)
   const addCommentsContainer = ()=>{
     setCommentsContainer([...showComment, comment]);
   }
@@ -48,7 +56,7 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
           type="text"
           value={comment.comment}
           onChange={(e) =>
-            setComment({ comment: e.target.value, user: auth.user })
+            setComment({ comment: e.target.value, user: auth.user, likes:[] })
           }
         />
         <Button
@@ -64,7 +72,7 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
               <FontAwesomeIcon icon={faUser} /> ({comment.user})
             </Col>
             <span> {comment.comment}</span>
-            <span><LikeCounter /></span>
+            <span><LikeCounter addLikes={addLikes} /></span>
           </Row>
         ))}
       </div>

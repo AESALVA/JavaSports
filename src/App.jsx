@@ -63,7 +63,6 @@ const Mock =
   }, []);
 
 
-  console.log(commentsContainer)
   return (
     <BrowserRouter>
       <Main

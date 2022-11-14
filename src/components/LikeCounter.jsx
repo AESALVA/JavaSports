@@ -7,11 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
-const LikeCounter = () => {
+const LikeCounter = ({addLikes}) => {
 
 const [counter, setCounter] = useState(0);
 const addCounter = (c, q) => {
     setCounter(c + q);
+    addLikes();
   };
   
   
