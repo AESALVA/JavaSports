@@ -22,7 +22,6 @@ const Header = ({
 }) => {
   const updatePage = () => {
     search && page === 1 ? setPage(2) : setPage(1);
-    alert("Ingrese palabra a buscar");
   };
 
   return (
