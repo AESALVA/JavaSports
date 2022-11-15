@@ -2,15 +2,16 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import News from "./News";
-import SearchPageList from "./SearchPageList";
+import SearchList from "./SearchList";
+import { Link } from "react-router-dom";
 
-const SearchPage = () => {
+const SearchPageContainer = ({ MockArticle }) => {
   const matchList = ["news1", "news2", "news3", "news4"];
 
   return (
     <>
       {matchList ? (
-        <SearchPageList matchList={matchList} />
+        <SearchList matchList={matchList} />
       ) : (
         "No hay coincidencias"
       )}
@@ -18,4 +19,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default SearchPageContainer;

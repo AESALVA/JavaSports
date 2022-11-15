@@ -22,6 +22,8 @@ const Main = ({
   addUser,
   page,
   setPage,
+  search,
+  setSearch,
 }) => {
   return (
     <Container fluid className="min-vh-100 d-flex flex-column p-0">
@@ -32,10 +34,15 @@ const Main = ({
         logout={logout}
         page={page}
         setPage={setPage}
+        search={search}
+        setSearch={setSearch}
       />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
-        <Route element={<Landing page={page} />} path="/"></Route>
+        <Route
+          element={<Landing page={page} setSearch={setSearch} />}
+          path="/"
+        ></Route>
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"

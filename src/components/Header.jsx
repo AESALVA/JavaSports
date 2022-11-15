@@ -9,9 +9,19 @@ import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ auth, login, logout, validate, setAuth, page, setPage }) => {
+const Header = ({
+  auth,
+  login,
+  logout,
+  validate,
+  setAuth,
+  page,
+  setPage,
+  search,
+  setSearch,
+}) => {
   const updatePage = () => {
-    page === 1 ? setPage(2) : setPage(1);
+    search && page === 1 && setPage(2);
   };
 
   return (
@@ -36,9 +46,11 @@ const Header = ({ auth, login, logout, validate, setAuth, page, setPage }) => {
             <div className="d-flex header-form">
               <Form size="sm" className="d-flex">
                 <Form.Control
-                  type="search"
+                  type="text"
                   placeholder="Buscar"
                   className=""
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                   aria-label="Search"
                 />
                 <Button

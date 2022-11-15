@@ -7,6 +7,9 @@ import Main from "./views/main";
 function App() {
   // Estado para la página a mostrar en la cascara
   const [page, setPage] = useState(1);
+  // Buscador para la página
+  const [search, setSearch] = useState("");
+
   // LOGIN
   const USERS = [{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }];
   const [users, setUsers] = useState([
@@ -65,6 +68,8 @@ function App() {
         mockSections={mockSections}
         page={page}
         setPage={setPage}
+        search={search}
+        setSearch={setSearch}
       />
     </BrowserRouter>
   );

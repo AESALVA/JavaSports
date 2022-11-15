@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import News from "./News";
 import "../styles/search.css";
 
-const SearchPageList = ({ matchList }) => {
+const SearchList = ({ matchList }) => {
   const MockArticle = {
     id: "1",
     categories: "football",
@@ -31,4 +31,4 @@ const SearchPageList = ({ matchList }) => {
   );
 };
 
-export default SearchPageList;
+export default SearchList;
