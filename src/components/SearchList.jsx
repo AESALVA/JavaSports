@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import News from "./News";
 import "../styles/search.css";
 
-const SearchList = ({ matchList }) => {
+const SearchList = ({ matchList, search }) => {
   const MockArticle = {
     id: "1",
     categories: "football",
@@ -21,7 +21,9 @@ const SearchList = ({ matchList }) => {
 
   return (
     <Container className="my-5">
-      <h2 className="text-center mb-5 title-search">RESULTADOS</h2>
+      <h2 className="text-center mb-5 title-search">
+        RESULTADOS PARA: {search.toUpperCase()}
+      </h2>
       <Row className="g-4" md={4} xs={2}>
         {matchList.map((news, i) => (
           <News sizeCard="" mockSections={MockArticle} view="Home" />

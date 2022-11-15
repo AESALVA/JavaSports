@@ -11,7 +11,7 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 import SearchPage from "./SearchContainer";
 
-const Landing = ({ page, setSearch }) => {
+const Landing = ({ page, search, setSearch }) => {
   // La cascara es Landing.
   // Si se presiona buscar - el contenido de la cascara se actualiza a página de buscador
   const MockArticle = {
@@ -39,7 +39,7 @@ const Landing = ({ page, setSearch }) => {
       {page === 1 ? (
         <NewsList MockArticle={MockArticle} />
       ) : (
-        <SearchPage MockArticle={MockArticle} />
+        <SearchPage MockArticle={MockArticle} search={search} />
       )}
     </>
   );

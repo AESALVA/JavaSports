@@ -40,7 +40,9 @@ const Main = ({
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route
-          element={<Landing page={page} setSearch={setSearch} />}
+          element={
+            <Landing page={page} search={search} setSearch={setSearch} />
+          }
           path="/"
         ></Route>
         <Route

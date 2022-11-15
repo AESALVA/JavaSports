@@ -5,13 +5,13 @@ import News from "./News";
 import SearchList from "./SearchList";
 import { Link } from "react-router-dom";
 
-const SearchPageContainer = ({ MockArticle }) => {
+const SearchPageContainer = ({ MockArticle, search }) => {
   const matchList = ["news1", "news2", "news3", "news4"];
 
   return (
     <>
       {matchList ? (
-        <SearchList matchList={matchList} />
+        <SearchList matchList={matchList} search={search} />
       ) : (
         "No hay coincidencias"
       )}
