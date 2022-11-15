@@ -76,26 +76,11 @@ const NewsList = () => {
         <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
 
-      <div id="nineteen-card" className="m-0 d-flex d-none d-md-block">
-        <Row className="justify-content-center">
-          <Col className=" d-md-none d-lg-block">
-            <News sizeCard="square" mockSections={MockArticle} view="Home" />
-          </Col>
-          <Col>
-            <News sizeCard="square" mockSections={MockArticle} view="Home" />
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col className=" d-md-none d-lg-block">
-            <News sizeCard="square" mockSections={MockArticle} view="Home" />
-          </Col>
-          <Col>
-            <News sizeCard="square" mockSections={MockArticle} view="Home" />
-          </Col>
-        </Row>
+      <div id="nineteen-card" className=" ">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
 
-      <div id="twenty-card" className="spaceNews">
+      <div id="twenty-card" className="">
         <News sizeCard="card-big" mockSections={MockArticle} view="Home" />
       </div>
     </Container>

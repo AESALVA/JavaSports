@@ -132,6 +132,7 @@
 
   .card-big {
     height: 100%;
+    width: 100%;
   }
   #seventeen-card .card-big {
     height: auto;
@@ -139,39 +140,30 @@
 }
 
 @media (min-width: 992px) {
-  .cardImagen {
-    width: 20rem;
-  }
   .container-grid {
     grid-template-areas:
+      "four-card    six-card        ten-card "
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
       "one-card     two-card        three-card"
-      "nineteen-card  nineteen-card   twenty-card"
-      "four-card    six-card        ten-card"
-      "seven-card   eight-card      nine-card"
-      "seven-card   eight-card      nine-card"
       "eleven-card  twelve-card     thirteen-card"
-      "five-card     five-card        five-card"
-      "fourteen-card    seventeen-card   sixteen-card"
-      "fifteen-card    seventeen-card  eighteen-card";
-  }
-  .card-big {
-    height: 100%;
+      "five-card     five-card      five-card "
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  eighteen-card"
+      "nineteen-card  nineteen-card   twenty-card";
   }
 
   .square p {
     display: none;
   }
 
-  #seven-card .card-big {
-    height: auto;
+  #seven-card .card,
+  #nineteen-card .card,
+  #five-card .card {
+    width: 100%;
   }
-  #seventeen-card .card-big {
-    height: 95.5%;
-  }
-}
-
-@media (min-width: 1400px) {
-  .cardImagen {
-    width: 23rem;
+  #five-card {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
