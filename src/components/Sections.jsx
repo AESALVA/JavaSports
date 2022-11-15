@@ -16,14 +16,15 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
   const [comment, setComment] = useState({ comment: "", user: "" });
   const [showComment, setShowComment] = useState([]);
   
-  const addLikes = ()=>{
+  const addLikes = (comment)=>{
     const aux = [...showComment];
-      aux.map((a)=>{
-      a.likes = [...a.likes, auth.user]
+    aux.map((a)=>{
+     if(a.comment === comment.comment){ a.likes = [...a.likes, auth.user]}
     })
    setShowComment([...aux]);
+   console.log(showComment)
   }
-console.log(showComment)
+
   const addCommentsContainer = ()=>{
     setCommentsContainer([...showComment, comment]);
   }
@@ -72,7 +73,7 @@ console.log(showComment)
               <FontAwesomeIcon icon={faUser} /> ({comment.user})
             </Col>
             <span> {comment.comment}</span>
-            <span><LikeCounter addLikes={addLikes} /></span>
+            <span><LikeCounter addLikes={addLikes} comment={comment}/></span>
           </Row>
         ))}
       </div>
