@@ -137,6 +137,15 @@
   #seventeen-card .card-big {
     height: auto;
   }
+  #seven-card .card,
+  #nineteen-card .card,
+  #five-card .card {
+    width: 100%;
+  }
+  #five-card {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -155,15 +164,5 @@
 
   .square p {
     display: none;
-  }
-
-  #seven-card .card,
-  #nineteen-card .card,
-  #five-card .card {
-    width: 100%;
-  }
-  #five-card {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 }
