@@ -11,6 +11,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
+import validator from "validator";
 
 const Sections = ({ article, auth, setCommentsContainer }) => {
   const [comment, setComment] = useState({ comment: "", user: "" });
@@ -33,6 +34,12 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
     setComment({ comment: "", user: auth.user });
     addCommentsContainer();
   };
+
+  const validateComments = (n)=>{
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 4, max: 100})
+    );
+  }
   return (
     <Container className="sections pb-5">
       <Card className="mx-auto text-center sections border-0 ">
@@ -63,7 +70,7 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
         <Button
           variant="secondary"
           className="mt-2"
-          onClick={() =>comment.comment && addComment()}
+          onClick={() =>validateComments(comment.comment) && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
