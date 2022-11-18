@@ -6,9 +6,7 @@ import Main from "./views/main";
 
 function App() {
   // LOGIN
-  const USERS = [
-    { user: "JavaSports", pass: "JavaSports_1", role: "admin" }
-  ];
+ 
   const [users, setUsers] = useState([{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }]);
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
@@ -58,10 +56,12 @@ const Mock =
   const [commentsContainer, setCommentsContainer] = useState([]);
 
   const [mockSections, setMockSections] = useState({});
+ 
   useEffect(() => {
     setMockSections(Mock)
   }, []);
 
+  
 
   return (
     <BrowserRouter>
