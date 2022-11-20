@@ -7,23 +7,23 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-  import { useState } from "react";
+import { useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
+// import Sections from "./Sections";
 
-const Sections = ({ article }) => {
-  const [comment, setComment] = useState({ comment: "", user: "Eduardo" });
+const Sections = ({ article, auth }) => {
+  const [comment, setComment] = useState({ comment: "", user: "" });
   const [showComment, setShowComment] = useState([]);
-  
 
   const addComment = () => {
     setShowComment([...showComment, comment]);
-    setComment({ comment: "", user: "Eduardo" });
+    setComment({ comment: "", user: auth.user });
   };
 
   return (
-    <Container className="sections pb-5">
+    <Container className="sections py-5">
       <Card className="mx-auto text-center sections border-0 ">
         <Card.Title className="sections-fonts">{article.title}</Card.Title>
         <Card.Img variant="top" src={article.img} />
@@ -37,35 +37,34 @@ const Sections = ({ article }) => {
       <div className="commentArea-container sections">
         <h4 className="comments-title">
           All Comments {""}
-          {showComment.length>0 && showComment.length}
+          {showComment.length > 0 && showComment.length}
         </h4>
         <input
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
           type="text"
           value={comment.comment}
-          onChange={(e) =>
-            setComment({ comment: e.target.value, user: "Eduardo" })
-          }
+          onChange={(e) => setComment({ comment: e.target.value, user: auth })}
         />
         <Button
           variant="secondary"
-          className="mt-2"
-          onClick={() =>comment.comment && addComment()}
+          className="my-3"
+          onClick={() => comment.comment && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
         {showComment.map((comment, i) => (
           <Row key={i} className="p-4">
             <Col>
-              <FontAwesomeIcon icon={faUser} /> ({comment.user})
+              <FontAwesomeIcon icon={faUser} /> ({auth.user})
             </Col>
             <span> {comment.comment}</span>
-            <span><LikeCounter /></span>
+            <span>
+              <LikeCounter />
+            </span>
           </Row>
         ))}
       </div>
-      
     </Container>
   );
 };

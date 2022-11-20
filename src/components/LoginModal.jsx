@@ -7,15 +7,17 @@ import {Link, useNavigate} from "react-router-dom";
 import { NavLink } from "react-bootstrap";
 import validator from "validator";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
-const LoginModal = (auth,
+const LoginModal = ({auth,
   login,
   logout,
   validate,
-  setAuth) => {
+  setAuth}) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
@@ -27,6 +29,7 @@ const LoginModal = (auth,
     if (validate(name, pass)) {
       login(name);
       navigate("/");
+      handleClose();
     }
   };
   const validateName = (n) => {
@@ -36,23 +39,33 @@ const LoginModal = (auth,
   };
   const validatePass = (n) => {
     return (
-      validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 8, max: 20})
+       validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1})
     );
   };
   
   useEffect(() => {}, [name, pass]);
-
+  
+  const handleClick = () => {
+    logout();
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   return (
     <>
+      {!auth.user? (
       <Button className="btn-login" variant="outline-secondary" onClick={handleShow}>
-        Ingresar
-      </Button>
-      <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>
+       Ingresar
+      </Button>):(
+        <Button className="btn-login" variant="outline-danger" onClick={handleClick}>
+        <FontAwesomeIcon icon={faUser} />{' '}{auth.user}
+       </Button>)
+      }  
+      {!auth.user? (
+      <Link className="modal_styles link_styles" onClick={handleShow}>Ingresar</Link>):(
+        <Link className="modal_styles link_styles" onClick={handleClick}><FontAwesomeIcon icon={faUser} />{' '}{auth.user}</Link>)
+      }
 
       <Modal
         show={show}
@@ -72,14 +85,14 @@ const LoginModal = (auth,
             {!validateName(name) && !firstName && (
               <span className="text-danger">Debe llenar este campo</span>
             )}</Form.Label>
-        <Form.Control value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)}  className="p-3" type="text" placeholder="JavaSports" />
+        <Form.Control maxLength="40" value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)}  className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Contraseña  {" "}
             {!validatePass(pass) && !firstPass && (
               <span className="text-danger">Debe llenar este campo</span>
             )}</Form.Label>
-        <Form.Control value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
+        <Form.Control maxLength="40" value={pass} onChange={(e) => setPass(e.target.value)} onBlur={() => setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
       </Form.Group>
       <Form.Text className="text-danger">
         <Link to="/PassRecovery" onClick={handleClose} className="modal_styles" >Olvidé mi contraseña</Link>

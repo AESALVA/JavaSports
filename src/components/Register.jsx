@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import validator from 'validator';
 
 
-const Register = () => {
+const Register = ({setAuth, addUser}) => {
     const [show, setShow] = useState(true);
 
     const handleClose = () => setShow(false);
@@ -28,14 +28,24 @@ const Register = () => {
     };
     const validateMail = (n) => {
       return (
-        validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
+         validator.isLength(n, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
       );
     };
     const validatePass = (n) => {
       return (
-        validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 8, max: 20,minLength: 8}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1})
+        validator.matches(n, "[a-zA-Z]") && validator.isLength(n, {min: 8, max: 20}) && validator.isStrongPassword(n, {minLowercase: 1, minUppercase: 1, minNumbers: 1})
       );
     };
+
+    const handleClick = (e)=>{
+      e.preventDefault();
+      setAuth({ user: name, pass: pass, role: "user" });
+      addUser({ user: name, pass: pass, role: "user" });
+      navigate("/");
+    }
+
+
+
 
     useEffect(() => {}, [name, pass,mail]);
   return (
@@ -53,24 +63,24 @@ const Register = () => {
         <Form.Label>Usuario {" "}
             {!validateName(name) && !firstName && (
               <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={name} onInput={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)} className="p-3" type="text" placeholder="JavaSports" />
+        <Form.Control maxLength="40" value={name} onInput={(e) => setName(e.target.value)} onBlur={() => setFirstName(false)} className="p-3" type="text" placeholder="JavaSports" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formEmail">
         <Form.Label>Email{" "}
             {!validateMail(mail) && !firstMail && (
               <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)} className="p-3" type="Email" placeholder="Java@Sports.com" />
+        <Form.Control maxLength="40" value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)} className="p-3" type="Email" placeholder="Java@Sports.com" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Contraseña{" "}
             {!validatePass(pass) && !firstPass && (
-              <span className="text-danger">Debe llenar este campo</span>)}</Form.Label>
-        <Form.Control value={pass} onInput={(e) => setPass(e.target.value)} onBlur={()=> setFirstPass(false)} className="p-3" type="password" placeholder="***** JavaSports *****" />
+              <span className="text-danger">La contraseña debe contar al menos con 1 mayus 1 minus 1 num entre 8 y 20 caracteres</span>)}</Form.Label>
+        <Form.Control maxLength="25" value={pass} onInput={(e) => setPass(e.target.value)} onBlur={()=> setFirstPass(false)} className="p-3" type="password" placeholder="1mayus 1minus 1num entre 8 y 20 caracteres" />
       </Form.Group>
       
     </Form>
         </Modal.Body>
-        <Button className="m-auto px-5 mb-5" size="lg"  type="submit" variant="danger" onClick={()=>console.log("hola")}>
+        <Button className="m-auto px-5 mb-5" size="lg"  type="submit" variant="danger" onClick={(e)=>handleClick(e)}>
             <h4 className="m-auto py-1 px-4">Registrarme</h4>
           </Button>
       </Modal>

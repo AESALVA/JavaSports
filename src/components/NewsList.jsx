@@ -4,89 +4,70 @@ import "../styles/landing.css";
 import Publicity from "./Publicity";
 import { Col, Row } from "react-bootstrap";
 
-const NewsList = () => {
+const NewsList = ({ MockArticle }) => {
   return (
     <Container className="container-grid my-5">
-      <div id="one-card">
-        <News sizeCard="" />
+      <div id="one-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="two-card">
-        <News sizeCard="" />
+      <div id="two-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="three-card">
-        <News sizeCard="" />
+      <div id="three-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="four-card">
-        <News sizeCard="" />
+      <div id="four-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="five-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="horizontal" />
+      <div id="five-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="six-card">
-        <News sizeCard="" />
+      <div id="six-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="seven-card" className="mb-4">
-        <News sizeCard="card-big" />
+      <div id="seven-card" className="spaceNews">
+        <News sizeCard="card-big" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="eight-card">
-        <News sizeCard="" />
+      <div id="eight-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="nine-card">
-        <News sizeCard="" />
+      <div id="nine-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="ten-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="vertical" />
+      <div id="ten-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="eleven-card">
-        <News sizeCard="" />
+      <div id="eleven-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="twelve-card">
-        <News sizeCard="" />
+      <div id="twelve-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="thirteen-card">
-        <News sizeCard="" />
+      <div id="thirteen-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="fourteen-card">
-        <News sizeCard="" />
+      <div id="fourteen-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="fifteen-card" className="card-publicidad text-center">
-        {/* PUBLICIDAD */}
-        <Publicity publicityType="vertical" />
+      <div id="fifteen-card" className="spaceNews">
+        <News sizeCard="card-big" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="sixteen-card">
-        <News sizeCard="" />
+      <div id="sixteen-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="seventeen-card">
-        <News sizeCard="card-big" />
+      <div id="seventeen-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="eighteen-card" className="d-none d-md-block">
-        <News sizeCard="" />
+      <div id="eighteen-card" className="spaceNews">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div
-        id="nineteen-card"
-        className="d-flex d-none d-lg-flex align-items-center"
-      >
-        <Row>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-          <Col>
-            <News sizeCard="square" />
-          </Col>
-        </Row>
+
+      <div id="nineteen-card" className=" ">
+        <News sizeCard="" mockSections={MockArticle} view="Home" />
       </div>
-      <div id="twenty-card" className="d-none d-lg-block">
-        <News sizeCard="card-big" />
+
+      <div id="twenty-card" className="">
+        <News sizeCard="card-big" mockSections={MockArticle} view="Home" />
       </div>
     </Container>
   );

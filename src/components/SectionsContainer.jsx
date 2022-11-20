@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Sections from "./Sections";
 
-const SectionsContainer = () => {
+const SectionsContainer = ({auth}) => {
   const MockArticle = 
     {
       id: "1",
@@ -33,6 +33,7 @@ const SectionsContainer = () => {
     <>
       <Sections
         article={article}
+        auth={auth}
       />
     </>
   );

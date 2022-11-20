@@ -1,47 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect } from "react";
-import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import Main from "./views/main";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import News from "./News";
+import "../styles/search.css";
 
-function App() {
-  // Estado para la página a mostrar en la cascara
-  const [page, setPage] = useState(1);
-  // Buscador para la página
-  const [search, setSearch] = useState("");
-
-  // LOGIN
-  const USERS = [{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }];
-  const [users, setUsers] = useState([
-    { user: "JavaSports", pass: "JavaSports_1", role: "admin" },
-  ]);
-
-  const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
-
-  const addUser = (u) => {
-    setUsers([...users, u]);
-  };
-
-  const validate = (u, p) => {
-    const userFound = users.find((user) => user.user === u);
-    const passOk = p === userFound.pass;
-
-    return userFound && passOk;
-  };
-  const login = (u) => {
-    const userFound = users.find((user) => user.user === u);
-
-    setAuth({ user: userFound.user, role: userFound.role });
-  };
-  const logout = () => {
-    setAuth({ user: "", role: "" });
-  };
-
-  // MOCK
-  const Mock = {
+const SearchList = ({ matchList, search }) => {
+  const MockArticle = {
     id: "1",
     categories: "football",
-    title: "Gabriel Jesus is not the perfect striker but..",
+    title: "Gabriel Jesus is not the perfect ",
     img: "/img/imgSection.webp",
     imgTitle:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -51,28 +18,19 @@ function App() {
     synopsis:
       "Of course, as anyone who has seen Jesus play will be able to tell you, this is not all you get. One of the reasons it feels unfair judging Jesus by the output of a conventional striker is that his input is not that of a conventional striker. Of his 72 touches, only 16 came in the Forest penalty area. Thirteen were in his own half. The vast majority, in fact, were on the left wing, with another little cluster around the left edge of the centre circle. He attempted more tackles than any other Arsenal player. Jesus is, in effect, a ball-winning wide midfielder who does striking for a little extra cash.",
   };
-  const [mockSections, setMockSections] = useState({});
-  useEffect(() => {
-    setMockSections(Mock);
-  }, []);
 
   return (
-    <BrowserRouter>
-      <Main
-        login={login}
-        logout={logout}
-        setAuth={setAuth}
-        validate={validate}
-        auth={auth}
-        addUser={addUser}
-        mockSections={mockSections}
-        page={page}
-        setPage={setPage}
-        search={search}
-        setSearch={setSearch}
-      />
-    </BrowserRouter>
+    <Container className="my-5">
+      <h2 className="text-center mb-5 title-search">
+        RESULTADOS PARA: {search.toUpperCase()}
+      </h2>
+      <Row className="g-4" md={4} xs={2}>
+        {matchList.map((news, i) => (
+          <News sizeCard="" mockSections={MockArticle} view="Home" />
+        ))}
+      </Row>
+    </Container>
   );
-}
+};
 
-export default App;
+export default SearchList;

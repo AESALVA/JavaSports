@@ -5,21 +5,28 @@ import { Link } from "react-router-dom";
 import SectionsContainer from "./SectionsContainer";
 import NewsList from "./NewsList";
 
-const News = ({ sizeCard }) => {
+const News = ({ sizeCard, mockSections, view }) => {
+  let stylesAtHome = "";
+  view === "Home" && (stylesAtHome = `cardImagen`);
   return (
     <>
-      <Container className={`${sizeCard} cardImagen my-4`}>
+      <Container className={`${stylesAtHome} ${sizeCard}`}>
         <Card>
           <Link to="/SectionsContainer" className="">
-            <Card.Img variant="top" src="./img/LogoJS.jpg" className="fluid" />
+            <Card.Img
+              variant="top"
+              src="/img/imgSection.webp"
+              className="fluid"
+            />
           </Link>
           <Card.Body className="">
-            <Card.Title className="text-dark text-center">Noticias</Card.Title>
+            <Card.Title className="text-dark text-center">
+              {mockSections.title}
+            </Card.Title>
             <Card.Text>
-              <p className="text-dark d-none d-md-block text-center">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
+              <span className="text-dark d-none d-md-block text-center">
+                {mockSections.imgTitle}
+              </span>
             </Card.Text>
           </Card.Body>
         </Card>

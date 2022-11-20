@@ -16,7 +16,7 @@ const PassRecovery = () => {
     const [firstMail, setFirstMail] = useState(true);
     const validateMail = (n) => {
       return (
-        validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
+        validator.isLength(n, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
       );
     };
 
@@ -36,7 +36,7 @@ const PassRecovery = () => {
         <Form.Label>Email{" "}
             {!validateMail(mail) && !firstMail && (
               <span className="text-danger">Debe llenar este campo con su Email</span>)}</Form.Label>
-        <Form.Control value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}  className="p-3" type="email" placeholder="Java@Sports.com" />
+        <Form.Control maxLength="40" value={mail} onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}  className="p-3" type="email" placeholder="Java@Sports.com" />
       </Form.Group>
      
       
