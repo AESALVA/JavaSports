@@ -8,6 +8,7 @@ import LoginModal from "./LoginModal";
 import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
+import SearchPageContainer from "./SearchContainer";
 
 const Header = ({
   auth,
@@ -20,10 +21,6 @@ const Header = ({
   search,
   setSearch,
 }) => {
-  const updatePage = () => {
-    setPage(2);
-  };
-
   return (
     <>
       <Navbar className="dark-background-color d-none d-md-block mx-0 d-flex ">
@@ -50,10 +47,10 @@ const Header = ({
                   placeholder="Buscar"
                   className=""
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) => setSearch(e.target.value.toUpperCase())}
                   aria-label="Search"
                 />
-                <Link to="/SearchContainer">
+                <Link to={search ? "/SearchContainer" : "/"}>
                   <Button className="btn-search" size="sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
