@@ -11,6 +11,7 @@ import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
 import { useState } from "react";
 import Sections from "../components/Sections";
+import SearchContainer from "../components/SearchContainer";
 
 const Main = ({
   auth,
@@ -20,10 +21,10 @@ const Main = ({
   setAuth,
   mockSections,
   addUser,
-  page,
-  setPage,
   search,
   setSearch,
+  articles,
+  setArticles,
 }) => {
   return (
     <Container fluid className="min-vh-100 d-flex flex-column p-0">
@@ -32,16 +33,23 @@ const Main = ({
         login={login}
         auth={auth}
         logout={logout}
-        page={page}
-        setPage={setPage}
         search={search}
         setSearch={setSearch}
       />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route
+          element={<SearchContainer articles={articles} search={search} />}
+          path="/SearchContainer"
+        ></Route>
+        <Route
           element={
-            <Landing page={page} search={search} setSearch={setSearch} />
+            <Landing
+              search={search}
+              setSearch={setSearch}
+              articles={articles}
+              setArticles={setArticles}
+            />
           }
           path="/"
         ></Route>

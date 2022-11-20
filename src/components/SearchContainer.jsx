@@ -4,16 +4,46 @@ import Col from "react-bootstrap/Col";
 import News from "./News";
 import SearchList from "./SearchList";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const SearchPageContainer = ({ MockArticle, search }) => {
-  const matchList = ["news1", "news2", "news3", "news4"];
+const SearchPageContainer = ({ articles, search }) => {
+  const matchList = [];
+  // Tengo que filtrar los articulos por la busqueda dada.
+
+  const limit = articles.length;
+  if (search) {
+    for (let i = 0; i < limit; i++) {
+      const tagTitle = articles[i].title.toLowerCase();
+      const tagImgTitle = articles[i].imgTitle.toLowerCase();
+      const patt = new RegExp(search.toLowerCase());
+      const resTitle = patt.test(tagTitle);
+      const resImgTitle = patt.test(tagImgTitle);
+      // console.log(res);
+      if (resTitle === true || resImgTitle === true) {
+        matchList.push(articles[i]);
+      }
+    }
+  }
 
   return (
     <>
-      {matchList ? (
-        <SearchList matchList={matchList} search={search} />
+      {matchList > 0 ? (
+        <Container className="my-5">
+          <h2 className="text-center mb-5 title-search">
+            RESULTADOS PARA: {search.toUpperCase()}
+          </h2>
+          <Row className="g-4" md={3} xs={12}>
+            {matchList.forEach((noti) => {
+              <News sizeCard="" view="Home" article={noti} />;
+            })}
+          </Row>
+        </Container>
       ) : (
-        "No hay coincidencias"
+        <Container>
+          <h2 className="text-center my-5">
+            No hay coincidencias para: {search.toUpperCase()}{" "}
+          </h2>
+        </Container>
       )}
     </>
   );
