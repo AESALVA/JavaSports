@@ -56,12 +56,16 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   return (
     <>
       {!auth.user ? (
-        <Button className="btn-gray" id="btn-login" onClick={handleShow}>
+        <Button
+          className="btn-gray btn-gray-border "
+          id="btn-login"
+          onClick={handleShow}
+        >
           Ingresar
         </Button>
       ) : (
         <Button
-          className="btn-gray"
+          className=""
           id="btn-login"
           variant="outline-danger"
           onClick={handleClick}
