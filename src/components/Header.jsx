@@ -51,7 +51,7 @@ const Header = ({
                   aria-label="Search"
                 />
                 <Link to={search ? "/SearchContainer" : "/"}>
-                  <Button className="btn-search" size="sm">
+                  <Button className="btn-gray" size="sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -196,7 +196,7 @@ const Header = ({
                       aria-label="Search"
                     />
                     <Link to={search ? "/SearchContainer" : "/"}>
-                      <Button className="btn-search" size="sm">
+                      <Button className="btn-gray" size="sm">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
