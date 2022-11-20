@@ -9,9 +9,9 @@ const SearchList = ({ matchList }) => {
   return (
     <Container className="my-5">
       <Row className="" md={3} xs={12}>
-        {matchList.map((noticia) => (
+        {matchList.map((item) => (
           <div className="spaceNews">
-            <News sizeCard="card-big" view="Home" article={noticia} />
+            <News sizeCard="card-big" view="Home" article={item} />
           </div>
         ))}
       </Row>

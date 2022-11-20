@@ -43,25 +43,21 @@ const Main = ({
           element={<SearchContainer articles={articles} search={search} />}
           path="/SearchContainer"
         ></Route>
-        <Route
-          element={
-            <Landing
-              search={search}
-              setSearch={setSearch}
-              articles={articles}
-              setArticles={setArticles}
-            />
-          }
-          path="/"
-        ></Route>
+        <Route element={<Landing articles={articles} />} path="/"></Route>
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
         ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route element={<SectionsContainer />} path="/SectionsContainer"></Route>
-        <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
-        <Route element={<E404/>} path="/404"></Route>
+        <Route
+          element={<SectionsContainer />}
+          path="/SectionsContainer"
+        ></Route>
+        <Route
+          element={<SectionsList mockSections={mockSections} />}
+          path="/SectionsList"
+        ></Route>
+        <Route element={<E404 />} path="/404"></Route>
         <Route
           element={<SectionsContainer auth={auth} />}
           path="/SectionsContainer"

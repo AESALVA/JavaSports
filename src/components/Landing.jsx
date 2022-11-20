@@ -11,7 +11,7 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 import SearchContainer from "./SearchContainer";
 
-const Landing = ({ page, search, setSearch, articles, setArticles }) => {
+const Landing = ({ articles }) => {
   return (
     <>
       <NewsList MockArticle={articles} />

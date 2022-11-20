@@ -5,11 +5,28 @@
   margin-bottom: 1rem;
 }
 
-.container-not-found {
-  min-height: 100%;
+#container-search {
+  min-height: 100vh;
+  /* margin-top: 4rem; */
 }
 
 #icons-notFound {
-  width: 8rem;
-  height: 8rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.container-notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  min-height: 80vh;
+}
+
+@media (min-width: 767.98px) {
+  #icons-notFound {
+    width: 5rem;
+    height: 5rem;
+  }
 }

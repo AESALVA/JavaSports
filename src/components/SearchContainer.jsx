@@ -25,27 +25,29 @@ const SearchPageContainer = ({ articles, search }) => {
 
   return (
     <>
-      {search && searchList.length > 0 ? (
-        <Container className="my-5">
-          <h2 className="text-center mb-5 title-search">
-            RESULTADOS PARA: {search}
-          </h2>
-          <SearchList matchList={searchList} />
-        </Container>
-      ) : (
-        <Container className="container-not-found">
-          <h3 className="text-center my-5">
-            No hay coincidencias para tu búsqueda!
-          </h3>
-          <div className="d-flex justify-content-center mb-5">
-            <img
-              id="icons-notFound"
-              src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
-              alt=""
-            />
+      <Container id="container-search">
+        {search && searchList.length > 0 ? (
+          <div>
+            <h2 className="text-center my-5 title-search">
+              RESULTADOS PARA: {search}
+            </h2>
+            <SearchList matchList={searchList} />
           </div>
-        </Container>
-      )}
+        ) : (
+          <div className="container-notFound">
+            <h3 className="text-center">
+              No hay coincidencias para tu búsqueda !
+            </h3>
+            <div className="d-flex justify-content-center mt-3">
+              <img
+                id="icons-notFound"
+                src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
+                alt=""
+              />
+            </div>
+          </div>
+        )}
+      </Container>
     </>
   );
 };
