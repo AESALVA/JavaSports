@@ -86,7 +86,6 @@ const Header = ({
                   </svg>
                 </Nav.Link>
                 <Nav.Link>
-                  {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -173,10 +172,9 @@ const Header = ({
                     <Link to="/SectionsList"> Boxeo</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link className="header-border">Contacto</Nav.Link>
-                <Nav.Link className="header-border">Favoritos</Nav.Link>
-                <Nav.Link className="">Sobre Nosotros</Nav.Link>
-                <Nav.Link className="d-md-none">
+                <Link className="header-border p-2">Contacto</Link>
+                <Link className=" p-2">Sobre Nosotros</Link>
+                <Link className="d-md-none p-2">
                   <LoginModal
                     login={login}
                     logout={logout}
@@ -184,7 +182,35 @@ const Header = ({
                     validate={validate}
                     auth={auth}
                   />
-                </Nav.Link>
+                </Link>
+
+                {/* BUSCADOR */}
+                <div className="d-flex header-form d-md-none py2 mx-1">
+                  <Form size="sm" className="d-flex">
+                    <Form.Control
+                      type="text"
+                      placeholder="Buscar"
+                      className=""
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value.toUpperCase())}
+                      aria-label="Search"
+                    />
+                    <Link to={search ? "/SearchContainer" : "/"}>
+                      <Button className="btn-search" size="sm">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-search"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                      </Button>
+                    </Link>
+                  </Form>
+                </div>
               </Nav>
             </div>
           </Navbar.Collapse>

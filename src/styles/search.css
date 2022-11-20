@@ -4,3 +4,12 @@
 .spaceNews {
   margin-bottom: 1rem;
 }
+
+.container-not-found {
+  min-height: 100%;
+}
+
+#icons-notFound {
+  width: 8rem;
+  height: 8rem;
+}

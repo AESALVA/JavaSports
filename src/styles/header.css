@@ -68,3 +68,10 @@ span .navbar-Toggle {
     margin: 0px;
   }
 }
+
+/* Solo en small */
+@media (max-width: 767.98px) {
+  #basic-nav-dropdown {
+    padding: 0.5rem;
+  }
+}

@@ -25,7 +25,7 @@ const SearchPageContainer = ({ articles, search }) => {
 
   return (
     <>
-      {search && searchList ? (
+      {search && searchList.length > 0 ? (
         <Container className="my-5">
           <h2 className="text-center mb-5 title-search">
             RESULTADOS PARA: {search}
@@ -33,10 +33,17 @@ const SearchPageContainer = ({ articles, search }) => {
           <SearchList matchList={searchList} />
         </Container>
       ) : (
-        <Container>
-          <h2 className="text-center my-5">
-            No hay coincidencias para: {search}
-          </h2>
+        <Container className="container-not-found">
+          <h3 className="text-center my-5">
+            No hay coincidencias para tu búsqueda!
+          </h3>
+          <div className="d-flex justify-content-center mb-5">
+            <img
+              id="icons-notFound"
+              src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
+              alt=""
+            />
+          </div>
         </Container>
       )}
     </>
