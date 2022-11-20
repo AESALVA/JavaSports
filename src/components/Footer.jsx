@@ -37,7 +37,7 @@ function Footer() {
         <ul className="list-unstyled">
 
             <Link to="" className="no-underline"><h5>Favoritos</h5></Link>
-            <Link to="" className="no-underline"><h5>Sobre nosotros</h5></Link>
+            <Link to="/Aboutus" className="no-underline"><h5>Sobre nosotros</h5></Link>
             <Link to="" className="no-underline"><h5>Contacto</h5></Link>
 
         </ul>
