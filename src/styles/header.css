@@ -45,7 +45,8 @@ span .navbar-Toggle {
 .sectionLinks a {
   color: var(--grayColor);
 }
-.no-underline{
+
+.no-underline {
   text-decoration: none;
 }
 .btn-search {
@@ -60,6 +61,7 @@ span .navbar-Toggle {
 .btn-search:active {
   background-color: var(--grayColor) !important;
 }
+
 /* BREAKPOINTS */
 
 /* MD */
@@ -68,5 +70,12 @@ span .navbar-Toggle {
     border-right: 0.5px solid var(--redColor);
     border-left: 0.5px solid transparent;
     margin: 0px;
+  }
+}
+
+/* Solo en small */
+@media (max-width: 767.98px) {
+  #basic-nav-dropdown {
+    padding: 0.5rem;
   }
 }
