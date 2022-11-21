@@ -195,7 +195,7 @@ const Header = ({
                       onChange={(e) => setSearch(e.target.value.toUpperCase())}
                       aria-label="Search"
                     />
-                    <Link to={search ? "/SearchContainer" : "/"}>
+                    <Link to="/SearchContainer">
                       <Button className="btn-gray" size="sm">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
