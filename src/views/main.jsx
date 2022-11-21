@@ -13,6 +13,7 @@ import E404 from "../components/E404";
 import { useState } from "react";
 import Sections from "../components/Sections";
 import SearchContainer from "../components/SearchContainer";
+import Management from "../components/Management";
 
 const Main = ({
   auth,
@@ -43,7 +44,10 @@ const Main = ({
           element={<SearchContainer articles={articles} search={search} />}
           path="/SearchContainer"
         ></Route>
-        <Route element={<Landing articles={articles} />} path="/"></Route>
+        <Route
+          element={<Landing articles={articles} auth={auth} />}
+          path="/"
+        ></Route>
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
@@ -65,6 +69,10 @@ const Main = ({
         <Route
           element={<SectionsList mockSections={mockSections} />}
           path="/SectionsList"
+        ></Route>
+        <Route
+          element={<Management mockSections={mockSections} />}
+          path="/Management"
         ></Route>
       </Routes>
       <Footer />

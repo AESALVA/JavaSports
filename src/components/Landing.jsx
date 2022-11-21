@@ -11,10 +11,10 @@ import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
 import SearchContainer from "./SearchContainer";
 
-const Landing = ({ articles }) => {
+const Landing = ({ articles, auth }) => {
   return (
     <>
-      <NewsList MockArticle={articles} />
+      <NewsList MockArticle={articles} auth={auth} />
     </>
   );
 };

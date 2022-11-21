@@ -4,8 +4,12 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import SectionsContainer from "./SectionsContainer";
 import NewsList from "./NewsList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const News = ({ sizeCard, view, article }) => {
+const News = ({ sizeCard, view, article, auth }) => {
   let stylesAtHome = "";
   view === "Home" && (stylesAtHome = `cardImagen`);
   // console.log(article.title);
@@ -30,6 +34,25 @@ const News = ({ sizeCard, view, article }) => {
               </span>
             </Card.Text>
           </Card.Body>
+          {/* {auth.role === "admin" && ( */}
+          <Card.Footer className="d-flex justify-content-center">
+            <Link to="Management">
+              <Button variant="warning sm">
+                <FontAwesomeIcon icon={faStar} />
+              </Button>
+            </Link>
+            <Link to="Management">
+              <Button variant="success sm">
+                <FontAwesomeIcon icon={faPen} />
+              </Button>
+            </Link>
+            <Link to="Management">
+              <Button variant="danger sm">
+                <FontAwesomeIcon icon={faTrashCan} />
+              </Button>
+            </Link>
+          </Card.Footer>
+          {/* )} */}
         </Card>
       </Container>
     </>
