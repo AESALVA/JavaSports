@@ -1,4 +1,4 @@
-import { Container, Nav } from "react-bootstrap";
+import { Container, Nav, Tooltip } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const News = ({ sizeCard, view, article, auth }) => {
   let stylesAtHome = "";
@@ -37,19 +38,37 @@ const News = ({ sizeCard, view, article, auth }) => {
           {/* {auth.role === "admin" && ( */}
           <Card.Footer className="d-flex justify-content-center">
             <Link to="Management">
-              <Button variant="warning sm">
-                <FontAwesomeIcon icon={faStar} />
-              </Button>
+              <OverlayTrigger
+                key="btn-des"
+                placement="bottom"
+                overlay={<Tooltip id="button">Destacar</Tooltip>}
+              >
+                <Button variant="warning sm" className="mx-1">
+                  <FontAwesomeIcon icon={faStar} />
+                </Button>
+              </OverlayTrigger>
             </Link>
             <Link to="Management">
-              <Button variant="success sm">
-                <FontAwesomeIcon icon={faPen} />
-              </Button>
+              <OverlayTrigger
+                key="btn-upd"
+                placement="bottom"
+                overlay={<Tooltip id="button">Actualizar</Tooltip>}
+              >
+                <Button variant="success sm" className="mx-1">
+                  <FontAwesomeIcon icon={faPen} />
+                </Button>
+              </OverlayTrigger>
             </Link>
             <Link to="Management">
-              <Button variant="danger sm">
-                <FontAwesomeIcon icon={faTrashCan} />
-              </Button>
+              <OverlayTrigger
+                key="btn-dlt"
+                placement="bottom"
+                overlay={<Tooltip id="button">Eliminar</Tooltip>}
+              >
+                <Button variant="danger sm" id="btn-eliminar" className="mx-1">
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </Button>
+              </OverlayTrigger>
             </Link>
           </Card.Footer>
           {/* )} */}
