@@ -35,9 +35,15 @@ const SearchPageContainer = ({ articles, search }) => {
           </div>
         ) : (
           <div className="container-notFound">
-            <h3 className="text-center">
-              No hay coincidencias para tu búsqueda !
-            </h3>
+            {search === "" ? (
+              <h3 className="text-center">
+                Debe ingresar palabras para poder filtrar!
+              </h3>
+            ) : (
+              <h3 className="text-center">
+                No hay coincidencias para tu búsqueda !
+              </h3>
+            )}
             <div className="d-flex justify-content-center mt-3">
               <img
                 id="icons-notFound"
