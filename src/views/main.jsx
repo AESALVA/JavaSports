@@ -29,7 +29,7 @@ const Main = ({
   setArticles,
 }) => {
   return (
-    <Container fluid className="min-vh-100 d-flex flex-column p-0">
+    <Container fluid className="main-container d-flex flex-column p-0">
       <Header
         validate={validate}
         login={login}

@@ -25,7 +25,7 @@ const SearchPageContainer = ({ articles, search }) => {
 
   return (
     <>
-      <Container id="container-search">
+      <Container id="main-container">
         {search && searchList.length > 0 ? (
           <div>
             <h2 className="text-center my-5 title-search">
