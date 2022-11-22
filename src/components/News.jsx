@@ -35,43 +35,47 @@ const News = ({ sizeCard, view, article, auth }) => {
               </span>
             </Card.Text>
           </Card.Body>
-          {/* {auth.role === "admin" && ( */}
-          <Card.Footer className="d-flex justify-content-center">
-            <Link to="Management">
-              <OverlayTrigger
-                key="btn-des"
-                placement="bottom"
-                overlay={<Tooltip id="button">Destacar</Tooltip>}
-              >
-                <Button variant="warning sm" className="mx-1">
-                  <FontAwesomeIcon icon={faStar} />
-                </Button>
-              </OverlayTrigger>
-            </Link>
-            <Link to="Management">
-              <OverlayTrigger
-                key="btn-upd"
-                placement="bottom"
-                overlay={<Tooltip id="button">Actualizar</Tooltip>}
-              >
-                <Button variant="success sm" className="mx-1">
-                  <FontAwesomeIcon icon={faPen} />
-                </Button>
-              </OverlayTrigger>
-            </Link>
-            <Link to="Management">
-              <OverlayTrigger
-                key="btn-dlt"
-                placement="bottom"
-                overlay={<Tooltip id="button">Eliminar</Tooltip>}
-              >
-                <Button variant="danger sm" id="btn-eliminar" className="mx-1">
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </Button>
-              </OverlayTrigger>
-            </Link>
-          </Card.Footer>
-          {/* )} */}
+          {auth.role === "admin" && (
+            <Card.Footer className="d-flex justify-content-center">
+              <Link to="Management">
+                <OverlayTrigger
+                  key="btn-des"
+                  placement="bottom"
+                  overlay={<Tooltip id="button">Destacar</Tooltip>}
+                >
+                  <Button variant="sm" className="mx-1 btn-news">
+                    <FontAwesomeIcon icon={faStar} />
+                  </Button>
+                </OverlayTrigger>
+              </Link>
+              <Link to="Management">
+                <OverlayTrigger
+                  key="btn-upd"
+                  placement="bottom"
+                  overlay={<Tooltip id="button">Actualizar</Tooltip>}
+                >
+                  <Button variant="sm" className="mx-1 btn-news">
+                    <FontAwesomeIcon icon={faPen} />
+                  </Button>
+                </OverlayTrigger>
+              </Link>
+              <Link to="Management">
+                <OverlayTrigger
+                  key="btn-dlt"
+                  placement="bottom"
+                  overlay={<Tooltip id="button">Eliminar</Tooltip>}
+                >
+                  <Button
+                    variant="sm"
+                    id="btn-eliminar"
+                    className="mx-1  btn-news"
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </Button>
+                </OverlayTrigger>
+              </Link>
+            </Card.Footer>
+          )}
         </Card>
       </Container>
     </>

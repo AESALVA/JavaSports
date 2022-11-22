@@ -218,6 +218,8 @@ function App() {
         setSearch={setSearch}
         articles={articles}
         setArticles={setArticles}
+        users={users}
+        setUsers={setUsers}
       />
     </BrowserRouter>
   );

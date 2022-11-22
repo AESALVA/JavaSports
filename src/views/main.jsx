@@ -27,6 +27,8 @@ const Main = ({
   setSearch,
   articles,
   setArticles,
+  users,
+  setUsers,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -53,15 +55,9 @@ const Main = ({
           path="/Register"
         ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route
-          element={<SectionsContainer />}
-          path="/SectionsContainer"
-        ></Route>
-        <Route
-          element={<SectionsList mockSections={mockSections} />}
-          path="/SectionsList"
-        ></Route>
+
         <Route element={<E404 />} path="/404"></Route>
+
         <Route
           element={<SectionsContainer auth={auth} />}
           path="/SectionsContainer"
@@ -71,7 +67,9 @@ const Main = ({
           path="/SectionsList"
         ></Route>
         <Route
-          element={<Management mockSections={mockSections} />}
+          element={
+            <Management mockSections={mockSections} mocksUsers={users} />
+          }
           path="/Management"
         ></Route>
       </Routes>

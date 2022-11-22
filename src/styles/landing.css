@@ -113,6 +113,12 @@
   grid-area: twenty-card;
 }
 
+.btn-news svg {
+  background-color: var(--darkColor);
+  padding: 0.5rem;
+  border-radius: 80%;
+}
+
 /* BREAKPOITS */
 
 @media (min-width: 768px) {

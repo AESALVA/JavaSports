@@ -6,7 +6,7 @@ import SearchList from "./SearchList";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const SearchPageContainer = ({ articles, search }) => {
+const SearchContainer = ({ articles, search }) => {
   const [searchList, setSearchList] = useState([{}]);
   // Tengo que filtrar los articulos por la busqueda dada.
   const filter = () => {
@@ -58,4 +58,4 @@ const SearchPageContainer = ({ articles, search }) => {
   );
 };
 
-export default SearchPageContainer;
+export default SearchContainer;

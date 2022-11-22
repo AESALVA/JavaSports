@@ -1,0 +1,36 @@
+.title-tabs {
+  border-bottom: 0.03rem solid var(--darkColor);
+}
+.title-tabs .nav-link {
+  color: rgba(255, 255, 255, 0.736);
+  /* font-weight: bold; */
+}
+
+.title-tabs .nav-link.active {
+  font-weight: bold;
+  color: var(--darkColor);
+  background-color: rgba(255, 255, 255, 0.201);
+  border: 0.5rem solid var(--bs-nav-tabs-border-width);
+}
+
+.title-tabs .nav-link:hover {
+  border-top: 0.03rem solid transparent;
+  border-left: 0.03rem solid var(--darkColor);
+  border-right: 0.03rem solid var(--darkColor);
+  border-bottom: 0.03rem solid var(--darkColor);
+}
+.title-tabs .nav-link.active .title-tabs .nav-link:hover {
+  border: none;
+}
+
+.table-administrative {
+  /* background-color: rgba(255, 255, 255, 0.061); */
+  min-height: 100vh;
+}
+
+.tab-content {
+  border-left: 0.06rem solid var(--darkColor);
+  border-right: 0.06rem solid var(--darkColor);
+  background-color: rgba(255, 255, 255, 0.061);
+  margin-bottom: 5rem;
+}

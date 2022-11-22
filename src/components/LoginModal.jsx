@@ -79,7 +79,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         </Link>
       ) : (
         <Link className="modal_styles link_styles" onClick={handleClick}>
-          <FontAwesomeIcon icon={faUser} /> {auth.user}
+          <FontAwesomeIcon icon={faUser} className="me-2" /> {auth.user}
         </Link>
       )}
 
