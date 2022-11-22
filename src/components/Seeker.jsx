@@ -1,6 +1,5 @@
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import SearchContainer from "./SearchContainer";
 
 const Seeker = ({ search, setSearch }) => {
   return (
