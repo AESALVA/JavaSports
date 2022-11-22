@@ -70,7 +70,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
           variant="outline-danger"
           onClick={handleClick}
         >
-          <FontAwesomeIcon icon={faUser} /> {auth.user}
+          <FontAwesomeIcon icon={faUser} /> {auth.role}
         </Button>
       )}
       {!auth.user ? (
@@ -79,7 +79,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         </Link>
       ) : (
         <Link className="modal_styles link_styles" onClick={handleClick}>
-          <FontAwesomeIcon icon={faUser} className="me-2" /> {auth.user}
+          <FontAwesomeIcon icon={faUser} className="me-2" /> {auth.role}
         </Link>
       )}
 
