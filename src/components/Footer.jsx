@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../components/img/logoJScopia.png';
 import { Link } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
 /* import "../styles/joaquin.css"; */
 
 
@@ -15,7 +16,7 @@ function Footer() {
     <div className="row">
         {/* col1 */}
 
-    <div className="col-md d-flex justify-content-center align-items-center border-end border-danger">
+    <div id="logofooter" className="col-md d-flex justify-content-center align-items-center border-end border-danger">
         <img src='/img/LogoJS.jpg' className='logo' alt="logo" width={150}/>
 
     </div>
@@ -26,9 +27,26 @@ function Footer() {
 
 
 
-            <Link to="/" className="no-underline"><h5>Home</h5></Link>            
-            <Link to="/SectionsList" className="no-underline"><h5>Secciones</h5></Link>
-            <Link to="" className="no-underline"><h5>Buscar</h5></Link>
+            <Link to="/" className="no-underline"><h6>Home</h6></Link>            
+            <NavDropdown
+                  title="Secciones"
+                  id="basic-nav-dropdown"
+                  className="mb-1"
+                >
+                  <NavDropdown.Item className="sectionLinks">
+                    <Link to="/SectionsList" className="no-underline"> Fútbol</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="sectionLinks">
+                    <Link to="/SectionsList" className="no-underline">Hockey</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="sectionLinks">
+                    <Link to="/SectionsList" className="no-underline">Tenis</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="sectionLinks">
+                    <Link to="/SectionsList" className="no-underline"> Boxeo</Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
+            <Link to=" " className="no-underline"><h6>Buscar</h6></Link>
 
         </ul>
     </div>
@@ -36,9 +54,9 @@ function Footer() {
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
 
-            <Link to="" className="no-underline"><h5>Favoritos</h5></Link>
-            <Link to="/Aboutus" className="no-underline"><h5>Sobre nosotros</h5></Link>
-            <Link to="" className="no-underline"><h5>Contacto</h5></Link>
+            <Link to="" className="no-underline"><h6>Favoritos</h6></Link>
+            <Link to="/Aboutus" className="no-underline"><h6>Sobre nosotros</h6></Link>
+            <Link to="/Contacto" className="no-underline"><h6>Contacto</h6></Link>
 
         </ul>
     </div>    

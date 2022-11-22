@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
 import E404 from "../components/E404";
+import Contact from "../components/Contact";
 import { useState } from "react";
 import Sections from "../components/Sections";
 
@@ -54,6 +55,7 @@ const Main = ({
         <Route element={<SectionsContainer />} path="/SectionsContainer"></Route>
         <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
         <Route element={<E404/>} path="/404"></Route>
+        <Route element={<Contact/>} path="/Contacto"></Route>
         <Route
           element={<SectionsContainer auth={auth} />}
           path="/SectionsContainer"
