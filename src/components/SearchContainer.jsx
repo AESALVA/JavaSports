@@ -6,17 +6,16 @@ import SearchList from "./SearchList";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const SearchContainer = ({ articles, search }) => {
-  const [searchList, setSearchList] = useState([{}]);
+const SearchContainer = ({ articles, search, auth }) => {
+  const [articlesList, setArticlesList] = useState([{}]);
   // Tengo que filtrar los articulos por la busqueda dada.
   const filter = () => {
     let matchList = [];
-    articles.forEach((noticia) => {
-      // console.log(noticia.title.toLowerCase().includes(search.toLowerCase()));
-      noticia.title.toLowerCase().includes(search.toLowerCase()) &&
-        matchList.push(noticia);
+    articles.forEach((article) => {
+      article.title.toLowerCase().includes(search.toLowerCase()) &&
+        matchList.push(article);
     });
-    setSearchList(matchList);
+    setArticlesList(matchList);
   };
 
   useEffect(() => {
@@ -26,12 +25,12 @@ const SearchContainer = ({ articles, search }) => {
   return (
     <>
       <Container id="main-container">
-        {search && searchList.length > 0 ? (
+        {search && articlesList.length > 0 ? (
           <div>
             <h2 className="text-center my-5 title-search">
               RESULTADOS PARA: {search}
             </h2>
-            <SearchList matchList={searchList} />
+            <SearchList matchList={articlesList} auth={auth} />
           </div>
         ) : (
           <div className="container-notFound">

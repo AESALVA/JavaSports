@@ -12,8 +12,9 @@ import SectionsList from "../components/SectionsList";
 import E404 from "../components/E404";
 import { useState } from "react";
 import Sections from "../components/Sections";
-import SearchContainer from "../components/SearchContainer";
+// import SearchContainer from "../components/SearchContainer";
 import Management from "../components/Management";
+import SearchContainer from "../components/SearchContainer";
 
 const Main = ({
   auth,
@@ -43,7 +44,9 @@ const Main = ({
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route
-          element={<SearchContainer articles={articles} search={search} />}
+          element={
+            <SearchContainer articles={articles} search={search} auth={auth} />
+          }
           path="/SearchContainer"
         ></Route>
         <Route

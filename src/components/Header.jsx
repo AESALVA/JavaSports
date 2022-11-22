@@ -41,32 +41,8 @@ const Header = ({
               {/* </Nav.Link> */}
             </div>
             <div className="d-flex header-form">
-              {/* <Seeker search={search} setSearch={setSearch} /> */}
               {/* BUSCADOR */}
-              <Form size="sm" className="d-flex">
-                <Form.Control
-                  type="text"
-                  placeholder="Buscar"
-                  className=""
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value.toUpperCase())}
-                  aria-label="Search"
-                />
-                <Link to="/SearchContainer">
-                  <Button className="btn-gray" size="sm">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-search"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                  </Button>
-                </Link>
-              </Form>
+              <Seeker search={search} setSearch={setSearch} />
             </div>
           </div>
           {/* TITLE */}
@@ -206,33 +182,9 @@ const Header = ({
                   />
                 </Link>
 
-                {/* BUSCADOR */}
                 <div className="d-flex header-form d-md-none py2 mx-1">
-                  {/* <Seeker search={search} setSearch={setSearch} /> */}
-                  <Form size="sm" className="d-flex">
-                    <Form.Control
-                      type="text"
-                      placeholder="Buscar"
-                      className=""
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value.toUpperCase())}
-                      aria-label="Search"
-                    />
-                    <Link to="/SearchContainer">
-                      <Button className="btn-gray" size="sm">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-search"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                      </Button>
-                    </Link>
-                  </Form>
+                  {/* BUSCADOR */}
+                  <Seeker search={search} setSearch={setSearch} />
                 </div>
               </Nav>
             </div>

@@ -10,7 +10,7 @@ const Seeker = ({ search, setSearch }) => {
           placeholder="Buscar"
           className=""
           value={search}
-          onChange={(e) => setSearch(e.target.value.toUpperCase())}
+          onChange={(e) => setSearch(e.target.value)}
           aria-label="Search"
         />
         <Link to="/SearchContainer">
