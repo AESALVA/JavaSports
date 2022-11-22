@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "../styles/loginModal.css";
+import CloseButton from "react-bootstrap/CloseButton";
 
 const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   const [show, setShow] = useState(false);
@@ -89,7 +90,8 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         keyboard={false}
         contentClassName="bg-dark "
       >
-        <Modal.Header className="border-danger bg-dark">
+        <Modal.Header className="border-danger bg-dark flex-column ">
+          <CloseButton onClick={handleClose} />
           <Link className="mx-auto" to="/">
             <img
               className="bg-dark logo"
