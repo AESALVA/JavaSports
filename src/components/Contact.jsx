@@ -45,16 +45,18 @@ const Contacto = (n) => {
     useEffect(() => {}, [name, lastname, mail, text]);
 
     return(
-        <div className="container-fluid px-5" id="bodyContacto">
+        <div className="container-fluid px-0" id="bodyContacto">
             <div className="bannercontacto">
-                <div className="container-fluid d-flex justify-content-center align-items-center">
-                    {<img className="imgbanner" src="https://thumbs.dreamstime.com/b/el-jugador-de-f%C3%BAtbol-ayuda-al-onother-uno-en-panorama-del-fondo-del-estadio-de-la-puesta-del-sol-65567794.jpg" alt="" />}
+                <div className="container-fluid px-0">
+                    <div className="imgbanner">  
+                    <h2 className="centered">Como podemos ayudarte?</h2>
+                    </div>
                 </div>
             </div>
 
-            <div className="row pt-5">
+            <div className="row pt-5 px-5">
             <div className="d-flex justify-content-center ">    
-            <Form>
+            <Form id="formulario">
                 <Row className="mb-2 mt-2"><div className="row"></div>
                 <Form.Group as={Col} className="mb-3" controlId="formNombre">
                     <Form.Label>Nombre 

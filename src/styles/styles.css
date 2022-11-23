@@ -144,12 +144,28 @@ body {
 .maps{
   max-width: 350px;
 }
-.bannercontacto .imgbanner{
+.imgbanner{
   width: 100%;
-  background-image: url(https://github.com/AESALVA/JavaSports/blob/78851462308db8aeaffca35721004275fad7477b/public/img/joaquin.jpeg);
+  background-image: url(https://www.fundacioncanal.com/canaleduca/wp-content/uploads/2016/05/4_16_destacado.jpg);
   height: 405px;
   background-position: center;
-  background-size: auto;
+  background-size: cover;
+  ;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -300%);
+  opacity: 100%;
+  color:var(--orangeColor);
+  font-weight: 800; 
+}
+#formulario{
+  padding: 1rem;
+  background-color: #33313b;
+  border: solid 3px #d05037;
+  border-radius: 1rem;
 }
 /* BREAKPOINTS */
 
