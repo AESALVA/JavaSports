@@ -163,10 +163,13 @@ body {
     display: none;
   }
   #logofooter{
-    border: none; 
+    border: none !important; 
   }
   .border-danger{
     border: none;
+  }
+  #rightstext{
+    padding: 0 2rem ;
   }
 }
 @media (min-width: 767.98px) {

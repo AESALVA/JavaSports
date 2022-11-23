@@ -16,6 +16,8 @@ const Contacto = (n) => {
     const [text, setText] = useState("");
     const [firstName, setFirstName] = useState(true);
     const [firstLastname, setFirstLastname] = useState(true);
+    const [firstMail, setFirstMail] = useState(true);
+    const [firstText, setFirstText] = useState(true);
 
     const ValidateName = (n) =>{
         return(
@@ -29,11 +31,11 @@ const Contacto = (n) => {
     }
     const ValidateMail = (m) =>{
         return (
-            validator.isLength(m, {min: 5, max: 36}) && validator.isEmail(n, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
+            validator.isLength(m, {min: 5, max: 36}) && validator.isEmail(m, {allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, require_tld: true, allow_ip_domain: false, domain_specific_validation: false, blacklisted_chars: '', host_blacklist: []})
         );
     }
     const ValidateText = (t) =>{
-        setName(t.target.value);
+        validator.matches(t, "^[a-zA-Z0-9 ]*$") && validator.isLength(t, {min: 5, max: 185})
     }
 
     const handleClick = (e)=>{
@@ -61,20 +63,21 @@ const Contacto = (n) => {
                 <Form.Group as={Col} className="mb-3" controlId="formApellido">
                     <Form.Label>Apellido
                         {!ValidateLastname(lastname) && !firstLastname && (<span className="text-danger">Error</span>)} </Form.Label>
-                    <Form.Control  type="text" placeholder="Ingrese su apellido"></Form.Control>
+                    <Form.Control  type="text" placeholder="Ingrese su apellido" onInput={(e) => setLastname(e.target.value)} onBlur={() => setFirstLastname(false)}></Form.Control>
                 </Form.Group>   
                 </Row>
                 <Row>
                 <Form.Group as={Col} className="mb-3" controlId="formEmail">
                     <Form.Label>Email 
-                    {!ValidateMail(mail) && (<span className="text-danger">Error</span>)}</Form.Label>
-                    <Form.Control  type="Email" placeholder="Ingrese su correo electronico" />                
+                        {!ValidateMail(mail) && !firstMail && (<span className="text-danger">Error</span>)}</Form.Label>
+                    <Form.Control  type="Email" placeholder="Ingrese su correo electronico" onInput={(e) => setMail(e.target.value)} onBlur={()=> setFirstMail(false)}/>                
                 </Form.Group>
                 </Row>
                 <Row>
                 <Form.Group as={Col} className="mb-3" controlId="formComment">
-                    <Form.Label>Mensaje </Form.Label>
-                    <Form.Control  as="textarea" rows={5} placeholder="Ingrese su correo mensaje" />                
+                    <Form.Label>Mensaje
+                    {!ValidateText(text) && !firstText && (<span className="text-danger">Error</span>)} </Form.Label>
+                    <Form.Control  as="textarea" rows={5} placeholder="Ingrese su correo mensaje" onInput={(e) => setText(e.target.value)} onBlur={()=> setFirstText(false)} />                
                 </Form.Group>
                 </Row>
                 <div className="d-flex justify-content-center align-items-center">
