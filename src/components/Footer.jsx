@@ -1,20 +1,15 @@
 import React from "react";
-import logo from '../components/img/logoJScopia.png';
+import logo from "../components/img/logoJScopia.png";
 import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 /* import "../styles/joaquin.css"; */
 
-
-
-
-
 function Footer() {
-  return(  
-
+  return (
     <div className="main-footer mt-auto">
-    <div className="container-fluid text-white py-4 bg-dark m-0">
-    <div className="row">
-        {/* col1 */}
+      <div className="container-fluid text-white py-4 dark-background-color m-0">
+        <div className="row">
+          {/* col1 */}
 
     <div id="logofooter" className="col-md d-flex justify-content-center align-items-center border-end border-danger">
         <img src='/img/LogoJS.jpg' className='logo' alt="logo" width={150}/>
@@ -72,7 +67,7 @@ function Footer() {
           
           
         </div>
-    
+      </div>
     </div>
     {/* footer text */}
     <div className="d-flex mt-4">
@@ -85,12 +80,9 @@ function Footer() {
         
     </div>    
     </div>
-    </div>
     
-  )
+    
+  );
 }
 
 export default Footer;
-
-
-

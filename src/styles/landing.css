@@ -53,7 +53,6 @@
 }
 #five-card {
   grid-area: five-card;
-  padding: 2rem;
 }
 
 #six-card {
@@ -112,6 +111,12 @@
 }
 #twenty-card {
   grid-area: twenty-card;
+}
+
+.btn-news svg {
+  background-color: var(--darkColor);
+  padding: 0.5rem;
+  border-radius: 80%;
 }
 
 /* BREAKPOITS */

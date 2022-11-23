@@ -13,6 +13,9 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import { useState } from "react";
 import Sections from "../components/Sections";
+// import SearchContainer from "../components/SearchContainer";
+import Management from "../components/Management";
+import SearchContainer from "../components/SearchContainer";
 
 const Main = ({
   auth,
@@ -22,20 +25,20 @@ const Main = ({
   setAuth,
   mockSections,
   addUser,
-  page,
-  setPage,
   search,
   setSearch,
+  articles,
+  setArticles,
+  users,
+  setUsers,
 }) => {
   return (
-    <Container fluid className="min-vh-100 d-flex flex-column p-0">
+    <Container fluid className="main-container d-flex flex-column p-0">
       <Header
         validate={validate}
         login={login}
         auth={auth}
         logout={logout}
-        page={page}
-        setPage={setPage}
         search={search}
         setSearch={setSearch}
       />
@@ -43,8 +46,12 @@ const Main = ({
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route
           element={
-            <Landing page={page} search={search} setSearch={setSearch} />
+            <SearchContainer articles={articles} search={search} auth={auth} />
           }
+          path="/SearchContainer"
+        ></Route>
+        <Route
+          element={<Landing articles={articles} auth={auth} />}
           path="/"
         ></Route>
         <Route
@@ -56,6 +63,9 @@ const Main = ({
         <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
         <Route element={<E404/>} path="/404"></Route>
         <Route element={<Contact/>} path="/Contacto"></Route>
+
+        <Route element={<E404 />} path="/404"></Route>
+
         <Route
           element={<SectionsContainer auth={auth} />}
           path="/SectionsContainer"
@@ -63,6 +73,12 @@ const Main = ({
         <Route
           element={<SectionsList mockSections={mockSections} />}
           path="/SectionsList"
+        ></Route>
+        <Route
+          element={
+            <Management mockSections={mockSections} mocksUsers={users} />
+          }
+          path="/Management"
         ></Route>
       </Routes>
       <Footer />
