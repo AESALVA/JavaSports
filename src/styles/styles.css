@@ -156,6 +156,21 @@ body {
   border: 1px solid var(--darkColor) !important;
 }
 
+.btn-red {
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+.btn-red-border {
+  border: 1px solid var(--redColor);
+}
+.btn-red:hover,
+.btn-red:active {
+  background-color: var(--redColor) !important;
+  border: 1px solid var(--redColor) !important;
+}
+
 /* Para que ocupe todo el main */
 .main-container {
   min-height: 100vh;

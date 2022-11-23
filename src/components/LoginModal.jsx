@@ -91,7 +91,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         contentClassName="bg-dark "
       >
         <Modal.Header className="border-danger bg-dark flex-column ">
-          <CloseButton onClick={handleClose} />
+          <CloseButton onClick={handleClose} variant="white" />
           <Link className="mx-auto" to="/">
             <img
               className="bg-dark logo"
