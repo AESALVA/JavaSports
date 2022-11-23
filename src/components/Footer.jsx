@@ -16,10 +16,10 @@ function Footer() {
     <div className="row">
         {/* col1 */}
 
-    <Link to="/"> <div id="logofooter" className="col-md d-flex justify-content-center align-items-center border-end border-danger">
+    <div id="logofooter" className="col-md d-flex justify-content-center align-items-center border-end border-danger">
         <img src='/img/LogoJS.jpg' className='logo' alt="logo" width={150}/>
 
-    </div></Link>
+    </div>
     
     {/* col2 */}
     <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
@@ -51,7 +51,7 @@ function Footer() {
         </ul>
     </div>
         {/* col3 */}
-    <div className="col d-flex justify-content-center align-items-center  border-end border-danger">
+    <div id="col2footer" className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
 
             <Link to="" className="no-underline"><h6>Favoritos</h6></Link>

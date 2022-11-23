@@ -144,6 +144,13 @@ body {
 .maps{
   max-width: 350px;
 }
+.bannercontacto .imgbanner{
+  width: 100%;
+  background-image: url(https://github.com/AESALVA/JavaSports/blob/78851462308db8aeaffca35721004275fad7477b/public/img/joaquin.jpeg);
+  height: 405px;
+  background-position: center;
+  background-size: auto;
+}
 /* BREAKPOINTS */
 
 @media (max-width: 990px) {
@@ -165,8 +172,8 @@ body {
   #logofooter{
     border: none !important; 
   }
-  .border-danger{
-    border: none;
+  #col2footer{
+    border: none !important; 
   }
   #rightstext{
     padding: 0 2rem ;
