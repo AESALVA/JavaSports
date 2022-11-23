@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../components/img/logoJScopia.png";
 import { Link } from "react-router-dom";
 /* import "../styles/joaquin.css"; */
 
