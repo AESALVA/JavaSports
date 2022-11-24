@@ -3,6 +3,7 @@
 }
 .title-tabs .nav-link {
   color: rgba(255, 255, 255, 0.736);
+  font-size: 12px;
   /* font-weight: bold; */
 }
 
@@ -28,9 +29,90 @@
   min-height: 100vh;
 }
 
+.table-administrative th {
+  font-size: 13px;
+}
+.table-administrative td {
+  font-size: 12px;
+}
+
+.table-administrative tbody:hover {
+  color: var(--darkColor);
+  font-weight: bold;
+}
+
 .tab-content {
   border-left: 0.06rem solid var(--darkColor);
   border-right: 0.06rem solid var(--darkColor);
   background-color: rgba(255, 255, 255, 0.061);
   margin-bottom: 5rem;
+}
+
+#modalCRUD .modal-content {
+  border: none;
+  color: var(--darkColor);
+}
+#modalCRUD .modal-body {
+  color: var(--darkColor);
+}
+#modalCRUD form label {
+  color: var(--darkColor);
+}
+
+#modalCRUD .modal-footer button {
+  color: var(--darkColor);
+  font-size: 12px;
+  font-weight: bold;
+}
+/* BREAKPOINTS */
+
+/* TABLET */
+@media (min-width: 768px) {
+  .title-tabs .nav-link {
+    font-size: 14px;
+  }
+  .table-administrative th {
+    font-size: 14px;
+  }
+  .table-administrative td {
+    font-size: 13px;
+  }
+
+  .table-header-administrative span {
+    font-size: 12px;
+  }
+}
+
+/* PC */
+@media (min-width: 992px) {
+  .title-tabs .nav-link {
+    font-size: 16px;
+  }
+
+  .table-administrative th {
+    font-size: 16px;
+  }
+  .table-administrative td {
+    font-size: 15px;
+  }
+  #modalCRUD .modal-footer button {
+    font-size: 15px;
+  }
+}
+
+/* PC LARGE */
+@media (min-width: 1200px) {
+  .title-tabs .nav-link {
+    font-size: 17px;
+  }
+
+  .table-administrative th {
+    font-size: 17px;
+  }
+  .table-administrative td {
+    font-size: 16px;
+  }
+  .table-header-administrative span {
+    font-size: 15px;
+  }
 }

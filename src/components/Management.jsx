@@ -6,12 +6,13 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Management = ({ auth, articles, users }) => {
   const navigate = useNavigate();
-  // solo lo puede visualizar el admin
+  let personalList = users.filter((user) => user.role === "admin");
   useEffect(() => {
+    // solo puede visualizar la pàgina el admin
     auth.role !== "admin" && navigate("/");
   }, [auth]);
 
@@ -29,10 +30,18 @@ const Management = ({ auth, articles, users }) => {
           className=" title-tabs"
         >
           <Tab eventKey="news" title="Noticias de JavaSports" className="">
-            <TableManagement view="news" articles={articles} users={users} />
+            <TableManagement
+              viewTable="news"
+              articles={articles}
+              users={users}
+            />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
-            <TableManagement view="users" articles={articles} users={users} />
+            <TableManagement
+              viewTable="users"
+              articles={articles}
+              users={users}
+            />
           </Tab>
           <Tab
             eventKey="administrativeStaff"
@@ -40,9 +49,9 @@ const Management = ({ auth, articles, users }) => {
             className=""
           >
             <TableManagement
-              view="administrativeStaff"
+              viewTable="administrativeStaff"
               articles={articles}
-              users={users}
+              users={personalList}
             />
           </Tab>
         </Tabs>
