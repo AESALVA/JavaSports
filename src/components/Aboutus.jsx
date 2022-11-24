@@ -23,10 +23,8 @@ function Aboutus() {
             />
           </div>
           <p className="textaboutus pb-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
-            quasi obcaecati asperiores, ad eveniet libero voluptate, omnis eum,
-            iste laboriosam sapiente a! Neque, dolore. Rerum non laborum in
-            explicabo ipsa?
+            Soy Angel Eduardo Salva, tengo 35 años. Soy estudiante de Rolling
+            Code School y actualmente vivo en la provincia de Tucuman.
           </p>
         </div>
       </div>
@@ -47,9 +45,9 @@ function Aboutus() {
           </div>
 
           <p className="textaboutus pb-3">
-            Tengo 21 años, soy de Buenos Aires. Actualmente me encuentro
-            estudiando la Licenciatura de Informática en la Universidad Nacional
-            de Quilmes.
+            Soy Valentina Reigada, tengo 21 años, soy de Buenos Aires.
+            Actualmente me encuentro estudiando la Licenciatura de Informática
+            en la Universidad Nacional de Quilmes.
           </p>
         </div>
       </div>
