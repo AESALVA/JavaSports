@@ -114,7 +114,7 @@
 }
 
 .btn-news svg {
-  background-color: var(--darkColor);
+  background-color: var(--grayColor);
   padding: 0.5rem;
   border-radius: 80%;
 }

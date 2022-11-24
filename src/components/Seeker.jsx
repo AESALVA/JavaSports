@@ -14,7 +14,7 @@ const Seeker = ({ search, setSearch }) => {
           aria-label="Search"
         />
         <Link to="/SearchContainer">
-          <Button className="btn-gray" size="sm">
+          <Button className="btn-gray p-2" size="sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

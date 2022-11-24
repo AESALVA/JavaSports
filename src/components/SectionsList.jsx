@@ -7,14 +7,14 @@ import CardGroup from "react-bootstrap/CardGroup";
 import { Link } from "react-router-dom";
 import News from "./News";
 
-const SectionsList = ({ mockSections }) => {
+const SectionsList = ({ articles }) => {
   return (
     <Container>
       <Container className="ContainerSectionsList text-center">
         <div className="SectionOne ">
           <Card>
             <Card.Img variant="top" src="/img/imgSection.webp" />
-            <Card.Title className="">{mockSections.title}</Card.Title>
+            <Card.Title className="">{articles[0].title}</Card.Title>
             <Card.Body className="">
               <Card.Text>
                 Some quick example text to build on the card title and make up
