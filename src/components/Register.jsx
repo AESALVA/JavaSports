@@ -6,12 +6,16 @@ import { Link, useNavigate } from "react-router-dom";
 import ModalDialog from "react-bootstrap/ModalDialog";
 import { useEffect } from "react";
 import validator from "validator";
+import { CloseButton } from "react-bootstrap";
 
 const Register = ({ setAuth, addUser }) => {
   const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
   const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/");
+    setShow(false);
+  };
 
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
@@ -64,7 +68,8 @@ const Register = ({ setAuth, addUser }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} contentClassName="bg-dark">
-        <Modal.Header className="border-danger bg-dark">
+        <Modal.Header className="border-danger bg-dark  flex-column ">
+          <CloseButton onClick={handleClose} variant="white" />
           <Link className="mx-auto" to="/">
             <img
               className="bg-dark logo"
