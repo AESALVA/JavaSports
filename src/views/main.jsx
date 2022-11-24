@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
 
-const Main = ({auth, login, logout, validate, setAuth, mockSections, addUser, setCommentsContainer}) => {
+const Main = ({auth, login, logout, validate, setAuth, mockSections, addUser, commentsContainer}) => {
 
   return (
     <Container fluid className="min-vh-100 d-flex flex-column p-0">
@@ -20,7 +20,7 @@ const Main = ({auth, login, logout, validate, setAuth, mockSections, addUser, se
         <Route element={<Landing />} path="/"></Route>
         <Route element={<Register setAuth={setAuth} addUser={addUser}/>} path="/Register"></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route element={<SectionsContainer auth={auth} setCommentsContainer={setCommentsContainer}/>} path="/SectionsContainer"></Route>
+        <Route element={<SectionsContainer auth={auth} commentsContainer={commentsContainer}/>} path="/SectionsContainer"></Route>
         <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
       </Routes>
       <Footer />

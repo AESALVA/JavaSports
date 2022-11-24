@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Sections from "./Sections";
 
-const SectionsContainer = ({auth, setCommentsContainer}) => {
+const SectionsContainer = ({auth, commentsContainer}) => {
   const MockArticle = 
     {
       id: "1",
@@ -32,7 +32,7 @@ const SectionsContainer = ({auth, setCommentsContainer}) => {
   return (
     <>
       <Sections
-        setCommentsContainer={setCommentsContainer}
+        commentsContainer={commentsContainer}
         article={article}
         auth={auth}
       />

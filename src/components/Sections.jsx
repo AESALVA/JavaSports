@@ -12,32 +12,44 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
 import validator from "validator";
+import { useEffect } from "react";
 
-const Sections = ({ article, auth, setCommentsContainer }) => {
-  const [comment, setComment] = useState({ comment: "", user: "" });
+const Sections = ({ article, auth, commentsContainer }) => {
+  const [comment, setComment] = useState({ comment: "", user: "", likes:[]  });
   const [showComment, setShowComment] = useState([]);
   
   const addLikes = (comment)=>{
     const aux = [...showComment];
     aux.map((a)=>{
-     if(a.comment === comment.comment){ a.likes = [...a.likes, auth.user]}
+     if(a.comment === comment.comment){ a.likes = [...a.likes, auth.user];
+      fetch(`https://java-sports-back.vercel.app/comments/update/${a._id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+          comment: a.comment,
+          user: a.user,
+          likes: a.likes, 
+      }),
+      })
+ console.log(a._id)
+    }
     })
    setShowComment([...aux]);
    console.log(showComment)
+
+   
   }
 
-  const addCommentsContainer = ()=>{
-    setCommentsContainer([...showComment, comment]);
-  }
+ 
   const addComment = () => {
     setShowComment([...showComment, comment]);
-    setComment({ comment: "", user: auth.user });
-    addCommentsContainer();
+    setComment({ comment: "", user: auth.user, likes:[]  });
+   
 
-    fetch('http://localhost:4000/comments',{
+    fetch('https://java-sports-back.vercel.app/comments/newComment',{
   method: "POST",
   headers: {"Content-Type":"application/json"},
-  body: JSON.stringify(showComment),
+  body: JSON.stringify(comment),
 })
 
   };
@@ -47,6 +59,12 @@ const Sections = ({ article, auth, setCommentsContainer }) => {
       validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 4, max: 100})
     );
   }
+
+useEffect(() => {
+  setShowComment(commentsContainer)
+}, [])
+
+
   return (
     <Container className="sections pb-5">
       <Card className="mx-auto text-center sections border-0 ">

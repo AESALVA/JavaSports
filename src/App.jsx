@@ -37,7 +37,7 @@ const addUser = (u)=>{
 const Mock = 
     {
       id: "1",
-      categories: "football",
+      categories: "football", 
       title:
         "Gabriel Jesus is not the perfect striker but..",
       img: "/img/imgSection.webp",
@@ -61,6 +61,12 @@ const Mock =
     setMockSections(Mock)
   }, []);
 
+  useEffect(() => {
+    fetch('https://java-sports-back.vercel.app/comments/all')
+    .then((res)=>res.json())
+    .then((json)=>setCommentsContainer(json))
+    
+  }, [])
   
 
   return (
@@ -72,7 +78,7 @@ const Mock =
         validate={validate}
         auth={auth}
         addUser={addUser}
-        setCommentsContainer={setCommentsContainer}
+        commentsContainer={commentsContainer}
         mockSections={mockSections}
         />
       </BrowserRouter>

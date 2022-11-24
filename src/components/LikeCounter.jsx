@@ -17,7 +17,7 @@ const addCounter = (c, q) => {
   
   
   return (
-    <div><Button variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{counter>0 && counter}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
+    <div><Button disabled={comment.likes.find(c=>c===comment.user)} variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{counter>0 && counter}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
     </div>
   )
 }
