@@ -7,7 +7,7 @@ import "../styles/management.css";
 import { useState } from "react";
 import Search from "./Seeker";
 
-const TableManagement = ({ view, mockSections, mocksUsers }) => {
+const TableManagement = ({ view, articles, users }) => {
   let columnTwo;
   let columnThree;
   let columnFour;
@@ -15,11 +15,11 @@ const TableManagement = ({ view, mockSections, mocksUsers }) => {
   if (view === "news") {
     columnTwo = "Noticia";
     columnThree = "Categoria";
-    infoTable = mockSections;
+    infoTable = articles;
   } else {
     columnTwo = "Nombre completo";
     columnThree = "Rol";
-    infoTable = mocksUsers; //filtrar por role administrativo para la otra tabs
+    infoTable = users; //filtrar por role administrativo para la otra tabs
   }
   const MockArticles = [
     {
@@ -198,17 +198,17 @@ const TableManagement = ({ view, mockSections, mocksUsers }) => {
             </thead>
             <tbody>
               {view === "news"
-                ? MockArticles.map((article, i) => (
+                ? articles.map((article, i) => (
                     <tr id={i} onClick={(e) => viewArticle(article)}>
                       <td>{article.id}</td>
                       <td>{article.title}</td>
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : mocksUsers.map((article, i) => (
+                : users.map((article, i) => (
                     <tr id={i} onClick={(e) => viewArticle(article)}>
                       <td>{article.id}</td>
-                      <td>{article.user}</td>
+                      <td>{article.name}</td>
                       <td>{article.role}</td>
                     </tr>
                   ))}

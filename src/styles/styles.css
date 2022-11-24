@@ -200,6 +200,10 @@ body {
   border: 1px solid var(--redColor) !important;
 }
 
+#modalLogin span {
+  color: var(--redColor);
+}
+
 /* Para que ocupe todo el main */
 .main-container {
   min-height: 100vh;

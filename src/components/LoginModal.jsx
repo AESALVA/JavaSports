@@ -50,10 +50,17 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   useEffect(() => {}, [name, pass]);
 
   const handleClick = () => {
+    navigate("/");
     logout();
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setName("");
+    setPass("");
+    setFirstName(true);
+    setFirstPass(true);
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   return (
@@ -92,7 +99,9 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         </Link>
       )}
 
+      {/* MODAL */}
       <Modal
+        id="modalLogin"
         show={show}
         onHide={handleClose}
         keyboard={false}
@@ -122,7 +131,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
               <Form.Label>
                 Usuario{" "}
                 {!validateName(name) && !firstName && (
-                  <span className="text-danger">Debe llenar este campo</span>
+                  <span>Debe llenar este campo</span>
                 )}
               </Form.Label>
               <Form.Control
@@ -132,14 +141,14 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 onBlur={() => setFirstName(false)}
                 className="p-3"
                 type="text"
-                placeholder="JavaSports"
+                placeholder="Usuario"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>
                 Contraseña{" "}
                 {!validatePass(pass) && !firstPass && (
-                  <span className="text-danger">Debe llenar este campo</span>
+                  <span>Debe llenar este campo</span>
                 )}
               </Form.Label>
               <Form.Control
@@ -149,7 +158,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 onBlur={() => setFirstPass(false)}
                 className="p-3"
                 type="password"
-                placeholder=""
+                placeholder="Contraseña"
               />
             </Form.Group>
             <Form.Text className="text-danger">
@@ -164,10 +173,9 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
           </Form>
         </Modal.Body>
         <Button
-          className="m-auto px-5 mb-5"
+          className="m-auto px-5 mb-5  btn-red btn-red-border"
           size="lg"
           type="submit"
-          variant="danger"
           onClick={(e) => handleValidation(e)}
         >
           <h4 className="m-auto py-1 px-4">Iniciar</h4>

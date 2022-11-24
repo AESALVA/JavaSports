@@ -7,7 +7,7 @@ import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
 
-const Management = ({ mockSections, mocksUsers }) => {
+const Management = ({ articles, users }) => {
   return (
     <Container className="main-container d-flex flex-column">
       <div>
@@ -22,18 +22,10 @@ const Management = ({ mockSections, mocksUsers }) => {
           className=" title-tabs"
         >
           <Tab eventKey="news" title="Noticias de JavaSports" className="">
-            <TableManagement
-              view="news"
-              mockSections={mockSections}
-              mocksUsers={mocksUsers}
-            />
+            <TableManagement view="news" articles={articles} users={users} />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
-            <TableManagement
-              view="users"
-              mockSections={mockSections}
-              mocksUsers={mocksUsers}
-            />
+            <TableManagement view="users" articles={articles} users={users} />
           </Tab>
           <Tab
             eventKey="administrativeStaff"
@@ -42,8 +34,8 @@ const Management = ({ mockSections, mocksUsers }) => {
           >
             <TableManagement
               view="administrativeStaff"
-              mockSections={mockSections}
-              mocksUsers={mocksUsers}
+              articles={articles}
+              users={users}
             />
           </Tab>
         </Tabs>
