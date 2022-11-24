@@ -1,6 +1,5 @@
 .footer {
   background-color: var(--darkColor);
-
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -14,6 +13,10 @@
   color: var(--redColor);
 }
 
+#footer-links ul {
+  display: flex;
+}
+
 #title {
   font-weight: bold;
   text-align: center;
@@ -25,9 +28,72 @@
   font-size: 12px;
 }
 
+#footer-logo img {
+  width: 100px;
+}
+
+#footer-socialIcons ul {
+  display: flex;
+}
+
 #footer-socialIcons ul a {
   background-color: var(--grayColor);
   margin: 0.7rem;
   border-radius: 100%;
   padding: 0.3rem;
+}
+
+#footer-socialIcons ul a:hover {
+  background-color: var(--redColor);
+}
+
+/* BREAKPOINTS */
+@media (min-width: 768px) {
+  #footer-logo img {
+    width: 120px;
+  }
+  #footer-links h6 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  #footer-logo img {
+    width: 130px;
+  }
+  #footer-links h6 {
+    font-size: 18px;
+  }
+  #title {
+    font-size: 19px;
+  }
+
+  #sub-title {
+    font-size: 14px;
+  }
+  #footer-socialIcons ul a {
+    padding: 0.5rem;
+  }
+  #footer-socialIcons ul a svg {
+    width: 28px;
+  }
+}
+@media (min-width: 1200px) {
+  #footer-logo img {
+    width: 140px;
+  }
+  #footer-links h6 {
+    font-size: 19px;
+  }
+  #title {
+    font-size: 19px;
+  }
+
+  #sub-title {
+    font-size: 14px;
+  }
+
+  #footer-socialIcons ul a svg {
+    width: 30px;
+  }
 }
