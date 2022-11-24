@@ -21,6 +21,7 @@ const Register = ({setAuth, addUser}) => {
     const [firstName, setFirstName] = useState(true);
     const [firstMail, setFirstMail] = useState(true);
     const [firstPass, setFirstPass] = useState(true);
+    
     const validateName = (n) => {
       return (
         validator.matches(n, "^[a-zA-Z ]*$") && validator.isLength(n, {min: 5, max: 36})

@@ -1,0 +1,89 @@
+:root {
+  --darkColor: #33313b;
+  --grayColor: #413f4a;
+  --redColor: #d05037;
+  --orangeColor: #ff4c29;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-widht: 768px) {
+  #logocontainer{
+    border: none;
+  }
+}
+*{
+  transition: all 0.6s;
+}
+
+
+
+#main404{
+  font-family: 'Lato', sans-serif;
+  background-color:  var(--darkColor);
+  color: var(--orangeColor);
+  margin: 0;
+  display: table;
+  width: 100%;
+  min-height:90vh;
+  text-align: center;
+  background-image:url("../src/components/img/arbitro.png");
+  background-position: 50% 10% ;
+  background-size: auto 40%;
+  background-repeat: no-repeat; 
+}
+.containerE404{
+  background-color: var(--darkColor);
+}
+.container404{
+  display: table-cell;
+  vertical-align: middle;
+   
+}
+
+.container404 h1{
+  font-size: 50px;
+  display: inline-block;
+  padding-right: 12px;
+  animation: type .5s alternate infinite;
+}
+
+@keyframes type{
+  from{box-shadow: inset -3px 0px 0px #888;}
+  to{box-shadow: inset -3px 0px 0px transparent;}
+}

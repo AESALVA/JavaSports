@@ -9,19 +9,81 @@ import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
 import SectionsContainer from "../components/SectionsContainer";
 import SectionsList from "../components/SectionsList";
+import E404 from "../components/E404";
+import Contact from "../components/Contact";
+import Management from "../components/Management";
+import SearchContainer from "../components/SearchContainer";
 
-const Main = ({auth, login, logout, validate, setAuth, mockSections, addUser, commentsContainer}) => {
-
+const Main = ({
+  auth,
+  login,
+  logout,
+  validate,
+  setAuth,
+  mockSections,
+  addUser,
+  search,
+  setSearch,
+  articles,
+  setArticles,
+  users,
+  setUsers,
+}) => {
   return (
-    <Container fluid className="min-vh-100 d-flex flex-column p-0">
-      <Header validate={validate} login={login} auth={auth} logout={logout}/>
+    <Container fluid className="main-container d-flex flex-column p-0">
+      <Header
+        validate={validate}
+        login={login}
+        auth={auth}
+        logout={logout}
+        search={search}
+        setSearch={setSearch}
+      />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
-        <Route element={<Landing />} path="/"></Route>
-        <Route element={<Register setAuth={setAuth} addUser={addUser}/>} path="/Register"></Route>
+        <Route
+          element={
+            <SearchContainer articles={articles} search={search} auth={auth} />
+          }
+          path="/SearchContainer"
+        ></Route>
+        <Route
+          element={<Landing articles={articles} auth={auth} />}
+          path="/"
+        ></Route>
+        <Route
+          element={<Register setAuth={setAuth} addUser={addUser} />}
+          path="/Register"
+        ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route element={<SectionsContainer auth={auth} commentsContainer={commentsContainer}/>} path="/SectionsContainer"></Route>
-        <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
+
+        <Route
+          element={<SectionsContainer />}
+          path="/SectionsContainer"
+        ></Route>
+        <Route
+          element={<SectionsList mockSections={mockSections} />}
+          path="/SectionsList"
+        ></Route>
+        <Route element={<E404 />} path="/404"></Route>
+        <Route element={<Contact />} path="/Contacto"></Route>
+
+        <Route element={<E404 />} path="/404"></Route>
+
+        <Route
+          element={<SectionsContainer auth={auth} />}
+          path="/SectionsContainer"
+        ></Route>
+        <Route
+          element={<SectionsList mockSections={mockSections} />}
+          path="/SectionsList"
+        ></Route>
+        <Route
+          element={
+            <Management mockSections={mockSections} mocksUsers={users} />
+          }
+          path="/Management"
+        ></Route>
       </Routes>
       <Footer />
     </Container>

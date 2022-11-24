@@ -46,6 +46,22 @@ span .navbar-Toggle {
   color: var(--grayColor);
 }
 
+.no-underline {
+  text-decoration: none;
+}
+.btn-search {
+  background-color: transparent;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 0.375rem;
+}
+.btn-search:hover {
+  background-color: var(--grayColor);
+}
+.btn-search:active {
+  background-color: var(--grayColor) !important;
+}
+
 /* BREAKPOINTS */
 
 /* MD */
@@ -54,5 +70,12 @@ span .navbar-Toggle {
     border-right: 0.5px solid var(--redColor);
     border-left: 0.5px solid transparent;
     margin: 0px;
+  }
+}
+
+/* Solo en small */
+@media (max-width: 767.98px) {
+  #basic-nav-dropdown {
+    padding: 0.5rem;
   }
 }

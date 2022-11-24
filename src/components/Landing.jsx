@@ -1,21 +1,20 @@
 import { Button } from "react-bootstrap";
-import { useState } from "react";
 import LoginModal from "./LoginModal";
 import Sections from "./Sections";
 import SectionsContainer from "./SectionsContainer";
-
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import "../styles/landing.css";
 
 import NewsList from "./NewsList";
 import CarouselHome from "./CarouselHome";
+import SearchContainer from "./SearchContainer";
 
-const Landing = () => {
-  // return <div>LANDING</div>;
-
+const Landing = ({ articles, auth }) => {
   return (
     <>
-      {/* <CarouselHome /> */}
-      <NewsList />
+      <NewsList MockArticle={articles} auth={auth} />
     </>
   );
 };

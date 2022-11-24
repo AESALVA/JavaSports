@@ -1,0 +1,6 @@
+/* Oculto boton */
+@media (max-width: 767.98px) {
+  #btn-login {
+    display: none;
+  }
+}
