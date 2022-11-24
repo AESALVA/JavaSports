@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../components/img/logoJScopia.png";
 import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
-/* import "../styles/joaquin.css"; */
 
 function Footer() {
   return (
@@ -22,7 +21,7 @@ function Footer() {
 
 
 
-            <Link to="/" className="no-underline"><h6>Home</h6></Link>            
+            <Link to="" className="no-underline"><h6>Home</h6></Link>            
             <NavDropdown
                   title="Secciones"
                   id="basic-nav-dropdown"
@@ -41,7 +40,7 @@ function Footer() {
                     <Link to="/SectionsList" className="no-underline"> Boxeo</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
-            <Link to=" " className="no-underline"><h6>Buscar</h6></Link>
+            <Link to="/Register" className="no-underline"><h6>Registrate</h6></Link>
 
         </ul>
     </div>
@@ -49,7 +48,7 @@ function Footer() {
     <div id="col2footer" className="col d-flex justify-content-center align-items-center  border-end border-danger">
         <ul className="list-unstyled">
 
-            <Link to="" className="no-underline"><h6>Favoritos</h6></Link>
+            <Link to="" className="no-underline"><h6>Buscar</h6></Link>
             <Link to="/Aboutus" className="no-underline"><h6>Sobre nosotros</h6></Link>
             <Link to="/Contacto" className="no-underline"><h6>Contacto</h6></Link>
 

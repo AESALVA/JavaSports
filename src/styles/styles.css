@@ -163,16 +163,14 @@ body {
   ;
 }
 .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -300%);
+  padding: 5rem 3rem;
   opacity: 100%;
   color:var(--orangeColor);
   font-weight: 800; 
 }
 #formulario{
   padding: 1rem;
+  margin: 1rem;
   background-color: #33313b;
   border: solid 3px #d05037;
   border-radius: 1rem;
