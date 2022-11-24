@@ -28,6 +28,7 @@ const Main = ({
   setArticles,
   users,
   setUsers,
+  commentsContainer,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -58,7 +59,7 @@ const Main = ({
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
 
         <Route
-          element={<SectionsContainer />}
+          element={<SectionsContainer commentsContainer={commentsContainer} />}
           path="/SectionsContainer"
         ></Route>
         <Route
@@ -71,7 +72,7 @@ const Main = ({
         <Route element={<E404 />} path="/404"></Route>
 
         <Route
-          element={<SectionsContainer auth={auth} />}
+          element={<SectionsContainer auth={auth} commentsContainer={commentsContainer} />}
           path="/SectionsContainer"
         ></Route>
         <Route

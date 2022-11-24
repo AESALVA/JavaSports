@@ -11,7 +11,6 @@ import { useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
-// import Sections from "./Sections";
 import validator from "validator";
 import { useEffect } from "react";
 
