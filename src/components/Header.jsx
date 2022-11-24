@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Button } from "react-bootstrap";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useState } from "react";
 import LoginModal from "./LoginModal";
 import Form from "react-bootstrap/Form";
@@ -117,15 +117,21 @@ const Header = ({
             </div>
             {auth.role === "admin" && (
               <Link to="/Management">
-                <Button className="btn-gray btn-gray-border ms-1">
-                  <FontAwesomeIcon icon={faHouseUser} />
-                </Button>
+                <OverlayTrigger
+                  key="btn-login"
+                  placement="bottom"
+                  overlay={<Tooltip id="button">Administración</Tooltip>}
+                >
+                  <Button className="btn-gray btn-gray-border ms-1">
+                    <FontAwesomeIcon icon={faHouseUser} />
+                  </Button>
+                </OverlayTrigger>
               </Link>
             )}
           </div>
         </Container>
       </Navbar>
-      <Navbar className="dark-background-color" expand="md">
+      <Navbar className=" dark-background-color" expand="md">
         <Container className="">
           <Navbar.Brand className="d-md-none">
             <Link to="/">

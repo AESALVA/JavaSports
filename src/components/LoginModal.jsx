@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import ModalDialog from "react-bootstrap/ModalDialog";
 import { Link, useNavigate } from "react-router-dom";
-import { NavLink } from "react-bootstrap";
+import { NavLink, OverlayTrigger, Tooltip } from "react-bootstrap";
 import validator from "validator";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -65,14 +65,20 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
           Ingresar
         </Button>
       ) : (
-        <Button
-          className=""
-          id="btn-login"
-          variant="outline-danger"
-          onClick={handleClick}
+        <OverlayTrigger
+          key="btn-login"
+          placement="bottom"
+          overlay={<Tooltip id="button">Cerrar sesión</Tooltip>}
         >
-          <FontAwesomeIcon icon={faUser} /> {auth.role}
-        </Button>
+          <Button
+            className="p-2"
+            id="btn-login"
+            variant="outline-danger"
+            onClick={handleClick}
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </Button>
+        </OverlayTrigger>
       )}
       {!auth.user ? (
         <Link className="modal_styles link_styles" onClick={handleShow}>
@@ -80,7 +86,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         </Link>
       ) : (
         <Link className="modal_styles link_styles" onClick={handleClick}>
-          <FontAwesomeIcon icon={faUser} className="me-2" /> {auth.role}
+          <FontAwesomeIcon icon={faUser} className="me-2" /> Cerrar sesión
         </Link>
       )}
 
