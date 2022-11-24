@@ -134,6 +134,16 @@ body {
 }
 .integrante {
   border-bottom: 1px solid #d05037;
+  max-width:70rem;
+  margin: 0 auto;
+}
+.integranteu {
+  max-width:70rem;
+  margin: 0 auto;
+}
+.textaboutus{
+  max-width: 50rem;
+  margin: 0 auto;
 }
 .titulo-aboutus {
   text-decoration: underline solid var(--orangeColor);
