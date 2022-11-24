@@ -59,14 +59,14 @@ const Main = ({
           path="/Register"
         ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route
+        {/* <Route
           element={<SectionsContainer />}
           path="/SectionsContainer"
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           element={<SectionsList mockSections={mockSections} />}
           path="/SectionsList"
-        ></Route>
+        ></Route> */}
         <Route element={<E404 />} path="/404"></Route>
         <Route element={<Contact />} path="/Contact"></Route>
 
@@ -77,7 +77,7 @@ const Main = ({
           path="/SectionsContainer"
         ></Route>
         <Route
-          element={<SectionsList mockSections={mockSections} />}
+          element={<SectionsList articles={articles} />}
           path="/SectionsList"
         ></Route>
         <Route
