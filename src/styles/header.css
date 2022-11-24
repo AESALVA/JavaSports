@@ -1,6 +1,6 @@
 #headerLogo {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 100%;
 }
 
@@ -15,6 +15,13 @@ span .navbar-Toggle {
 
 #headerLinks .nav-link {
   color: white;
+}
+
+#headerLinks {
+  margin-top: 1.5rem;
+}
+#headerLinks a {
+  font-size: 14px;
 }
 
 #header-social-icons {
@@ -62,6 +69,18 @@ span .navbar-Toggle {
   background-color: var(--grayColor) !important;
 }
 
+#header-position {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+}
+
+.invisible-links {
+  visibility: hidden;
+  width: 120px;
+  height: 40px;
+}
+
 /* BREAKPOINTS */
 
 /* MD */
@@ -70,6 +89,38 @@ span .navbar-Toggle {
     border-right: 0.5px solid var(--redColor);
     border-left: 0.5px solid transparent;
     margin: 0px;
+  }
+  #headerLinks {
+    margin-top: 0rem;
+  }
+  #headerLinks a {
+    font-size: 11px;
+  }
+  .title {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  #headerLinks a {
+    font-size: 14px;
+  }
+  .title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #headerLinks a {
+    font-size: 15px;
+  }
+  .title {
+    font-size: 19px;
+  }
+
+  #header-social-icons a svg {
+    width: 18px;
+    height: 18px;
   }
 }
 

@@ -59,25 +59,19 @@ const Main = ({
           path="/Register"
         ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
-        <Route element={<SectionsContainer />} path="/SectionsContainer"></Route>
-        <Route element={<SectionsList mockSections={mockSections}/>} path="/SectionsList" ></Route>
-        <Route element={<E404/>} path="/404"></Route>
-        <Route element={<Contact/>} path="/Contacto"></Route>
-
         <Route element={<E404 />} path="/404"></Route>
+        <Route element={<Contact />} path="/Contact"></Route>
 
         <Route
           element={<SectionsContainer auth={auth} />}
           path="/SectionsContainer"
         ></Route>
         <Route
-          element={<SectionsList mockSections={mockSections} />}
+          element={<SectionsList articles={articles} />}
           path="/SectionsList"
         ></Route>
         <Route
-          element={
-            <Management mockSections={mockSections} mocksUsers={users} />
-          }
+          element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
         ></Route>
       </Routes>
