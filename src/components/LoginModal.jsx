@@ -25,6 +25,8 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
       login(name);
       navigate("/");
       handleClose();
+      setName("");
+      setPass("");
     }
   };
   const validateName = (n) => {
@@ -147,7 +149,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 onBlur={() => setFirstPass(false)}
                 className="p-3"
                 type="password"
-                placeholder="***** JavaSports *****"
+                placeholder=""
               />
             </Form.Group>
             <Form.Text className="text-danger">
