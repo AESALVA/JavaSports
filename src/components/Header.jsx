@@ -162,8 +162,12 @@ const Header = ({
                     <Link to="/SectionsList"> Boxeo</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Link className="header-border p-2">Contacto</Link>
-                <Link className=" p-2">Sobre Nosotros</Link>
+                <Link to="/Contact" className="header-border p-2">
+                  Contacto
+                </Link>
+                <Link to="/Aboutus" className=" p-2">
+                  Sobre Nosotros
+                </Link>
 
                 {/* Muestro opcion admin solo si esta logueado el administrador */}
                 {auth.role === "admin" && (

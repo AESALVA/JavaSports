@@ -138,6 +138,35 @@ body {
 .titulo-aboutus {
   text-decoration: underline solid var(--orangeColor);
 }
+#bodyContacto{
+  min-height: 70vh;
+}
+.maps{
+  max-width: 350px;
+}
+.imgbanner{
+  width: 100%;
+  background-image: url(https://www.fundacioncanal.com/canaleduca/wp-content/uploads/2016/05/4_16_destacado.jpg);
+  height: 405px;
+  background-position: center;
+  background-size: cover;
+  ;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -300%);
+  opacity: 100%;
+  color:var(--orangeColor);
+  font-weight: 800; 
+}
+#formulario{
+  padding: 1rem;
+  background-color: #33313b;
+  border: solid 3px #d05037;
+  border-radius: 1rem;
+}
 
 /* ESTILO PARA BOTON GRIS  */
 .btn-gray {
@@ -190,6 +219,20 @@ body {
   }
 }
 
+@media (max-width: 767.98px) {
+  .btn-login {
+    display: none;
+  }
+  #logofooter{
+    border: none !important; 
+  }
+  #col2footer{
+    border: none !important; 
+  }
+  #rightstext{
+    padding: 0 2rem ;
+  }
+}
 @media (min-width: 767.98px) {
   .link_styles {
     display: none;
