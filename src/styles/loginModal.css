@@ -9,6 +9,10 @@
   #btn-login {
     font-size: 13px;
   }
+  /* #btn-login svg {
+    width: 12px;
+    height: 15px;
+  } */
 }
 
 @media (min-width: 1200px) {

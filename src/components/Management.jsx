@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -6,8 +6,15 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Management = ({ articles, users }) => {
+const Management = ({ auth, articles, users }) => {
+  const navigate = useNavigate();
+  // solo lo puede visualizar el admin
+  useEffect(() => {
+    auth.role !== "admin" && navigate("/");
+  }, [auth]);
+
   return (
     <Container className="main-container d-flex flex-column">
       <div>

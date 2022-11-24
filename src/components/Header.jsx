@@ -49,7 +49,7 @@ const Header = ({
           <div className="title">JAVASPORTS</div>
           {/* BOTON INGRESAR */}
           <div className="d-flex">
-            <div className={auth.role === "admin" ? "invisible" : "visible"}>
+            <div className={`${auth.role === "admin" && "invisible-links"}`}>
               {auth.role !== "admin" && (
                 <div id="header-social-icons">
                   {/* facebook */}
@@ -133,6 +133,7 @@ const Header = ({
           </div>
         </Container>
       </Navbar>
+      {/* NAVBAR EN MODO SMALL */}
       <Navbar className=" dark-background-color" expand="md">
         <Container className="">
           <Navbar.Brand className="d-md-none">

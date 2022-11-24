@@ -75,6 +75,12 @@ span .navbar-Toggle {
   width: 100vw;
 }
 
+.invisible-links {
+  visibility: hidden;
+  width: 120px;
+  height: 40px;
+}
+
 /* BREAKPOINTS */
 
 /* MD */

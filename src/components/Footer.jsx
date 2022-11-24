@@ -9,7 +9,9 @@ function Footer() {
     <>
       <div className="footer mt-auto col-12 col-md-8">
         <div id="footer-logo" className="">
-          <img src="/img/LogoJS.jpg" className="logo" alt="logo" />
+          <Link to="/">
+            <img src="/img/LogoJS.jpg" className="logo" alt="logo" />
+          </Link>
         </div>
         <div id="footer-links">
           <ul className="list-unstyled ">

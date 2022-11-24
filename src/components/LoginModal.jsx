@@ -50,7 +50,6 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   useEffect(() => {}, [name, pass]);
 
   const handleClick = () => {
-    navigate("/");
     logout();
   };
 
@@ -74,20 +73,17 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
           Ingresar
         </Button>
       ) : (
-        <OverlayTrigger
-          key="btn-login"
-          placement="bottom"
-          overlay={<Tooltip id="button">Cerrar sesión</Tooltip>}
-        >
-          <Button
-            className="p-2"
-            id="btn-login"
-            variant="outline-danger"
-            onClick={handleClick}
+        <Link onClick={handleClick}>
+          <OverlayTrigger
+            key="btn-login"
+            placement="bottom"
+            overlay={<Tooltip id="button">Cerrar sesión</Tooltip>}
           >
-            <FontAwesomeIcon icon={faUser} />
-          </Button>
-        </OverlayTrigger>
+            <Button className="p-2" id="btn-login" variant="outline-danger">
+              <FontAwesomeIcon icon={faUser} />
+            </Button>
+          </OverlayTrigger>
+        </Link>
       )}
       {!auth.user ? (
         <Link className="modal_styles link_styles" onClick={handleShow}>

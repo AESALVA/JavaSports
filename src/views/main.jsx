@@ -71,7 +71,7 @@ const Main = ({
           path="/SectionsList"
         ></Route>
         <Route
-          element={<Management articles={articles} users={users} />}
+          element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
         ></Route>
       </Routes>
