@@ -11,10 +11,10 @@ function App() {
 
   // LOGIN
 
- 
-  const [users, setUsers] = useState([{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }]);
+  const [usersA, setUsersA] = useState();
+  
+  const [users, setUsers] = useState([{ user: "JavaSports", password: "JavaSports_1", role: "admin" }]);
 
-  const USERS = [{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }];
 
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
@@ -24,15 +24,15 @@ function App() {
   };
 
   const validate = (u, p) => {
-    const userFound = users.find((user) => user.user === u);
-    const passOk = p === userFound.pass;
-
+    const userFound = usersA.find((user) => user.name === u);
+    const passOk = p === userFound.password;
     return userFound && passOk;
   };
+ 
   const login = (u) => {
-    const userFound = users.find((user) => user.user === u);
+    const userFound = usersA.find((user) => user.name === u);
 
-    setAuth({ user: userFound.user, role: userFound.role });
+    setAuth({ user: userFound.name, role: userFound.role });
   };
   const logout = () => {
     setAuth({ user: "", role: "" });
@@ -92,12 +92,13 @@ function App() {
 
 
   // USUARIOS
-  const [usersA, setUsersA] = useState([{}]);
+  
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/users/all")
       .then((res) => res.json())
       .then((json) => setUsersA(json));
   }, []);
+
 
   return (
     <BrowserRouter>
