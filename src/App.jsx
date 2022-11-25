@@ -20,7 +20,11 @@ function App() {
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
   const addUser = (u) => {
-    setUsers([...users, u]);
+    fetch("https://java-sports-back.vercel.app/users/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(u),
+    });
   };
 
   const validate = (u, p) => {

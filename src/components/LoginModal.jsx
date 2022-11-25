@@ -79,7 +79,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
             overlay={<Tooltip id="button">Cerrar sesión</Tooltip>}
           >
             <Button className="p-2" id="btn-login" variant="outline-danger">
-              <FontAwesomeIcon icon={faUser} />
+              <FontAwesomeIcon icon={faUser} />{' '}{auth.user}
             </Button>
           </OverlayTrigger>
         </Link>

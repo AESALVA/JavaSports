@@ -60,7 +60,7 @@ const Register = ({ setAuth, addUser }) => {
   const handleClick = (e) => {
     e.preventDefault();
     setAuth({ user: name, pass: pass, role: "user" });
-    addUser({ user: name, pass: pass, role: "user" });
+    addUser({ name: name, mail: mail , password: pass, role: "user" });
     navigate("/");
   };
 
