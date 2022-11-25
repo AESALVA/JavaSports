@@ -15,18 +15,18 @@ import CloseButton from "react-bootstrap/CloseButton";
 const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState(true);
-  const [firstPass, setFirstPass] = useState(true);
+  const [firstPassword, setFirstPassword] = useState(true);
   const navigate = useNavigate();
   const handleValidation = (e) => {
     e.preventDefault();
-    if (validate(name, pass)) {
+    if (validate(name, password)) {
       login(name);
       navigate("/");
       handleClose();
       setName("");
-      setPass("");
+      setPassword("");
     }
   };
   const validateName = (n) => {
@@ -35,7 +35,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
       validator.isLength(n, { min: 5, max: 36 })
     );
   };
-  const validatePass = (n) => {
+  const validatePassword = (n) => {
     return (
       validator.isLength(n, { min: 8, max: 20 }) &&
       validator.isStrongPassword(n, {
@@ -47,7 +47,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
     );
   };
 
-  useEffect(() => {}, [name, pass]);
+  useEffect(() => {}, [name, password]);
 
   const handleClick = () => {
     logout();
@@ -55,13 +55,12 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
 
   const handleClose = () => {
     setName("");
-    setPass("");
+    setPassword("");
     setFirstName(true);
-    setFirstPass(true);
+    setFirstPassword(true);
     setShow(false);
   };
   const handleShow = () => setShow(true);
-
   return (
     <>
       {!auth.user ? (
@@ -143,15 +142,15 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>
                 Contraseña{" "}
-                {!validatePass(pass) && !firstPass && (
+                {!validatePassword(password) && !firstPassword && (
                   <span>Debe llenar este campo</span>
                 )}
               </Form.Label>
               <Form.Control
                 maxLength="40"
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-                onBlur={() => setFirstPass(false)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onBlur={() => setFirstPassword(false)}
                 className="p-3"
                 type="password"
                 placeholder="Contraseña"

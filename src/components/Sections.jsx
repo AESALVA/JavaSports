@@ -11,16 +11,55 @@ import { useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
-// import Sections from "./Sections";
+import validator from "validator";
+import { useEffect } from "react";
 
-const Sections = ({ article, auth }) => {
-  const [comment, setComment] = useState({ comment: "", user: "" });
+const Sections = ({ article, auth, commentsContainer }) => {
+  const [comment, setComment] = useState({ comment: "", user: "", likes: [] });
   const [showComment, setShowComment] = useState([]);
+
+  const addLikes = (comment) => {
+    const aux = [...showComment];
+    aux.map((a) => {
+      if (a.comment === comment.comment) {
+        a.likes = [...a.likes, auth.user];
+        fetch(`https://java-sports-back.vercel.app/comments/update/${a._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            comment: a.comment,
+            user: a.user,
+            likes: a.likes,
+          }),
+        });
+        console.log(a._id);
+      }
+    });
+    setShowComment([...aux]);
+    console.log(showComment);
+  };
 
   const addComment = () => {
     setShowComment([...showComment, comment]);
-    setComment({ comment: "", user: auth.user });
+    setComment({ comment: "", user: auth.user, likes: [] });
+
+    fetch("https://java-sports-back.vercel.app/comments/newComment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(comment),
+    });
   };
+
+  const validateComments = (n) => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") &&
+      validator.isLength(n, { min: 4, max: 100 })
+    );
+  };
+
+  useEffect(() => {
+    setShowComment(commentsContainer);
+  }, []);
 
   return (
     <Container className="sections py-5">
@@ -42,25 +81,28 @@ const Sections = ({ article, auth }) => {
         <input
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
+          maxLength={100}
           type="text"
           value={comment.comment}
-          onChange={(e) => setComment({ comment: e.target.value, user: auth })}
+          onChange={(e) =>
+            setComment({ comment: e.target.value, user: auth.user, likes: [] })
+          }
         />
         <Button
           variant="secondary"
-          className="my-3"
-          onClick={() => comment.comment && addComment()}
+          className="mt-2"
+          onClick={() => validateComments(comment.comment) && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
         </Button>
         {showComment.map((comment, i) => (
           <Row key={i} className="p-4">
             <Col>
-              <FontAwesomeIcon icon={faUser} /> ({auth.user})
+              <FontAwesomeIcon icon={faUser} /> ({comment.user})
             </Col>
             <span> {comment.comment}</span>
             <span>
-              <LikeCounter />
+              <LikeCounter addLikes={addLikes} comment={comment} />
             </span>
           </Row>
         ))}

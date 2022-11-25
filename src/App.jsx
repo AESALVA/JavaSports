@@ -10,10 +10,12 @@ function App() {
   const [search, setSearch] = useState("");
 
   // LOGIN
-  const USERS = [{ user: "JavaSports", pass: "JavaSports_1", role: "admin" }];
-  const [users, setUsers] = useState([
-    { user: "JavaSports", pass: "JavaSports_1", role: "admin" },
-  ]);
+
+  const [usersA, setUsersA] = useState();
+  
+  const [users, setUsers] = useState([{ user: "JavaSports", password: "JavaSports_1", role: "admin" }]);
+
+
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
@@ -22,15 +24,15 @@ function App() {
   };
 
   const validate = (u, p) => {
-    const userFound = users.find((user) => user.user === u);
-    const passOk = p === userFound.pass;
-
+    const userFound = usersA.find((user) => user.name === u);
+    const passOk = p === userFound.password;
     return userFound && passOk;
   };
+ 
   const login = (u) => {
-    const userFound = users.find((user) => user.user === u);
+    const userFound = usersA.find((user) => user.name === u);
 
-    setAuth({ user: userFound.user, role: userFound.role });
+    setAuth({ user: userFound.name, role: userFound.role });
   };
   const logout = () => {
     setAuth({ user: "", role: "" });
@@ -55,23 +57,48 @@ function App() {
     setMockSections(Mock);
   }, []);
 
+
+
+  // Comments Container
+
+  const [commentsContainer, setCommentsContainer] = useState([]);
+
+ 
+
+  const [articles, setArticles] = useState([{}]);
+
+  // Acà consultara a la api y traerà todas las noticias.
+
+
   // OBTENER DATA DE LA API
 
   // ARTICULOS
-  const [articles, setArticles] = useState([{}]);
+
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
   }, []);
 
+
+
+  useEffect(() => {
+    fetch('https://java-sports-back.vercel.app/comments/all')
+    .then((res)=>res.json())
+    .then((json)=>setCommentsContainer(json))
+    
+  }, [])
+  
+
+
   // USUARIOS
-  const [usersA, setUsersA] = useState([{}]);
+  
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/users/all")
       .then((res) => res.json())
       .then((json) => setUsersA(json));
   }, []);
+
 
   return (
     <BrowserRouter>
@@ -82,6 +109,9 @@ function App() {
         validate={validate}
         auth={auth}
         addUser={addUser}
+
+        commentsContainer={commentsContainer}
+
         mockSections={mockSections}
         search={search}
         setSearch={setSearch}
