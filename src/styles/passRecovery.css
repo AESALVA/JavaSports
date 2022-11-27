@@ -21,6 +21,13 @@ html{
     text-align: center;
 }
   
+@media (max-width:1200px){
+    .ModalPass{
+        top:5rem;
+    }
+}
+
+
   @media (max-width: 767.98px){
     .ModalPass{
         width:18rem;
