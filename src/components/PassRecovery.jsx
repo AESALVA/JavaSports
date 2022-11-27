@@ -7,6 +7,8 @@ import ModalDialog from "react-bootstrap/ModalDialog";
 import Footer from "./Footer";
 import validator from "validator";
 import { CloseButton } from "react-bootstrap";
+import "../styles/passRecovery.css"
+
 
 const PassRecovery = () => {
   const [show, setShow] = useState(true);
@@ -37,27 +39,27 @@ const PassRecovery = () => {
 
   return (
     <>
-      <div className="FondoPass d-none d-xl-block mx-auto">
+      <div className="FondoPass d-xl-block mx-auto">
         <img className="w-100" src="/img/FondoPass.jpg" />
       </div>
-      <Modal show={show} contentClassName="bg-black ModalPass">
-        <Modal.Header className="border-danger bg-black flex-column">
+      <Modal show={show}  contentClassName="bg-black ModalPass mx-auto">
+        <Modal.Header className="border-danger modalHeader bg-black flex-column">
           <CloseButton onClick={() => closeModal()} variant="white" />
           <Link className="mx-auto" to="/">
             <img
-              className="bg-dark logo"
+              className="bg-dark logotipo"
               src="/img/LogoJS.jpg"
               width="100"
               height="100"
             />
           </Link>
         </Modal.Header>
-        <h4 className="mx-auto mt-5">¿ No recuerdas tu contraseña ?</h4>
+        <h4 className="mx-auto mt-md-5  mt-xs-5">¿ No recuerdas tu contraseña ?</h4>
         <h5 className="mx-auto pt-2">¡ No te preocupes !</h5>
-        <Modal.Body className="mb-3 py-4 px-4 bg-black">
+        <Modal.Body className=" modalBody mb-xs-3 py-md-4 py-xs-4 px-4 bg-black">
           <Form>
             <Form.Group className="my-2" controlId="formBasicPassword">
-              <h6 className="text-center pb-5">
+              <h6 className="text-center pb-md-5 pb-xs-5">
                 Ingresa tu Email y te ayudaremos
               </h6>
               <Form.Label>
@@ -73,21 +75,22 @@ const PassRecovery = () => {
                 value={mail}
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
-                className="p-3"
+                className="p-xs-3 p-md-3"
                 type="email"
                 placeholder="Java@Sports.com"
               />
             </Form.Group>
           </Form>
-        </Modal.Body>
-        <Button
-          className="mx-auto px-5 my-5 btn-gray btn-gray-border"
+          <Button
+          className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
           size="lg"
           type="submit"
           onClick={() => console.log("hola")}
         >
-          <h4 className="m-auto py-2 px-4">Recuperar Contraseña</h4>
+          <h4 className="m-auto py-2 px-4">Enviar</h4>
         </Button>
+        </Modal.Body>
+        
       </Modal>
     </>
   );
