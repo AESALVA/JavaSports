@@ -22,8 +22,8 @@ const Sections = ({ article, auth, commentsContainer }) => {
     aux.map((a) => {
       if (a.comment === comment.comment) {
         a.likes = [...a.likes, auth.user];
-
-        fetch("https://java-sports-back.vercel.app/comments/update/" + a._id, {
+        console.log(a._id)
+        fetch("http://localhost:4000/comments/update/" + a._id, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -31,13 +31,12 @@ const Sections = ({ article, auth, commentsContainer }) => {
             user: a.user,
             likes: a.likes,
           }),
-        })
-       
+        }) 
       } return a
+     
      });
     setShowComment([...aux]);
     console.log(showComment);
-    
   };
 
   const addComment = () => {
@@ -105,7 +104,7 @@ const Sections = ({ article, auth, commentsContainer }) => {
             </Col>
             <span> {comment.comment}</span>
             <span>
-              <LikeCounter addLikes={addLikes} comment={comment} />
+              <LikeCounter addLikes={addLikes} comment={comment} auth={auth} />
             </span>
           </Row>
         ))}
