@@ -27,19 +27,8 @@ body {
 .modal_styles:hover {
   color: var(--orangeColor);
 }
-.ModalPass {
-  opacity: 0.8;
-}
-.FondoPass {
-  overflow: hidden;
-  filter: saturate(20%) contrast(1.7);
-  max-height: 60vh;
-}
 
-.FondoPass img {
-  position: relative;
-  top: -12rem;
-}
+
 .sections {
   background-color: transparent;
 }

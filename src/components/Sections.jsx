@@ -8,8 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
 import LikeCounter from "./LikeCounter";
 import validator from "validator";
 import { useEffect } from "react";
@@ -18,12 +16,14 @@ const Sections = ({ article, auth, commentsContainer }) => {
   const [comment, setComment] = useState({ comment: "", user: "", likes: [] });
   const [showComment, setShowComment] = useState([]);
 
-  const addLikes = (comment) => {
+   const addLikes = (comment) => {
+    
     const aux = [...showComment];
     aux.map((a) => {
       if (a.comment === comment.comment) {
         a.likes = [...a.likes, auth.user];
-        fetch("https://java-sports-back.vercel.app/comments/update/"+ a._id, {
+
+        fetch("https://java-sports-back.vercel.app/comments/update/" + a._id, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -31,12 +31,13 @@ const Sections = ({ article, auth, commentsContainer }) => {
             user: a.user,
             likes: a.likes,
           }),
-        });
-        console.log(a._id);
-      }
-    });
+        })
+       
+      } return a
+     });
     setShowComment([...aux]);
     console.log(showComment);
+    
   };
 
   const addComment = () => {
@@ -59,7 +60,9 @@ const Sections = ({ article, auth, commentsContainer }) => {
 
   useEffect(() => {
     setShowComment(commentsContainer);
-  }, []);
+  }, [commentsContainer]);
+
+ 
 
   return (
     <Container className="sections py-5">

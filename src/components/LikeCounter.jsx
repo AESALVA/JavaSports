@@ -13,11 +13,11 @@ const [counter, setCounter] = useState(0);
 const addCounter = (c, q) => {
     setCounter(c + q);
     addLikes(comment);
+    console.log(comment.likes.length)
   };
-  
-  
+ 
   return (
-    <div><Button disabled={comment.likes.find(c=>c===comment.user)} variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{counter>0 && counter}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
+    <div><Button disabled={comment.likes.find(c=>c===comment.user)} variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{comment.likes.length>0 && comment.likes.length}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
     </div>
   )
 }
