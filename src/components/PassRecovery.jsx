@@ -3,8 +3,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
-import ModalDialog from "react-bootstrap/ModalDialog";
-import Footer from "./Footer";
 import validator from "validator";
 import { CloseButton } from "react-bootstrap";
 import "../styles/passRecovery.css"
@@ -40,17 +38,18 @@ const PassRecovery = () => {
   return (
     <>
       <div className="FondoPass d-xl-block mx-auto">
-        <img className="w-100" src="/img/FondoPass.jpg" />
+        <img className="w-100" src="/img/FondoPass.jpg" alt="fondoimg" />
       </div>
       <Modal show={show}  contentClassName="bg-black ModalPass mx-auto">
         <Modal.Header className="border-danger modalHeader bg-black flex-column">
-          <CloseButton onClick={() => closeModal()} variant="white" />
+          <CloseButton onClick={() => closeModal()} variant="light" />
           <Link className="mx-auto" to="/">
             <img
               className="bg-dark logotipo"
               src="/img/LogoJS.jpg"
               width="100"
               height="100"
+              alt="logo"
             />
           </Link>
         </Modal.Header>
