@@ -48,7 +48,7 @@
   margin-bottom: 5rem;
 }
 
-#modalCRUD .modal-content {
+#modalCRUD_Users .modal-content {
   border: none;
   color: var(--darkColor);
 }

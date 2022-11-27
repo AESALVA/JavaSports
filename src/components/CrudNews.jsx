@@ -14,17 +14,23 @@ import "../styles/management.css";
 
 const CrudNews = ({ info, view, action, showModal, handleClose }) => {
   //   estados para noticia
-  const [titleNews, setTitleNews] = useState(info.title);
-  const [categoryNews, setcategoryNews] = useState(info.categories);
-  const [importantNews, setimportantNews] = useState(info.important);
-  const [descriptionNews, setDescriptionNews] = useState(info.description);
-  const [synopsisNews, setSynopsisNews] = useState(info.synopsis);
-  const [imgNews, setImgNews] = useState(info.img);
-  const [imgTwoNews, setImgTwoNews] = useState(info.imgTwo);
+  const [titleNews, setTitleNews] = useState();
+
+  const [categoryNews, setcategoryNews] = useState();
+  const [importantNews, setimportantNews] = useState();
+  const [descriptionNews, setDescriptionNews] = useState();
+  const [synopsisNews, setSynopsisNews] = useState();
+  const [imgNews, setImgNews] = useState();
+  const [imgTwoNews, setImgTwoNews] = useState();
 
   return (
     <>
-      <Modal show={showModal} onHide={handleClose} id="modalCRUD" className="">
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        id="modalCRUD_News"
+        className=""
+      >
         <Modal.Header className="bg-dark flex-column">
           <CloseButton onClick={handleClose} variant="white" />
           <h5>JavaSports</h5>
@@ -64,7 +70,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 className="p-2"
                 type="text"
                 placeholder="Titulo"
-                value={titleNews}
+                value={info.title}
                 onChange={(e) => setTitleNews(e.target.value)}
               />
             </Form.Group>
@@ -87,11 +93,11 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDestacada">
               <Form.Label>¿Destacada?</Form.Label>
-              <Form.Select aria-label="Elegir opcion">
-                <option className="text-dark" value="2">
+              <Form.Select aria-label="Elegir opción">
+                <option className="text-dark" value="false">
                   No
                 </option>
-                <option className="text-dark" value="1">
+                <option className="text-dark" value="true">
                   Si
                 </option>
               </Form.Select>
@@ -106,7 +112,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 type="text"
                 placeholder="Descripción"
                 required
-                value={descriptionNews}
+                value={info.description}
                 onChange={(e) => setDescriptionNews(e.target.value)}
               />
             </Form.Group>
@@ -119,7 +125,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 className="p-2"
                 type="text"
                 placeholder="Synopsis"
-                value={synopsisNews}
+                value={info.synopsis}
                 onChange={(e) => setSynopsisNews(e.target.value)}
               />
             </Form.Group>
@@ -130,7 +136,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 className="p-2"
                 type="text"
                 placeholder="Ingresar url de imagen"
-                value={imgNews}
+                value={info.img}
                 onChange={(e) => setImgNews(e.target.value)}
               />
             </Form.Group>
@@ -141,7 +147,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 className="p-2"
                 type="text"
                 placeholder="Ingresar url de imagen"
-                value={imgTwoNews}
+                value={info.imgTwo}
                 onChange={(e) => setImgTwoNews(e.target.value)}
               />
             </Form.Group>

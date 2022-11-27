@@ -12,10 +12,10 @@ function App() {
   // LOGIN
 
   const [usersA, setUsersA] = useState();
-  
-  const [users, setUsers] = useState([{ user: "JavaSports", password: "JavaSports_1", role: "admin" }]);
 
-
+  const [users, setUsers] = useState([
+    { user: "JavaSports", password: "JavaSports_1", role: "admin" },
+  ]);
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
@@ -32,7 +32,7 @@ function App() {
     const passOk = p === userFound.password;
     return userFound && passOk;
   };
- 
+
   const login = (u) => {
     const userFound = usersA.find((user) => user.name === u);
 
@@ -61,18 +61,13 @@ function App() {
     setMockSections(Mock);
   }, []);
 
-
-
   // Comments Container
 
   const [commentsContainer, setCommentsContainer] = useState([]);
 
- 
-
   const [articles, setArticles] = useState([{}]);
 
   // Acà consultara a la api y traerà todas las noticias.
-
 
   // OBTENER DATA DE LA API
 
@@ -84,25 +79,21 @@ function App() {
       .then((json) => setArticles(json));
   }, []);
 
-
+  //COMENTARIOS
 
   useEffect(() => {
-    fetch('https://java-sports-back.vercel.app/comments/all')
-    .then((res)=>res.json())
-    .then((json)=>setCommentsContainer(json))
-    
-  }, [])
-  
-
+    fetch("https://java-sports-back.vercel.app/comments/all")
+      .then((res) => res.json())
+      .then((json) => setCommentsContainer(json));
+  }, []);
 
   // USUARIOS
-  
+
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/users/all")
       .then((res) => res.json())
       .then((json) => setUsersA(json));
   }, []);
-
 
   return (
     <BrowserRouter>
@@ -113,9 +104,7 @@ function App() {
         validate={validate}
         auth={auth}
         addUser={addUser}
-
         commentsContainer={commentsContainer}
-
         mockSections={mockSections}
         search={search}
         setSearch={setSearch}

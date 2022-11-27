@@ -30,6 +30,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
 
   const showModalNew = () => {
     setActionAMB("new");
+    // setViewInfo({}); //paso el objeto vacio
     handleShow();
   };
   const showModalDisplay = (article) => {
