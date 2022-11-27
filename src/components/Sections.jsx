@@ -60,12 +60,10 @@ const Sections = ({ article, auth, commentsContainer }) => {
 
   useEffect(() => {
     setShowComment(commentsContainer);
-  }, []);
-  fetch("https://java-sports-back.vercel.app/comments/update/637c07b0df098d022b73b566", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(comment),
-  });
+  }, [commentsContainer]);
+
+ 
+
   return (
     <Container className="sections py-5">
       <Card className="mx-auto text-center sections border-0 ">
