@@ -1,11 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Link } from "react-router-dom";
-import News from "./News";
 
 const SectionsList = ({ articles }) => {
   return (
