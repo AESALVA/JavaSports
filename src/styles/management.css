@@ -48,22 +48,31 @@
   margin-bottom: 5rem;
 }
 
-#modalCRUD .modal-content {
+#modalCRUD_Users .modal-content,
+#modalCRUD_News .modal-content {
   border: none;
   color: var(--darkColor);
 }
-#modalCRUD .modal-body {
+#modalCRUD_Users .modal-body,
+#modalCRUD_News .modal-body {
   color: var(--darkColor);
 }
-#modalCRUD form label {
+#modalCRUD_News form label,
+#modalCRUD_Users form label {
   color: var(--darkColor);
 }
 
-#modalCRUD .modal-footer button {
+#modalCRUD_News .modal-footer button,
+#modalCRUD_Users .modal-footer button {
   color: var(--darkColor);
   font-size: 12px;
   font-weight: bold;
 }
+
+.btn-select:active svg {
+  background-color: var(--redColor);
+}
+
 /* BREAKPOINTS */
 
 /* TABLET */
@@ -95,7 +104,8 @@
   .table-administrative td {
     font-size: 15px;
   }
-  #modalCRUD .modal-footer button {
+  #modalCRUD_News .modal-footer button,
+  #modalCRUD_Users .modal-footer button {
     font-size: 15px;
   }
 }

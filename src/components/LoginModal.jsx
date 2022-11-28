@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import ModalDialog from "react-bootstrap/ModalDialog";
 import { Link, useNavigate } from "react-router-dom";
-import { NavLink, OverlayTrigger, Tooltip } from "react-bootstrap";
+import {  OverlayTrigger, Tooltip } from "react-bootstrap";
 import validator from "validator";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +17,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState(true);
   const [firstPassword, setFirstPassword] = useState(true);
+  const [wrongCredentials, setWrongCredentials] = useState("");
   const navigate = useNavigate();
   const handleValidation = (e) => {
     e.preventDefault();
@@ -27,6 +27,9 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
       handleClose();
       setName("");
       setPassword("");
+    } else {
+      setWrongCredentials("Usuario y/o Contraseña incorrectos!")
+      
     }
   };
   const validateName = (n) => {
@@ -47,7 +50,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
     );
   };
 
-  useEffect(() => {}, [name, password]);
+  useEffect(() => {setWrongCredentials("")}, [name, password]);
 
   const handleClick = () => {
     logout();
@@ -110,6 +113,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
               src="/img/LogoJS.jpg"
               width="100"
               height="100"
+              alt="logotipo"
             />
           </Link>
         </Modal.Header>
@@ -127,7 +131,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 Usuario{" "}
                 {!validateName(name) && !firstName && (
                   <span>Debe llenar este campo</span>
-                )}
+                )}{wrongCredentials}
               </Form.Label>
               <Form.Control
                 maxLength="40"
@@ -144,7 +148,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 Contraseña{" "}
                 {!validatePassword(password) && !firstPassword && (
                   <span>Debe llenar este campo</span>
-                )}
+                )}{wrongCredentials}
               </Form.Label>
               <Form.Control
                 maxLength="40"
