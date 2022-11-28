@@ -289,12 +289,14 @@ const CrudNews = ({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="btn-gray btn-gray-border"
-            onClick={() => confirmNews()}
-          >
-            Confirmar
-          </Button>
+          {action !== "display" && (
+            <Button
+              className="btn-gray btn-gray-border"
+              onClick={() => confirmNews()}
+            >
+              {action !== "new" ? action : "Confirmar"}
+            </Button>
+          )}
           <Button className="btn-gray btn-gray-border" onClick={handleClose}>
             Cancelar
           </Button>
@@ -305,3 +307,9 @@ const CrudNews = ({
 };
 
 export default CrudNews;
+
+// PENDIENTES:
+// BOTON ELIMINAR . BOTON DESTACADAA - SACARLO DE ARRIBA Y HABILITAR INPUT , si cambia el valor a SI .->
+// analizar si es posible segun la logica que planteamos con eduardo.
+// FALTA EL BUSCADOR - Y REPLICAR LOGICA DE CRUDNEWS a CRUDUsers.
+// falta testear si funciona con la api - falta validaciones en el input.
