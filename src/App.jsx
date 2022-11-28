@@ -13,7 +13,6 @@ function App() {
 
   const [usersA, setUsersA] = useState();
   
-  const [users, setUsers] = useState([{ user: "JavaSports", password: "JavaSports_1", role: "admin" }]);
 
 
 
