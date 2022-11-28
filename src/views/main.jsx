@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
 import Landing from "../components/Landing";
 import Aboutus from "../components/Aboutus";
@@ -13,6 +13,7 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
+import E405 from "../components/E405";
 
 const Main = ({
   auth,
@@ -66,7 +67,7 @@ const Main = ({
           path="/SectionsContainer"
         ></Route>
         <Route
-          element={<SectionsList articles={articles} />}
+          element={ auth.user ? (<SectionsList articles={articles} />):(<E405 />)}
           path="/SectionsList"
         ></Route>
         <Route

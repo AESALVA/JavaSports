@@ -22,7 +22,6 @@ const Sections = ({ article, auth, commentsContainer }) => {
     aux.map((a) => {
       if (a.comment === comment.comment) {
         a.likes = [...a.likes, auth.user];
-        console.log(a._id)
         fetch("http://localhost:4000/comments/update/" + a._id, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
