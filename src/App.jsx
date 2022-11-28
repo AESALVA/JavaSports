@@ -29,8 +29,7 @@ function App() {
 
   const validate = (u, p) => {
     const userFound = usersA.find((user) => user.name === u);
-    const passOk = p === userFound.password;
-    return userFound && passOk;
+    return userFound;
   };
  
   const login = (u) => {
