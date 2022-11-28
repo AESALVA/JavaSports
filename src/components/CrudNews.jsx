@@ -12,39 +12,154 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "../styles/management.css";
 
-const CrudNews = ({ info, view, action, showModal, handleClose }) => {
+const CrudNews = ({
+  info,
+  view,
+  action,
+  setActionAMB,
+  showModal,
+  handleClose,
+}) => {
   //   estados para noticia
-  const [titleNews, setTitleNews] = useState(info.title);
-  const [categoryNews, setcategoryNews] = useState(info.categories);
-  const [importantNews, setimportantNews] = useState(info.important);
-  const [descriptionNews, setDescriptionNews] = useState(info.description);
-  const [synopsisNews, setSynopsisNews] = useState(info.synopsis);
-  const [imgNews, setImgNews] = useState(info.img);
-  const [imgTwoNews, setImgTwoNews] = useState(info.imgTwo);
+  const [titleNews, setTitleNews] = useState();
+  const [categoryNews, setcategoryNews] = useState();
+  const [importantNews, setimportantNews] = useState();
+  const [descriptionNews, setDescriptionNews] = useState();
+  const [synopsisNews, setSynopsisNews] = useState();
+  const [imgNews, setImgNews] = useState();
+  const [imgTitleNews, setImgTitleNews] = useState();
+  const [imgTwoNews, setImgTwoNews] = useState();
+  const [editableFields, seteditableFields] = useState(true);
+
+  // plantilla de noticias:
+  let news = {
+    categories: "",
+    title: "",
+    img: "",
+    imgTitle: "",
+    description: "",
+    imgTwo: "",
+    synopsis: "",
+    important: "",
+    categoryId: "",
+  };
+
+  const updateNews = () => {
+    // cuando presiono update me habilita los campos
+    seteditableFields(false);
+    setActionAMB("Modificar noticia");
+  };
+  const deleteNews = () => {
+    seteditableFields(true);
+    setActionAMB("Eliminar noticia");
+  };
+
+  const categoryName = () => {
+    let name = "";
+    // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
+    switch (categoryNews) {
+      case "1":
+        name = "football";
+        break;
+      case "2":
+        name = "hockey";
+        break;
+      case "3":
+        name = "tennis";
+        break;
+      case "4":
+        name = "box";
+        break;
+    }
+    return name;
+  };
+
+  const confirmNews = () => {
+    news.categories = categoryName();
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryNews;
+
+    if (action === "new") {
+      fetch(`https://java-sports-back.vercel.app/articles/new/${news}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          news,
+        }),
+      });
+      console.log("presiono confirmar en modo new");
+    } else {
+      //display para update.
+      fetch(`https://java-sports-back.vercel.app/articles/update/${info._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          news,
+        }),
+      });
+      console.log("presiono confirmar en modo display");
+      console.log(news.title);
+    }
+    handleClose();
+  };
+
+  // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
+  useEffect(() => {
+    action === "new" ? seteditableFields(false) : seteditableFields(true);
+    setTitleNews(info.title);
+    setcategoryNews(info.categoryId);
+    setimportantNews(info.important);
+    setDescriptionNews(info.description);
+    setSynopsisNews(info.synopsis);
+    setImgNews(info.img);
+    setImgTwoNews(info.imgTwo);
+    setImgTitleNews(info.imgTitle);
+  }, [showModal]);
 
   return (
     <>
-      <Modal show={showModal} onHide={handleClose} id="modalCRUD" className="">
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        id="modalCRUD_News"
+        className=""
+      >
         <Modal.Header className="bg-dark flex-column">
           <CloseButton onClick={handleClose} variant="white" />
           <h5>JavaSports</h5>
           {action !== "new" && (
             <div id="header-btn">
               {view === "news" && (
-                <Button variant="sm" className="mx-1 btn-news">
+                <Button variant="sm" className="mx-1 btn-news btn-select">
                   <FontAwesomeIcon icon={faStar} />
                 </Button>
               )}
-              <Button variant="sm" className="mx-1 btn-news">
+              <Button
+                variant="sm"
+                className="mx-1 btn-news btn-select"
+                onClick={() => updateNews()}
+              >
                 <FontAwesomeIcon icon={faPen} />
               </Button>
-              <Button variant="sm" id="btn-eliminar" className="mx-1  btn-news">
+              <Button
+                variant="sm"
+                id="btn-eliminar"
+                className="mx-1  btn-news btn-select"
+                onClick={() => deleteNews()}
+              >
                 <FontAwesomeIcon icon={faTrashCan} />
               </Button>
             </div>
           )}
         </Modal.Header>
         <Modal.Body>
+          <h6 className="text-dark text-center mb-3">{`Accion: ${action}`}</h6>
           <Form>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
@@ -53,8 +168,8 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 className="p-2"
                 type="text"
                 placeholder="Id"
-                disabled
                 value={info._id}
+                disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleNew">
@@ -66,11 +181,27 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 placeholder="Titulo"
                 value={titleNews}
                 onChange={(e) => setTitleNews(e.target.value)}
+                disabled={editableFields}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formTitleImg">
+              <Form.Label>Titulo de Imagen principal </Form.Label>
+              <Form.Control
+                maxLength="40"
+                className="p-2"
+                type="text"
+                placeholder="Titulo de imagen principal"
+                value={imgTitleNews}
+                onChange={(e) => setImgTitleNews(e.target.value)}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formCategories">
               <Form.Label>Categoria</Form.Label>
-              <Form.Select aria-label="Seleccionar categoria">
+              <Form.Select
+                aria-label="Seleccionar categoria"
+                disabled={editableFields}
+              >
                 <option className="text-dark" value="1">
                   Fútbol
                 </option>
@@ -85,13 +216,17 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 </option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formDestacada">
+            <Form.Group
+              className="mb-3"
+              controlId="formDestacada"
+              disabled={editableFields}
+            >
               <Form.Label>¿Destacada?</Form.Label>
-              <Form.Select aria-label="Elegir opcion">
-                <option className="text-dark" value="2">
+              <Form.Select aria-label="Elegir opción" disabled>
+                <option className="text-dark" value="false">
                   No
                 </option>
-                <option className="text-dark" value="1">
+                <option className="text-dark" value="true">
                   Si
                 </option>
               </Form.Select>
@@ -101,13 +236,15 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
               <Form.Control
                 as="textarea"
                 rows={5}
-                maxLength="100"
+                minLength="20"
+                maxLength="500"
                 className="p-2"
                 type="text"
                 placeholder="Descripción"
                 required
                 value={descriptionNews}
                 onChange={(e) => setDescriptionNews(e.target.value)}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formSynopsis">
@@ -115,16 +252,18 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
               <Form.Control
                 as="textarea"
                 rows={5}
-                maxLength="100"
+                minLength="20"
+                maxLength="200"
                 className="p-2"
                 type="text"
                 placeholder="Synopsis"
                 value={synopsisNews}
                 onChange={(e) => setSynopsisNews(e.target.value)}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
-              <Form.Label>Imagen 1</Form.Label>
+              <Form.Label>Imagen 1 (Principal)</Form.Label>
               <Form.Control
                 maxLength="40"
                 className="p-2"
@@ -132,6 +271,7 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 placeholder="Ingresar url de imagen"
                 value={imgNews}
                 onChange={(e) => setImgNews(e.target.value)}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg2">
@@ -143,14 +283,20 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
                 placeholder="Ingresar url de imagen"
                 value={imgTwoNews}
                 onChange={(e) => setImgTwoNews(e.target.value)}
+                disabled={editableFields}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="btn-gray btn-gray-border" onClick={handleClose}>
-            Confirmar
-          </Button>
+          {action !== "display" && (
+            <Button
+              className="btn-gray btn-gray-border"
+              onClick={() => confirmNews()}
+            >
+              {action !== "new" ? action : "Confirmar"}
+            </Button>
+          )}
           <Button className="btn-gray btn-gray-border" onClick={handleClose}>
             Cancelar
           </Button>
@@ -161,3 +307,9 @@ const CrudNews = ({ info, view, action, showModal, handleClose }) => {
 };
 
 export default CrudNews;
+
+// PENDIENTES:
+// BOTON ELIMINAR . BOTON DESTACADAA - SACARLO DE ARRIBA Y HABILITAR INPUT , si cambia el valor a SI .->
+// analizar si es posible segun la logica que planteamos con eduardo.
+// FALTA EL BUSCADOR - Y REPLICAR LOGICA DE CRUDNEWS a CRUDUsers.
+// falta testear si funciona con la api - falta validaciones en el input.

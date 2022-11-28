@@ -23,13 +23,17 @@ const TableManagement = ({ viewTable, articles, users }) => {
     columnThree = "Rol";
   }
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => {
+    setViewInfo({});
+    setShowModal(false);
+  };
   const handleShow = () => {
     setShowModal(true);
   };
 
   const showModalNew = () => {
     setActionAMB("new");
+    setViewInfo({}); //paso el objeto vacio
     handleShow();
   };
   const showModalDisplay = (article) => {
@@ -104,6 +108,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
           info={viewInfo}
           view={viewTable}
           action={actionAMB}
+          setActionAMB={setActionAMB}
           showModal={showModal}
           handleClose={handleClose}
         />

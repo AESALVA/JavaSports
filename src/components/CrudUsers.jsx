@@ -20,7 +20,12 @@ const CrudUsers = ({ info, view, action, showModal, handleClose }) => {
 
   return (
     <>
-      <Modal show={showModal} onHide={handleClose} id="modalCRUD" className="">
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        id="modalCRUD_Users"
+        className=""
+      >
         <Modal.Header className="bg-dark flex-column">
           <CloseButton onClick={handleClose} variant="white" />
           <h5>JavaSports</h5>
