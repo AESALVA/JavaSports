@@ -44,16 +44,6 @@ const CrudNews = ({
     categoryId: "",
   };
 
-  const updateNews = () => {
-    // cuando presiono update me habilita los campos
-    seteditableFields(false);
-    setActionAMB("Modificar noticia");
-  };
-  const deleteNews = () => {
-    seteditableFields(true);
-    setActionAMB("Eliminar noticia");
-  };
-
   const categoryName = () => {
     let name = "";
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
@@ -74,45 +64,66 @@ const CrudNews = ({
     return name;
   };
 
-  const confirmNews = () => {
-    news.categories = categoryName();
-    news.title = titleNews;
-    news.img = imgNews;
-    news.imgTitle = imgTitleNews;
-    news.description = descriptionNews;
-    news.imgTwo = imgTwoNews;
-    news.synopsis = synopsisNews;
-    news.important = importantNews;
-    news.categoryId = categoryNews;
+  const updateNews = () => {
+    // cuando presiono update me habilita los campos
+    seteditableFields(false);
+    setActionAMB("Modificar");
+  };
+  const deleteNews = () => {
+    seteditableFields(true);
+    setActionAMB("Eliminar");
+  };
 
-    if (action === "new") {
-      fetch(`https://java-sports-back.vercel.app/articles/new`, {
-        method: "POST",
+  const confirmNews = () => {
+    if (action === "Eliminar") {
+      //eliminar noticia por id
+      fetch(`https://java-sports-back.vercel.app/articles/delete/${info._id}`, {
+        method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          news,  // YA HACE EL POST DE NEWS PERO NO LE PASA NINGUNA PROPIEDAD, XQ?
-        }),
       });
-      console.log("presiono confirmar en modo new");
     } else {
-      //display para update. YA FUNCIONA EL PUT ! Modifique el titulo de la noticia primera de gabriel jesus
-      fetch(`https://java-sports-back.vercel.app/articles/update/${info._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          categories: categoryName(),
-          title: titleNews,
-          img: imgNews,
-          imgTitle: imgTitleNews,
-          description: descriptionNews,
-          imgTwo: imgTwoNews,
-          synopsis: synopsisNews,
-          important: importantNews,
-          categoryId: categoryNews,
-        }),
-      });
-      console.log("presiono confirmar en modo display");
-      console.log(news.title);
+      if (action === "new") {
+        news.categories = categoryName();
+        news.title = titleNews;
+        news.img = imgNews;
+        news.imgTitle = imgTitleNews;
+        news.description = descriptionNews;
+        news.imgTwo = imgTwoNews;
+        news.synopsis = synopsisNews;
+        news.important = importantNews;
+        news.categoryId = categoryNews;
+
+        fetch(`https://java-sports-back.vercel.app/articles/new`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(
+            news // YA HACE EL POST DE NEWS PERO NO LE PASA NINGUNA PROPIEDAD, XQ?
+          ),
+        });
+        console.log("presiono confirmar en modo new");
+      } else {
+        //display para update. YA FUNCIONA EL PUT ! Modifique el titulo de la noticia primera de gabriel jesus
+        fetch(
+          `https://java-sports-back.vercel.app/articles/update/${info._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              categories: categoryName(),
+              title: titleNews,
+              img: imgNews,
+              imgTitle: imgTitleNews,
+              description: descriptionNews,
+              imgTwo: imgTwoNews,
+              synopsis: synopsisNews,
+              important: importantNews,
+              categoryId: categoryNews,
+            }),
+          }
+        );
+        console.log("presiono confirmar en modo display");
+        console.log(news.title);
+      }
     }
     handleClose();
   };
