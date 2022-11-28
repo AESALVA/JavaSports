@@ -86,21 +86,29 @@ const CrudNews = ({
     news.categoryId = categoryNews;
 
     if (action === "new") {
-      fetch(`https://java-sports-back.vercel.app/articles/new/${news}`, {
+      fetch(`https://java-sports-back.vercel.app/articles/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          news,
+          news,  // YA HACE EL POST DE NEWS PERO NO LE PASA NINGUNA PROPIEDAD, XQ?
         }),
       });
       console.log("presiono confirmar en modo new");
     } else {
-      //display para update.
+      //display para update. YA FUNCIONA EL PUT ! Modifique el titulo de la noticia primera de gabriel jesus
       fetch(`https://java-sports-back.vercel.app/articles/update/${info._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          news,
+          categories: categoryName(),
+          title: titleNews,
+          img: imgNews,
+          imgTitle: imgTitleNews,
+          description: descriptionNews,
+          imgTwo: imgTwoNews,
+          synopsis: synopsisNews,
+          important: importantNews,
+          categoryId: categoryNews,
         }),
       });
       console.log("presiono confirmar en modo display");
