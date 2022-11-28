@@ -68,6 +68,11 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+.btn-select:active svg {
+  background-color: var(--redColor);
+}
+
 /* BREAKPOINTS */
 
 /* TABLET */
