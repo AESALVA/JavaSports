@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
-import ModalDialog from "react-bootstrap/ModalDialog";
 import { useEffect } from "react";
 import validator from "validator";
 import { CloseButton } from "react-bootstrap";
@@ -76,6 +75,7 @@ const Register = ({ setAuth, addUser }) => {
               src="/img/LogoJS.jpg"
               width="100"
               height="100"
+              alt="logotipo"
             />
           </Link>
         </Modal.Header>
