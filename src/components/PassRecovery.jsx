@@ -42,7 +42,7 @@ const PassRecovery = () => {
       </div>
       <Modal show={show}  contentClassName="bg-black ModalPass mx-auto">
         <Modal.Header className="border-danger modalHeader bg-black flex-column">
-          <CloseButton onClick={() => closeModal()} variant="light" />
+          <CloseButton onClick={() => closeModal()} variant="white" />
           <Link className="mx-auto" to="/">
             <img
               className="bg-dark logotipo"

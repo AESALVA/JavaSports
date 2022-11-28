@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
-const LikeCounter = ({addLikes, comment}) => {
+const LikeCounter = ({addLikes, comment, auth}) => {
 
 const [counter, setCounter] = useState(0);
 const addCounter = (c, q) => {
@@ -17,7 +17,7 @@ const addCounter = (c, q) => {
   };
  
   return (
-    <div><Button disabled={comment.likes.find(c=>c===comment.user)} variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{comment.likes.length>0 && comment.likes.length}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
+    <div><Button disabled={comment.likes.find(c=>c===auth.user)} variant="secondary" onClick={() => addCounter(counter, 1)} className="border-0">{comment.likes.length>0 && comment.likes.length}{' '}<FontAwesomeIcon icon={faThumbsUp} /></Button>
     </div>
   )
 }

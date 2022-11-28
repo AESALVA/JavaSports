@@ -13,9 +13,8 @@ function App() {
 
   const [usersA, setUsersA] = useState();
 
-  const [users, setUsers] = useState([
-    { user: "JavaSports", password: "JavaSports_1", role: "admin" },
-  ]);
+
+
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
@@ -29,8 +28,7 @@ function App() {
 
   const validate = (u, p) => {
     const userFound = usersA.find((user) => user.name === u);
-    const passOk = p === userFound.password;
-    return userFound && passOk;
+    return userFound;
   };
 
   const login = (u) => {
