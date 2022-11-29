@@ -83,7 +83,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/comments/all")
       .then((res) => res.json())
       .then((json) => setCommentsContainer(json));
-  }, []);
+  }, [commentsContainer]);
 
   // USUARIOS
 
