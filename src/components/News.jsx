@@ -36,7 +36,7 @@ const News = ({ sizeCard, view, article, auth }) => {
                 <OverlayTrigger
                   key="btn-details"
                   placement="bottom"
-                  overlay={<Tooltip id="button">Administrar</Tooltip>}
+                  overlay={<Tooltip id="button">Administración</Tooltip>}
                 >
                   <Button
                     variant="sm"
