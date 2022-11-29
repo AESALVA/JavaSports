@@ -3,9 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { useState } from "react";
 import LoginModal from "./LoginModal";
-import Form from "react-bootstrap/Form";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 import Seeker from "./Seeker";
@@ -20,6 +18,7 @@ const Header = ({
   setAuth,
   search,
   setSearch,
+  setSectionByCategory,
 }) => {
   return (
     <>
@@ -159,16 +158,37 @@ const Header = ({
                   className="header-border"
                 >
                   <NavDropdown.Item className="sectionLinks">
-                    <Link to="/SectionsList"> Fútbol</Link>
+                    <Link
+                      to="/SectionsList"
+                      onClick={() => setSectionByCategory("1")}
+                    >
+                      {" "}
+                      Fútbol
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="sectionLinks">
-                    <Link to="/SectionsList">Hockey</Link>
+                    <Link
+                      to="/SectionsList"
+                      onClick={() => setSectionByCategory("2")}
+                    >
+                      Hockey
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="sectionLinks">
-                    <Link to="/SectionsList">Tenis</Link>
+                    <Link
+                      to="/SectionsList"
+                      onClick={() => setSectionByCategory("3")}
+                    >
+                      Tenis
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="sectionLinks">
-                    <Link to="/SectionsList"> Boxeo</Link>
+                    <Link
+                      to="/SectionsList"
+                      onClick={() => setSectionByCategory("4")}
+                    >
+                      Boxeo
+                    </Link>
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Link to="/Contact" className="header-border p-2">
