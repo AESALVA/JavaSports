@@ -1,12 +1,12 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../styles/joaquin.css";
+import "../styles/error404.css";
 
 function E404({ title }) {
   return (
     <div className="container-400">
       <div className="d-flex justify-content-center  container404 ">
-        <h1>{title}</h1>
+        <h4 id="title-error">{title}!</h4>
       </div>
       <div id="main404">
         <div className="mb-5">

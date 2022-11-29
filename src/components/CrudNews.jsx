@@ -328,7 +328,7 @@ const CrudNews = ({
 export default CrudNews;
 
 // PENDIENTES:
-// BOTON ELIMINAR . BOTON DESTACADAA - SACARLO DE ARRIBA Y HABILITAR INPUT , si cambia el valor a SI .->
+// . BOTON DESTACADAA - SACARLO DE ARRIBA Y HABILITAR INPUT , si cambia el valor a SI .->
 // analizar si es posible segun la logica que planteamos con eduardo.
 // FALTA EL BUSCADOR - Y REPLICAR LOGICA DE CRUDNEWS a CRUDUsers.
 // falta testear si funciona con la api - falta validaciones en el input.
