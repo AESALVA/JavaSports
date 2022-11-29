@@ -13,7 +13,6 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
-import E405 from "../components/E405";
 
 const Main = ({
   auth,
@@ -59,15 +58,26 @@ const Main = ({
         ></Route>
         <Route element={<PassRecovery />} path="/PassRecovery"></Route>
 
-        <Route element={<E404 />} path="/404"></Route>
+        <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
         <Route element={<Contact />} path="/Contact"></Route>
 
         <Route
-          element={<SectionsContainer auth={auth} commentsContainer={commentsContainer} />}
+          element={
+            <SectionsContainer
+              auth={auth}
+              commentsContainer={commentsContainer}
+            />
+          }
           path="/SectionsContainer"
         ></Route>
         <Route
-          element={ auth.user ? (<SectionsList articles={articles} />):(<E405 />)}
+          element={
+            auth.user ? (
+              <SectionsList articles={articles} />
+            ) : (
+              <E404 title={"Debes iniciar sesión para ver las noticias"} />
+            )
+          }
           path="/SectionsList"
         ></Route>
         <Route
