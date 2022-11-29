@@ -22,7 +22,7 @@ const CrudNews = ({
 }) => {
   //   estados para noticia
   const [titleNews, setTitleNews] = useState();
-  const [categoryNews, setcategoryNews] = useState();
+  const [categoryIdNews, setCategoryIdNews] = useState();
   const [importantNews, setimportantNews] = useState();
   const [descriptionNews, setDescriptionNews] = useState();
   const [synopsisNews, setSynopsisNews] = useState();
@@ -30,7 +30,7 @@ const CrudNews = ({
   const [imgTitleNews, setImgTitleNews] = useState();
   const [imgTwoNews, setImgTwoNews] = useState();
   const [editableFields, seteditableFields] = useState(true);
-
+  const [categoryNameNews, setCategoryNameNews] = useState("");
   // plantilla de noticias:
   let news = {
     categories: "",
@@ -43,25 +43,36 @@ const CrudNews = ({
     important: "",
     categoryId: "",
   };
+  // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
+  useEffect(() => {
+    action === "new" ? seteditableFields(false) : seteditableFields(true);
+    setTitleNews(info.title);
+    setCategoryIdNews(info.categoryId);
+    setimportantNews(info.important);
+    setDescriptionNews(info.description);
+    setSynopsisNews(info.synopsis);
+    setImgNews(info.img);
+    setImgTwoNews(info.imgTwo);
+    setImgTitleNews(info.imgTitle);
+    setCategoryNameNews(info.categories);
+  }, [showModal]);
 
   const categoryName = () => {
-    let name = "";
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
-    switch (categoryNews) {
-      case "1":
-        name = "football";
+    switch (categoryNameNews) {
+      case "football":
+        setCategoryIdNews("1");
         break;
-      case "2":
-        name = "hockey";
+      case "hockey":
+        setCategoryIdNews("2");
         break;
-      case "3":
-        name = "tennis";
+      case "tennis":
+        setCategoryIdNews("3");
         break;
-      case "4":
-        name = "box";
+      case "box":
+        setCategoryIdNews("4");
         break;
     }
-    return name;
   };
 
   const updateNews = () => {
@@ -74,72 +85,64 @@ const CrudNews = ({
     setActionAMB("Eliminar");
   };
 
+  const confirmUpdate = () => {
+    fetch(`https://java-sports-back.vercel.app/articles/update/${info._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        categories: categoryNameNews,
+        title: titleNews,
+        img: imgNews,
+        imgTitle: imgTitleNews,
+        description: descriptionNews,
+        imgTwo: imgTwoNews,
+        synopsis: synopsisNews,
+        important: importantNews,
+        categoryId: categoryIdNews,
+      }),
+    });
+  };
+
+  const confirmNew = () => {
+    news.categories = categoryNameNews;
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryIdNews;
+
+    fetch(`https://java-sports-back.vercel.app/articles/new`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(news),
+    });
+  };
+
+  const confirmDelete = () => {
+    //eliminar noticia por id
+    fetch(`https://java-sports-back.vercel.app/articles/delete/${info._id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
   const confirmNews = () => {
     if (action === "Eliminar") {
-      //eliminar noticia por id
-      fetch(`https://java-sports-back.vercel.app/articles/delete/${info._id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
+      confirmDelete();
     } else {
+      //Cargo id de categoria segun lo que elegi
+      categoryName();
       if (action === "new") {
-        news.categories = categoryName();
-        news.title = titleNews;
-        news.img = imgNews;
-        news.imgTitle = imgTitleNews;
-        news.description = descriptionNews;
-        news.imgTwo = imgTwoNews;
-        news.synopsis = synopsisNews;
-        news.important = importantNews;
-        news.categoryId = categoryNews;
-
-        fetch(`https://java-sports-back.vercel.app/articles/new`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(
-            news // YA HACE EL POST DE NEWS PERO NO LE PASA NINGUNA PROPIEDAD, XQ?
-          ),
-        });
-        console.log("presiono confirmar en modo new");
+        confirmNew();
       } else {
-        //display para update. YA FUNCIONA EL PUT ! Modifique el titulo de la noticia primera de gabriel jesus
-        fetch(
-          `https://java-sports-back.vercel.app/articles/update/${info._id}`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              categories: categoryName(),
-              title: titleNews,
-              img: imgNews,
-              imgTitle: imgTitleNews,
-              description: descriptionNews,
-              imgTwo: imgTwoNews,
-              synopsis: synopsisNews,
-              important: importantNews,
-              categoryId: categoryNews,
-            }),
-          }
-        );
-        console.log("presiono confirmar en modo display");
-        console.log(news.title);
+        confirmUpdate();
       }
     }
     handleClose();
   };
-
-  // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
-  useEffect(() => {
-    action === "new" ? seteditableFields(false) : seteditableFields(true);
-    setTitleNews(info.title);
-    setcategoryNews(info.categoryId);
-    setimportantNews(info.important);
-    setDescriptionNews(info.description);
-    setSynopsisNews(info.synopsis);
-    setImgNews(info.img);
-    setImgTwoNews(info.imgTwo);
-    setImgTitleNews(info.imgTitle);
-  }, [showModal]);
 
   return (
     <>
@@ -154,11 +157,6 @@ const CrudNews = ({
           <h5>JavaSports</h5>
           {action !== "new" && (
             <div id="header-btn">
-              {view === "news" && (
-                <Button variant="sm" className="mx-1 btn-news btn-select">
-                  <FontAwesomeIcon icon={faStar} />
-                </Button>
-              )}
               <Button
                 variant="sm"
                 className="mx-1 btn-news btn-select"
@@ -220,17 +218,19 @@ const CrudNews = ({
               <Form.Select
                 aria-label="Seleccionar categoria"
                 disabled={editableFields}
+                onChange={(e) => setCategoryNameNews(e.target.value)}
+                value={categoryNameNews}
               >
-                <option className="text-dark" value="1">
+                <option className="text-dark" value="football">
                   Fútbol
                 </option>
-                <option className="text-dark" value="2">
+                <option className="text-dark" value="hockey">
                   Hockey
                 </option>
-                <option className="text-dark" value="3">
+                <option className="text-dark" value="tennis">
                   Tenis
                 </option>
-                <option className="text-dark" value="4">
+                <option className="text-dark" value="box">
                   Boxeo
                 </option>
               </Form.Select>
@@ -241,7 +241,12 @@ const CrudNews = ({
               disabled={editableFields}
             >
               <Form.Label>¿Destacada?</Form.Label>
-              <Form.Select aria-label="Elegir opción" disabled>
+              <Form.Select
+                aria-label="Elegir opción"
+                disabled
+                value={importantNews}
+                onChange={(e) => setimportantNews(e.target.value)}
+              >
                 <option className="text-dark" value="false">
                   No
                 </option>
@@ -326,9 +331,3 @@ const CrudNews = ({
 };
 
 export default CrudNews;
-
-// PENDIENTES:
-// BOTON ELIMINAR . BOTON DESTACADAA - SACARLO DE ARRIBA Y HABILITAR INPUT , si cambia el valor a SI .->
-// analizar si es posible segun la logica que planteamos con eduardo.
-// FALTA EL BUSCADOR - Y REPLICAR LOGICA DE CRUDNEWS a CRUDUsers.
-// falta testear si funciona con la api - falta validaciones en el input.

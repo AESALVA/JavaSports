@@ -7,11 +7,14 @@ import "../styles/management.css";
 import { useState } from "react";
 import CrudUsers from "./CrudUsers";
 import CrudNews from "./CrudNews";
+import { useEffect } from "react";
 
 const TableManagement = ({ viewTable, articles, users }) => {
   const [showModal, setShowModal] = useState(false);
   const [actionAMB, setActionAMB] = useState("");
   const [viewInfo, setViewInfo] = useState({});
+  const [matchlist, setMatchlist] = useState([{}]);
+  const [seeker, setSeeker] = useState("");
 
   let columnTwo;
   let columnThree;
@@ -41,6 +44,25 @@ const TableManagement = ({ viewTable, articles, users }) => {
     setViewInfo(article);
     handleShow();
   };
+
+  useEffect(() => {
+    let listSeeker = [];
+
+    if (viewTable === "news") {
+      articles.forEach((article) => {
+        article.title.toLowerCase().includes(seeker.toLowerCase()) &&
+          listSeeker.push(article);
+      });
+      setMatchlist(listSeeker);
+    } else {
+      users.forEach((user) => {
+        user.name.toLowerCase().includes(seeker.toLowerCase()) &&
+          listSeeker.push(user);
+      });
+      setMatchlist(listSeeker);
+    }
+  }, [seeker]);
+
   return (
     <>
       <div className="d-flex flex-column ">
@@ -63,6 +85,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
               placeholder="Buscar"
               className="py-0"
               aria-label="Search"
+              onInput={(e) => setSeeker(e.target.value)}
             />
           </Form>
         </div>
@@ -77,7 +100,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
             </thead>
             <tbody>
               {viewTable === "news"
-                ? articles.map((article, i) => (
+                ? matchlist.map((article, i) => (
                     <tr
                       id={i}
                       key={i}
@@ -87,7 +110,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : users.map((article, i) => (
+                : matchlist.map((article, i) => (
                     <tr
                       id={i}
                       key={i}
@@ -117,6 +140,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
           info={viewInfo}
           view={viewTable}
           action={actionAMB}
+          setActionAMB={setActionAMB}
           showModal={showModal}
           handleClose={handleClose}
         />

@@ -13,6 +13,7 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
+import { useState } from "react";
 
 const Main = ({
   auth,
@@ -20,7 +21,6 @@ const Main = ({
   logout,
   validate,
   setAuth,
-  mockSections,
   addUser,
   search,
   setSearch,
@@ -29,6 +29,8 @@ const Main = ({
   users,
   setUsers,
   commentsContainer,
+  sectionByCategory,
+  setSectionByCategory,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -39,6 +41,7 @@ const Main = ({
         logout={logout}
         search={search}
         setSearch={setSearch}
+        setSectionByCategory={setSectionByCategory}
       />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
@@ -73,7 +76,11 @@ const Main = ({
         <Route
           element={
             auth.user ? (
-              <SectionsList articles={articles} />
+              <SectionsList
+                categoryId={sectionByCategory}
+                articles={articles}
+                auth={auth}
+              />
             ) : (
               <E404 title={"Debes iniciar sesión para ver las noticias"} />
             )
