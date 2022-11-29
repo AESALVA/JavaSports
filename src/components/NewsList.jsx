@@ -72,11 +72,11 @@ const NewsList = ({ articles, auth }) => {
         <News sizeCard="" view="Home" article={articles[0]} auth={auth} />
       </div>
 
-      <div id="nineteen-card" className=" ">
+      <div id="nineteen-card" className="spaceNews">
         <News sizeCard="" view="Home" article={articles[0]} auth={auth} />
       </div>
 
-      <div id="twenty-card" className="">
+      <div id="twenty-card" className="spaceNews">
         <News
           sizeCard="card-big"
           view="Home"
