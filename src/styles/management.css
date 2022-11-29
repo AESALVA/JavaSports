@@ -1,0 +1,128 @@
+.title-tabs {
+  border-bottom: 0.03rem solid var(--darkColor);
+}
+.title-tabs .nav-link {
+  color: rgba(255, 255, 255, 0.736);
+  font-size: 12px;
+  /* font-weight: bold; */
+}
+
+.title-tabs .nav-link.active {
+  font-weight: bold;
+  color: var(--darkColor);
+  background-color: rgba(255, 255, 255, 0.201);
+  border: 0.5rem solid var(--bs-nav-tabs-border-width);
+}
+
+.title-tabs .nav-link:hover {
+  border-top: 0.03rem solid transparent;
+  border-left: 0.03rem solid var(--darkColor);
+  border-right: 0.03rem solid var(--darkColor);
+  border-bottom: 0.03rem solid var(--darkColor);
+}
+.title-tabs .nav-link.active .title-tabs .nav-link:hover {
+  border: none;
+}
+
+.table-administrative {
+  /* background-color: rgba(255, 255, 255, 0.061); */
+  min-height: 100vh;
+}
+
+.table-administrative th {
+  font-size: 13px;
+}
+.table-administrative td {
+  font-size: 12px;
+}
+
+.table-administrative tbody:hover {
+  color: var(--darkColor);
+  font-weight: bold;
+}
+
+.tab-content {
+  border-left: 0.06rem solid var(--darkColor);
+  border-right: 0.06rem solid var(--darkColor);
+  background-color: rgba(255, 255, 255, 0.061);
+  margin-bottom: 5rem;
+}
+
+#modalCRUD_Users .modal-content,
+#modalCRUD_News .modal-content {
+  border: none;
+  color: var(--darkColor);
+}
+#modalCRUD_Users .modal-body,
+#modalCRUD_News .modal-body {
+  color: var(--darkColor);
+}
+#modalCRUD_News form label,
+#modalCRUD_Users form label {
+  color: var(--darkColor);
+}
+
+#modalCRUD_News .modal-footer button,
+#modalCRUD_Users .modal-footer button {
+  color: var(--darkColor);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.btn-select:active svg {
+  background-color: var(--redColor);
+}
+
+/* BREAKPOINTS */
+
+/* TABLET */
+@media (min-width: 768px) {
+  .title-tabs .nav-link {
+    font-size: 14px;
+  }
+  .table-administrative th {
+    font-size: 14px;
+  }
+  .table-administrative td {
+    font-size: 13px;
+  }
+
+  .table-header-administrative span {
+    font-size: 12px;
+  }
+}
+
+/* PC */
+@media (min-width: 992px) {
+  .title-tabs .nav-link {
+    font-size: 16px;
+  }
+
+  .table-administrative th {
+    font-size: 16px;
+  }
+  .table-administrative td {
+    font-size: 15px;
+  }
+  #modalCRUD_News .modal-footer button,
+  #modalCRUD_Users .modal-footer button {
+    font-size: 15px;
+  }
+}
+
+/* PC LARGE */
+@media (min-width: 1200px) {
+  .title-tabs .nav-link {
+    font-size: 17px;
+  }
+
+  .table-administrative th {
+    font-size: 17px;
+  }
+  .table-administrative td {
+    font-size: 16px;
+  }
+  .table-header-administrative span {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,173 @@
+.colorFonts {
+  color: var(--grayColor) !important;
+}
+.cardImagen {
+  display: flex;
+  justify-content: center;
+  /* margin: 0.1rem; */
+  /* height: 100%; */
+  /* width: 12rem; */
+}
+
+.container-grid {
+  /* margin-bottom: 3rem; */
+  display: grid;
+  justify-content: center;
+  grid-template-areas:
+    "one-card"
+    "two-card"
+    "three-card"
+    "four-card"
+    "five-card"
+    "six-card"
+    "seven-card"
+    "eight-card"
+    "nine-card"
+    "ten-card"
+    "eleven-card"
+    "twelve-card"
+    "thirteen-card"
+    "fourteen-card"
+    "fifteen-card"
+    "sixteen-card"
+    "seventeen-card"
+    "eighteen-card"
+    "nineteen-card"
+    "twenty-card";
+}
+.spaceNews {
+  margin-bottom: 1rem;
+}
+
+#one-card {
+  grid-area: one-card;
+}
+#two-card {
+  grid-area: two-card;
+}
+#three-card {
+  grid-area: three-card;
+}
+#four-card {
+  grid-area: four-card;
+}
+#five-card {
+  grid-area: five-card;
+}
+
+#six-card {
+  grid-area: six-card;
+}
+
+#seven-card {
+  grid-area: seven-card;
+}
+#eight-card {
+  grid-area: eight-card;
+}
+
+#nine-card {
+  grid-area: nine-card;
+}
+
+#ten-card {
+  grid-area: ten-card;
+}
+
+#eleven-card {
+  grid-area: eleven-card;
+}
+
+#twelve-card {
+  grid-area: twelve-card;
+}
+
+#thirteen-card {
+  grid-area: thirteen-card;
+}
+
+#fourteen-card {
+  grid-area: fourteen-card;
+}
+
+#fifteen-card {
+  grid-area: fifteen-card;
+}
+
+#sixteen-card {
+  grid-area: sixteen-card;
+}
+
+#seventeen-card {
+  grid-area: seventeen-card;
+}
+
+#eighteen-card {
+  grid-area: eighteen-card;
+}
+
+#nineteen-card {
+  grid-area: nineteen-card;
+}
+#twenty-card {
+  grid-area: twenty-card;
+}
+
+.btn-news svg {
+  background-color: var(--grayColor);
+  padding: 0.5rem;
+  border-radius: 80%;
+}
+
+/* BREAKPOITS */
+
+@media (min-width: 768px) {
+  .container-grid {
+    grid-template-areas:
+      "four-card    six-card        ten-card"
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
+      "one-card     two-card        three-card"
+      "five-card     five-card        five-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  eighteen-card"
+      "nineteen-card  nineteen-card   twenty-card";
+  }
+
+  .card-big {
+    height: 100%;
+    width: 100%;
+  }
+  #seventeen-card .card-big {
+    height: auto;
+  }
+  #seven-card .card,
+  #nineteen-card .card,
+  #five-card .card {
+    width: 100%;
+  }
+  #five-card {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-grid {
+    grid-template-areas:
+      "four-card    six-card        ten-card "
+      "seven-card   seven-card      eight-card"
+      "seven-card   seven-card      nine-card"
+      "one-card     two-card        three-card"
+      "eleven-card  twelve-card     thirteen-card"
+      "five-card     five-card      five-card "
+      "fifteen-card    fourteen-card   sixteen-card"
+      "fifteen-card    seventeen-card  eighteen-card"
+      "nineteen-card  nineteen-card   twenty-card";
+  }
+
+  .square p {
+    display: none;
+  }
+}
