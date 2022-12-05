@@ -22,6 +22,8 @@ const Register = ({ setAuth, addUser }) => {
   const [firstName, setFirstName] = useState(true);
   const [firstMail, setFirstMail] = useState(true);
   const [firstPass, setFirstPass] = useState(true);
+  const [wrongCredentials, setWrongCredentials] = useState("");
+
 
   const validateName = (n) => {
     return (
@@ -58,12 +60,16 @@ const Register = ({ setAuth, addUser }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if(validateName(name) && validateMail(mail) && validatePass(pass)) {
     setAuth({ user: name, pass: pass, role: "user" });
     addUser({ name: name, mail: mail , password: pass, role: "user" });
-    navigate("/");
+    navigate("/");} else{
+      setWrongCredentials("Debe completar correctamente todos los campos")
+    }
   };
 
-  useEffect(() => {}, [name, pass, mail]);
+  useEffect(() => {setWrongCredentials("");
+}, [name, pass, mail]);
   return (
     <>
       <Modal show={show} onHide={handleClose} contentClassName="bg-dark">
@@ -112,7 +118,7 @@ const Register = ({ setAuth, addUser }) => {
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
                 className="p-3"
-                type="Email"
+                type="email"
                 placeholder="Java@Sports.com"
               />
             </Form.Group>
@@ -137,7 +143,10 @@ const Register = ({ setAuth, addUser }) => {
               />
             </Form.Group>
           </Form>
+          <span className="text-danger">{wrongCredentials}</span>
+          
         </Modal.Body>
+        
         <Button
           className="m-auto px-5 mb-5 btn-red btn-red-border"
           size="lg"

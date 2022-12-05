@@ -22,20 +22,49 @@ function App() {
     fetch("https://java-sports-back.vercel.app/users/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(u),
+      body: JSON.stringify({
+        name:u.name,
+        mail:u.mail,
+        password:u.password,
+        role:u.role,
+      }),
     });
   };
 
-  const validate = (u, p) => {
-    const userFound = usersA.find((user) => user.name === u);
-    return userFound;
+  const validate = async (u, p) => {
+    await fetch(
+      "https://java-sports-back.vercel.app/users/login",
+      {
+        method: "POST",
+        mode:"cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: u, password: p }),
+      }
+    )
+    .then((res) => res.json())
+    .then((json)=>{if(json.message==="Wrong Credentials"){setAuth({user:false,role:false})}})
   };
 
-  const login = (u) => {
-    const userFound = usersA.find((user) => user.name === u);
-
-    setAuth({ user: userFound.name, role: userFound.role });
+  const login = async (u, p) => {
+    await fetch(
+      "https://java-sports-back.vercel.app/users/login",
+      {
+        method: "POST",
+        mode:"cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: u, password: p }),
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {if(json.message==="User and password OK"){setAuth({user:u,role:json.role})}})
   };
+
+
+
   const logout = () => {
     setAuth({ user: "", role: "" });
   };
