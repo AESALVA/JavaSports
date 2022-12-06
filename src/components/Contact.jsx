@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import validator from "validator";
+import "../styles/Contact.css";
 import "../styles/styles.css";
 
 const Contacto = (n) => {
@@ -47,8 +48,10 @@ const Contacto = (n) => {
     );
   };
   const ValidateText = (t) => {
-    validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 5, max: 185 });
+    return (
+      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
+      validator.isLength(t, { min: 5, max: 185 })
+    );
   };
 
   const handleClick = (e) => {
@@ -58,28 +61,26 @@ const Contacto = (n) => {
   useEffect(() => {}, [name, lastname, mail, text]);
 
   return (
-    <div className="container-fluid px-0" id="bodyContacto">
-      <div className="bannercontacto">
-        <div className="container-fluid px-0">
-          <div className="imgbanner">
-            {/* <h2 className="text-center pt-5 text-danger">
-              Como podemos ayudarte?
-            </h2> */}
-          </div>
-        </div>
-      </div>
-
-      <div className="row pt-5 mx-0">
-        <h2 className="text-center">Contáctanos!</h2>
+    <div className="container-fluid px-0 main-container d-flex flex-column">
+      {/* Primer columna */}
+      <div className="imgbanner"></div>
+      {/* 2 columna */}
+      <div className="d-flex flex-column pt-5">
+        <h2 className="text-center titulo-aboutus">Contáctanos!</h2>
+        {/* Fomulario */}
         <div className="d-flex justify-content-center px-0">
           <Form id="formulario">
             <Row className="mb-2 mt-2">
               <div className="row"></div>
-              <Form.Group as={Col} className="mb-3" controlId="formNombre">
+              <Form.Group
+                as={Col}
+                className="mb-3 col-12 col-md-6"
+                controlId="formNombre"
+              >
                 <Form.Label>
                   Nombre
                   {!ValidateName(name) && !firstName && (
-                    <span className="text-danger">Error</span>
+                    <span className="text-danger ms-3">Error</span>
                   )}
                 </Form.Label>
                 <Form.Control
@@ -90,11 +91,15 @@ const Contacto = (n) => {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} className="mb-3" controlId="formApellido">
+              <Form.Group
+                as={Col}
+                className="mb-3 col-12 col-md-6"
+                controlId="formApellido"
+              >
                 <Form.Label>
                   Apellido
                   {!ValidateLastname(lastname) && !firstLastname && (
-                    <span className="text-danger">Error</span>
+                    <span className="text-danger ms-3">Error</span>
                   )}{" "}
                 </Form.Label>
                 <Form.Control
@@ -105,28 +110,32 @@ const Contacto = (n) => {
                 ></Form.Control>
               </Form.Group>
             </Row>
+            <Form.Group as={Col} className="mb-3 col-12" controlId="formEmail">
+              <Form.Label>
+                Email
+                {!ValidateMail(mail) && !firstMail && (
+                  <span className="text-danger ms-3">
+                    Error, formato incorrecto!
+                  </span>
+                )}
+              </Form.Label>
+              <Form.Control
+                type="Email"
+                placeholder="Ingrese su correo electronico"
+                onInput={(e) => setMail(e.target.value)}
+                onBlur={() => setFirstMail(false)}
+              />
+            </Form.Group>
             <Row>
-              <Form.Group as={Col} className="mb-3" controlId="formEmail">
-                <Form.Label>
-                  Email
-                  {!ValidateMail(mail) && !firstMail && (
-                    <span className="text-danger">Error</span>
-                  )}
-                </Form.Label>
-                <Form.Control
-                  type="Email"
-                  placeholder="Ingrese su correo electronico"
-                  onInput={(e) => setMail(e.target.value)}
-                  onBlur={() => setFirstMail(false)}
-                />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group as={Col} className="mb-3" controlId="formComment">
+              <Form.Group
+                as={Col}
+                className="mb-3 col-12"
+                controlId="formComment"
+              >
                 <Form.Label>
                   Mensaje
                   {!ValidateText(text) && !firstText && (
-                    <span className="text-danger">Error</span>
+                    <span className="text-danger ms-3">Error</span>
                   )}{" "}
                 </Form.Label>
                 <Form.Control
@@ -140,10 +149,9 @@ const Contacto = (n) => {
             </Row>
             <div className="d-flex justify-content-center align-items-center">
               <Button
-                className="px-5 mb-5"
+                className="btn-dark btn-gray-border px-5 mt-3 w-100"
                 size="lg"
                 type="submit"
-                variant="danger"
                 onClick={(e) => handleClick(e)}
               >
                 <h4 className=" m-auto py-1 px-4">Enviar</h4>
@@ -151,15 +159,17 @@ const Contacto = (n) => {
             </div>
           </Form>
         </div>
+        {/* MAPA */}
         <div className="container-fluid px-0 pb-5 pt-3">
-          <h4 className="titulo-aboutus  d-flex justify-content-center align-items-center">
+          <h4 className="titulo-aboutus text-center my-4">
             Nuestra ubicacion!
           </h4>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="container-fluid d-flex justify-content-center mb-5 ">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.102370777448!2d-65.20939048436118!3d-26.836696096503207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1669045414605!5m2!1ses-419!2sar"
-              width="300"
+              width="500"
               height="300"
+              className="mapa"
             ></iframe>
           </div>
         </div>
