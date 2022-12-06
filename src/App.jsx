@@ -56,7 +56,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
-  }, [articles]);
+  }, []);
 
   //COMENTARIOS
 
@@ -64,7 +64,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/comments/all")
       .then((res) => res.json())
       .then((json) => setCommentsContainer(json));
-  }, [commentsContainer]);
+  }, []);
 
   // USUARIOS
 
