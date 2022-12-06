@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, json } from "react-router-dom";
 
 import Main from "./views/main";
 
@@ -61,6 +61,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((json) => {if(json.message==="User and password OK"){setAuth({user:u,role:json.role})}})
+      .catch((error)=>setAuth({user:false,role:false}))
   };
 
 

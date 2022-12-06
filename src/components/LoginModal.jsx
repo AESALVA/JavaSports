@@ -21,19 +21,30 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   const navigate = useNavigate();
   const handleValidation = async (e) => {
     e.preventDefault();
-    validate(name, password);
-    login(name, password)
-    if (!auth.role) {
+     validate(name, password);
+     login(name, password);
+  };
+   
+  useEffect(() => {
+    if(auth.role===null){
       setWrongCredentials("Usuario y/o Contraseña incorrectos!");
-      console.log(auth)
-    } else{
+      console.log(auth.role);
+    }else if(auth.role === false){
+      setWrongCredentials("Usuario y/o Contraseña incorrectos!");
+      console.log(auth.role)
+    }else if(!auth.role){
+      setWrongCredentials("Usuario y/o Contraseña incorrectos!");
+    } else {
       navigate("/");
       handleClose();
       setName("");
       setPassword("");
-      console.log(auth)
     }
-  };
+  }, [auth,navigate])
+  
+
+
+
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
