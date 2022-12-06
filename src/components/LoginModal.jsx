@@ -23,16 +23,11 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
     e.preventDefault();
      validate(name, password);
      login(name, password);
+     auth.role === false && setWrongCredentials("Usuario y/o Contraseña incorrectos!")
   };
    
   useEffect(() => {
-    if(auth.role===null){
-      setWrongCredentials("Usuario y/o Contraseña incorrectos!");
-      console.log(auth.role);
-    }else if(auth.role === false){
-      setWrongCredentials("Usuario y/o Contraseña incorrectos!");
-      console.log(auth.role)
-    }else if(!auth.role){
+   if(auth.role === false){
       setWrongCredentials("Usuario y/o Contraseña incorrectos!");
     } else {
       navigate("/");
@@ -40,7 +35,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
       setName("");
       setPassword("");
     }
-  }, [auth,navigate])
+  }, [auth])
   
 
 
