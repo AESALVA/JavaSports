@@ -1,0 +1,68 @@
+#contact-profiles {
+  margin: 4rem 0rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-profiles #profile-valentina,
+#contact-profiles #profile-eduardo {
+  width: 18rem;
+  height: 18rem;
+  background-color: var(--darkColor);
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+}
+
+.profile-img {
+  display: inline-block;
+  position: relative;
+  bottom: 2rem;
+  left: 6rem;
+}
+.profile-img img {
+  border-radius: 50%;
+}
+
+#contact-profiles h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+#contact-profiles p {
+  font-size: 13px;
+}
+
+#contact-title h4 {
+  font-weight: bold;
+  color: var(--redColor);
+}
+
+/* BREAKPOINTS */
+
+@media (min-width: 768px) {
+  #contact-profiles {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0rem;
+  }
+  #contact-profiles #profile-valentina,
+  #contact-profiles #profile-eduardo {
+    width: 18rem;
+    height: 25rem;
+    margin: 0 2rem;
+  }
+  #contact-profiles h4 {
+    font-size: 22px;
+  }
+  #contact-profiles p {
+    font-size: 14px;
+  }
+  .profile-img img {
+    width: 110px;
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

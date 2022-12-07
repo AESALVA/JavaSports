@@ -1,80 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import "../styles/styles.css";
+import "../styles/aboutus.css";
 
 function Aboutus() {
   return (
-    <div className="col mb-5">
-      <div className="d-flex justify-content-center mt-4">
-        <h1 className="titulo-aboutus my-5 ">Sobre Nosotros</h1>
+    <Container className="main-container d-flex flex-column align-items-center">
+      {/* COLUMN1 */}
+      <div id="contact-title" className="my-5">
+        <h4 className="">Sobre Nosotros!</h4>
       </div>
-
-      <div className="integrante row p-2">
-        <div className="d-flex justify-content-center align-items-center my-3">
-          <h2>Eduardo</h2>
-        </div>
-        <div className="d-flex justify-content-center flex-column">
-          <div className="d-flex justify-content-center">
+      {/* COLUMN2 */}
+      <div id="contact-profiles">
+        <div id="profile-valentina">
+          <div className="profile-img">
             <img
-              src="../img/eduardo.jpeg"
-              width={250}
-              height={250}
-              className="rounded-circle my-3 "
-              alt=""
+              src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
+              alt="perfil valentina"
+              width={100}
             />
           </div>
-          <p className="textaboutus pb-3">
-            Soy Angel Eduardo Salva, tengo 35 años. Soy estudiante de Rolling
-            Code School y actualmente vivo en la provincia de Tucuman.
-          </p>
+          <div className="profile-title">
+            <h4 className="text-center titulo-aboutus">Valentina Reigada</h4>
+          </div>
+          <div className="profile-content">
+            <p className="text-center mt-3">
+              Estudiante de Rolling Code Scholl <br /> y de la Licenciatura en
+              Informática.
+              <br /> Soy de la provincia de Buenos Aires, <br /> tengo 21 años.
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div className="integrante row p-2">
-        <div className="d-flex justify-content-center my-3">
-          <h2>Valentina</h2>
-        </div>
-        <div className="d-flex justify-content-center flex-column">
-          <div className="d-flex justify-content-center">
+        <div id="profile-eduardo">
+          <div className="profile-img">
             <img
-              src="../img/valentina.jpeg"
-              width={250}
-              height={250}
-              className="rounded-circle my-3 d-flex justify-content-center"
-              alt=""
+              src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
+              alt="perfil valentina"
+              width={100}
             />
           </div>
-
-          <p className="textaboutus pb-3">
-            Soy Valentina Reigada, tengo 21 años, soy de Buenos Aires.
-            Actualmente me encuentro estudiando la Licenciatura de Informática
-            en la Universidad Nacional de Quilmes.
-          </p>
-        </div>
-      </div>
-
-      <div className="integranteu row p-2">
-        <div className="d-flex justify-content-center my-3">
-          <h2>Joaquin</h2>
-        </div>
-        <div className="d-flex justify-content-center px-0 flex-column">
-          <div className="d-flex justify-content-center">
-            <img
-              src="../img/joaquin.jpeg"
-              width={250}
-              height={250}
-              className="rounded-circle my-3 d-flex justify-content-center"
-              alt=""
-            />
+          <div className="profile-title">
+            <h4 className="text-center titulo-aboutus">Angel Eduardo Salva</h4>
           </div>
-
-          <p className="textaboutus pb-3">
-            Soy un rosarino de 20 años, técnico electrónico y estoy interesado
-            en la programación y la tecnología. Soy hincha de rosario central y
-            actualmente me encuentro trabajando como técnico.{" "}
-          </p>
+          <div className="profile-content">
+            <p className="text-center mt-3">
+              Estudiante de Rolling Code Scholl. <br /> Soy de la provincia de
+              Tucumán, <br /> tengo 35 años.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

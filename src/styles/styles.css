@@ -121,15 +121,7 @@ body {
 .container-aboutus {
   margin: 1rem 15rem;
 }
-.integrante {
-  border-bottom: 1px solid #d05037;
-  max-width: 70rem;
-  margin: 0 auto;
-}
-.integranteu {
-  max-width: 70rem;
-  margin: 0 auto;
-}
+
 .textaboutus {
   max-width: 50rem;
   margin: 0 auto;
