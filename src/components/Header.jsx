@@ -205,7 +205,7 @@ const Header = ({
                     Administración
                   </Link>
                 )}
-                <Link className="d-md-none p-2">
+                <div className="d-md-none p-2">
                   <LoginModal
                     login={login}
                     logout={logout}
@@ -213,7 +213,7 @@ const Header = ({
                     validate={validate}
                     auth={auth}
                   />
-                </Link>
+                </div>
 
                 <div className="d-flex header-form d-md-none py2 mx-1">
                   {/* BUSCADOR */}
