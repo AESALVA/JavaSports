@@ -3,14 +3,14 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import validator from "validator";
+import Swal from "sweetalert2";
 import "../styles/Contact.css";
 import "../styles/styles.css";
 
-const Contacto = (n) => {
+const Contacto = () => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [mail, setMail] = useState("");
@@ -20,19 +20,19 @@ const Contacto = (n) => {
   const [firstMail, setFirstMail] = useState(true);
   const [firstText, setFirstText] = useState(true);
 
-  const ValidateName = (n) => {
+  const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 5, max: 36 })
+      validator.isLength(n, { min: 5, max: 25 })
     );
   };
-  const ValidateLastname = (l) => {
+  const validateLastname = (l) => {
     return (
       validator.matches(l, "^[a-zA-Z ]*$") &&
-      validator.isLength(l, { min: 5, max: 36 })
+      validator.isLength(l, { min: 5, max: 25 })
     );
   };
-  const ValidateMail = (m) => {
+  const validateMail = (m) => {
     return (
       validator.isLength(m, { min: 5, max: 36 }) &&
       validator.isEmail(m, {
@@ -47,7 +47,7 @@ const Contacto = (n) => {
       })
     );
   };
-  const ValidateText = (t) => {
+  const validateText = (t) => {
     return (
       validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
       validator.isLength(t, { min: 5, max: 185 })
@@ -56,6 +56,30 @@ const Contacto = (n) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (
+      validateName(name) &&
+      validateMail(mail) &&
+      validateLastname(lastname) &&
+      validateText(text)
+    ) {
+      Swal.fire({
+        title: "JavaSports",
+        text: "Su mensaje ha sido enviado!",
+        icon: "success",
+        iconColor: "#413f4a",
+        width: "20rem",
+        confirmButtonColor: "#413f4a",
+      });
+      setName("");
+      setLastname("");
+      setMail("");
+      setText("");
+    } else {
+      setFirstName(false);
+      setFirstMail(false);
+      setFirstLastname(false);
+      setFirstText(false);
+    }
   };
 
   useEffect(() => {}, [name, lastname, mail, text]);
@@ -79,7 +103,7 @@ const Contacto = (n) => {
               >
                 <Form.Label>
                   Nombre
-                  {!ValidateName(name) && !firstName && (
+                  {!validateName(name) && !firstName && (
                     <span className="text-danger ms-3">Error</span>
                   )}
                 </Form.Label>
@@ -88,6 +112,7 @@ const Contacto = (n) => {
                   placeholder="Ingrese su nombre"
                   onInput={(e) => setName(e.target.value)}
                   onBlur={() => setFirstName(false)}
+                  value={name}
                 />
               </Form.Group>
 
@@ -98,7 +123,7 @@ const Contacto = (n) => {
               >
                 <Form.Label>
                   Apellido
-                  {!ValidateLastname(lastname) && !firstLastname && (
+                  {!validateLastname(lastname) && !firstLastname && (
                     <span className="text-danger ms-3">Error</span>
                   )}{" "}
                 </Form.Label>
@@ -107,23 +132,25 @@ const Contacto = (n) => {
                   placeholder="Ingrese su apellido"
                   onInput={(e) => setLastname(e.target.value)}
                   onBlur={() => setFirstLastname(false)}
+                  value={lastname}
                 ></Form.Control>
               </Form.Group>
             </Row>
             <Form.Group as={Col} className="mb-3 col-12" controlId="formEmail">
               <Form.Label>
                 Email
-                {!ValidateMail(mail) && !firstMail && (
+                {!validateMail(mail) && !firstMail && (
                   <span className="text-danger ms-3">
-                    Error, formato incorrecto!
+                    Error, el email no es válido.
                   </span>
                 )}
               </Form.Label>
               <Form.Control
                 type="Email"
-                placeholder="Ingrese su correo electronico"
+                placeholder="Ingrese su email"
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
+                value={mail}
               />
             </Form.Group>
             <Row>
@@ -134,22 +161,23 @@ const Contacto = (n) => {
               >
                 <Form.Label>
                   Mensaje
-                  {!ValidateText(text) && !firstText && (
+                  {!validateText(text) && !firstText && (
                     <span className="text-danger ms-3">Error</span>
                   )}{" "}
                 </Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  placeholder="Ingrese su correo mensaje"
+                  placeholder="Ingrese un mensaje"
                   onInput={(e) => setText(e.target.value)}
                   onBlur={() => setFirstText(false)}
+                  value={text}
                 />
               </Form.Group>
             </Row>
             <div className="d-flex justify-content-center align-items-center">
               <Button
-                className="btn-dark btn-gray-border px-5 mt-3 w-100"
+                className="btn-dark btn-gray-border  mt-3 w-100 p-1"
                 size="lg"
                 type="submit"
                 onClick={(e) => handleClick(e)}
