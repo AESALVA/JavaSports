@@ -19,6 +19,8 @@ const Header = ({
   search,
   setSearch,
   setSectionByCategory,
+  isLoaded,
+  setIsLoaded,
 }) => {
   return (
     <>
@@ -114,6 +116,8 @@ const Header = ({
                 setAuth={setAuth}
                 validate={validate}
                 auth={auth}
+                isLoaded={isLoaded}
+                setIsLoaded={setIsLoaded}
               />
             </div>
             {auth.role === "admin" && (
