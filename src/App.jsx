@@ -36,6 +36,7 @@ const [isLoaded, setIsLoaded] = useState(false);
   };
 
   const validate = async (u, p) => {
+    setIsLoaded(true);
     await fetch(
       "https://java-sports-back.vercel.app/users/login",
       {

@@ -222,6 +222,8 @@ const Header = ({
                     setAuth={setAuth}
                     validate={validate}
                     auth={auth}
+                    isLoaded={isLoaded}
+                setIsLoaded={setIsLoaded}
                   />
                 </div>
 
