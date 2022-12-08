@@ -19,10 +19,12 @@ const LoginModal = ({ auth, login, logout, validate, setAuth, isLoaded, setIsLoa
   const [firstName, setFirstName] = useState(true);
   const [firstPassword, setFirstPassword] = useState(true);
   const [wrongCredentials, setWrongCredentials] = useState("");
+
+
   const navigate = useNavigate();
   const handleValidation = async (e) => {
     e.preventDefault();
-    setIsLoaded(true);
+    
      validate(name, password);
      login(name, password);
      auth.role === false && setWrongCredentials("Usuario y/o Contraseña incorrectos!")
