@@ -49,7 +49,7 @@ const CrudUsers = ({
   };
 
   const confirmDelete = () => {
-    //eliminar noticia por id
+    //eliminar usuario por propiedad name, si o si se debe pasar el body para que no borre nunca el "admin"
     fetch(`https://java-sports-back.vercel.app/users/delete/${nameUser}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
