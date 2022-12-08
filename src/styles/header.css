@@ -80,6 +80,13 @@ span .navbar-Toggle {
   width: 120px;
   height: 40px;
 }
+.SectionsList{
+  list-style-type: none;
+  margin: 0;
+  padding:0 1rem;
+}
+
+
 
 /* BREAKPOINTS */
 

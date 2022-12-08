@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Sections from "./Sections";
+import E404 from "./E404";
+
 
 const SectionsContainer = ({auth, commentsContainer}) => {
   const MockArticle = 
@@ -31,11 +33,12 @@ const SectionsContainer = ({auth, commentsContainer}) => {
 
   return (
     <>
-      <Sections
+    {auth.user?(<Sections
         commentsContainer={commentsContainer}
         article={article}
         auth={auth}
-      />
+      />):(<E404 title={"Debes iniciar sesión para ver las noticias"} />) }
+      
     </>
   );
 };

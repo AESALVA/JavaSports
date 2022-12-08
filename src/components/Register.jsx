@@ -19,9 +19,12 @@ const Register = ({ setAuth, addUser }) => {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
   const [firstName, setFirstName] = useState(true);
   const [firstMail, setFirstMail] = useState(true);
   const [firstPass, setFirstPass] = useState(true);
+  const [wrongCredentials, setWrongCredentials] = useState("");
+
 
   const validateName = (n) => {
     return (
@@ -58,12 +61,18 @@ const Register = ({ setAuth, addUser }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if(validateName(name) && validateMail(mail) && validatePass(pass) && pass===confirmPass) {
     setAuth({ user: name, pass: pass, role: "user" });
     addUser({ name: name, mail: mail , password: pass, role: "user" });
-    navigate("/");
+    navigate("/");} else{
+      setWrongCredentials("Debe completar correctamente todos los campos")
+    }
   };
 
-  useEffect(() => {}, [name, pass, mail]);
+  useEffect(() => {setWrongCredentials("");
+  pass !== confirmPass && setWrongCredentials("Contraseñas no coinciden")
+}, [name, pass, mail, confirmPass]);
+
   return (
     <>
       <Modal show={show} onHide={handleClose} contentClassName="bg-dark">
@@ -112,7 +121,7 @@ const Register = ({ setAuth, addUser }) => {
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
                 className="p-3"
-                type="Email"
+                type="email"
                 placeholder="Java@Sports.com"
               />
             </Form.Group>
@@ -136,8 +145,31 @@ const Register = ({ setAuth, addUser }) => {
                 placeholder="1mayus 1minus 1num entre 8 y 20 caracteres"
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword2">
+              <Form.Label>
+                Confirmar Contraseña{" "}
+                {!validatePass(confirmPass) && !firstPass && (
+                  <span className="text-danger">
+                    La contraseña debe contar al menos con 1 mayus 1 minus 1 num
+                    entre 8 y 20 caracteres
+                  </span>
+                )}
+              </Form.Label>
+              <Form.Control
+                maxLength="25"
+                value={confirmPass}
+                onInput={(e) => setConfirmPass(e.target.value)}
+                onBlur={() => setFirstPass(false)}
+                className="p-3"
+                type="password"
+                placeholder="1mayus 1minus 1num entre 8 y 20 caracteres"
+              />
+            </Form.Group>
           </Form>
+          <span className="text-danger">{wrongCredentials}</span>
+          
         </Modal.Body>
+        
         <Button
           className="m-auto px-5 mb-5 btn-red btn-red-border"
           size="lg"

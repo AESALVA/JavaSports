@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
-import {  OverlayTrigger, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import validator from "validator";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,19 +19,27 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
   const [firstPassword, setFirstPassword] = useState(true);
   const [wrongCredentials, setWrongCredentials] = useState("");
   const navigate = useNavigate();
-  const handleValidation = (e) => {
+  const handleValidation = async (e) => {
     e.preventDefault();
-    if (validate(name, password)) {
-      login(name);
+     validate(name, password);
+     login(name, password);
+     auth.role === false && setWrongCredentials("Usuario y/o Contraseña incorrectos!")
+  };
+   
+  useEffect(() => {
+   if(auth.role === false){
+      setWrongCredentials("Usuario y/o Contraseña incorrectos!");
+    } else {
       navigate("/");
       handleClose();
       setName("");
       setPassword("");
-    } else {
-      setWrongCredentials("Usuario y/o Contraseña incorrectos!")
-      
     }
-  };
+  }, [auth])
+  
+
+
+
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
@@ -50,7 +58,9 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
     );
   };
 
-  useEffect(() => {setWrongCredentials("")}, [name, password]);
+  useEffect(() => {
+    setWrongCredentials("");
+  }, [name, password]);
 
   const handleClick = () => {
     logout();
@@ -82,7 +92,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
             overlay={<Tooltip id="button">Cerrar sesión</Tooltip>}
           >
             <Button className="p-2" id="btn-login" variant="outline-danger">
-              <FontAwesomeIcon icon={faUser} />{' '}{auth.user}
+              <FontAwesomeIcon icon={faUser} /> {auth.user}
             </Button>
           </OverlayTrigger>
         </Link>
@@ -131,7 +141,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 Usuario{" "}
                 {!validateName(name) && !firstName && (
                   <span>Debe llenar este campo</span>
-                )}{wrongCredentials}
+                )}
               </Form.Label>
               <Form.Control
                 maxLength="40"
@@ -148,7 +158,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
                 Contraseña{" "}
                 {!validatePassword(password) && !firstPassword && (
                   <span>Debe llenar este campo</span>
-                )}{wrongCredentials}
+                )}
               </Form.Label>
               <Form.Control
                 maxLength="40"
@@ -171,6 +181,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
             </Form.Text>
           </Form>
         </Modal.Body>
+        <span className="text-danger text-center mb-4">{wrongCredentials}</span>
         <Button
           className="m-auto px-5 mb-5  btn-red btn-red-border"
           size="lg"
