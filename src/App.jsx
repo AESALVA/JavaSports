@@ -12,6 +12,10 @@ function App() {
   // Buscador para la página
   const [search, setSearch] = useState("");
 
+// Loader
+
+const [isLoaded, setIsLoaded] = useState(false);
+
   // LOGIN
 
   const [usersA, setUsersA] = useState();
@@ -62,6 +66,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => {if(json.message==="User and password OK"){setAuth({user:u,role:json.role})}})
       .catch((error)=>setAuth({user:false,role:false}))
+      .finally(()=>setIsLoaded(false))
   };
 
 
@@ -122,6 +127,8 @@ function App() {
         setUsers={setUsersA}
         sectionByCategory={sectionByCategory}
         setSectionByCategory={setSectionByCategory}
+        isLoaded={isLoaded}
+        setIsLoaded={setIsLoaded}
       />
     </BrowserRouter>
   );

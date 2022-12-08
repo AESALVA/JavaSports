@@ -31,6 +31,8 @@ const Main = ({
   commentsContainer,
   sectionByCategory,
   setSectionByCategory,
+  isLoaded,
+  setIsLoaded,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -42,6 +44,8 @@ const Main = ({
         search={search}
         setSearch={setSearch}
         setSectionByCategory={setSectionByCategory}
+        isLoaded={isLoaded}
+        setIsLoaded={setIsLoaded}
       />
       <Routes>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
