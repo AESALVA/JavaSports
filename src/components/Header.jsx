@@ -157,39 +157,45 @@ const Header = ({
                   id="basic-nav-dropdown"
                   className="header-border"
                 >
-                  <NavDropdown.Item className="sectionLinks">
-                    <Link
-                      to="/SectionsList"
-                      onClick={() => setSectionByCategory("1")}
-                    >
-                      {" "}
-                      Fútbol
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="sectionLinks">
-                    <Link
-                      to="/SectionsList"
-                      onClick={() => setSectionByCategory("2")}
-                    >
-                      Hockey
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="sectionLinks">
-                    <Link
-                      to="/SectionsList"
-                      onClick={() => setSectionByCategory("3")}
-                    >
-                      Tenis
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="sectionLinks">
-                    <Link
-                      to="/SectionsList"
-                      onClick={() => setSectionByCategory("4")}
-                    >
-                      Boxeo
-                    </Link>
-                  </NavDropdown.Item>
+                  <ul className="SectionsList">
+                    <NavDropdown.Item as="li">
+                      <Link
+                        to="/SectionsList"
+                        onClick={() => setSectionByCategory("1")}
+                        className="sectionLinks"
+                      >
+                        {" "}
+                        Fútbol
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
+                      <Link
+                        to="/SectionsList"
+                        onClick={() => setSectionByCategory("2")}
+                        className="sectionLinks"
+                      >
+                        Hockey
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
+                      <Link
+                        to="/SectionsList"
+                        onClick={() => setSectionByCategory("3")}
+                        className="sectionLinks"
+                      >
+                        Tenis
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
+                      <Link
+                        to="/SectionsList"
+                        onClick={() => setSectionByCategory("4")}
+                        className="sectionLinks"
+                      >
+                        Boxeo
+                      </Link>
+                    </NavDropdown.Item>
+                  </ul>
                 </NavDropdown>
                 <Link to="/Contact" className="header-border p-2">
                   Contacto
@@ -205,7 +211,7 @@ const Header = ({
                     Administración
                   </Link>
                 )}
-                <Link className="d-md-none p-2">
+                <div className="d-md-none p-2">
                   <LoginModal
                     login={login}
                     logout={logout}
@@ -213,7 +219,7 @@ const Header = ({
                     validate={validate}
                     auth={auth}
                   />
-                </Link>
+                </div>
 
                 <div className="d-flex header-form d-md-none py2 mx-1">
                   {/* BUSCADOR */}
