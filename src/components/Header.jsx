@@ -158,7 +158,7 @@ const Header = ({
                   className="header-border"
                 >
                   <ul className="SectionsList">
-                    <li>
+                    <NavDropdown.Item as="li">
                       <Link
                         to="/SectionsList"
                         onClick={() => setSectionByCategory("1")}
@@ -167,8 +167,8 @@ const Header = ({
                         {" "}
                         Fútbol
                       </Link>
-                    </li>
-                    <li>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
                       <Link
                         to="/SectionsList"
                         onClick={() => setSectionByCategory("2")}
@@ -176,8 +176,8 @@ const Header = ({
                       >
                         Hockey
                       </Link>
-                    </li>
-                    <li>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
                       <Link
                         to="/SectionsList"
                         onClick={() => setSectionByCategory("3")}
@@ -185,8 +185,8 @@ const Header = ({
                       >
                         Tenis
                       </Link>
-                    </li>
-                    <li>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="li">
                       <Link
                         to="/SectionsList"
                         onClick={() => setSectionByCategory("4")}
@@ -194,7 +194,7 @@ const Header = ({
                       >
                         Boxeo
                       </Link>
-                    </li>
+                    </NavDropdown.Item>
                   </ul>
                 </NavDropdown>
                 <Link to="/Contact" className="header-border p-2">
