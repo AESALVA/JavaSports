@@ -74,6 +74,10 @@ const Contacto = () => {
       setLastname("");
       setMail("");
       setText("");
+      setFirstName(true);
+      setFirstMail(true);
+      setFirstLastname(true);
+      setFirstText(true);
     } else {
       setFirstName(false);
       setFirstMail(false);
