@@ -13,7 +13,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "../styles/management.css";
 
 const CrudNews = ({
-  info,
+  article,
   view,
   action,
   setActionAMB,
@@ -21,16 +21,30 @@ const CrudNews = ({
   handleClose,
 }) => {
   //   estados para noticia
-  const [titleNews, setTitleNews] = useState();
-  const [categoryIdNews, setCategoryIdNews] = useState();
-  const [importantNews, setimportantNews] = useState();
-  const [descriptionNews, setDescriptionNews] = useState();
-  const [synopsisNews, setSynopsisNews] = useState();
-  const [imgNews, setImgNews] = useState();
-  const [imgTitleNews, setImgTitleNews] = useState();
-  const [imgTwoNews, setImgTwoNews] = useState();
+  const [idNews, setIdNews] = useState(article._id);
+  const [titleNews, setTitleNews] = useState(article.title);
+  const [categoryIdNews, setCategoryIdNews] = useState(article.categoryId);
+  const [importantNews, setimportantNews] = useState(article.important);
+  const [descriptionNews, setDescriptionNews] = useState(article.description);
+  const [synopsisNews, setSynopsisNews] = useState(article.synopsis);
+  const [imgNews, setImgNews] = useState(article.img);
+  const [imgTitleNews, setImgTitleNews] = useState(article.imgTitle);
+  const [imgTwoNews, setImgTwoNews] = useState(article.imgTwo);
+  const [categoryNameNews, setCategoryNameNews] = useState(article.categories);
   const [editableFields, seteditableFields] = useState(true);
-  const [categoryNameNews, setCategoryNameNews] = useState("");
+  // useEffect(() => {
+  //   setIdNews(article._id);
+  //   setTitleNews(article.title);
+  //   setCategoryIdNews(article.categoryId);
+  //   setimportantNews(article.important);
+  //   setDescriptionNews(article.description);
+  //   setSynopsisNews(article.synopsis);
+  //   setImgNews(article.img);
+  //   setImgTitleNews(article.imgTitle);
+  //   setImgTwoNews(article.imgTwo);
+  //   setCategoryNameNews(article.categories);
+  // });
+
   // plantilla de noticias:
   let news = {
     categories: "",
@@ -43,19 +57,6 @@ const CrudNews = ({
     important: "",
     categoryId: "",
   };
-  // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
-  useEffect(() => {
-    action === "new" ? seteditableFields(false) : seteditableFields(true);
-    setTitleNews(info.title);
-    setCategoryIdNews(info.categoryId);
-    setimportantNews(info.important);
-    setDescriptionNews(info.description);
-    setSynopsisNews(info.synopsis);
-    setImgNews(info.img);
-    setImgTwoNews(info.imgTwo);
-    setImgTitleNews(info.imgTitle);
-    setCategoryNameNews(info.categories);
-  }, [showModal]);
 
   const categoryName = () => {
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
@@ -86,21 +87,24 @@ const CrudNews = ({
   };
 
   const confirmUpdate = () => {
-    fetch(`https://java-sports-back.vercel.app/articles/update/${info._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        categories: categoryNameNews,
-        title: titleNews,
-        img: imgNews,
-        imgTitle: imgTitleNews,
-        description: descriptionNews,
-        imgTwo: imgTwoNews,
-        synopsis: synopsisNews,
-        important: importantNews,
-        categoryId: categoryIdNews,
-      }),
-    });
+    fetch(
+      `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          categories: categoryNameNews,
+          title: titleNews,
+          img: imgNews,
+          imgTitle: imgTitleNews,
+          description: descriptionNews,
+          imgTwo: imgTwoNews,
+          synopsis: synopsisNews,
+          important: importantNews,
+          categoryId: categoryIdNews,
+        }),
+      }
+    );
   };
 
   const confirmNew = () => {
@@ -123,13 +127,17 @@ const CrudNews = ({
 
   const confirmDelete = () => {
     //eliminar noticia por id
-    fetch(`https://java-sports-back.vercel.app/articles/delete/${info._id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
+    fetch(
+      `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   };
 
-  const confirmNews = () => {
+  const confirmNews = (e) => {
+    e.preventDefault();
     if (action === "Eliminar") {
       confirmDelete();
     } else {
@@ -177,7 +185,7 @@ const CrudNews = ({
         </Modal.Header>
         <Modal.Body>
           <h6 className="text-dark text-center mb-3">{`Accion: ${action}`}</h6>
-          <Form>
+          <Form onSubmit={(e) => confirmNews(e)}>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
               <Form.Control
@@ -185,7 +193,8 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Id"
-                value={info._id}
+                value={idNews}
+                onChange={(e) => setIdNews(e.target.value)}
                 disabled
               />
             </Form.Group>
@@ -314,10 +323,7 @@ const CrudNews = ({
         </Modal.Body>
         <Modal.Footer>
           {action !== "display" && (
-            <Button
-              className="btn-gray btn-gray-border"
-              onClick={() => confirmNews()}
-            >
+            <Button className="btn-gray btn-gray-border" type="submit">
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}

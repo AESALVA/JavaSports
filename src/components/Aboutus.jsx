@@ -34,7 +34,7 @@ function Aboutus() {
           <div className="profile-img">
             <img
               src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
-              alt="perfil valentina"
+              alt="perfil eduardo"
               width={100}
             />
           </div>

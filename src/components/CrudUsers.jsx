@@ -21,22 +21,23 @@ const CrudUsers = ({
   handleClose,
 }) => {
   // estado para usuario
-  const [nameUser, setNameUser] = useState();
-  const [mailUser, setMailUser] = useState();
-  const [roleUser, setRoleUser] = useState();
+  const [idUsers, setIdUsers] = useState(info._id);
+  const [nameUser, setNameUser] = useState(info.name);
+  const [mailUser, setMailUser] = useState(info.mail);
+  const [roleUser, setRoleUser] = useState(info.role);
+  const [password, setPassword] = useState(info.password);
   const [editableFields, seteditableFields] = useState(true);
-  const [password, setPassword] = useState();
   // Plantilla user
   const user = { user: "", mail: "", password: "", role: "" };
 
   // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
-  useEffect(() => {
-    action === "new" ? seteditableFields(false) : seteditableFields(true);
-    setNameUser(info.name);
-    setMailUser(info.mail);
-    setRoleUser(info.role);
-    setPassword(info.password);
-  }, [showModal]);
+  // useEffect(() => {
+  //   action === "new" ? seteditableFields(false) : seteditableFields(true);
+  //   // setNameUser(info.name);
+  //   // setMailUser(info.mail);
+  //   // setRoleUser(info.role);
+  //   // setPassword(info.password);
+  // }, [showModal]);
 
   const updateUser = () => {
     setActionAMB("Modificar");
@@ -81,7 +82,8 @@ const CrudUsers = ({
     });
   };
 
-  const confirmNews = () => {
+  const confirmUsers = (e) => {
+    e.preventDefault();
     if (action === "new") {
       confirmNewUser();
     } else {
@@ -126,7 +128,7 @@ const CrudUsers = ({
           )}
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={(e) => confirmUsers(e)}>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
               <Form.Control
@@ -135,7 +137,8 @@ const CrudUsers = ({
                 type="text"
                 placeholder="Id"
                 disabled
-                value={info._id}
+                value={idUsers}
+                onChange={(e) => setIdUsers(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formName">
@@ -197,10 +200,7 @@ const CrudUsers = ({
         </Modal.Body>
         <Modal.Footer>
           {action !== "display" && (
-            <Button
-              className="btn-gray btn-gray-border"
-              onClick={() => confirmNews()}
-            >
+            <Button className="btn-gray btn-gray-border" type="submit">
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}
