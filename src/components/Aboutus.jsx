@@ -30,13 +30,7 @@ function Aboutus() {
         </div>
         <div id="profile-eduardo">
           <div className="profile-img">
-            <img
-              src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
-              alt="perfil eduardo"
-              src={imgEduardo}
-              alt="perfil eduardo"
-              width={100}
-            />
+            <img src={imgEduardo} alt="perfil eduardo" width={100} />
           </div>
           <div className="profile-title">
             <h4 className="text-center titulo-aboutus">Angel Eduardo Salva</h4>
