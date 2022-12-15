@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import "../styles/styles.css";
 import "../styles/aboutus.css";
+import imgEduardo from "../img/eduardo.jpeg";
+import imgValentina from "../img/valentina.jpeg";
 
 function Aboutus() {
   return (
@@ -13,11 +15,7 @@ function Aboutus() {
       <div id="contact-profiles">
         <div id="profile-valentina">
           <div className="profile-img">
-            <img
-              src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
-              alt="perfil valentina"
-              width={100}
-            />
+            <img src={imgValentina} alt="perfil valentina" width={100} />
           </div>
           <div className="profile-title">
             <h4 className="text-center titulo-aboutus">Valentina Reigada</h4>
@@ -34,6 +32,8 @@ function Aboutus() {
           <div className="profile-img">
             <img
               src="https://i.pinimg.com/736x/b3/b8/57/b3b85713a822ad3e2c5e1eb74af91554.jpg"
+              alt="perfil eduardo"
+              src={imgEduardo}
               alt="perfil eduardo"
               width={100}
             />
