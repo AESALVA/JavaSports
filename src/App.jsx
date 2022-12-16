@@ -49,7 +49,7 @@ const [isLoaded, setIsLoaded] = useState(false);
       }
     )
     .then((res) => res.json())
-    .then((json)=>{if(json.message==="Wrong Credentials"){setAuth({user:false,role:false})}})
+    .then((json)=>{if(json.message==="Wrong Credentials" || json.message === "User not found"){setAuth({user:false,role:false})}})
   };
 
   const login = async (u, p) => {
