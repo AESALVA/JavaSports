@@ -10,7 +10,8 @@ import CrudNews from "./CrudNews";
 import { useEffect } from "react";
 
 const TableManagement = ({ viewTable, articles, users }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModalNews, setShowModalNews] = useState(false);
+  const [showModalUsers, setShowModalUsers] = useState(false);
   const [actionAMB, setActionAMB] = useState("");
   const [viewInfo, setViewInfo] = useState({});
   const [matchlist, setMatchlist] = useState([{}]);
@@ -28,10 +29,10 @@ const TableManagement = ({ viewTable, articles, users }) => {
 
   const handleClose = () => {
     setViewInfo({});
-    setShowModal(false);
+    viewTable === "news" ? setShowModalNews(false) : setShowModalUsers(false);
   };
   const handleShow = () => {
-    setShowModal(true);
+    viewTable === "news" ? setShowModalNews(true) : setShowModalUsers(true);
   };
 
   const showModalNew = () => {
@@ -125,26 +126,26 @@ const TableManagement = ({ viewTable, articles, users }) => {
         </div>
       </div>
 
-      {/* MODAL CRUD */}
-      {viewTable === "news" ? (
-        <CrudNews
-          article={viewInfo}
-          view={viewTable}
-          action={actionAMB}
-          setActionAMB={setActionAMB}
-          showModal={showModal}
-          handleClose={handleClose}
-        />
-      ) : (
-        <CrudUsers
-          info={viewInfo}
-          view={viewTable}
-          action={actionAMB}
-          setActionAMB={setActionAMB}
-          showModal={showModal}
-          handleClose={handleClose}
-        />
-      )}
+      {/* MODAL CRUD
+      {viewTable === "news" ? ( */}
+      <CrudNews
+        article={viewInfo}
+        view={viewTable}
+        action={actionAMB}
+        setActionAMB={setActionAMB}
+        showModal={showModalNews}
+        handleClose={handleClose}
+      />
+      {/* ) : ( */}
+      <CrudUsers
+        info={viewInfo}
+        view={viewTable}
+        action={actionAMB}
+        setActionAMB={setActionAMB}
+        showModal={showModalUsers}
+        handleClose={handleClose}
+      />
+      {/* )} */}
     </>
   );
 };

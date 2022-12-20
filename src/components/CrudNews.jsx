@@ -9,7 +9,6 @@ import { CloseButton } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "../styles/management.css";
 
 const CrudNews = ({
@@ -21,29 +20,30 @@ const CrudNews = ({
   handleClose,
 }) => {
   //   estados para noticia
-  const [idNews, setIdNews] = useState(article._id);
-  const [titleNews, setTitleNews] = useState(article.title);
-  const [categoryIdNews, setCategoryIdNews] = useState(article.categoryId);
-  const [importantNews, setimportantNews] = useState(article.important);
-  const [descriptionNews, setDescriptionNews] = useState(article.description);
-  const [synopsisNews, setSynopsisNews] = useState(article.synopsis);
-  const [imgNews, setImgNews] = useState(article.img);
-  const [imgTitleNews, setImgTitleNews] = useState(article.imgTitle);
-  const [imgTwoNews, setImgTwoNews] = useState(article.imgTwo);
-  const [categoryNameNews, setCategoryNameNews] = useState(article.categories);
+  const [idNews, setIdNews] = useState("");
+  const [titleNews, setTitleNews] = useState("");
+  const [categoryIdNews, setCategoryIdNews] = useState("");
+  const [importantNews, setimportantNews] = useState("");
+  const [descriptionNews, setDescriptionNews] = useState("");
+  const [synopsisNews, setSynopsisNews] = useState("");
+  const [imgNews, setImgNews] = useState("");
+  const [imgTitleNews, setImgTitleNews] = useState("");
+  const [imgTwoNews, setImgTwoNews] = useState("");
+  const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
-  // useEffect(() => {
-  //   setIdNews(article._id);
-  //   setTitleNews(article.title);
-  //   setCategoryIdNews(article.categoryId);
-  //   setimportantNews(article.important);
-  //   setDescriptionNews(article.description);
-  //   setSynopsisNews(article.synopsis);
-  //   setImgNews(article.img);
-  //   setImgTitleNews(article.imgTitle);
-  //   setImgTwoNews(article.imgTwo);
-  //   setCategoryNameNews(article.categories);
-  // });
+
+  useEffect(() => {
+    setIdNews(article._id);
+    setTitleNews(article.title);
+    setCategoryIdNews(article.categoryId);
+    setimportantNews(article.important);
+    setDescriptionNews(article.description);
+    setSynopsisNews(article.synopsis);
+    setImgNews(article.img);
+    setImgTitleNews(article.imgTitle);
+    setImgTwoNews(article.imgTwo);
+    setCategoryNameNews(article.categories);
+  }, []);
 
   // plantilla de noticias:
   let news = {
@@ -195,7 +195,7 @@ const CrudNews = ({
                 placeholder="Id"
                 value={idNews}
                 onChange={(e) => setIdNews(e.target.value)}
-                disabled
+                // disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleNew">
@@ -207,7 +207,7 @@ const CrudNews = ({
                 placeholder="Titulo"
                 value={titleNews}
                 onChange={(e) => setTitleNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleImg">
@@ -219,14 +219,14 @@ const CrudNews = ({
                 placeholder="Titulo de imagen principal"
                 value={imgTitleNews}
                 onChange={(e) => setImgTitleNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formCategories">
               <Form.Label>Categoria</Form.Label>
               <Form.Select
                 aria-label="Seleccionar categoria"
-                disabled={editableFields}
+                // disabled={editableFields}
                 onChange={(e) => setCategoryNameNews(e.target.value)}
                 value={categoryNameNews}
               >
@@ -247,12 +247,12 @@ const CrudNews = ({
             <Form.Group
               className="mb-3"
               controlId="formDestacada"
-              disabled={editableFields}
+              // disabled={editableFields}
             >
               <Form.Label>¿Destacada?</Form.Label>
               <Form.Select
                 aria-label="Elegir opción"
-                disabled
+                // disabled
                 value={importantNews}
                 onChange={(e) => setimportantNews(e.target.value)}
               >
@@ -277,7 +277,7 @@ const CrudNews = ({
                 required
                 value={descriptionNews}
                 onChange={(e) => setDescriptionNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formSynopsis">
@@ -292,7 +292,7 @@ const CrudNews = ({
                 placeholder="Synopsis"
                 value={synopsisNews}
                 onChange={(e) => setSynopsisNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
@@ -304,7 +304,7 @@ const CrudNews = ({
                 placeholder="Ingresar url de imagen"
                 value={imgNews}
                 onChange={(e) => setImgNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg2">
@@ -316,7 +316,7 @@ const CrudNews = ({
                 placeholder="Ingresar url de imagen"
                 value={imgTwoNews}
                 onChange={(e) => setImgTwoNews(e.target.value)}
-                disabled={editableFields}
+                // disabled={editableFields}
               />
             </Form.Group>
           </Form>
