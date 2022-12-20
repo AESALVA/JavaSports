@@ -9,6 +9,9 @@ import validator from "validator";
 import Swal from "sweetalert2";
 import "../styles/Contact.css";
 import "../styles/styles.css";
+import emailjs from "@emailjs/browser";
+import { FormGroup } from "react-bootstrap";
+import { useRef } from "react";
 
 const Contacto = () => {
   const [name, setName] = useState("");
@@ -19,7 +22,7 @@ const Contacto = () => {
   const [firstLastname, setFirstLastname] = useState(true);
   const [firstMail, setFirstMail] = useState(true);
   const [firstText, setFirstText] = useState(true);
-
+  const form = useRef();
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
@@ -56,12 +59,22 @@ const Contacto = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+
     if (
       validateName(name) &&
       validateMail(mail) &&
       validateLastname(lastname) &&
       validateText(text)
     ) {
+      emailjs
+        .sendForm(
+          "service_6te7sr6",
+          "template_wo5g1cg",
+          form.current,
+          "ugkrjxlh9YCbw85u7"
+        )
+        .then((result) => console.log(result.text))
+        .catch((error) => console.log(error));
       Swal.fire({
         title: "JavaSports",
         text: "Su mensaje ha sido enviado!",
@@ -97,7 +110,7 @@ const Contacto = () => {
         <h2 className="text-center titulo-aboutus">Contáctanos!</h2>
         {/* Fomulario */}
         <div className="d-flex justify-content-center px-0">
-          <Form id="formulario">
+          <Form onSubmit={handleClick} ref={form} id="formulario">
             <Row className="mb-2 mt-2">
               <div className="row"></div>
               <Form.Group
@@ -112,10 +125,12 @@ const Contacto = () => {
                   )}
                 </Form.Label>
                 <Form.Control
+                  as="input"
                   type="text"
                   placeholder="Ingrese su nombre"
                   onInput={(e) => setName(e.target.value)}
                   onBlur={() => setFirstName(false)}
+                  name="name"
                   value={name}
                 />
               </Form.Group>
@@ -132,10 +147,12 @@ const Contacto = () => {
                   )}{" "}
                 </Form.Label>
                 <Form.Control
+                  as="input"
                   type="text"
                   placeholder="Ingrese su apellido"
                   onInput={(e) => setLastname(e.target.value)}
                   onBlur={() => setFirstLastname(false)}
+                  name="lastname"
                   value={lastname}
                 ></Form.Control>
               </Form.Group>
@@ -150,13 +167,16 @@ const Contacto = () => {
                 )}
               </Form.Label>
               <Form.Control
+                as="input"
                 type="Email"
                 placeholder="Ingrese su email"
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
+                name="mail"
                 value={mail}
               />
             </Form.Group>
+
             <Row>
               <Form.Group
                 as={Col}
@@ -175,6 +195,7 @@ const Contacto = () => {
                   placeholder="Ingrese un mensaje"
                   onInput={(e) => setText(e.target.value)}
                   onBlur={() => setFirstText(false)}
+                  name="text"
                   value={text}
                 />
               </Form.Group>
@@ -184,7 +205,6 @@ const Contacto = () => {
                 className="btn-dark btn-gray-border  mt-3 w-100 p-1"
                 size="lg"
                 type="submit"
-                onClick={(e) => handleClick(e)}
               >
                 <h4 className=" m-auto py-1 px-4">Enviar</h4>
               </Button>

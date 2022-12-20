@@ -6,6 +6,14 @@ import imgValentina from "../img/valentina.jpeg";
 import { Link } from "react-router-dom";
 
 function Aboutus() {
+
+const urlValentina = ["https://github.com/valentinaReigada","https://www.linkedin.com/in/valentina-reigada-9b06a51ab"];
+const urlEduardo = ["https://github.com/AESALVA","https://www.linkedin.com/in/angeleduardosalva"];
+
+const redirect = (url)=>{
+  window.open(url);
+}
+
   return (
     <Container className="main-container d-flex flex-column align-items-center">
       {/* COLUMN1 */}
@@ -30,7 +38,7 @@ function Aboutus() {
           </div>
           <div className="profile-social">
             <ul className="">
-              <Link>
+              <Link onClick={()=>redirect(urlValentina[1])} to={urlValentina[1]}  rel="noopener noreferrer" target="_blank"  >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -54,7 +62,7 @@ function Aboutus() {
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
                 </svg>
               </Link>
-              <Link>
+              <Link onClick={()=>redirect(urlValentina[0])} to={urlValentina[0]}  rel="noopener noreferrer" target="_blank" >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -84,7 +92,7 @@ function Aboutus() {
           </div>
           <div className="profile-social">
             <ul className="">
-              <Link>
+              <Link onClick={()=>redirect(urlEduardo[1])} to={urlEduardo[1]}  rel="noopener noreferrer" target="_blank" >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -108,7 +116,7 @@ function Aboutus() {
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
                 </svg>
               </Link>
-              <Link>
+              <Link onClick={()=>redirect(urlEduardo[0])} to={urlEduardo[0]}  rel="noopener noreferrer" target="_blank">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
