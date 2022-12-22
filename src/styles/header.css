@@ -42,6 +42,10 @@ span .navbar-Toggle {
   width: 150px;
 }
 
+.dropdown-menu {
+  background-color: var(--grayColor);
+}
+
 .links-header a {
   text-decoration: none;
   color: white;
@@ -80,14 +84,15 @@ span .navbar-Toggle {
   width: 120px;
   height: 40px;
 }
-.SectionsList{
+.SectionsList {
   list-style-type: none;
   margin: 0;
-  padding:0 1rem;
+  padding: 0 1rem;
 }
-
-
-
+.SectionsList li:hover {
+  background-color: #4f4e57c8;
+  cursor: pointer;
+}
 /* BREAKPOINTS */
 
 /* MD */
