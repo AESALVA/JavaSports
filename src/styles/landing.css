@@ -140,7 +140,7 @@
     width: 100%;
   }
   #seventeen-card .card-big {
-    height: auto;
+    /* height: auto; */
   }
   #seven-card .card,
   #nineteen-card .card,
