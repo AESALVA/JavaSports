@@ -8,7 +8,7 @@ import TableManagement from "./TableManagement";
 import "../styles/management.css";
 import { useNavigate } from "react-router-dom";
 
-const Management = ({ auth, articles, users }) => {
+const Management = ({ auth, articles, setArticles, users }) => {
   const navigate = useNavigate();
   let personalList = users.filter((user) => user.role === "admin");
   useEffect(() => {
@@ -33,6 +33,7 @@ const Management = ({ auth, articles, users }) => {
             <TableManagement
               viewTable="news"
               articles={articles}
+              setArticles={setArticles}
               users={users}
             />
           </Tab>
@@ -40,6 +41,7 @@ const Management = ({ auth, articles, users }) => {
             <TableManagement
               viewTable="users"
               articles={articles}
+              setArticles={setArticles}
               users={users}
             />
           </Tab>
@@ -51,6 +53,7 @@ const Management = ({ auth, articles, users }) => {
             <TableManagement
               viewTable="administrativeStaff"
               articles={articles}
+              setArticles={setArticles}
               users={personalList}
             />
           </Tab>

@@ -21,23 +21,23 @@ const CrudUsers = ({
   handleClose,
 }) => {
   // estado para usuario
-  const [idUsers, setIdUsers] = useState(info._id);
-  const [nameUser, setNameUser] = useState(info.name);
-  const [mailUser, setMailUser] = useState(info.mail);
-  const [roleUser, setRoleUser] = useState(info.role);
-  const [password, setPassword] = useState(info.password);
+  // const [idUsers, setIdUsers] = useState("");
+  const [nameUser, setNameUser] = useState("");
+  // const [mailUser, setMailUser] = useState(info.mail);
+  const [roleUser, setRoleUser] = useState("");
+  const [password, setPassword] = useState("");
   const [editableFields, seteditableFields] = useState(true);
   // Plantilla user
-  const user = { user: "", mail: "", password: "", role: "" };
+  const user = { user: "", password: "", role: "" };
 
   // cuando levanto el modal deshabilito todos los campos y cargo estados de los input
-  // useEffect(() => {
-  //   action === "new" ? seteditableFields(false) : seteditableFields(true);
-  //   // setNameUser(info.name);
-  //   // setMailUser(info.mail);
-  //   // setRoleUser(info.role);
-  //   // setPassword(info.password);
-  // }, [showModal]);
+  useEffect(() => {
+    action === "new" ? seteditableFields(false) : seteditableFields(true);
+    setNameUser(info.name);
+    // setMailUser(info.mail);
+    setRoleUser(info.role);
+    setPassword(info.password);
+  }, [showModal]);
 
   const updateUser = () => {
     setActionAMB("Modificar");
@@ -63,15 +63,15 @@ const CrudUsers = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: nameUser,
-        mail: mailUser,
+        // mail: mailUser,
         password: info.password,
         role: roleUser,
       }),
     });
   };
+  // user.mail = mailUser;
   const confirmNewUser = () => {
     user.name = nameUser;
-    user.mail = mailUser;
     user.password = password;
     user.role = roleUser;
 
@@ -129,18 +129,6 @@ const CrudUsers = ({
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => confirmUsers(e)}>
-            <Form.Group className="mb-3" controlId="formId">
-              <Form.Label>Id</Form.Label>
-              <Form.Control
-                maxLength="40"
-                className="p-2"
-                type="text"
-                placeholder="Id"
-                disabled
-                value={idUsers}
-                onChange={(e) => setIdUsers(e.target.value)}
-              />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Usuario </Form.Label>
               <Form.Control
@@ -148,29 +136,29 @@ const CrudUsers = ({
                 className="p-2"
                 type="text"
                 placeholder="JavaSports"
-                value={nameUser}
+                value={nameUser || ""}
                 disabled={editableFields}
                 onChange={(e) => setNameUser(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formEmail">
+            {/* <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email </Form.Label>
               <Form.Control
                 maxLength="40"
                 className="p-2"
                 type="Email"
                 placeholder="Java@Sports.com"
-                value={mailUser}
+                value={mailUser || ""}
                 disabled={editableFields}
                 onChange={(e) => setMailUser(e.target.value)}
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group className="mb-3" controlId="formRole">
               <Form.Label>Rol</Form.Label>
               <Form.Select
                 aria-label="Seleccionar rol"
                 disabled={editableFields}
-                value={roleUser}
+                value={roleUser || ""}
               >
                 {view !== "administrativeStaff" && (
                   <option className="text-dark" value="2">
@@ -191,7 +179,7 @@ const CrudUsers = ({
                   type="text"
                   placeholder="Contraseña"
                   disabled={editableFields}
-                  value={password}
+                  value={password || ""}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>

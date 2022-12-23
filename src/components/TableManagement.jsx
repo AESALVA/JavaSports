@@ -9,7 +9,7 @@ import CrudUsers from "./CrudUsers";
 import CrudNews from "./CrudNews";
 import { useEffect } from "react";
 
-const TableManagement = ({ viewTable, articles, users }) => {
+const TableManagement = ({ viewTable, articles, setArticles, users }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
   const [actionAMB, setActionAMB] = useState("");
@@ -63,6 +63,16 @@ const TableManagement = ({ viewTable, articles, users }) => {
       setMatchlist(listSeeker);
     }
   }, [seeker]);
+
+  const [confirmChange, setConfirmChange] = useState("false");
+
+  // Cuando guardo cambios (se insertó-modificó o eliminó) me actualiza los articulos en
+  // la página.
+  useEffect(() => {
+    fetch("https://java-sports-back.vercel.app/articles/all")
+      .then((res) => res.json())
+      .then((json) => setArticles(json));
+  }, [confirmChange]);
 
   return (
     <>
@@ -130,6 +140,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
       {viewTable === "news" ? ( */}
       <CrudNews
         article={viewInfo}
+        setConfirmChange={setConfirmChange}
         view={viewTable}
         action={actionAMB}
         setActionAMB={setActionAMB}

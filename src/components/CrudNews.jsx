@@ -13,6 +13,7 @@ import "../styles/management.css";
 
 const CrudNews = ({
   article,
+  setConfirmChange,
   view,
   action,
   setActionAMB,
@@ -32,7 +33,9 @@ const CrudNews = ({
   const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
 
+  // const load = () => {};
   useEffect(() => {
+    action === "new" ? seteditableFields(false) : seteditableFields(true);
     setIdNews(article._id);
     setTitleNews(article.title);
     setCategoryIdNews(article.categoryId);
@@ -43,7 +46,7 @@ const CrudNews = ({
     setImgTitleNews(article.imgTitle);
     setImgTwoNews(article.imgTwo);
     setCategoryNameNews(article.categories);
-  }, []);
+  }, [showModal]);
 
   // plantilla de noticias:
   let news = {
@@ -60,18 +63,18 @@ const CrudNews = ({
 
   const categoryName = () => {
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
-    switch (categoryNameNews) {
-      case "football":
-        setCategoryIdNews("1");
+    switch (categoryIdNews) {
+      case "1":
+        setCategoryNameNews("football");
         break;
-      case "hockey":
-        setCategoryIdNews("2");
+      case "2":
+        setCategoryNameNews("hockey");
         break;
-      case "tennis":
-        setCategoryIdNews("3");
+      case "3":
+        setCategoryNameNews("tennis");
         break;
-      case "box":
-        setCategoryIdNews("4");
+      case "4":
+        setCategoryNameNews("box");
         break;
     }
   };
@@ -136,8 +139,9 @@ const CrudNews = ({
     );
   };
 
-  const confirmNews = (e) => {
-    e.preventDefault();
+  const confirmNews = () => {
+    // e.preventDefault();
+    console.log("cofirmo");
     if (action === "Eliminar") {
       confirmDelete();
     } else {
@@ -149,6 +153,7 @@ const CrudNews = ({
         confirmUpdate();
       }
     }
+    setConfirmChange("true");
     handleClose();
   };
 
@@ -185,7 +190,7 @@ const CrudNews = ({
         </Modal.Header>
         <Modal.Body>
           <h6 className="text-dark text-center mb-3">{`Accion: ${action}`}</h6>
-          <Form onSubmit={(e) => confirmNews(e)}>
+          <Form>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
               <Form.Control
@@ -193,9 +198,9 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Id"
-                value={idNews}
+                value={idNews || ""}
                 onChange={(e) => setIdNews(e.target.value)}
-                // disabled
+                disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleNew">
@@ -205,9 +210,9 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Titulo"
-                value={titleNews}
+                value={titleNews || ""}
                 onChange={(e) => setTitleNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleImg">
@@ -217,43 +222,39 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Titulo de imagen principal"
-                value={imgTitleNews}
+                value={imgTitleNews || ""}
                 onChange={(e) => setImgTitleNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formCategories">
               <Form.Label>Categoria</Form.Label>
               <Form.Select
                 aria-label="Seleccionar categoria"
-                // disabled={editableFields}
-                onChange={(e) => setCategoryNameNews(e.target.value)}
-                value={categoryNameNews}
+                disabled={editableFields}
+                onChange={(e) => setCategoryIdNews(e.target.value)}
+                value={categoryIdNews || ""}
               >
-                <option className="text-dark" value="football">
+                <option className="text-dark" value="1">
                   Fútbol
                 </option>
-                <option className="text-dark" value="hockey">
+                <option className="text-dark" value="2">
                   Hockey
                 </option>
-                <option className="text-dark" value="tennis">
+                <option className="text-dark" value="3">
                   Tenis
                 </option>
-                <option className="text-dark" value="box">
+                <option className="text-dark" value="4">
                   Boxeo
                 </option>
               </Form.Select>
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="formDestacada"
-              // disabled={editableFields}
-            >
+            <Form.Group className="mb-3" controlId="formDestacada">
               <Form.Label>¿Destacada?</Form.Label>
               <Form.Select
                 aria-label="Elegir opción"
-                // disabled
-                value={importantNews}
+                disabled={editableFields}
+                value={importantNews || ""}
                 onChange={(e) => setimportantNews(e.target.value)}
               >
                 <option className="text-dark" value="false">
@@ -275,9 +276,9 @@ const CrudNews = ({
                 type="text"
                 placeholder="Descripción"
                 required
-                value={descriptionNews}
+                value={descriptionNews || ""}
                 onChange={(e) => setDescriptionNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formSynopsis">
@@ -290,9 +291,9 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Synopsis"
-                value={synopsisNews}
+                value={synopsisNews || ""}
                 onChange={(e) => setSynopsisNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
@@ -302,9 +303,9 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Ingresar url de imagen"
-                value={imgNews}
+                value={imgNews || ""}
                 onChange={(e) => setImgNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg2">
@@ -314,16 +315,19 @@ const CrudNews = ({
                 className="p-2"
                 type="text"
                 placeholder="Ingresar url de imagen"
-                value={imgTwoNews}
+                value={imgTwoNews || ""}
                 onChange={(e) => setImgTwoNews(e.target.value)}
-                // disabled={editableFields}
+                disabled={editableFields}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           {action !== "display" && (
-            <Button className="btn-gray btn-gray-border" type="submit">
+            <Button
+              className="btn-gray btn-gray-border"
+              onClick={() => confirmNews()}
+            >
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}
