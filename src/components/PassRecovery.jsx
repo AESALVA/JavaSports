@@ -35,6 +35,24 @@ const PassRecovery = () => {
     navigate("/");
   };
 
+  const HandleClick = async ()=>{
+    await fetch(
+      "https://java-sports-back.vercel.app/users/forgotPassword",   
+      {
+        method: "POST",
+        
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({mail:mail}),
+      }
+    )
+      .then((res) => res.json())
+      .then((json)=>console.log(json))
+      .catch((error)=>console.log(error))
+  }
+
   return (
     <>
       <div className="FondoPass d-xl-block mx-auto">
@@ -84,7 +102,7 @@ const PassRecovery = () => {
           className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
           size="lg"
           type="submit"
-          onClick={() => console.log("hola")}
+          onClick={() => HandleClick()}
         >
           <h4 className="m-auto py-2 px-4">Enviar</h4>
         </Button>

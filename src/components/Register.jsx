@@ -49,21 +49,17 @@ const Register = ({ setAuth, addUser }) => {
   };
   const validatePass = (n) => {
     return (
-      validator.matches(n, "[a-zA-Z]") &&
-      validator.isLength(n, { min: 8, max: 20 }) &&
-      validator.isStrongPassword(n, {
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-      })
+      validator.matches(n, "^[a-zA-Z0-9]*$") &&
+      validator.isLength(n, { min: 8, max: 20 })
     );
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     if(validateName(name) && validateMail(mail) && validatePass(pass) && pass===confirmPass) {
-    setAuth({ user: name, pass: pass, role: "user" });
-    addUser({ name: name, mail: mail , password: pass, role: "user" });
+      addUser({ name: name, mail: mail , password: pass, role: "user" });
+      setAuth({ user: name, pass: pass, role: "user" });
+    
     navigate("/");} else{
       setWrongCredentials("Debe completar correctamente todos los campos")
     }

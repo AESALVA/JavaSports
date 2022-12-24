@@ -32,7 +32,9 @@ const [isLoaded, setIsLoaded] = useState(false);
         password:u.password,
         role:u.role,
       }),
-    });
+    })
+    .then((res)=>res.json()
+    .then((json)=>console.log(json)))
   };
 
   const validate = async (u, p) => {
