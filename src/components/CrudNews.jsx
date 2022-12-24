@@ -63,18 +63,19 @@ const CrudNews = ({
 
   const categoryName = () => {
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
-    switch (categoryIdNews) {
-      case "1":
-        setCategoryNameNews("football");
+
+    switch (categoryNameNews) {
+      case "football":
+        setCategoryIdNews("1");
         break;
-      case "2":
-        setCategoryNameNews("hockey");
+      case "hochey":
+        setCategoryIdNews("2");
         break;
-      case "3":
-        setCategoryNameNews("tennis");
+      case "tennis":
+        setCategoryIdNews("3");
         break;
-      case "4":
-        setCategoryNameNews("box");
+      case "box":
+        setCategoryIdNews("4");
         break;
     }
   };
@@ -140,8 +141,7 @@ const CrudNews = ({
   };
 
   const confirmNews = () => {
-    // e.preventDefault();
-    console.log("cofirmo");
+    console.log("confirmo");
     if (action === "Eliminar") {
       confirmDelete();
     } else {
@@ -232,19 +232,19 @@ const CrudNews = ({
               <Form.Select
                 aria-label="Seleccionar categoria"
                 disabled={editableFields}
-                onChange={(e) => setCategoryIdNews(e.target.value)}
-                value={categoryIdNews || ""}
+                onChange={(e) => setCategoryNameNews(e.target.value)}
+                value={categoryNameNews || ""}
               >
-                <option className="text-dark" value="1">
+                <option className="text-dark" value="football">
                   Fútbol
                 </option>
-                <option className="text-dark" value="2">
+                <option className="text-dark" value="hockey">
                   Hockey
                 </option>
-                <option className="text-dark" value="3">
+                <option className="text-dark" value="tennis">
                   Tenis
                 </option>
-                <option className="text-dark" value="4">
+                <option className="text-dark" value="box">
                   Boxeo
                 </option>
               </Form.Select>

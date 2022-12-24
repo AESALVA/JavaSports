@@ -50,16 +50,18 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
     let listSeeker = [];
 
     if (viewTable === "news") {
-      articles.forEach((article) => {
-        article.title.toLowerCase().includes(seeker.toLowerCase()) &&
-          listSeeker.push(article);
-      });
+      articles &&
+        articles.forEach((article) => {
+          article.title.toLowerCase().includes(seeker.toLowerCase()) &&
+            listSeeker.push(article);
+        });
       setMatchlist(listSeeker);
     } else {
-      users.forEach((user) => {
-        user.name.toLowerCase().includes(seeker.toLowerCase()) &&
-          listSeeker.push(user);
-      });
+      users &&
+        users.forEach((user) => {
+          user.name.toLowerCase().includes(seeker.toLowerCase()) &&
+            listSeeker.push(user);
+        });
       setMatchlist(listSeeker);
     }
   }, [seeker]);
