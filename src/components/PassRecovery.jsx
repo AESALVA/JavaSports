@@ -40,16 +40,17 @@ const PassRecovery = () => {
       "https://java-sports-back.vercel.app/users/forgotPassword",   
       {
         method: "POST",
-        
         headers: {
           "Content-Type": "application/json",
         },
+        mode:"cors",
         body: JSON.stringify({mail:mail}),
       }
     )
       .then((res) => res.json())
       .then((json)=>console.log(json))
       .catch((error)=>console.log(error))
+
   }
 
   return (
