@@ -37,7 +37,7 @@ const PassRecovery = () => {
 
   const HandleClick = async ()=>{
     await fetch(  
-      "https://java-sports-back.vercel.app/forgotPassword",   
+      "https://java-sports-back.vercel.app/users/forgotPassword",
       {
         method: "POST",
         headers: {
