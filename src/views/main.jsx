@@ -14,6 +14,7 @@ import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
 import { useState } from "react";
+import ResetPassword from "../components/ResetPassword";
 
 const Main = ({
   auth,
@@ -67,7 +68,7 @@ const Main = ({
 
         <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
         <Route element={<Contact />} path="/Contact"></Route>
-
+        <Route element={<ResetPassword />} path="/resetPassword"></Route>
         <Route
           element={
             <SectionsContainer
