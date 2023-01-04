@@ -204,7 +204,7 @@ const Header = ({
                 <Link to="/Contact" className="header-border p-2">
                   Contacto
                 </Link>
-                <Link to="/resetPassword" className=" p-2">
+                <Link to="/Aboutus" className=" p-2">
                   Sobre Nosotros
                 </Link>
 

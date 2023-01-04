@@ -35,7 +35,6 @@ const Main = ({
   setIsLoaded,
 }) => {
   return (
-   
     <Container fluid className="main-container d-flex flex-column p-0">
       <Header
         validate={validate}
@@ -49,10 +48,7 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
-      <Route
-          element={<Landing articles={articles} auth={auth} />}
-          path="/"
-        />
+        <Route element={<Landing articles={articles} auth={auth} />} path="/" />
         <Route element={<Aboutus />} path="/Aboutus" />
         <Route
           element={
@@ -60,16 +56,21 @@ const Main = ({
           }
           path="/SearchContainer"
         />
-        
+
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
-        ></Route>
-        <Route element={<PassRecovery isLoaded={isLoaded} setIsLoaded={setIsLoaded} />} path="/PassRecovery"></Route>
+        />
+        <Route
+          element={
+            <PassRecovery isLoaded={isLoaded} setIsLoaded={setIsLoaded} />
+          }
+          path="/PassRecovery"
+        />
 
-        <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
-        <Route element={<Contact />} path="/Contact"></Route>
-        
+        <Route element={<E404 title={"Error 404"} />} path="/404"/>
+        <Route element={<Contact />} path="/Contact"/>
+
         <Route
           element={
             <SectionsContainer
@@ -78,7 +79,7 @@ const Main = ({
             />
           }
           path="/SectionsContainer"
-        ></Route>
+        />
         <Route
           element={
             auth.user ? (
@@ -97,7 +98,7 @@ const Main = ({
           element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
         />
-               <Route  path="/resetPassword" element={<ResetPassword />}  />
+        <Route path="/resetPassword" element={<ResetPassword />} />
       </Routes>
       <Footer />
     </Container>
