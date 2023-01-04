@@ -63,7 +63,7 @@ const Main = ({
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
         ></Route>
-        <Route element={<PassRecovery />} path="/PassRecovery"></Route>
+        <Route element={<PassRecovery isLoaded={isLoaded} setIsLoaded={setIsLoaded} />} path="/PassRecovery"></Route>
 
         <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
         <Route element={<Contact />} path="/Contact"></Route>
