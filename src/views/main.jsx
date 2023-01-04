@@ -35,6 +35,7 @@ const Main = ({
   setIsLoaded,
 }) => {
   return (
+   
     <Container fluid className="main-container d-flex flex-column p-0">
       <Header
         validate={validate}
@@ -51,14 +52,14 @@ const Main = ({
       <Route
           element={<Landing articles={articles} auth={auth} />}
           path="/"
-        ></Route>
-        <Route element={<Aboutus />} path="/Aboutus"></Route>
+        />
+        <Route element={<Aboutus />} path="/Aboutus" />
         <Route
           element={
             <SearchContainer articles={articles} search={search} auth={auth} />
           }
           path="/SearchContainer"
-        ></Route>
+        />
         
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
@@ -91,12 +92,12 @@ const Main = ({
             )
           }
           path="/SectionsList"
-        ></Route>
+        />
         <Route
           element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
-        ></Route>
-               <Route  path="/resetPassword" element={<ResetPassword />}></Route>
+        />
+               <Route  path="/resetPassword" element={<ResetPassword />}  />
       </Routes>
       <Footer />
     </Container>
