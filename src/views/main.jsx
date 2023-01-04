@@ -13,7 +13,6 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
-import { useState } from "react";
 import ResetPassword from "../components/ResetPassword";
 
 const Main = ({
@@ -49,6 +48,10 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
+      <Route
+          element={<Landing articles={articles} auth={auth} />}
+          path="/"
+        ></Route>
         <Route element={<Aboutus />} path="/Aboutus"></Route>
         <Route
           element={
@@ -56,10 +59,7 @@ const Main = ({
           }
           path="/SearchContainer"
         ></Route>
-        <Route
-          element={<Landing articles={articles} auth={auth} />}
-          path="/"
-        ></Route>
+        
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
@@ -68,7 +68,7 @@ const Main = ({
 
         <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
         <Route element={<Contact />} path="/Contact"></Route>
-        <Route element={<ResetPassword />} path="/resetPassword"></Route>
+        
         <Route
           element={
             <SectionsContainer
@@ -96,6 +96,7 @@ const Main = ({
           element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
         ></Route>
+               <Route  path="/resetPassword" element={<ResetPassword />}></Route>
       </Routes>
       <Footer />
     </Container>
