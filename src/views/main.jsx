@@ -48,8 +48,8 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
-        <Route element={<Landing articles={articles} auth={auth} />} path="/" />
-        <Route element={<Aboutus />} path="/Aboutus" />
+        
+        <Route element={<Aboutus />} path="/aboutus" />
         <Route
           element={
             <SearchContainer articles={articles} search={search} auth={auth} />
@@ -99,7 +99,7 @@ const Main = ({
           path="/Management"
         />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        
+        <Route element={<Landing articles={articles} auth={auth} />} path="/" />
       </Routes>
       <Footer />
     </Container>
