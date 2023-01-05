@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "../components/Footer";
 import Landing from "../components/Landing";
 import Aboutus from "../components/Aboutus";
@@ -99,6 +99,7 @@ const Main = ({
           path="/Management"
         />
         <Route path="/resetPassword" element={<ResetPassword />} />
+        
       </Routes>
       <Footer />
     </Container>

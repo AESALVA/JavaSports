@@ -5,8 +5,7 @@ import "../styles/resetPassword.css";
 import Container from "react-bootstrap/Container";
 import { useState } from 'react';
 
-
-const ResetPassword = () => {
+function ResetPassword  () {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   

@@ -132,7 +132,7 @@ const [isLoaded, setIsLoaded] = useState(false);
         setSectionByCategory={setSectionByCategory}
         isLoaded={isLoaded}
         setIsLoaded={setIsLoaded}
-      />
+       />
     </BrowserRouter>
   );
 }
