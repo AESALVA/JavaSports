@@ -21,7 +21,6 @@ const LoginModal = ({ auth, login, logout, validate, setAuth, isLoaded, setIsLoa
   const [wrongCredentials, setWrongCredentials] = useState("");
 
 
-  const navigate = useNavigate();
   const handleValidation = async (e) => {
     e.preventDefault();
     
@@ -34,7 +33,6 @@ const LoginModal = ({ auth, login, logout, validate, setAuth, isLoaded, setIsLoa
    if(auth.role === false){
       setWrongCredentials("Usuario y/o Contraseña incorrectos!");
     } else {
-      navigate("/");
       handleClose();
       setName("");
       setPassword("");

@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import { Routes, Route } from "react-router-dom";
 import Footer from "../components/Footer";
 import Landing from "../components/Landing";
-import Aboutus from "../components/Aboutus";
 import Register from "../components/Register";
 import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
@@ -14,6 +13,7 @@ import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
 import ResetPassword from "../components/ResetPassword";
+import Aboutus from "../components/Aboutus"
 
 const Main = ({
   auth,
@@ -48,8 +48,7 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
-        
-        <Route element={<Aboutus />} path="/aboutus" />
+        <Route path="/aboutus" element={<Aboutus />}  />
         <Route
           element={
             <SearchContainer articles={articles} search={search} auth={auth} />
