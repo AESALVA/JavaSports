@@ -39,12 +39,18 @@ function ResetPassword() {
 
   const HandleClick = ()=>{
 if(validatePassword(password) && validatePassword(repeatPassword) && validateToken(token) ){
-  console.log("OK")
+  setMessage("Contraseña actualizada con éxito !");
 }else{
-  console.log("error")
+  setMessage("Debe completar correctamente el formulario");
 }
     
   }
+
+useEffect(() => {
+  setMessage("")
+}, [password,repeatPassword,token])
+
+
 
   return (
     <Container className="resetContainer p-5">
@@ -104,6 +110,7 @@ if(validatePassword(password) && validatePassword(repeatPassword) && validateTok
       >
         Enviar
       </Button>
+      <span className="message mx-auto">{message}</span>
     </Container>
   );
 }
