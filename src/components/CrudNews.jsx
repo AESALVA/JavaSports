@@ -149,21 +149,46 @@ const CrudNews = ({
     );
   };
 
-  const validationForm = () => {};
+  // FUNCIONES PARA VALIDAR FORMULARIO
+  // const validateName = (n) => {
+  //   return (
+  //     validator.matches(n, "^[a-zA-Z ]*$") &&
+  //     validator.isLength(n, { min: 5, max: 25 })
+  //   );
+  // };
+
+  // const validateText = (t) => {
+  //   return (
+  //     validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
+  //     validator.isLength(t, { min: 5, max: 185 })
+  //   );
+  // };
+
+  const validationForm = () => {
+    return true;
+  };
+
+  const confirmUPD = () => {
+    //Confirmo INSERT o UPDATE
+    switch (action) {
+      case "INS":
+        confirmNew();
+        break;
+      case "UPD":
+        confirmUpdate();
+        break;
+    }
+    handleClose();
+  };
 
   const confirmNews = () => {
     if (action === "Eliminar") {
       confirmDelete();
     } else {
       categoryName(); //Cargo id de categoria segun lo que elegi
-      validationForm();
-      if (action === "new") {
-        confirmNew();
-      } else {
-        confirmUpdate();
-      }
+      // confirma solo si el formulario cumple con los requisitos
+      // validationForm() ? confirmUPD() : console.log("error");
     }
-    handleClose();
   };
 
   return (
@@ -327,15 +352,16 @@ const CrudNews = ({
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
               <Form.Label>Imagen 1 (Principal)</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 maxLength="40"
                 className="p-2"
-                type="text"
-                placeholder="Ingresar url de imagen"
-                value={imgNews || ""}
-                onChange={(e) => setImgNews(e.target.value)}
+                type="file"
+                size="sm"
+                // placeholder="Ingresar url de imagen"
+                // value={imgNews || ""}
+                // onChange={(e) => setImgNews(e.target.value)}
                 disabled={editableFields}
-              />
+              /> */}
               {!img_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Imagen 1".

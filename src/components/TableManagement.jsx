@@ -46,33 +46,28 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
     handleShow();
   };
 
-  useEffect(() => {
-    let listSeeker = [];
-
-    if (viewTable === "news") {
-      articles &&
-        articles.forEach((article) => {
-          article.title.toLowerCase().includes(seeker.toLowerCase()) &&
-            listSeeker.push(article);
-        });
-      setMatchlist(listSeeker);
-    } else {
-      users &&
-        users.forEach((user) => {
-          user.name.toLowerCase().includes(seeker.toLowerCase()) &&
-            listSeeker.push(user);
-        });
-      setMatchlist(listSeeker);
-    }
-  }, [seeker]);
-
-  // // Cuando guardo cambios (se insertó-modificó o eliminó) me actualiza los articulos en
-  // // la página.
   // useEffect(() => {
-  //   fetch("https://java-sports-back.vercel.app/articles/all")
-  //     .then((res) => res.json())
-  //     .then((json) => setArticles(json));
-  // }, [confirmChange]);
+  //   let listSeeker = [];
+  //   if (seeker.length > 0) {
+  //     if (viewTable === "news") {
+  //       articles &&
+  //         articles.forEach((article) => {
+  //           article.title.toLowerCase().includes(seeker.toLowerCase()) &&
+  //             listSeeker.push(article);
+  //         });
+  //       setMatchlist(listSeeker);
+  //     } else {
+  //       users &&
+  //         users.forEach((user) => {
+  //           user.name.toLowerCase().includes(seeker.toLowerCase()) &&
+  //             listSeeker.push(user);
+  //         });
+  //       setMatchlist(listSeeker);
+  //     }
+  //   } else {
+  //     viewTable === "news" ? setMatchlist(news) : setMatchlist(users);
+  //   }
+  // }, [seeker]);
 
   return (
     <>
