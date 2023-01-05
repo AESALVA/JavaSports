@@ -66,15 +66,13 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
     }
   }, [seeker]);
 
-  const [confirmChange, setConfirmChange] = useState("false");
-
-  // Cuando guardo cambios (se insertó-modificó o eliminó) me actualiza los articulos en
-  // la página.
-  useEffect(() => {
-    fetch("https://java-sports-back.vercel.app/articles/all")
-      .then((res) => res.json())
-      .then((json) => setArticles(json));
-  }, [confirmChange]);
+  // // Cuando guardo cambios (se insertó-modificó o eliminó) me actualiza los articulos en
+  // // la página.
+  // useEffect(() => {
+  //   fetch("https://java-sports-back.vercel.app/articles/all")
+  //     .then((res) => res.json())
+  //     .then((json) => setArticles(json));
+  // }, [confirmChange]);
 
   return (
     <>
@@ -142,7 +140,6 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
       {viewTable === "news" ? ( */}
       <CrudNews
         article={viewInfo}
-        setConfirmChange={setConfirmChange}
         view={viewTable}
         action={actionAMB}
         setActionAMB={setActionAMB}

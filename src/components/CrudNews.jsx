@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import validator from "validator";
+import Swal from "sweetalert2";
 import { CloseButton } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +14,6 @@ import "../styles/management.css";
 
 const CrudNews = ({
   article,
-  setConfirmChange,
   view,
   action,
   setActionAMB,
@@ -32,6 +32,15 @@ const CrudNews = ({
   const [imgTwoNews, setImgTwoNews] = useState("");
   const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
+
+  // Estado para las validaciones
+  const [title_validate, setTitle_validate] = useState("true");
+  const [description_validate, setDescription_validate] = useState("true");
+  const [synopsis_validate, setSynopsis_validate] = useState("true");
+  const [img_validate, setImg_validate] = useState("true");
+  const [imgTitle_validate, setImgTitle_validate] = useState("true");
+  const [imgTwo_validate, setImgTwo_validate] = useState("true");
+  const [validateForm, setValidateForm] = useState("true");
 
   // const load = () => {};
   useEffect(() => {
@@ -140,20 +149,20 @@ const CrudNews = ({
     );
   };
 
+  const validationForm = () => {};
+
   const confirmNews = () => {
-    console.log("confirmo");
     if (action === "Eliminar") {
       confirmDelete();
     } else {
-      //Cargo id de categoria segun lo que elegi
-      categoryName();
+      categoryName(); //Cargo id de categoria segun lo que elegi
+      validationForm();
       if (action === "new") {
         confirmNew();
       } else {
         confirmUpdate();
       }
     }
-    setConfirmChange("true");
     handleClose();
   };
 
@@ -214,6 +223,11 @@ const CrudNews = ({
                 onChange={(e) => setTitleNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!title_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Nombre".
+                </div>
+              )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formTitleImg">
               <Form.Label>Titulo de Imagen principal </Form.Label>
@@ -226,6 +240,11 @@ const CrudNews = ({
                 onChange={(e) => setImgTitleNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!imgTitle_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Imagen Principal".
+                </div>
+              )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formCategories">
               <Form.Label>Categoria</Form.Label>
@@ -280,6 +299,11 @@ const CrudNews = ({
                 onChange={(e) => setDescriptionNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!description_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Descripción".
+                </div>
+              )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formSynopsis">
               <Form.Label>Sinopsis</Form.Label>
@@ -295,6 +319,11 @@ const CrudNews = ({
                 onChange={(e) => setSynopsisNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!synopsis_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Synopsis".
+                </div>
+              )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
               <Form.Label>Imagen 1 (Principal)</Form.Label>
@@ -307,6 +336,11 @@ const CrudNews = ({
                 onChange={(e) => setImgNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!img_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Imagen 1".
+                </div>
+              )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg2">
               <Form.Label>Imagen 2 </Form.Label>
@@ -319,6 +353,11 @@ const CrudNews = ({
                 onChange={(e) => setImgTwoNews(e.target.value)}
                 disabled={editableFields}
               />
+              {!imgTwo_validate && (
+                <div className="alert alert-danger p-0" role="alert">
+                  Error en el campo "Imagen 2".
+                </div>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
