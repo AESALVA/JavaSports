@@ -7,6 +7,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { useEffect } from "react";
+import Loader from "./Loader";
+import { async } from "q";
+
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -37,8 +40,21 @@ function ResetPassword() {
     );
   };
 
-  const HandleClick = ()=>{
+  const HandleClick = async ()=>{
 if(validatePassword(password) && validatePassword(repeatPassword) && validateToken(token) ){
+  await fetch(  
+    `https://java-sports-back.vercel.app/users/resetPassword/${token}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode:"cors",
+      body: JSON.stringify({password:password,confirmPassword:repeatPassword}),
+    }
+  )
+    .then((res) => res.json())
+    .then((json)=>console.log(json))
   setMessage("Contraseña actualizada con éxito !");
 }else{
   setMessage("Debe completar correctamente el formulario");
