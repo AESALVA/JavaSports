@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { useEffect } from "react";
 import Loader from "./Loader";
-import { async } from "q";
 
 
 function ResetPassword() {
@@ -55,6 +54,7 @@ if(validatePassword(password) && validatePassword(repeatPassword) && validateTok
   )
     .then((res) => res.json())
     .then((json)=>console.log(json))
+    .catch((error)=>setMessage("Oops algo salió mal, intente de nuevo"))
   setMessage("Contraseña actualizada con éxito !");
 }else{
   setMessage("Debe completar correctamente el formulario");
