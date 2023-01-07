@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import { BrowserRouter, json } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Main from "./views/main";
 
@@ -32,7 +32,9 @@ function App() {
         password: u.password,
         role: u.role,
       }),
-    });
+    })
+    .then((res)=>res.json()
+    .then((json)=>console.log(json)))
   };
 
   const validate = async (u, p) => {
@@ -133,7 +135,7 @@ function App() {
         setSectionByCategory={setSectionByCategory}
         isLoaded={isLoaded}
         setIsLoaded={setIsLoaded}
-      />
+       />
     </BrowserRouter>
   );
 }

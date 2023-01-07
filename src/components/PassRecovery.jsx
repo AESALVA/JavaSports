@@ -5,13 +5,15 @@ import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { CloseButton } from "react-bootstrap";
-import "../styles/passRecovery.css"
+import "../styles/passRecovery.css";
+import Loader from "./Loader";
 
 
-const PassRecovery = () => {
+const PassRecovery = ({isLoaded, setIsLoaded}) => {
   const [show, setShow] = useState(true);
   const [mail, setMail] = useState("");
   const [firstMail, setFirstMail] = useState(true);
+  const [message, setMessage] = useState("Email");
   const navigate = useNavigate();
 
   const validateMail = (n) => {
@@ -35,12 +37,33 @@ const PassRecovery = () => {
     navigate("/");
   };
 
+  const HandleClick = async ()=>{
+    setIsLoaded(true);
+    await fetch(  
+      "https://java-sports-back.vercel.app/users/forgotPassword",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode:"cors",
+        body: JSON.stringify({mail:mail}),
+      }
+    )
+      .then((res) => res.json())
+      .then((json)=>{if(json.message === "OK MAIL"){setMessage("¡ email enviado con exito !")}if(json.message === "user not found"){setMessage("Ese email no es válido, inténtalo otra vez!")}})
+      .catch((error)=>{if(error){setMessage("Oops! Algo salió mal, vuelve a intentarlo")}})
+      .finally(()=>setIsLoaded(false))
+
+  }
+
   return (
     <>
       <div className="FondoPass d-xl-block mx-auto">
         <img className="w-100" src="/img/FondoPass.jpg" alt="fondoimg" />
       </div>
       <Modal show={show}  contentClassName="bg-black ModalPass mx-auto">
+        {isLoaded?(<Loader />):(<>
         <Modal.Header className="border-danger modalHeader bg-black flex-column">
           <CloseButton onClick={() => closeModal()} variant="white" />
           <Link className="mx-auto" to="/">
@@ -62,7 +85,7 @@ const PassRecovery = () => {
                 Ingresa tu Email y te ayudaremos
               </h6>
               <Form.Label>
-                Email{" "}
+              <span>{message}</span>{" "}
                 {!validateMail(mail) && !firstMail && (
                   <span className="text-danger ps-2">
                     Debe llenar este campo con su Email
@@ -84,12 +107,12 @@ const PassRecovery = () => {
           className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
           size="lg"
           type="submit"
-          onClick={() => console.log("hola")}
+          onClick={() => HandleClick()}
         >
           <h4 className="m-auto py-2 px-4">Enviar</h4>
         </Button>
         </Modal.Body>
-        
+        </>)}  
       </Modal>
     </>
   );
