@@ -46,28 +46,28 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
     handleShow();
   };
 
-  // useEffect(() => {
-  //   let listSeeker = [];
-  //   if (seeker.length > 0) {
-  //     if (viewTable === "news") {
-  //       articles &&
-  //         articles.forEach((article) => {
-  //           article.title.toLowerCase().includes(seeker.toLowerCase()) &&
-  //             listSeeker.push(article);
-  //         });
-  //       setMatchlist(listSeeker);
-  //     } else {
-  //       users &&
-  //         users.forEach((user) => {
-  //           user.name.toLowerCase().includes(seeker.toLowerCase()) &&
-  //             listSeeker.push(user);
-  //         });
-  //       setMatchlist(listSeeker);
-  //     }
-  //   } else {
-  //     viewTable === "news" ? setMatchlist(news) : setMatchlist(users);
-  //   }
-  // }, [seeker]);
+  useEffect(() => {
+    let listSeeker = [];
+    if (seeker.length > 0) {
+      if (viewTable === "news") {
+        articles &&
+          articles.forEach((article) => {
+            article.title.toLowerCase().includes(seeker.toLowerCase()) &&
+              listSeeker.push(article);
+          });
+        setMatchlist(listSeeker);
+      } else {
+        users &&
+          users.forEach((user) => {
+            user.name.toLowerCase().includes(seeker.toLowerCase()) &&
+              listSeeker.push(user);
+          });
+        setMatchlist(listSeeker);
+      }
+    } else {
+      viewTable === "news" ? setMatchlist(articles) : setMatchlist(users);
+    }
+  }, [seeker]);
 
   return (
     <>
