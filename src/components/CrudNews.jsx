@@ -34,13 +34,13 @@ const CrudNews = ({
   const [editableFields, seteditableFields] = useState(true);
 
   // Estado para las validaciones
-  const [title_validate, setTitle_validate] = useState("true");
-  const [description_validate, setDescription_validate] = useState("true");
-  const [synopsis_validate, setSynopsis_validate] = useState("true");
-  const [img_validate, setImg_validate] = useState("true");
-  const [imgTitle_validate, setImgTitle_validate] = useState("true");
-  const [imgTwo_validate, setImgTwo_validate] = useState("true");
-  const [validateForm, setValidateForm] = useState("true");
+  const [title_validate, setTitle_validate] = useState(true);
+  const [description_validate, setDescription_validate] = useState(true);
+  const [synopsis_validate, setSynopsis_validate] = useState(true);
+  const [img_validate, setImg_validate] = useState(true);
+  const [imgTitle_validate, setImgTitle_validate] = useState(true);
+  const [imgTwo_validate, setImgTwo_validate] = useState(true);
+  const [validateForm, setValidateForm] = useState(true);
 
   // const load = () => {};
   useEffect(() => {
@@ -55,6 +55,11 @@ const CrudNews = ({
     setImgTitleNews(article.imgTitle);
     setImgTwoNews(article.imgTwo);
     setCategoryNameNews(article.categories);
+    // estado de validaciones:
+    setTitle_validate(true);
+    setDescription_validate(true);
+    setSynopsis_validate(true);
+    setImgTitle_validate(true);
   }, [showModal]);
 
   // plantilla de noticias:
@@ -150,35 +155,44 @@ const CrudNews = ({
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
-  // const validateName = (n) => {
-  //   return (
-  //     validator.matches(n, "^[a-zA-Z ]*$") &&
-  //     validator.isLength(n, { min: 5, max: 25 })
-  //   );
-  // };
+  const validateTitle = (n = "hol") => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") &&
+      validator.isLength(n, { min: 5, max: 50 })
+    );
+  };
+  const validateImgTitle = (n = "hol") => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") &&
+      validator.isLength(n, { min: 5, max: 50 })
+    );
+  };
 
-  // const validateText = (t) => {
-  //   return (
-  //     validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-  //     validator.isLength(t, { min: 5, max: 185 })
-  //   );
-  // };
-
-  const validationForm = () => {
-    return true;
+  const validateDescription = (t = "hol") => {
+    return (
+      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
+      validator.isLength(t, { min: 5, max: 500 })
+    );
+  };
+  const validateSynopsis = (t = "hol") => {
+    return (
+      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
+      validator.isLength(t, { min: 5, max: 500 })
+    );
   };
 
   const confirmUPD = () => {
     //Confirmo INSERT o UPDATE
-    switch (action) {
-      case "INS":
-        confirmNew();
-        break;
-      case "UPD":
-        confirmUpdate();
-        break;
-    }
-    handleClose();
+    // switch (action) {
+    //   case "INS":
+    //     confirmNew();
+    //     break;
+    //   case "UPD":
+    //     confirmUpdate();
+    //     break;
+    // }
+    console.log("paso las validaciones");
+    // handleClose();
   };
 
   const confirmNews = () => {
@@ -187,7 +201,19 @@ const CrudNews = ({
     } else {
       categoryName(); //Cargo id de categoria segun lo que elegi
       // confirma solo si el formulario cumple con los requisitos
-      // validationForm() ? confirmUPD() : console.log("error");
+      if (
+        validateTitle(titleNews) &&
+        validateImgTitle(imgTitleNews) &&
+        validateDescription(descriptionNews) &&
+        validateSynopsis(synopsisNews)
+      ) {
+        confirmUPD();
+      } else {
+        setTitle_validate(false);
+        setImgTitle_validate(false);
+        setDescription_validate(false);
+        setSynopsis_validate(false);
+      }
     }
   };
 
@@ -248,7 +274,7 @@ const CrudNews = ({
                 onChange={(e) => setTitleNews(e.target.value)}
                 disabled={editableFields}
               />
-              {!title_validate && (
+              {!validateTitle(titleNews) && !title_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Nombre".
                 </div>
@@ -265,7 +291,7 @@ const CrudNews = ({
                 onChange={(e) => setImgTitleNews(e.target.value)}
                 disabled={editableFields}
               />
-              {!imgTitle_validate && (
+              {!validateImgTitle(imgTitleNews) && !imgTitle_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Imagen Principal".
                 </div>
@@ -322,13 +348,16 @@ const CrudNews = ({
                 required
                 value={descriptionNews || ""}
                 onChange={(e) => setDescriptionNews(e.target.value)}
+                onBlur={() => setDescription_validate(false)}
                 disabled={editableFields}
               />
-              {!description_validate && (
-                <div className="alert alert-danger p-0" role="alert">
-                  Error en el campo "Descripción".
-                </div>
-              )}
+              {!validateDescription(descriptionNews) &&
+                !validateDescription(descriptionNews) &&
+                !description_validate && (
+                  <div className="alert alert-danger p-0" role="alert">
+                    Error en el campo "Descripción".
+                  </div>
+                )}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formSynopsis">
               <Form.Label>Sinopsis</Form.Label>
@@ -344,7 +373,7 @@ const CrudNews = ({
                 onChange={(e) => setSynopsisNews(e.target.value)}
                 disabled={editableFields}
               />
-              {!synopsis_validate && (
+              {!validateSynopsis(synopsisNews) && !synopsis_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Synopsis".
                 </div>
@@ -352,16 +381,16 @@ const CrudNews = ({
             </Form.Group>
             <Form.Group className="mb-3" controlId="formImg1">
               <Form.Label>Imagen 1 (Principal)</Form.Label>
-              {/* <Form.Control
+              <Form.Control
                 maxLength="40"
                 className="p-2"
-                type="file"
+                type="text"
                 size="sm"
-                // placeholder="Ingresar url de imagen"
-                // value={imgNews || ""}
-                // onChange={(e) => setImgNews(e.target.value)}
+                placeholder="Ingresar url de imagen"
+                value={imgNews || ""}
+                onChange={(e) => setImgNews(e.target.value)}
                 disabled={editableFields}
-              /> */}
+              />
               {!img_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Imagen 1".

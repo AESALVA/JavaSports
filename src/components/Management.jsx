@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 const Management = ({ auth, articles, setArticles, users }) => {
   const navigate = useNavigate();
-  let personalList = [];
-  users && personalList.push(users.filter((user) => user.role === "admin"));
+  let personalList = users.filter((user) => user.role === "admin") || [];
+
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
     auth.role !== "admin" && navigate("/");
