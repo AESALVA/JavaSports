@@ -1,9 +1,8 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "../components/Footer";
 import Landing from "../components/Landing";
-import Aboutus from "../components/Aboutus";
 import Register from "../components/Register";
 import PassRecovery from "../components/PassRecovery";
 import Header from "../components/Header";
@@ -13,7 +12,8 @@ import E404 from "../components/E404";
 import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
-import { useState } from "react";
+import ResetPassword from "../components/ResetPassword";
+import Aboutus from "../components/Aboutus"
 
 const Main = ({
   auth,
@@ -31,6 +31,8 @@ const Main = ({
   commentsContainer,
   sectionByCategory,
   setSectionByCategory,
+  isLoaded,
+  setIsLoaded,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -42,27 +44,31 @@ const Main = ({
         search={search}
         setSearch={setSearch}
         setSectionByCategory={setSectionByCategory}
+        isLoaded={isLoaded}
+        setIsLoaded={setIsLoaded}
       />
       <Routes>
-        <Route element={<Aboutus />} path="/Aboutus"></Route>
+        <Route path="/aboutus" element={<Aboutus />}  />
         <Route
           element={
             <SearchContainer articles={articles} search={search} auth={auth} />
           }
           path="/SearchContainer"
-        ></Route>
-        <Route
-          element={<Landing articles={articles} auth={auth} />}
-          path="/"
-        ></Route>
+        />
+
         <Route
           element={<Register setAuth={setAuth} addUser={addUser} />}
           path="/Register"
-        ></Route>
-        <Route element={<PassRecovery />} path="/PassRecovery"></Route>
+        />
+        <Route
+          element={
+            <PassRecovery isLoaded={isLoaded} setIsLoaded={setIsLoaded} />
+          }
+          path="/PassRecovery"
+        />
 
-        <Route element={<E404 title={"Error 404"} />} path="/404"></Route>
-        <Route element={<Contact />} path="/Contact"></Route>
+        <Route element={<E404 title={"Error 404"} />} path="/404"/>
+        <Route element={<Contact />} path="/Contact"/>
 
         <Route
           element={
@@ -72,7 +78,7 @@ const Main = ({
             />
           }
           path="/SectionsContainer"
-        ></Route>
+        />
         <Route
           element={
             auth.user ? (
@@ -86,11 +92,13 @@ const Main = ({
             )
           }
           path="/SectionsList"
-        ></Route>
+        />
         <Route
           element={<Management auth={auth} articles={articles} users={users} />}
           path="/Management"
-        ></Route>
+        />
+        <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route element={<Landing articles={articles} auth={auth} />} path="/" />
       </Routes>
       <Footer />
     </Container>

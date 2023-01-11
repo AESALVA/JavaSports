@@ -19,6 +19,8 @@ const Header = ({
   search,
   setSearch,
   setSectionByCategory,
+  isLoaded,
+  setIsLoaded,
 }) => {
   return (
     <>
@@ -114,6 +116,8 @@ const Header = ({
                 setAuth={setAuth}
                 validate={validate}
                 auth={auth}
+                isLoaded={isLoaded}
+                setIsLoaded={setIsLoaded}
               />
             </div>
             {auth.role === "admin" && (
@@ -200,7 +204,7 @@ const Header = ({
                 <Link to="/Contact" className="header-border p-2">
                   Contacto
                 </Link>
-                <Link to="/Aboutus" className=" p-2">
+                <Link to="/aboutus" className=" p-2">
                   Sobre Nosotros
                 </Link>
 
@@ -218,6 +222,8 @@ const Header = ({
                     setAuth={setAuth}
                     validate={validate}
                     auth={auth}
+                    isLoaded={isLoaded}
+                setIsLoaded={setIsLoaded}
                   />
                 </div>
 

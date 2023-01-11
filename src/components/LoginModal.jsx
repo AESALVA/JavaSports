@@ -10,17 +10,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "../styles/loginModal.css";
 import CloseButton from "react-bootstrap/CloseButton";
+import Loader from "./Loader";
 
-const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
+const LoginModal = ({ auth, login, logout, validate, setAuth, isLoaded, setIsLoaded }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState(true);
   const [firstPassword, setFirstPassword] = useState(true);
   const [wrongCredentials, setWrongCredentials] = useState("");
-  const navigate = useNavigate();
+
+
   const handleValidation = async (e) => {
     e.preventDefault();
+    
      validate(name, password);
      login(name, password);
      auth.role === false && setWrongCredentials("Usuario y/o Contraseña incorrectos!")
@@ -30,7 +33,6 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
    if(auth.role === false){
       setWrongCredentials("Usuario y/o Contraseña incorrectos!");
     } else {
-      navigate("/");
       handleClose();
       setName("");
       setPassword("");
@@ -53,7 +55,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         minLowercase: 1,
         minUppercase: 1,
         minNumbers: 1,
-        minSymbols: 1,
+        minSymbols: 0,
       })
     );
   };
@@ -108,6 +110,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
       )}
 
       {/* MODAL */}
+      
       <Modal
         id="modalLogin"
         show={show}
@@ -115,6 +118,7 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         keyboard={false}
         contentClassName="bg-dark "
       >
+        {isLoaded?(<Loader />):(<>
         <Modal.Header className="border-danger bg-dark flex-column ">
           <CloseButton onClick={handleClose} variant="white" />
           <Link className="mx-auto" to="/">
@@ -190,7 +194,9 @@ const LoginModal = ({ auth, login, logout, validate, setAuth }) => {
         >
           <h4 className="m-auto py-1 px-4">Iniciar</h4>
         </Button>
+        </> )}
       </Modal>
+      
     </>
   );
 };

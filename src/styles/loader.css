@@ -1,0 +1,21 @@
+.loader_container{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:  12rem 0;
+}
+
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.2); }
+    to { transform: none; }
+}
+
+.loader_container img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;  
+    animation: latidos 1s infinite;
+}
+

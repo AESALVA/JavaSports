@@ -36,6 +36,22 @@
   color: var(--redColor);
 }
 
+.profile-social ul {
+  margin: 1rem 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.profile-social a {
+  margin: 10px;
+  display: inline;
+  padding: 0.3rem;
+  border: 0.1px solid var(--grayColor);
+  background-color: var(--grayColor);
+  border-radius: 1rem;
+}
+
 /* BREAKPOINTS */
 
 @media (min-width: 768px) {
@@ -58,6 +74,9 @@
   }
   .profile-img img {
     width: 110px;
+  }
+  #contact-profiles p {
+    height: 130px;
   }
 }
 

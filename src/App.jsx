@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import { BrowserRouter, json } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Main from "./views/main";
 
@@ -11,6 +11,10 @@ function App() {
 
   // Buscador para la página
   const [search, setSearch] = useState("");
+
+// Loader
+
+const [isLoaded, setIsLoaded] = useState(false);
 
   // LOGIN
 
@@ -28,10 +32,13 @@ function App() {
         password:u.password,
         role:u.role,
       }),
-    });
+    })
+    .then((res)=>res.json()
+    .then((json)=>console.log(json)))
   };
 
   const validate = async (u, p) => {
+    setIsLoaded(true);
     await fetch(
       "https://java-sports-back.vercel.app/users/login",
       {
@@ -44,7 +51,7 @@ function App() {
       }
     )
     .then((res) => res.json())
-    .then((json)=>{if(json.message==="Wrong Credentials"){setAuth({user:false,role:false})}})
+    .then((json)=>{if(json.message==="Wrong Credentials" || json.message === "User not found"){setAuth({user:false,role:false})}})
   };
 
   const login = async (u, p) => {
@@ -62,6 +69,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => {if(json.message==="User and password OK"){setAuth({user:u,role:json.role})}})
       .catch((error)=>setAuth({user:false,role:false}))
+      .finally(()=>setIsLoaded(false))
   };
 
 
@@ -122,7 +130,9 @@ function App() {
         setUsers={setUsersA}
         sectionByCategory={sectionByCategory}
         setSectionByCategory={setSectionByCategory}
-      />
+        isLoaded={isLoaded}
+        setIsLoaded={setIsLoaded}
+       />
     </BrowserRouter>
   );
 }

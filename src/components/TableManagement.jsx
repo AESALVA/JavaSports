@@ -128,7 +128,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
       {/* MODAL CRUD */}
       {viewTable === "news" ? (
         <CrudNews
-          info={viewInfo}
+          article={viewInfo}
           view={viewTable}
           action={actionAMB}
           setActionAMB={setActionAMB}
