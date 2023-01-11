@@ -84,6 +84,7 @@ useEffect(() => {
       <div className="inputs">
         <FloatingLabel controlId="floatingInput" label="Nueva Contraseña">
           <Form.Control
+          className="bg-dark"
             type="text"
             placeholder="Contraseña"
             maxLength="20"
@@ -98,6 +99,7 @@ useEffect(() => {
         </FloatingLabel>
         <FloatingLabel controlId="floatingPassword" label="Repetir Contraseña">
           <Form.Control
+            className="bg-dark"
             type="text"
             placeholder="Repetir Contraseña"
             maxLength="20"
@@ -113,6 +115,7 @@ useEffect(() => {
         <FloatingLabel controlId="floatingToken" label="Clave Token">
           <Form.Control
             type="text"
+            className="bg-dark"
             placeholder="Clave Token"
             maxLength="60"
             required
