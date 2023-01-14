@@ -13,9 +13,9 @@ const PassRecovery = () => {
   const [firstMail, setFirstMail] = useState(true);
   const navigate = useNavigate();
 
-  const validateMail = (n) => {
+  const validateMail = (n = "hol") => {
     return (
-      validator.isLength(n, { min: 5, max: 36 }) &&
+      validator.isLength(n, { min: 5, max: 50 }) &&
       validator.isEmail(n, {
         allow_display_name: false,
         require_display_name: false,
@@ -32,6 +32,14 @@ const PassRecovery = () => {
   const closeModal = () => {
     setShow(false);
     navigate("/");
+  };
+
+  const confirm = (e) => {
+    if (validateMail(mail)) {
+      console.log("email correcto");
+    } else {
+      setFirstMail(false);
+    }
   };
 
   return (
@@ -64,26 +72,27 @@ const PassRecovery = () => {
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="80"
                 value={mail}
                 onInput={(e) => setMail(e.target.value)}
                 onBlur={() => setFirstMail(false)}
                 className="p-1 p-md-2"
                 type="email"
                 placeholder="Java@Sports.com"
+                required
               />
             </Form.Group>
             {!validateMail(mail) && !firstMail && (
               <div className="p-2 text-error">
-                Debe llenar este campo con su Email
+                {" "}
+                Debe ingresar un Email válido.
               </div>
             )}
           </Form>
           <Button
             className="mx-auto mt-3 p-1 my-md-5 btn-gray btn-gray-border"
             size="lg"
-            type="submit"
-            onClick={() => console.log("hola")}
+            onClick={(e) => confirm(e)}
           >
             <h4 className="m-auto py-2 px-4">Enviar</h4>
           </Button>
