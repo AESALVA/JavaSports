@@ -82,8 +82,7 @@ const CrudUsers = ({
     });
   };
 
-  const confirmUsers = (e) => {
-    e.preventDefault();
+  const confirmUsers = () => {
     if (action === "new") {
       confirmNewUser();
     } else {
@@ -111,7 +110,11 @@ const CrudUsers = ({
             <div id="header-btn">
               <Button
                 variant="sm"
-                className="mx-1 btn-news"
+                className={
+                  action === "Modificar"
+                    ? `mx-1 btn-select-active`
+                    : `mx-1 btn-select`
+                }
                 onClick={() => updateUser()}
               >
                 <FontAwesomeIcon icon={faPen} />
@@ -119,7 +122,11 @@ const CrudUsers = ({
               <Button
                 variant="sm"
                 id="btn-eliminar"
-                className="mx-1  btn-news"
+                className={
+                  action === "Eliminar"
+                    ? `mx-1 btn-select-active`
+                    : `mx-1 btn-select`
+                }
                 onClick={() => deleteUser()}
               >
                 <FontAwesomeIcon icon={faTrashCan} />
@@ -128,7 +135,7 @@ const CrudUsers = ({
           )}
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => confirmUsers(e)}>
+          <Form>
             <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Usuario </Form.Label>
               <Form.Control
@@ -188,11 +195,17 @@ const CrudUsers = ({
         </Modal.Body>
         <Modal.Footer>
           {action !== "display" && (
-            <Button className="btn-gray btn-gray-border" type="submit">
+            <Button
+              className="btn-gray btn-gray-border"
+              onClick={() => confirmUsers()}
+            >
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}
-          <Button className="btn-gray btn-gray-border" onClick={handleClose}>
+          <Button
+            className="btn-gray btn-gray-border btn-form"
+            onClick={handleClose}
+          >
             Cancelar
           </Button>
         </Modal.Footer>

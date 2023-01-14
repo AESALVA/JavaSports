@@ -33,6 +33,8 @@ const Main = ({
   setSectionByCategory,
   isLoaded,
   setIsLoaded,
+  action,
+  setAction,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -100,6 +102,8 @@ const Main = ({
               articles={articles}
               setArticles={setArticles}
               users={users}
+              action={action}
+              setAction={setAction}
             />
           }
           path="/Management"

@@ -9,6 +9,9 @@ function App() {
   //Indicador de categoria id
   const [sectionByCategory, setSectionByCategory] = useState("");
 
+  // estado semaforo
+  const [action, setAction] = useState(false);
+
   // Buscador para la página
   const [search, setSearch] = useState("");
 
@@ -32,9 +35,7 @@ function App() {
         password: u.password,
         role: u.role,
       }),
-    })
-    .then((res)=>res.json()
-    .then((json)=>console.log(json)))
+    }).then((res) => res.json().then((json) => console.log(json)));
   };
 
   const validate = async (u, p) => {
@@ -97,7 +98,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
-  }, []);
+  }, [action]);
 
   //COMENTARIOS
 
@@ -135,7 +136,9 @@ function App() {
         setSectionByCategory={setSectionByCategory}
         isLoaded={isLoaded}
         setIsLoaded={setIsLoaded}
-       />
+        action={action}
+        setAction={setAction}
+      />
     </BrowserRouter>
   );
 }
