@@ -9,7 +9,13 @@ import CrudUsers from "./CrudUsers";
 import CrudNews from "./CrudNews";
 import { useEffect } from "react";
 
-const TableManagement = ({ viewTable, articles, setArticles, users }) => {
+const TableManagement = ({
+  viewTable,
+  articles,
+  setArticles,
+  users,
+  setAction,
+}) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
   const [actionAMB, setActionAMB] = useState("");
@@ -105,7 +111,7 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
               </tr>
             </thead>
             <tbody>
-              {viewTable === "news"
+              {viewTable === "news" && matchlist.length > 0
                 ? matchlist.map((article, i) => (
                     <tr
                       id={i}
@@ -116,7 +122,8 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : matchlist.map((article, i) => (
+                : matchlist.length > 0 &&
+                  matchlist.map((article, i) => (
                     <tr
                       id={i}
                       key={i}
@@ -140,6 +147,7 @@ const TableManagement = ({ viewTable, articles, setArticles, users }) => {
         setActionAMB={setActionAMB}
         showModal={showModalNews}
         handleClose={handleClose}
+        setAction={setAction}
       />
       {/* ) : ( */}
       <CrudUsers

@@ -70,12 +70,21 @@
 }
 
 .btn-select {
-  background-color: rgba(255, 255, 255, 0.055);
-  border: 0.01rem solid var(--redColor);
+  background-color: rgba(255, 255, 255, 0.17);
+  border: 0.01rem solid var(--darkColor);
 }
 
 .btn-select:hover {
   background-color: var(--redColor);
+  border: 0.01rem solid var(--darkColor);
+}
+
+.btn-select-active {
+  background-color: var(--redColor);
+  border: 0.01rem solid var(--darkColor);
+}
+.btn-select-active:hover {
+  background-color: rgba(255, 255, 255, 0.17);
   border: 0.01rem solid var(--darkColor);
 }
 

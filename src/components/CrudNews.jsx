@@ -19,6 +19,7 @@ const CrudNews = ({
   setActionAMB,
   showModal,
   handleClose,
+  setAction,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -109,6 +110,7 @@ const CrudNews = ({
   };
 
   const confirmUpdate = () => {
+    console.log("entro para confirmar");
     fetch(
       `https://java-sports-back.vercel.app/articles/update/${article._id}`,
       {
@@ -178,16 +180,17 @@ const CrudNews = ({
   };
 
   const confirmUPD = () => {
+    console.log("action" + action);
     //Confirmo INSERT o UPDATE
-    // switch (action) {
-    //   case "INS":
-    //     confirmNew();
-    //     break;
-    //   case "UPD":
-    //     confirmUpdate();
-    //     break;
-    // }
-    console.log("paso las validaciones");
+    switch (action) {
+      case "new":
+        confirmNew();
+        break;
+      case "Modificar":
+        confirmUpdate();
+        break;
+    }
+    setAction(true);
     Swal.fire({
       title: "JavaSports",
       text: "Modificación exitosa!",
@@ -237,10 +240,14 @@ const CrudNews = ({
           <CloseButton onClick={handleClose} variant="white" />
           <h5 className="title">JavaSports</h5>
           {action !== "new" && (
-            <div id="header-btn">
+            <div id="header-btn" className="mt-2">
               <Button
                 variant="sm"
-                className="mx-1  btn-select"
+                className={
+                  action === "Modificar"
+                    ? `mx-1 btn-select-active`
+                    : `mx-1 btn-select`
+                }
                 onClick={() => updateNews()}
               >
                 <FontAwesomeIcon icon={faPen} />
@@ -248,7 +255,11 @@ const CrudNews = ({
               <Button
                 variant="sm"
                 id="btn-eliminar"
-                className="mx-1   btn-select"
+                className={
+                  action === "Eliminar"
+                    ? `mx-1 btn-select-active`
+                    : `mx-1 btn-select`
+                }
                 onClick={() => deleteNews()}
               >
                 <FontAwesomeIcon icon={faTrashCan} />

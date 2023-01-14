@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +8,25 @@ import TableManagement from "./TableManagement";
 import "../styles/management.css";
 import { useNavigate } from "react-router-dom";
 
-const Management = ({ auth, articles, setArticles, users }) => {
+const Management = ({
+  auth,
+  articles,
+  setArticles,
+  users,
+  action,
+  setAction,
+}) => {
+  const [articles_Crud, setArticles_Crud] = useState(articles);
+  console.log("action en : " + action);
   const navigate = useNavigate();
-  let personalList = users.filter((user) => user.role === "admin") || [];
+  // let personalList = users.filter((user) => user.role === "admin") || [];
+  let personalList = [];
+  // ARTICULOS
+  useEffect(() => {
+    fetch("https://java-sports-back.vercel.app/articles/all")
+      .then((res) => res.json())
+      .then((json) => setArticles_Crud(json));
+  }, [action]);
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
@@ -20,6 +36,7 @@ const Management = ({ auth, articles, setArticles, users }) => {
   return (
     <Container className="main-container d-flex flex-column">
       <div>
+        {action}
         <h3 className="text-center mt-5">
           Administración <FontAwesomeIcon icon={faHouse} />
         </h3>
@@ -36,6 +53,7 @@ const Management = ({ auth, articles, setArticles, users }) => {
               articles={articles}
               setArticles={setArticles}
               users={users}
+              setAction={setAction}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -44,6 +62,7 @@ const Management = ({ auth, articles, setArticles, users }) => {
               articles={articles}
               setArticles={setArticles}
               users={users}
+              setAction={setAction}
             />
           </Tab>
           <Tab
@@ -56,6 +75,7 @@ const Management = ({ auth, articles, setArticles, users }) => {
               articles={articles}
               setArticles={setArticles}
               users={personalList}
+              setAction={setAction}
             />
           </Tab>
         </Tabs>
