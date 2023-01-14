@@ -235,12 +235,12 @@ const CrudNews = ({
       >
         <Modal.Header className="bg-dark flex-column">
           <CloseButton onClick={handleClose} variant="white" />
-          <h5>JavaSports</h5>
+          <h5 className="title">JavaSports</h5>
           {action !== "new" && (
             <div id="header-btn">
               <Button
                 variant="sm"
-                className="mx-1 btn-news btn-select"
+                className="mx-1  btn-select"
                 onClick={() => updateNews()}
               >
                 <FontAwesomeIcon icon={faPen} />
@@ -248,7 +248,7 @@ const CrudNews = ({
               <Button
                 variant="sm"
                 id="btn-eliminar"
-                className="mx-1  btn-news btn-select"
+                className="mx-1   btn-select"
                 onClick={() => deleteNews()}
               >
                 <FontAwesomeIcon icon={faTrashCan} />
@@ -257,7 +257,6 @@ const CrudNews = ({
           )}
         </Modal.Header>
         <Modal.Body>
-          <h6 className="text-dark text-center mb-3">{`Accion: ${action}`}</h6>
           <Form>
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
