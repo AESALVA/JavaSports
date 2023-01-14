@@ -73,6 +73,10 @@
   background-color: var(--redColor);
 }
 
+.btn-form:hover {
+  color: white !important;
+}
+
 /* BREAKPOINTS */
 
 /* TABLET */

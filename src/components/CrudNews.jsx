@@ -34,6 +34,10 @@ const CrudNews = ({
   const [editableFields, seteditableFields] = useState(true);
 
   // Estado para las validaciones
+  let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
+  let patronURL =
+    /^(https:\/\/)([^\s(["<,>/]*)(\/?)[^\s[",><]*(.png|.jpg|.PNG|.JPG)(\?[^\s[",><]*)?$/;
+
   const [title_validate, setTitle_validate] = useState(true);
   const [description_validate, setDescription_validate] = useState(true);
   const [synopsis_validate, setSynopsis_validate] = useState(true);
@@ -156,29 +160,21 @@ const CrudNews = ({
 
   // FUNCIONES PARA VALIDAR FORMULARIO
   const validateTitle = (n = "hol") => {
-    return (
-      validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 5, max: 50 })
-    );
+    return patron.test(n) && validator.isLength(n, { min: 5, max: 50 });
   };
   const validateImgTitle = (n = "hol") => {
-    return (
-      validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 5, max: 50 })
-    );
+    return patron.test(n) && validator.isLength(n, { min: 5, max: 50 });
   };
 
   const validateDescription = (t = "hol") => {
-    return (
-      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 5, max: 500 })
-    );
+    // validator.matches(t, "^[a-zA-Z0-9 ]*$")
+    return patron.test(t) && validator.isLength(t, { min: 50, max: 600 });
   };
   const validateSynopsis = (t = "hol") => {
-    return (
-      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 5, max: 500 })
-    );
+    return patron.test(t) && validator.isLength(t, { min: 50, max: 600 });
+  };
+  const validateURL = (t = "hol") => {
+    return patronURL.test(t) && validator.isLength(t, { min: 10, max: 250 });
   };
 
   const confirmUPD = () => {
@@ -192,7 +188,15 @@ const CrudNews = ({
     //     break;
     // }
     console.log("paso las validaciones");
-    // handleClose();
+    Swal.fire({
+      title: "JavaSports",
+      text: "Modificación exitosa!",
+      icon: "success",
+      iconColor: "#413f4a",
+      width: "20rem",
+      confirmButtonColor: "#413f4a",
+    });
+    handleClose();
   };
 
   const confirmNews = () => {
@@ -205,7 +209,9 @@ const CrudNews = ({
         validateTitle(titleNews) &&
         validateImgTitle(imgTitleNews) &&
         validateDescription(descriptionNews) &&
-        validateSynopsis(synopsisNews)
+        validateSynopsis(synopsisNews) &&
+        validateURL(imgNews) &&
+        validateURL(imgTwoNews)
       ) {
         confirmUPD();
       } else {
@@ -213,6 +219,8 @@ const CrudNews = ({
         setImgTitle_validate(false);
         setDescription_validate(false);
         setSynopsis_validate(false);
+        setImg_validate(false);
+        setImgTwo_validate(false);
       }
     }
   };
@@ -254,7 +262,7 @@ const CrudNews = ({
             <Form.Group className="mb-3" controlId="formId">
               <Form.Label>Id</Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="100"
                 className="p-2"
                 type="text"
                 placeholder="Id"
@@ -266,7 +274,7 @@ const CrudNews = ({
             <Form.Group className="mb-3" controlId="formTitleNew">
               <Form.Label>Titulo noticia </Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="80"
                 className="p-2"
                 type="text"
                 placeholder="Titulo"
@@ -283,7 +291,7 @@ const CrudNews = ({
             <Form.Group className="mb-3" controlId="formTitleImg">
               <Form.Label>Titulo de Imagen principal </Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="80"
                 className="p-2"
                 type="text"
                 placeholder="Titulo de imagen principal"
@@ -352,7 +360,6 @@ const CrudNews = ({
                 disabled={editableFields}
               />
               {!validateDescription(descriptionNews) &&
-                !validateDescription(descriptionNews) &&
                 !description_validate && (
                   <div className="alert alert-danger p-0" role="alert">
                     Error en el campo "Descripción".
@@ -382,7 +389,7 @@ const CrudNews = ({
             <Form.Group className="mb-3" controlId="formImg1">
               <Form.Label>Imagen 1 (Principal)</Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="250"
                 className="p-2"
                 type="text"
                 size="sm"
@@ -391,7 +398,7 @@ const CrudNews = ({
                 onChange={(e) => setImgNews(e.target.value)}
                 disabled={editableFields}
               />
-              {!img_validate && (
+              {!validateURL(imgNews) && !img_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Imagen 1".
                 </div>
@@ -400,7 +407,7 @@ const CrudNews = ({
             <Form.Group className="mb-3" controlId="formImg2">
               <Form.Label>Imagen 2 </Form.Label>
               <Form.Control
-                maxLength="40"
+                maxLength="250"
                 className="p-2"
                 type="text"
                 placeholder="Ingresar url de imagen"
@@ -408,7 +415,7 @@ const CrudNews = ({
                 onChange={(e) => setImgTwoNews(e.target.value)}
                 disabled={editableFields}
               />
-              {!imgTwo_validate && (
+              {!validateURL(imgTwoNews) && !imgTwo_validate && (
                 <div className="alert alert-danger p-0" role="alert">
                   Error en el campo "Imagen 2".
                 </div>
@@ -419,13 +426,16 @@ const CrudNews = ({
         <Modal.Footer>
           {action !== "display" && (
             <Button
-              className="btn-gray btn-gray-border"
+              className="btn-gray btn-gray-border btn-form"
               onClick={() => confirmNews()}
             >
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}
-          <Button className="btn-gray btn-gray-border" onClick={handleClose}>
+          <Button
+            className="btn-gray btn-gray-border btn-form"
+            onClick={handleClose}
+          >
             Cancelar
           </Button>
         </Modal.Footer>
