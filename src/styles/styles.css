@@ -191,6 +191,12 @@ body {
   min-height: 100vh;
 }
 
+.text-error {
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--redColor);
+}
+
 /* BREAKPOINTS */
 
 @media (max-width: 990px) {
@@ -222,5 +228,14 @@ body {
 @media (min-width: 767.98px) {
   .link_styles {
     display: none;
+  }
+  .text-error {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .text-error {
+    font-size: 17px;
   }
 }

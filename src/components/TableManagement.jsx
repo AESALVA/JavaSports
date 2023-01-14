@@ -9,8 +9,15 @@ import CrudUsers from "./CrudUsers";
 import CrudNews from "./CrudNews";
 import { useEffect } from "react";
 
-const TableManagement = ({ viewTable, articles, users }) => {
-  const [showModal, setShowModal] = useState(false);
+const TableManagement = ({
+  viewTable,
+  articles,
+  setArticles,
+  users,
+  setAction,
+}) => {
+  const [showModalNews, setShowModalNews] = useState(false);
+  const [showModalUsers, setShowModalUsers] = useState(false);
   const [actionAMB, setActionAMB] = useState("");
   const [viewInfo, setViewInfo] = useState({});
   const [matchlist, setMatchlist] = useState([{}]);
@@ -28,10 +35,10 @@ const TableManagement = ({ viewTable, articles, users }) => {
 
   const handleClose = () => {
     setViewInfo({});
-    setShowModal(false);
+    viewTable === "news" ? setShowModalNews(false) : setShowModalUsers(false);
   };
   const handleShow = () => {
-    setShowModal(true);
+    viewTable === "news" ? setShowModalNews(true) : setShowModalUsers(true);
   };
 
   const showModalNew = () => {
@@ -47,19 +54,24 @@ const TableManagement = ({ viewTable, articles, users }) => {
 
   useEffect(() => {
     let listSeeker = [];
-
-    if (viewTable === "news") {
-      articles.forEach((article) => {
-        article.title.toLowerCase().includes(seeker.toLowerCase()) &&
-          listSeeker.push(article);
-      });
-      setMatchlist(listSeeker);
+    if (seeker.length > 0) {
+      if (viewTable === "news") {
+        articles &&
+          articles.forEach((article) => {
+            article.title.toLowerCase().includes(seeker.toLowerCase()) &&
+              listSeeker.push(article);
+          });
+        setMatchlist(listSeeker);
+      } else {
+        users &&
+          users.forEach((user) => {
+            user.name.toLowerCase().includes(seeker.toLowerCase()) &&
+              listSeeker.push(user);
+          });
+        setMatchlist(listSeeker);
+      }
     } else {
-      users.forEach((user) => {
-        user.name.toLowerCase().includes(seeker.toLowerCase()) &&
-          listSeeker.push(user);
-      });
-      setMatchlist(listSeeker);
+      viewTable === "news" ? setMatchlist(articles) : setMatchlist(users);
     }
   }, [seeker]);
 
@@ -99,7 +111,7 @@ const TableManagement = ({ viewTable, articles, users }) => {
               </tr>
             </thead>
             <tbody>
-              {viewTable === "news"
+              {viewTable === "news" && matchlist.length > 0
                 ? matchlist.map((article, i) => (
                     <tr
                       id={i}
@@ -110,7 +122,8 @@ const TableManagement = ({ viewTable, articles, users }) => {
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : matchlist.map((article, i) => (
+                : matchlist.length > 0 &&
+                  matchlist.map((article, i) => (
                     <tr
                       id={i}
                       key={i}
@@ -125,26 +138,27 @@ const TableManagement = ({ viewTable, articles, users }) => {
         </div>
       </div>
 
-      {/* MODAL CRUD */}
-      {viewTable === "news" ? (
-        <CrudNews
-          article={viewInfo}
-          view={viewTable}
-          action={actionAMB}
-          setActionAMB={setActionAMB}
-          showModal={showModal}
-          handleClose={handleClose}
-        />
-      ) : (
-        <CrudUsers
-          info={viewInfo}
-          view={viewTable}
-          action={actionAMB}
-          setActionAMB={setActionAMB}
-          showModal={showModal}
-          handleClose={handleClose}
-        />
-      )}
+      {/* MODAL CRUD
+      {viewTable === "news" ? ( */}
+      <CrudNews
+        article={viewInfo}
+        view={viewTable}
+        action={actionAMB}
+        setActionAMB={setActionAMB}
+        showModal={showModalNews}
+        handleClose={handleClose}
+        setAction={setAction}
+      />
+      {/* ) : ( */}
+      <CrudUsers
+        info={viewInfo}
+        view={viewTable}
+        action={actionAMB}
+        setActionAMB={setActionAMB}
+        showModal={showModalUsers}
+        handleClose={handleClose}
+      />
+      {/* )} */}
     </>
   );
 };

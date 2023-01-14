@@ -9,12 +9,15 @@ function App() {
   //Indicador de categoria id
   const [sectionByCategory, setSectionByCategory] = useState("");
 
+  // estado semaforo
+  const [action, setAction] = useState(false);
+
   // Buscador para la página
   const [search, setSearch] = useState("");
 
-// Loader
+  // Loader
 
-const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // LOGIN
 
@@ -27,52 +30,53 @@ const [isLoaded, setIsLoaded] = useState(false);
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name:u.name,
-        mail:u.mail,
-        password:u.password,
-        role:u.role,
+        name: u.name,
+        mail: u.mail,
+        password: u.password,
+        role: u.role,
       }),
-    })
-    .then((res)=>res.json()
-    .then((json)=>console.log(json)))
+    }).then((res) => res.json().then((json) => console.log(json)));
   };
 
   const validate = async (u, p) => {
     setIsLoaded(true);
-    await fetch(
-      "https://java-sports-back.vercel.app/users/login",
-      {
-        method: "POST",
-        mode:"cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: u, password: p }),
-      }
-    )
-    .then((res) => res.json())
-    .then((json)=>{if(json.message==="Wrong Credentials" || json.message === "User not found"){setAuth({user:false,role:false})}})
+    await fetch("https://java-sports-back.vercel.app/users/login", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: u, password: p }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (
+          json.message === "Wrong Credentials" ||
+          json.message === "User not found"
+        ) {
+          setAuth({ user: false, role: false });
+        }
+      });
   };
 
   const login = async (u, p) => {
-    await fetch(
-      "https://java-sports-back.vercel.app/users/login",
-      {
-        method: "POST",
-        mode:"cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: u, password: p }),
-      }
-    )
+    await fetch("https://java-sports-back.vercel.app/users/login", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: u, password: p }),
+    })
       .then((res) => res.json())
-      .then((json) => {if(json.message==="User and password OK"){setAuth({user:u,role:json.role})}})
-      .catch((error)=>setAuth({user:false,role:false}))
-      .finally(()=>setIsLoaded(false))
+      .then((json) => {
+        if (json.message === "User and password OK") {
+          setAuth({ user: u, role: json.role });
+        }
+      })
+      .catch((error) => setAuth({ user: false, role: false }))
+      .finally(() => setIsLoaded(false));
   };
-
-
 
   const logout = () => {
     setAuth({ user: "", role: "" });
@@ -94,7 +98,7 @@ const [isLoaded, setIsLoaded] = useState(false);
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
-  }, []);
+  }, [action]);
 
   //COMENTARIOS
 
@@ -132,7 +136,9 @@ const [isLoaded, setIsLoaded] = useState(false);
         setSectionByCategory={setSectionByCategory}
         isLoaded={isLoaded}
         setIsLoaded={setIsLoaded}
-       />
+        action={action}
+        setAction={setAction}
+      />
     </BrowserRouter>
   );
 }

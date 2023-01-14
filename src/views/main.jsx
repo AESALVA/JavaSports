@@ -33,6 +33,8 @@ const Main = ({
   setSectionByCategory,
   isLoaded,
   setIsLoaded,
+  action,
+  setAction,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -94,7 +96,16 @@ const Main = ({
           path="/SectionsList"
         />
         <Route
-          element={<Management auth={auth} articles={articles} users={users} />}
+          element={
+            <Management
+              auth={auth}
+              articles={articles}
+              setArticles={setArticles}
+              users={users}
+              action={action}
+              setAction={setAction}
+            />
+          }
           path="/Management"
         />
         <Route path="/resetPassword" element={<ResetPassword />} />

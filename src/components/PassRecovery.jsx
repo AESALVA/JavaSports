@@ -8,8 +8,7 @@ import { CloseButton } from "react-bootstrap";
 import "../styles/passRecovery.css";
 import Loader from "./Loader";
 
-
-const PassRecovery = ({isLoaded, setIsLoaded}) => {
+const PassRecovery = ({ isLoaded, setIsLoaded }) => {
   const [show, setShow] = useState(true);
   const [mail, setMail] = useState("");
   const [firstMail, setFirstMail] = useState(true);
@@ -37,82 +36,95 @@ const PassRecovery = ({isLoaded, setIsLoaded}) => {
     navigate("/");
   };
 
-  const HandleClick = async ()=>{
+  const HandleClick = async () => {
     setIsLoaded(true);
-    await fetch(  
-      "https://java-sports-back.vercel.app/users/forgotPassword",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode:"cors",
-        body: JSON.stringify({mail:mail}),
-      }
-    )
+    await fetch("https://java-sports-back.vercel.app/users/forgotPassword", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify({ mail: mail }),
+    })
       .then((res) => res.json())
-      .then((json)=>{if(json.message === "OK MAIL"){setMessage("¡ email enviado con exito !")}if(json.message === "user not found"){setMessage("Ese email no es válido, inténtalo otra vez!")}})
-      .catch((error)=>{if(error){setMessage("Oops! Algo salió mal, vuelve a intentarlo")}})
-      .finally(()=>setIsLoaded(false))
-
-  }
+      .then((json) => {
+        if (json.message === "OK MAIL") {
+          setMessage("¡ email enviado con exito !");
+        }
+        if (json.message === "user not found") {
+          setMessage("Ese email no es válido, inténtalo otra vez!");
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          setMessage("Oops! Algo salió mal, vuelve a intentarlo");
+        }
+      })
+      .finally(() => setIsLoaded(false));
+  };
 
   return (
     <>
       <div className="FondoPass d-xl-block mx-auto">
         <img className="w-100" src="/img/FondoPass.jpg" alt="fondoimg" />
       </div>
-      <Modal show={show}  contentClassName="bg-black ModalPass mx-auto">
-        {isLoaded?(<Loader />):(<>
-        <Modal.Header className="border-danger modalHeader bg-black flex-column">
-          <CloseButton onClick={() => closeModal()} variant="white" />
-          <Link className="mx-auto" to="/">
-            <img
-              className="bg-dark logotipo"
-              src="/img/LogoJS.jpg"
-              width="100"
-              height="100"
-              alt="logo"
-            />
-          </Link>
-        </Modal.Header>
-        <h4 className="mx-auto mt-md-5  mt-xs-5">¿ No recuerdas tu contraseña ?</h4>
-        <h5 className="mx-auto pt-2">¡ No te preocupes !</h5>
-        <Modal.Body className=" modalBody mb-xs-3 py-md-4 py-xs-4 px-4 bg-black">
-          <Form>
-            <Form.Group className="my-2" controlId="formBasicPassword">
-              <h6 className="text-center pb-md-5 pb-xs-5">
-                Ingresa tu Email y te ayudaremos
-              </h6>
-              <Form.Label>
-              <span>{message}</span>{" "}
-                {!validateMail(mail) && !firstMail && (
-                  <span className="text-danger ps-2">
-                    Debe llenar este campo con su Email
-                  </span>
-                )}
-              </Form.Label>
-              <Form.Control
-                maxLength="40"
-                value={mail}
-                onInput={(e) => setMail(e.target.value)}
-                onBlur={() => setFirstMail(false)}
-                className="p-xs-3 p-md-3"
-                type="email"
-                placeholder="Java@Sports.com"
-              />
-            </Form.Group>
-          </Form>
-          <Button
-          className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
-          size="lg"
-          type="submit"
-          onClick={() => HandleClick()}
-        >
-          <h4 className="m-auto py-2 px-4">Enviar</h4>
-        </Button>
-        </Modal.Body>
-        </>)}  
+      <Modal show={show} contentClassName="bg-black ModalPass mx-auto">
+        {isLoaded ? (
+          <Loader />
+        ) : (
+          <>
+            <Modal.Header className="border-danger modalHeader bg-black flex-column">
+              <CloseButton onClick={() => closeModal()} variant="white" />
+              <Link className="mx-auto" to="/">
+                <img
+                  className="bg-dark logotipo"
+                  src="/img/LogoJS.jpg"
+                  width="100"
+                  height="100"
+                  alt="logo"
+                />
+              </Link>
+            </Modal.Header>
+            <h4 className="mx-auto mt-md-5  mt-xs-5">
+              ¿ No recuerdas tu contraseña ?
+            </h4>
+            <h5 className="mx-auto pt-2">¡ No te preocupes !</h5>
+            <Modal.Body className=" modalBody mb-xs-3 py-md-4 py-xs-4 px-4 bg-black">
+              <Form>
+                <Form.Group className="my-2" controlId="formBasicPassword">
+                  <h6 className="text-center pb-md-5 pb-xs-5">
+                    Ingresa tu Email y te ayudaremos
+                  </h6>
+                  <Form.Label>
+                    <span>{message}</span>{" "}
+                    {!validateMail(mail) && !firstMail && (
+                      <span className="text-danger ps-2">
+                        Debe llenar este campo con su Email
+                      </span>
+                    )}
+                  </Form.Label>
+                  <Form.Control
+                    maxLength="40"
+                    value={mail}
+                    onInput={(e) => setMail(e.target.value)}
+                    onBlur={() => setFirstMail(false)}
+                    className="p-xs-3 p-md-3"
+                    type="email"
+                    placeholder="Java@Sports.com"
+                  />
+                </Form.Group>
+              </Form>
+              <Button
+                className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
+                size="lg"
+                type="submit"
+                onClick={() => HandleClick()}
+              >
+                <h4 className="m-auto py-2 px-4">Enviar</h4>
+              </Button>
+            </Modal.Body>
+          </>
+        )}
       </Modal>
     </>
   );
