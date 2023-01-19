@@ -16,22 +16,18 @@ const Management = ({
   action,
   setAction,
 }) => {
-  const [articles_Crud, setArticles_Crud] = useState(articles);
-  console.log("action en : " + action);
   const navigate = useNavigate();
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
-  // ARTICULOS
-  useEffect(() => {
-    fetch("https://java-sports-back.vercel.app/articles/all")
-      .then((res) => res.json())
-      .then((json) => setArticles_Crud(json));
-  }, [action]);
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
     auth.role !== "admin" && navigate("/");
   }, [auth]);
+
+  const confirmINS = (news) => {
+    articles.push(news);
+  };
 
   return (
     <Container className="main-container d-flex flex-column">
@@ -54,6 +50,7 @@ const Management = ({
               setArticles={setArticles}
               users={users}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -63,6 +60,7 @@ const Management = ({
               setArticles={setArticles}
               users={users}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
           <Tab
@@ -76,6 +74,7 @@ const Management = ({
               setArticles={setArticles}
               users={personalList}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
         </Tabs>
