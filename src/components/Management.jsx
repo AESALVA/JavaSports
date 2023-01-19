@@ -16,17 +16,11 @@ const Management = ({
   action,
   setAction,
 }) => {
-  const [articles_Crud, setArticles_Crud] = useState(articles);
-  console.log("action en : " + action);
   const navigate = useNavigate();
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
   // ARTICULOS
-  useEffect(() => {
-    fetch("https://java-sports-back.vercel.app/articles/all")
-      .then((res) => res.json())
-      .then((json) => setArticles_Crud(json));
-  }, [action]);
+  
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
