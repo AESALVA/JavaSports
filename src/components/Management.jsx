@@ -20,6 +20,7 @@ const Management = ({
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
 
+
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
     auth.role !== "admin" && navigate("/");
