@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { Link, useNavigate } from "react-router-dom";
+import { json, Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import validator from "validator";
 import Swal from "sweetalert2";
@@ -124,25 +124,58 @@ const CrudNews = ({
     article.img = imgNews;
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
-
-    fetch(
-      `https://java-sports-back.vercel.app/articles/update/${article._id}`,
-      {
-        method: "PUT",
+// cuando en el nuevo articulo creado sin _id se quiere modificar en el back, hace una pregunta al back
+// y manda el articulo nuevo creado y el back busca en la base de datos el articulo con el mismo titulo
+// al encontrarlo devuelve el articulo y el front ya puede utilizar el articulo que ya viene con el _id asignado
+// y se puede hacer el PUT para modificar sin errores de back.
+    if (!article._id) {
+      let article = {};
+      fetch(`https://java-sports-back.vercel.app/articles/search`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          categories: categoryNameNews,
-          title: titleNews,
-          img: imgNews,
-          imgTitle: imgTitleNews,
-          description: descriptionNews,
-          imgTwo: imgTwoNews,
-          synopsis: synopsisNews,
-          important: importantNews,
-          categoryId: categoryIdNews,
-        }),
-      }
-    );
+        body: JSON.stringify(news),
+      })
+        .then((res) => res.json())
+        .then((json) => (article = json))
+        .catch((error) => console.log(error));
+      fetch(
+        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            categories: categoryNameNews,
+            title: titleNews,
+            img: imgNews,
+            imgTitle: imgTitleNews,
+            description: descriptionNews,
+            imgTwo: imgTwoNews,
+            synopsis: synopsisNews,
+            important: importantNews,
+            categoryId: categoryIdNews,
+          }),
+        }
+      );
+    } else {
+      fetch(
+        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            categories: categoryNameNews,
+            title: titleNews,
+            img: imgNews,
+            imgTitle: imgTitleNews,
+            description: descriptionNews,
+            imgTwo: imgTwoNews,
+            synopsis: synopsisNews,
+            important: importantNews,
+            categoryId: categoryIdNews,
+          }),
+        }
+      );
+    }
   };
 
   const confirmNew = () => {
