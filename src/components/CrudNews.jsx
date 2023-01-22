@@ -20,6 +20,7 @@ const CrudNews = ({
   showModal,
   handleClose,
   setAction,
+  confirmINS,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -111,6 +112,19 @@ const CrudNews = ({
 
   const confirmUpdate = () => {
     console.log("entro para confirmar");
+
+    // Actualizar el objeto article con los nuevos cambios.
+    article._id = idNews;
+    article.title = titleNews;
+    article.categoryId = categoryIdNews;
+    article.categories = categoryNameNews;
+    article.important = importantNews;
+    article.description = descriptionNews;
+    article.synopsis = synopsisNews;
+    article.img = imgNews;
+    article.imgTitle = imgTitleNews;
+    article.imgTwo = imgTwoNews;
+
     fetch(
       `https://java-sports-back.vercel.app/articles/update/${article._id}`,
       {
@@ -141,6 +155,7 @@ const CrudNews = ({
     news.synopsis = synopsisNews;
     news.important = importantNews;
     news.categoryId = categoryIdNews;
+    confirmINS(news);
 
     fetch(`https://java-sports-back.vercel.app/articles/new`, {
       method: "POST",
@@ -269,7 +284,7 @@ const CrudNews = ({
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="formId">
+            <Form.Group className="mb-3 d-none" controlId="formId">
               <Form.Label>Id</Form.Label>
               <Form.Control
                 maxLength="100"

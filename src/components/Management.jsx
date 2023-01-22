@@ -19,13 +19,16 @@ const Management = ({
   const navigate = useNavigate();
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
-  // ARTICULOS
-  
+
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
     auth.role !== "admin" && navigate("/");
   }, [auth]);
+
+  const confirmINS = (news) => {
+    articles.push(news);
+  };
 
   return (
     <Container className="main-container d-flex flex-column">
@@ -48,6 +51,7 @@ const Management = ({
               setArticles={setArticles}
               users={users}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -57,6 +61,7 @@ const Management = ({
               setArticles={setArticles}
               users={users}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
           <Tab
@@ -70,6 +75,7 @@ const Management = ({
               setArticles={setArticles}
               users={personalList}
               setAction={setAction}
+              confirmINS={confirmINS}
             />
           </Tab>
         </Tabs>
