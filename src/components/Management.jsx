@@ -6,6 +6,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const Management = ({
@@ -17,9 +18,9 @@ const Management = ({
   setAction,
 }) => {
   const navigate = useNavigate();
+  // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
-
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
@@ -27,7 +28,25 @@ const Management = ({
   }, [auth]);
 
   const confirmINS = (news) => {
+    console.log("insercion");
     articles.push(news);
+  };
+
+  const confirmDLT = (news) => {
+    console.log(news._id);
+    setArticles(articles.filter((article) => article._id !== news._id));
+    console.log(articles);
+  };
+  console.log(articles);
+  const messages = (msg, typeIcon) => {
+    Swal.fire({
+      title: "JavaSports",
+      text: msg,
+      icon: typeIcon,
+      iconColor: "#413f4a",
+      width: "20rem",
+      confirmButtonColor: "#413f4a",
+    });
   };
 
   return (
@@ -52,6 +71,8 @@ const Management = ({
               users={users}
               setAction={setAction}
               confirmINS={confirmINS}
+              confirmDLT={confirmDLT}
+              messages={messages}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -62,6 +83,8 @@ const Management = ({
               users={users}
               setAction={setAction}
               confirmINS={confirmINS}
+              confirmDLT={confirmDLT}
+              messages={messages}
             />
           </Tab>
           <Tab
@@ -76,6 +99,8 @@ const Management = ({
               users={personalList}
               setAction={setAction}
               confirmINS={confirmINS}
+              confirmDLT={confirmDLT}
+              messages={messages}
             />
           </Tab>
         </Tabs>

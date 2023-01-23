@@ -16,6 +16,8 @@ const TableManagement = ({
   users,
   setAction,
   confirmINS,
+  confirmDLT,
+  messages,
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
@@ -74,7 +76,7 @@ const TableManagement = ({
     } else {
       viewTable === "news" ? setMatchlist(articles) : setMatchlist(users);
     }
-  }, [seeker]);
+  }, [seeker, articles]);
 
   return (
     <>
@@ -150,6 +152,8 @@ const TableManagement = ({
         handleClose={handleClose}
         setAction={setAction}
         confirmINS={confirmINS}
+        confirmDLT={confirmDLT}
+        messages={messages}
       />
       {/* ) : ( */}
       <CrudUsers
