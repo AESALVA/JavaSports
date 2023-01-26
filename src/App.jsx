@@ -98,7 +98,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
-  }, [action]);
+  }, []);
 
   //COMENTARIOS
 
@@ -117,14 +117,9 @@ function App() {
   }, []);
 
 
-  const confirmDEL = (titleNews)=>{
-    console.log(articles)
+   const confirmDEL = (titleNews)=>{
     const index = articles.map(article => article.title).indexOf(titleNews);
-    console.log(index)
-    console.log(articles[index])
-    // articles.splice(index, 1);
-    
-    
+    articles.splice(index, 1);
 }
 
   return (
