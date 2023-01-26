@@ -15,7 +15,7 @@ const Management = ({
   users,
   action,
   setAction,
-  confirmDEL
+  confirmDEL,
 }) => {
   const navigate = useNavigate();
   // let personalList = users.filter((user) => user.role === "admin") || [];
@@ -27,13 +27,9 @@ const Management = ({
   }, [auth]);
 
   const confirmINS = (news) => {
-    setArticles([...articles,news])
-    articles.push(news);    
+    setArticles([...articles, news]);
+    articles.push(news);
   };
-
-
-
-
 
   return (
     <Container className="main-container d-flex flex-column">
