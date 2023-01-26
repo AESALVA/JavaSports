@@ -27,7 +27,6 @@ const Management = ({
   }, [auth]);
 
   const confirmINS = (news) => {
-    setArticles([...articles,news])
     articles.push(news);    
   };
 
