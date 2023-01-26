@@ -16,6 +16,7 @@ const TableManagement = ({
   users,
   setAction,
   confirmINS,
+  confirmDEL
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
@@ -150,6 +151,8 @@ const TableManagement = ({
         handleClose={handleClose}
         setAction={setAction}
         confirmINS={confirmINS}
+        articles={articles}
+        confirmDEL={confirmDEL}
       />
       {/* ) : ( */}
       <CrudUsers
