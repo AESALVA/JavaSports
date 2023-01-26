@@ -116,6 +116,17 @@ function App() {
       .then((json) => setUsersA(json));
   }, []);
 
+
+  const confirmDEL = (titleNews)=>{
+    console.log(articles)
+    const index = articles.map(article => article.title).indexOf(titleNews);
+    console.log(index)
+    console.log(articles[index])
+    // articles.splice(index, 1);
+    
+    
+}
+
   return (
     <BrowserRouter>
       <Main
@@ -138,6 +149,7 @@ function App() {
         setIsLoaded={setIsLoaded}
         action={action}
         setAction={setAction}
+        confirmDEL={confirmDEL}
       />
     </BrowserRouter>
   );

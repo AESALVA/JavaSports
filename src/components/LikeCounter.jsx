@@ -21,7 +21,6 @@ const addCounter = (c, q) => {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
-    console.log(id)
   }
  
   return (

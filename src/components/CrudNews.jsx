@@ -21,6 +21,8 @@ const CrudNews = ({
   handleClose,
   setAction,
   confirmINS,
+  articles,
+  confirmDEL
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -109,10 +111,9 @@ const CrudNews = ({
     seteditableFields(true);
     setActionAMB("Eliminar");
   };
-
   const confirmUpdate = () => {
     console.log("entro para confirmar");
-
+    
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -124,10 +125,7 @@ const CrudNews = ({
     article.img = imgNews;
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
-// cuando en el nuevo articulo creado sin _id se quiere modificar en el back, hace una pregunta al back
-// y manda el articulo nuevo creado y el back busca en la base de datos el articulo con el mismo titulo
-// al encontrarlo devuelve el articulo y el front ya puede utilizar el articulo que ya viene con el _id asignado
-// y se puede hacer el PUT para modificar sin errores de back.
+
     if (!article._id) {
       let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
@@ -199,13 +197,40 @@ const CrudNews = ({
 
   const confirmDelete = () => {
     //eliminar noticia por id
-    fetch(
-      `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
-      {
-        method: "DELETE",
+    
+   
+   
+    
+
+    if (!article._id) {
+      let article = {};
+      fetch(`https://java-sports-back.vercel.app/articles/search`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-      }
-    );
+        body: JSON.stringify(news),
+      })
+        .then((res) => res.json())
+        .then((json) => (article = json))
+        .catch((error) => console.log(error));
+      fetch(
+        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      
+    } else {
+      
+      fetch(
+        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+    confirmDEL(titleNews)
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
