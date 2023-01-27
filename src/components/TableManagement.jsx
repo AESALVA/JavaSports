@@ -16,7 +16,7 @@ const TableManagement = ({
   users,
   setAction,
   confirmINS,
-  confirmDLT,
+  confirmDEL,
   messages,
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
@@ -76,7 +76,7 @@ const TableManagement = ({
     } else {
       viewTable === "news" ? setMatchlist(articles) : setMatchlist(users);
     }
-  }, [seeker, articles]);
+  }, [seeker]);
 
   return (
     <>
@@ -152,7 +152,8 @@ const TableManagement = ({
         handleClose={handleClose}
         setAction={setAction}
         confirmINS={confirmINS}
-        confirmDLT={confirmDLT}
+        articles={articles}
+        confirmDEL={confirmDEL}
         messages={messages}
       />
       {/* ) : ( */}

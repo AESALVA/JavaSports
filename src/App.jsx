@@ -98,7 +98,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
       .then((json) => setArticles(json));
-  }, [action]);
+  }, []);
 
   //COMENTARIOS
 
@@ -115,6 +115,12 @@ function App() {
       .then((res) => res.json())
       .then((json) => setUsersA(json));
   }, []);
+
+
+   const confirmDEL = (titleNews)=>{
+    const index = articles.map(article => article.title).indexOf(titleNews);
+    articles.splice(index, 1);
+}
 
   return (
     <BrowserRouter>
@@ -138,6 +144,7 @@ function App() {
         setIsLoaded={setIsLoaded}
         action={action}
         setAction={setAction}
+        confirmDEL={confirmDEL}
       />
     </BrowserRouter>
   );

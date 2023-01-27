@@ -16,6 +16,7 @@ const Management = ({
   users,
   action,
   setAction,
+  confirmDEL,
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
@@ -28,16 +29,9 @@ const Management = ({
   }, [auth]);
 
   const confirmINS = (news) => {
-    console.log("insercion");
     articles.push(news);
   };
 
-  const confirmDLT = (news) => {
-    console.log(news._id);
-    setArticles(articles.filter((article) => article._id !== news._id));
-    console.log(articles);
-  };
-  console.log(articles);
   const messages = (msg, typeIcon) => {
     Swal.fire({
       title: "JavaSports",
@@ -71,7 +65,7 @@ const Management = ({
               users={users}
               setAction={setAction}
               confirmINS={confirmINS}
-              confirmDLT={confirmDLT}
+              confirmDEL={confirmDEL}
               messages={messages}
             />
           </Tab>
@@ -83,7 +77,7 @@ const Management = ({
               users={users}
               setAction={setAction}
               confirmINS={confirmINS}
-              confirmDLT={confirmDLT}
+              confirmDEL={confirmDEL}
               messages={messages}
             />
           </Tab>
@@ -99,7 +93,7 @@ const Management = ({
               users={personalList}
               setAction={setAction}
               confirmINS={confirmINS}
-              confirmDLT={confirmDLT}
+              confirmDEL={confirmDEL}
               messages={messages}
             />
           </Tab>

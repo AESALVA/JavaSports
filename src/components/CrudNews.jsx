@@ -21,7 +21,8 @@ const CrudNews = ({
   handleClose,
   setAction,
   confirmINS,
-  confirmDLT,
+  articles,
+  confirmDEL,
   messages,
 }) => {
   //   estados para noticia
@@ -112,28 +113,9 @@ const CrudNews = ({
     setActionAMB("Eliminar");
   };
 
-  const fetchUpdate = () => {
-    fetch(
-      `https://java-sports-back.vercel.app/articles/update/${article._id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          categories: categoryNameNews,
-          title: titleNews,
-          img: imgNews,
-          imgTitle: imgTitleNews,
-          description: descriptionNews,
-          imgTwo: imgTwoNews,
-          synopsis: synopsisNews,
-          important: importantNews,
-          categoryId: categoryIdNews,
-        }),
-      }
-    );
-  };
-
   const confirmUpdate = () => {
+    console.log("entro para confirmar");
+
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -145,10 +127,6 @@ const CrudNews = ({
     article.img = imgNews;
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
-    // cuando en el nuevo articulo creado sin _id se quiere modificar en el back, hace una pregunta al back
-    // y manda el articulo nuevo creado y el back busca en la base de datos el articulo con el mismo titulo
-    // al encontrarlo devuelve el articulo y el front ya puede utilizar el articulo que ya viene con el _id asignado
-    // y se puede hacer el PUT para modificar sin errores de back.
     if (!article._id) {
       let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
@@ -159,9 +137,43 @@ const CrudNews = ({
         .then((res) => res.json())
         .then((json) => (article = json))
         .catch((error) => console.log(error));
-      fetchUpdate();
+      fetch(
+        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            categories: categoryNameNews,
+            title: titleNews,
+            img: imgNews,
+            imgTitle: imgTitleNews,
+            description: descriptionNews,
+            imgTwo: imgTwoNews,
+            synopsis: synopsisNews,
+            important: importantNews,
+            categoryId: categoryIdNews,
+          }),
+        }
+      );
     } else {
-      fetchUpdate();
+      fetch(
+        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            categories: categoryNameNews,
+            title: titleNews,
+            img: imgNews,
+            imgTitle: imgTitleNews,
+            description: descriptionNews,
+            imgTwo: imgTwoNews,
+            synopsis: synopsisNews,
+            important: importantNews,
+            categoryId: categoryIdNews,
+          }),
+        }
+      );
     }
     messages("El articulo se actualizó con éxito!", "success");
   };
@@ -186,19 +198,7 @@ const CrudNews = ({
     messages("El articulo se registró con éxito!", "success");
   };
 
-  const fetchDelete = () => {
-    //eliminar noticia por id
-    fetch(
-      `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-  };
-
   const confirmDelete = () => {
-    console.log("entro para eliminar");
     if (!article._id) {
       let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
@@ -209,11 +209,23 @@ const CrudNews = ({
         .then((res) => res.json())
         .then((json) => (article = json))
         .catch((error) => console.log(error));
-      fetchDelete();
+      fetch(
+        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     } else {
-      fetchDelete();
+      fetch(
+        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
-    confirmDLT(article); //actualizar el frontEnd
+    confirmDEL(titleNews);
 
     // Mensaje de éxito.
     messages("El articulo ha sido eliminado!", "success");
