@@ -22,7 +22,7 @@ const CrudNews = ({
   setAction,
   confirmINS,
   articles,
-  confirmDEL
+  confirmDEL,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -85,7 +85,6 @@ const CrudNews = ({
 
   const categoryName = () => {
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
-
     switch (categoryNameNews) {
       case "football":
         setCategoryIdNews("1");
@@ -98,6 +97,9 @@ const CrudNews = ({
         break;
       case "box":
         setCategoryIdNews("4");
+        break;
+      default:
+        setCategoryIdNews("football");
         break;
     }
   };
@@ -113,7 +115,7 @@ const CrudNews = ({
   };
   const confirmUpdate = () => {
     console.log("entro para confirmar");
-    
+
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -177,7 +179,7 @@ const CrudNews = ({
   };
 
   const confirmNew = () => {
-    news.categories = categoryNameNews;
+    news.categories = !categoryNameNews?"football":categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
     news.imgTitle = imgTitleNews;
@@ -197,10 +199,8 @@ const CrudNews = ({
 
   const confirmDelete = () => {
     //eliminar noticia por id
-    
-   
-   
-    
+
+    confirmDEL(titleNews);
 
     if (!article._id) {
       let article = {};
@@ -219,9 +219,7 @@ const CrudNews = ({
           headers: { "Content-Type": "application/json" },
         }
       );
-      
     } else {
-      
       fetch(
         `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
         {
@@ -230,7 +228,6 @@ const CrudNews = ({
         }
       );
     }
-    confirmDEL(titleNews)
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
