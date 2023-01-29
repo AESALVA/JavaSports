@@ -132,6 +132,15 @@ const CrudNews = ({
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
 
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryIdNews;
+
     if (!article._id) {
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
