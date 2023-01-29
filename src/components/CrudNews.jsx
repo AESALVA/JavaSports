@@ -23,6 +23,7 @@ const CrudNews = ({
   confirmINS,
   articles,
   confirmDEL,
+  messages,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -36,6 +37,8 @@ const CrudNews = ({
   const [imgTwoNews, setImgTwoNews] = useState("");
   const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
+
+  const [newArticle, setNewArticle] = useState("");
 
   // Estado para las validaciones
   let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
@@ -85,7 +88,6 @@ const CrudNews = ({
 
   const categoryName = () => {
     // segun la categoria que elija en el input  me carga el nombre segun el còdigo indentificatorio.
-
     switch (categoryNameNews) {
       case "football":
         setCategoryIdNews("1");
@@ -99,6 +101,9 @@ const CrudNews = ({
       case "box":
         setCategoryIdNews("4");
         break;
+      default:
+        setCategoryIdNews("1");
+        break;
     }
   };
 
@@ -111,6 +116,7 @@ const CrudNews = ({
     seteditableFields(true);
     setActionAMB("Eliminar");
   };
+
   const confirmUpdate = () => {
     console.log("entro para confirmar");
 
@@ -127,17 +133,16 @@ const CrudNews = ({
     article.imgTwo = imgTwoNews;
 
     if (!article._id) {
-      let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => (article = json))
+        .then((json) => setNewArticle(json))
         .catch((error) => console.log(error));
       fetch(
-        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        `https://java-sports-back.vercel.app/articles/update/${newArticle._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -174,10 +179,11 @@ const CrudNews = ({
         }
       );
     }
+    messages("El articulo se actualizó con éxito!", "success");
   };
 
   const confirmNew = () => {
-    news.categories = categoryNameNews;
+    news.categories = !categoryNameNews ? "football" : categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
     news.imgTitle = imgTitleNews;
@@ -186,30 +192,40 @@ const CrudNews = ({
     news.synopsis = synopsisNews;
     news.important = importantNews;
     news.categoryId = categoryIdNews;
-    confirmINS(news);
-
+    confirmINS(news); //Actualizo el frontEnd
     fetch(`https://java-sports-back.vercel.app/articles/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(news),
     });
+
+    messages("El articulo se registró con éxito!", "success");
   };
 
   const confirmDelete = () => {
     //eliminar noticia por id
+    confirmDEL(titleNews);
+    news.categories = !categoryNameNews ? "football" : categoryNameNews;
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryIdNews;
 
     if (!article._id) {
-      let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => (article = json))
+        .then((json) => setNewArticle(json))
         .catch((error) => console.log(error));
       fetch(
-        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        `https://java-sports-back.vercel.app/articles/delete/${newArticle._id}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -224,7 +240,8 @@ const CrudNews = ({
         }
       );
     }
-    confirmDEL(titleNews);
+    messages("El articulo ha sido eliminado!", "success");
+    handleClose();
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
@@ -258,14 +275,6 @@ const CrudNews = ({
         break;
     }
     setAction(true);
-    Swal.fire({
-      title: "JavaSports",
-      text: "Modificación exitosa!",
-      icon: "success",
-      iconColor: "#413f4a",
-      width: "20rem",
-      confirmButtonColor: "#413f4a",
-    });
     handleClose();
   };
 
@@ -274,8 +283,8 @@ const CrudNews = ({
       confirmDelete();
     } else {
       categoryName(); //Cargo id de categoria segun lo que elegi
-      // confirma solo si el formulario cumple con los requisitos
       if (
+        // confirma solo si el formulario cumple con los requisitos
         validateTitle(titleNews) &&
         validateImgTitle(imgTitleNews) &&
         validateDescription(descriptionNews) &&
