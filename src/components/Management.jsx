@@ -7,6 +7,7 @@ import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Management = ({
   auth,
@@ -28,6 +29,17 @@ const Management = ({
 
   const confirmINS = (news) => {
     articles.push(news);
+  };
+
+  const messages = (msg, typeIcon) => {
+    Swal.fire({
+      title: "JavaSports",
+      text: msg,
+      icon: typeIcon,
+      iconColor: "#413f4a",
+      width: "20rem",
+      confirmButtonColor: "#413f4a",
+    });
   };
 
   return (
@@ -53,6 +65,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -64,6 +77,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
           <Tab
@@ -79,6 +93,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
         </Tabs>
