@@ -23,6 +23,7 @@ const CrudNews = ({
   confirmINS,
   articles,
   confirmDEL,
+  messages,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -37,7 +38,7 @@ const CrudNews = ({
   const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
 
-  const [newArticle, setNewArticle] = useState("")
+  const [newArticle, setNewArticle] = useState("");
 
   // Estado para las validaciones
   let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
@@ -101,7 +102,7 @@ const CrudNews = ({
         setCategoryIdNews("4");
         break;
       default:
-        setCategoryIdNews("football");
+        setCategoryIdNews("1");
         break;
     }
   };
@@ -115,6 +116,7 @@ const CrudNews = ({
     seteditableFields(true);
     setActionAMB("Eliminar");
   };
+
   const confirmUpdate = () => {
     console.log("entro para confirmar");
 
@@ -129,15 +131,6 @@ const CrudNews = ({
     article.img = imgNews;
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
-
-    news.title = titleNews;
-    news.img = imgNews;
-    news.imgTitle = imgTitleNews;
-    news.description = descriptionNews;
-    news.imgTwo = imgTwoNews;
-    news.synopsis = synopsisNews;
-    news.important = importantNews;
-    news.categoryId = categoryIdNews;
 
     if (!article._id) {
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
@@ -186,10 +179,11 @@ const CrudNews = ({
         }
       );
     }
+    messages("El articulo se actualizó con éxito!", "success");
   };
 
   const confirmNew = () => {
-    news.categories = !categoryNameNews?"football":categoryNameNews;
+    news.categories = !categoryNameNews ? "football" : categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
     news.imgTitle = imgTitleNews;
@@ -198,20 +192,20 @@ const CrudNews = ({
     news.synopsis = synopsisNews;
     news.important = importantNews;
     news.categoryId = categoryIdNews;
-    confirmINS(news);
-
+    confirmINS(news); //Actualizo el frontEnd
     fetch(`https://java-sports-back.vercel.app/articles/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(news),
     });
+
+    messages("El articulo se registró con éxito!", "success");
   };
 
   const confirmDelete = () => {
     //eliminar noticia por id
-
     confirmDEL(titleNews);
-    news.categories = !categoryNameNews?"football":categoryNameNews;
+    news.categories = !categoryNameNews ? "football" : categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
     news.imgTitle = imgTitleNews;
@@ -220,6 +214,7 @@ const CrudNews = ({
     news.synopsis = synopsisNews;
     news.important = importantNews;
     news.categoryId = categoryIdNews;
+
     if (!article._id) {
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
@@ -245,14 +240,7 @@ const CrudNews = ({
         }
       );
     }
-    Swal.fire({
-      title: "JavaSports",
-      text: "Eliminado!",
-      icon: "success",
-      iconColor: "#413f4a",
-      width: "20rem",
-      confirmButtonColor: "#413f4a",
-    });
+    messages("El articulo ha sido eliminado!", "success");
     handleClose();
   };
 
@@ -287,14 +275,6 @@ const CrudNews = ({
         break;
     }
     setAction(true);
-    Swal.fire({
-      title: "JavaSports",
-      text: "Modificación exitosa!",
-      icon: "success",
-      iconColor: "#413f4a",
-      width: "20rem",
-      confirmButtonColor: "#413f4a",
-    });
     handleClose();
   };
 
@@ -303,8 +283,8 @@ const CrudNews = ({
       confirmDelete();
     } else {
       categoryName(); //Cargo id de categoria segun lo que elegi
-      // confirma solo si el formulario cumple con los requisitos
       if (
+        // confirma solo si el formulario cumple con los requisitos
         validateTitle(titleNews) &&
         validateImgTitle(imgTitleNews) &&
         validateDescription(descriptionNews) &&

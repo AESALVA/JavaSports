@@ -6,6 +6,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import TableManagement from "./TableManagement";
 import "../styles/management.css";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const Management = ({
@@ -15,9 +16,10 @@ const Management = ({
   users,
   action,
   setAction,
-  confirmDEL
+  confirmDEL,
 }) => {
   const navigate = useNavigate();
+  // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
   // let personalList = users.filter((user) => user.role === "admin") || [];
   let personalList = [];
 
@@ -27,12 +29,19 @@ const Management = ({
   }, [auth]);
 
   const confirmINS = (news) => {
-    articles.push(news);    
+    articles.push(news);
   };
 
-
-
-
+  const messages = (msg, typeIcon) => {
+    Swal.fire({
+      title: "JavaSports",
+      text: msg,
+      icon: typeIcon,
+      iconColor: "#413f4a",
+      width: "20rem",
+      confirmButtonColor: "#413f4a",
+    });
+  };
 
   return (
     <Container className="main-container d-flex flex-column">
@@ -57,6 +66,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -68,6 +78,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
           <Tab
@@ -83,6 +94,7 @@ const Management = ({
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
+              messages={messages}
             />
           </Tab>
         </Tabs>
