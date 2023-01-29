@@ -164,6 +164,7 @@ const TableManagement = ({
         setActionAMB={setActionAMB}
         showModal={showModalUsers}
         handleClose={handleClose}
+        messages={messages}
       />
       {/* )} */}
     </>

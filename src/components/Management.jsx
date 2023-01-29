@@ -8,6 +8,7 @@ import TableManagement from "./TableManagement";
 import "../styles/management.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Management = ({
   auth,
