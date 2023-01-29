@@ -228,6 +228,15 @@ const CrudNews = ({
         }
       );
     }
+    Swal.fire({
+      title: "JavaSports",
+      text: "Eliminado!",
+      icon: "success",
+      iconColor: "#413f4a",
+      width: "20rem",
+      confirmButtonColor: "#413f4a",
+    });
+    handleClose();
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
