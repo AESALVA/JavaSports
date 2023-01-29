@@ -37,6 +37,8 @@ const CrudNews = ({
   const [categoryNameNews, setCategoryNameNews] = useState("");
   const [editableFields, seteditableFields] = useState(true);
 
+  const [newArticle, setNewArticle] = useState("")
+
   // Estado para las validaciones
   let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
   let patronURL =
@@ -128,18 +130,26 @@ const CrudNews = ({
     article.imgTitle = imgTitleNews;
     article.imgTwo = imgTwoNews;
 
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryIdNews;
+
     if (!article._id) {
-      let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => (article = json))
+        .then((json) => setNewArticle(json))
         .catch((error) => console.log(error));
       fetch(
-        `https://java-sports-back.vercel.app/articles/update/${article._id}`,
+        `https://java-sports-back.vercel.app/articles/update/${newArticle._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -201,19 +211,26 @@ const CrudNews = ({
     //eliminar noticia por id
 
     confirmDEL(titleNews);
-
+    news.categories = !categoryNameNews?"football":categoryNameNews;
+    news.title = titleNews;
+    news.img = imgNews;
+    news.imgTitle = imgTitleNews;
+    news.description = descriptionNews;
+    news.imgTwo = imgTwoNews;
+    news.synopsis = synopsisNews;
+    news.important = importantNews;
+    news.categoryId = categoryIdNews;
     if (!article._id) {
-      let article = {};
       fetch(`https://java-sports-back.vercel.app/articles/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => (article = json))
+        .then((json) => setNewArticle(json))
         .catch((error) => console.log(error));
       fetch(
-        `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
+        `https://java-sports-back.vercel.app/articles/delete/${newArticle._id}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
