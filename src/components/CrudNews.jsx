@@ -22,7 +22,7 @@ const CrudNews = ({
   setAction,
   confirmINS,
   articles,
-  confirmDEL
+  confirmDEL,
 }) => {
   //   estados para noticia
   const [idNews, setIdNews] = useState("");
@@ -113,7 +113,7 @@ const CrudNews = ({
   };
   const confirmUpdate = () => {
     console.log("entro para confirmar");
-    
+
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -197,10 +197,6 @@ const CrudNews = ({
 
   const confirmDelete = () => {
     //eliminar noticia por id
-    
-   
-   
-    
 
     if (!article._id) {
       let article = {};
@@ -219,9 +215,7 @@ const CrudNews = ({
           headers: { "Content-Type": "application/json" },
         }
       );
-      
     } else {
-      
       fetch(
         `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
         {
@@ -230,7 +224,7 @@ const CrudNews = ({
         }
       );
     }
-    confirmDEL(titleNews)
+    confirmDEL(titleNews);
   };
 
   // FUNCIONES PARA VALIDAR FORMULARIO
