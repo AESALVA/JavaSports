@@ -13,7 +13,7 @@ import Contact from "../components/Contact";
 import Management from "../components/Management";
 import SearchContainer from "../components/SearchContainer";
 import ResetPassword from "../components/ResetPassword";
-import Aboutus from "../components/Aboutus"
+import Aboutus from "../components/Aboutus";
 
 const Main = ({
   auth,
@@ -35,7 +35,8 @@ const Main = ({
   setIsLoaded,
   action,
   setAction,
-  confirmDEL
+  confirmDEL,
+  confirmDELUsers,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -51,7 +52,7 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
-        <Route path="/aboutus" element={<Aboutus />}  />
+        <Route path="/aboutus" element={<Aboutus />} />
         <Route
           element={
             <SearchContainer articles={articles} search={search} auth={auth} />
@@ -70,8 +71,8 @@ const Main = ({
           path="/PassRecovery"
         />
 
-        <Route element={<E404 title={"Error 404"} />} path="/404"/>
-        <Route element={<Contact />} path="/Contact"/>
+        <Route element={<E404 title={"Error 404"} />} path="/404" />
+        <Route element={<Contact />} path="/Contact" />
 
         <Route
           element={
@@ -106,6 +107,7 @@ const Main = ({
               action={action}
               setAction={setAction}
               confirmDEL={confirmDEL}
+              confirmDELUsers={confirmDELUsers}
             />
           }
           path="/Management"

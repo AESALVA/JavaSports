@@ -18,6 +18,8 @@ const TableManagement = ({
   confirmINS,
   confirmDEL,
   messages,
+  confirmDELUsers,
+  confirmINS_Users,
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
@@ -84,7 +86,7 @@ const TableManagement = ({
         {/* BOTONERA DE LA TABLA */}
         <div className="table-header-administrative d-flex  justify-content-end my-4">
           {/* BOTONERA CON BUSCADOR */}
-          {viewTable !== "users" && (
+          {viewTable !== "administrativeStaff" && (
             <Button
               className="btn-gray btn-gray-border"
               size="sm"
@@ -140,9 +142,6 @@ const TableManagement = ({
           </Table>
         </div>
       </div>
-
-      {/* MODAL CRUD
-      {viewTable === "news" ? ( */}
       <CrudNews
         article={viewInfo}
         view={viewTable}
@@ -156,7 +155,7 @@ const TableManagement = ({
         confirmDEL={confirmDEL}
         messages={messages}
       />
-      {/* ) : ( */}
+
       <CrudUsers
         info={viewInfo}
         view={viewTable}
@@ -165,8 +164,9 @@ const TableManagement = ({
         showModal={showModalUsers}
         handleClose={handleClose}
         messages={messages}
+        confirmDELUsers={confirmDELUsers}
+        confirmINS_Users={confirmINS_Users}
       />
-      {/* )} */}
     </>
   );
 };
