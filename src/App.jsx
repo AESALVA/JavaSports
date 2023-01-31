@@ -116,11 +116,15 @@ function App() {
       .then((json) => setUsersA(json));
   }, []);
 
-
-   const confirmDEL = (titleNews)=>{
-    const index = articles.map(article => article.title).indexOf(titleNews);
+  const confirmDEL = (titleNews) => {
+    const index = articles.map((article) => article.title).indexOf(titleNews);
     articles.splice(index, 1);
-}
+  };
+
+  const confirmDELUsers = (userName) => {
+    const index = usersA.map((user) => user.name).indexOf(userName);
+    usersA.splice(index, 1);
+  };
 
   return (
     <BrowserRouter>
@@ -145,6 +149,7 @@ function App() {
         action={action}
         setAction={setAction}
         confirmDEL={confirmDEL}
+        confirmDELUsers={confirmDELUsers}
       />
     </BrowserRouter>
   );

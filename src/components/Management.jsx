@@ -17,6 +17,7 @@ const Management = ({
   action,
   setAction,
   confirmDEL,
+  confirmDELUsers,
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
@@ -30,6 +31,10 @@ const Management = ({
 
   const confirmINS = (news) => {
     articles.push(news);
+  };
+
+  const confirmINS_Users = (u) => {
+    users.push(u);
   };
 
   const messages = (msg, typeIcon) => {
@@ -67,6 +72,8 @@ const Management = ({
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
               messages={messages}
+              confirmDELUsers={confirmDELUsers}
+              confirmINS_Users={confirmINS_Users}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -79,6 +86,8 @@ const Management = ({
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
               messages={messages}
+              confirmDELUsers={confirmDELUsers}
+              confirmINS_Users={confirmINS_Users}
             />
           </Tab>
           <Tab
@@ -95,6 +104,8 @@ const Management = ({
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
               messages={messages}
+              confirmDELUsers={confirmDELUsers}
+              confirmINS_Users={confirmINS_Users}
             />
           </Tab>
         </Tabs>
