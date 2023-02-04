@@ -83,7 +83,7 @@ const Main = ({
               commentsContainer={commentsContainer}
             />
           }
-          path="/SectionsContainer"
+          path="/SectionsContainer/:id"
         />
         <Route
           element={
