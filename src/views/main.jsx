@@ -81,6 +81,8 @@ const Main = ({
             <SectionsContainer
               auth={auth}
               commentsContainer={commentsContainer}
+              isLoaded={isLoaded}
+              setIsLoaded={setIsLoaded}
             />
           }
           path="/SectionsContainer/:id"
