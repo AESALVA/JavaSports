@@ -18,11 +18,11 @@ const Management = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
+  personalList,
+  setPersonalList,
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
-  // let personalList = users.filter((user) => user.role === "admin") || [];
-  let personalList = [];
 
   useEffect(() => {
     // solo puede visualizar la pàgina el admin
