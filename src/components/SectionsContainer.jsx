@@ -11,22 +11,22 @@ const SectionsContainer = ({auth, commentsContainer,isLoaded,setIsLoaded}) => {
 
   const [article, setArticle] = useState("");
   const params = useParams();
- 
+
   useEffect(() => {
-    setIsLoaded(true);
+    setIsLoaded(true)
     fetch(`https://java-sports-back.vercel.app/articles/${params.id}`)
       .then((res) => res.json())
       .then((json) => setArticle(json))
       .finally(()=>setIsLoaded(false))
-  }, [params.id]);
+  }, []);
 
   return (
     <>
-    {auth.user?(<Sections
+    {auth.user?(<>{isLoaded?(<Loader />):(<Sections
         commentsContainer={commentsContainer}
         article={article}
         auth={auth}
-      />):(<E404 title={"Debes iniciar sesión para ver las noticias"} />) }
+      />)}</>):(<E404 title={"Debes iniciar sesión para ver las noticias"} />) }
       
     </>
   );
