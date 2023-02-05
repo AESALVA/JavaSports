@@ -81,9 +81,11 @@ const Main = ({
             <SectionsContainer
               auth={auth}
               commentsContainer={commentsContainer}
+              isLoaded={isLoaded}
+              setIsLoaded={setIsLoaded}
             />
           }
-          path="/SectionsContainer"
+          path="/SectionsContainer/:id"
         />
         <Route
           element={
