@@ -16,10 +16,8 @@ const News = ({ sizeCard, view, article, auth }) => {
           <Link to={`/SectionsContainer/${article._id}`} className="">
             <Card.Img
               variant="top"
-              // Pongo imagen de messi porque me aburri de la otra imagen.
-              // src="https://statics.forbesargentina.com/2022/12/crop/63a1aa07f3f5c__822x822.webp"
               src={article.img}
-              className="fluid"
+              className="fluid card-img-style"
             />
           </Link>
           <Card.Body className="">

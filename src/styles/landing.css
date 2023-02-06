@@ -16,6 +16,12 @@
   border-radius: 80%;
 }
 
+/* IMAGEN-> ESTILO PARA QUE TODOS TENGAN EL MISMO TAMAÑO  */
+.card-img-style {
+  min-width: 100%;
+  min-height: 30vh;
+}
+
 /* BREAKPOITS */
 
 @media (min-width: 768px) {
