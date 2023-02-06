@@ -43,7 +43,7 @@ const CrudNews = ({
   // Estado para las validaciones
   let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
   let patronURL =
-    /^(https:\/\/)([^\s(["<,>/]*)(\/?)[^\s[",><]*(.png|.jpg|.PNG|.JPG)(\?[^\s[",><]*)?$/;
+    /^(https:\/\/)([^\s(["<,>/]*)(\/?)[^\s[",><]*(.png|.jpg|.PNG|.JPG|.webp)(\?[^\s[",><]*)?$/;
 
   const [title_validate, setTitle_validate] = useState(true);
   const [description_validate, setDescription_validate] = useState(true);
