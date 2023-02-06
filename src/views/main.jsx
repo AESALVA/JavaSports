@@ -37,8 +37,6 @@ const Main = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
-  personalList,
-  setPersonalList,
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -112,8 +110,6 @@ const Main = ({
               setAction={setAction}
               confirmDEL={confirmDEL}
               confirmDELUsers={confirmDELUsers}
-              personalList={personalList}
-              setPersonalList={setPersonalList}
             />
           }
           path="/Management"

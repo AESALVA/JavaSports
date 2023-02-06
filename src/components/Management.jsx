@@ -18,8 +18,6 @@ const Management = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
-  personalList,
-  setPersonalList,
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
@@ -99,7 +97,7 @@ const Management = ({
               viewTable="administrativeStaff"
               articles={articles}
               setArticles={setArticles}
-              users={personalList}
+              users={users}
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
