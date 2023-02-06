@@ -51,7 +51,7 @@ const Management = ({
       <div>
         <div className="mb-3" id="title-admin">
           {action}
-          <h5 className="text-center titulo-aboutus">Administración</h5>
+          <h5 className="text-center titulo-aboutus">ADMINISTRACIÓN</h5>
         </div>
         <Tabs
           defaultActiveKey="news"

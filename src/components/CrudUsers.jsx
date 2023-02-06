@@ -140,7 +140,7 @@ const CrudUsers = ({
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: nameUser.trim(),
+            name: nameUser,
             mail: mailUser,
             role: roleUser,
           }),

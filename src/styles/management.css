@@ -101,7 +101,9 @@
   border-radius: 3%;
   height: 3rem;
 }
-
+#title-admin h5 {
+  font-weight: bold;
+}
 /* BREAKPOINTS */
 
 /* TABLET */
