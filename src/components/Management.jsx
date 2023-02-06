@@ -49,12 +49,10 @@ const Management = ({
   return (
     <Container className="main-container d-flex flex-column">
       <div>
-        {action}
-        <h3 className="text-center mt-5">
-          Administración <FontAwesomeIcon icon={faHouse} />
-        </h3>
-      </div>
-      <div className="mt-5">
+        <div className="mb-3" id="title-admin">
+          {action}
+          <h5 className="text-center titulo-aboutus">Administración</h5>
+        </div>
         <Tabs
           defaultActiveKey="news"
           id="table-administrative"

@@ -92,6 +92,16 @@
   color: white !important;
 }
 
+#title-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  background-color: rgba(146, 140, 140, 0.047);
+  border-radius: 3%;
+  height: 3rem;
+}
+
 /* BREAKPOINTS */
 
 /* TABLET */
