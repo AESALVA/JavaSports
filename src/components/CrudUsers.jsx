@@ -142,7 +142,7 @@ const CrudUsers = ({
 
     messages("El usuario se actualizó con éxito!", "success");
     handleClose();
-  };
+  }}
 
   const confirmNewUser = () => {
     user.name = nameUser;
