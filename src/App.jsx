@@ -117,7 +117,7 @@ function App() {
       .then((json) => setUsersA(json));
   }, []);
 
- 
+
   const confirmDEL = (titleNews) => {
     const index = articles.map((article) => article.title).indexOf(titleNews);
     articles.splice(index, 1);

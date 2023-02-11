@@ -133,7 +133,7 @@ const CrudUsers = ({
           })
         )
         .catch((error) => console.log(error));
-    }
+
 
     // actualizar frontEnd.
     info.name = nameUser;

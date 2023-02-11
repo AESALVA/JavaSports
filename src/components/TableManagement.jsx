@@ -139,7 +139,7 @@ const TableManagement = ({
                       <td>{article.role}</td>
                     </tr>
                   ))}
-                   {matchlist.length > 0 &&
+              {matchlist.length > 0 &&
                 viewTable === "administrativeStaff" &&
                 matchlist.map(
                   (article, i) =>
