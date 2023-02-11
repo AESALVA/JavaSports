@@ -93,78 +93,55 @@ const CrudUsers = ({
     user.mail = mailUser;
     user.password = "";
 
-    if (!info.name) {
+    if (!info._id) {
       fetch(`https://java-sports-back.vercel.app/users/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(info),
       })
         .then((res) => res.json())
-        .then((json) => setNewUser(json))
+        .then((json) =>
+          fetch(`https://java-sports-back.vercel.app/users/delete/${json}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(info),
+          })
+        )
         .catch((error) => console.log(error));
-
-      fetch(
-        `https://java-sports-back.vercel.app/users/delete/${newUser.name}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    } else {
-      fetch(`https://java-sports-back.vercel.app/users/delete/${info.name}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
     }
     messages("El usuario ha sido eliminado!", "success");
     handleClose();
   };
 
-  const confirmUpdate = () => {
-    user.name = nameUser;
-    user.role = roleUser;
-    user.mail = mailUser;
-
-    if (!info.name) {
-      fetch(`https://java-sports-back.vercel.app/users/search`, {
+  const confirmUpdate = async () => {
+    if (!info._id) {
+      await fetch(`https://java-sports-back.vercel.app/users/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(info),
       })
         .then((res) => res.json())
-        .then((json) => setNewUser(json))
+        .then((json) =>
+          fetch(`https://java-sports-back.vercel.app/users/update/${json}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: nameUser,
+              mail: mailUser,
+              role: roleUser,
+            }),
+          })
+        )
         .catch((error) => console.log(error));
-      fetch(
-        `https://java-sports-back.vercel.app/users/update/${newUser.name}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: nameUser.trim(),
-            mail: mailUser,
-            role: roleUser,
-          }),
-        }
-      );
-    } else {
-      fetch(`https://java-sports-back.vercel.app/users/update/${nameUser}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: nameUser,
-          mail: mailUser,
-          role: roleUser,
-        }),
-      });
-
-      // actualizar frontEnd.
-      info.name = nameUser;
-      info.role = roleUser;
-      info.mail = mailUser;
-
-      messages("El usuario se actualizó con éxito!", "success");
-      handleClose();
     }
+
+    // actualizar frontEnd.
+    info.name = nameUser;
+    info.role = roleUser;
+    info.mail = mailUser;
+
+    messages("El usuario se actualizó con éxito!", "success");
+    handleClose();
   };
 
   const confirmNewUser = () => {
@@ -294,8 +271,8 @@ const CrudUsers = ({
                 disabled={editableFields}
               >
                 {view !== "administrativeStaff" && (
-                  <option className="text-dark" value="user">
-                    Usuario
+                  <option className="text-dark" value={roleUser}>
+                    {roleUser}
                   </option>
                 )}
               </Form.Select>
