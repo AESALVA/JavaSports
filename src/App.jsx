@@ -25,6 +25,7 @@ function App() {
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
+
   const addUser = (u) => {
     fetch("https://java-sports-back.vercel.app/users/register", {
       method: "POST",
@@ -115,6 +116,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => setUsersA(json));
   }, []);
+
 
   const confirmDEL = (titleNews) => {
     const index = articles.map((article) => article.title).indexOf(titleNews);
