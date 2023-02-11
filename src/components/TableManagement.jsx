@@ -127,7 +127,8 @@ const TableManagement = ({
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : matchlist.length > 0 &&
+                : matchlist.length > 0 && 
+                viewTable !== "administrativeStaff" &&
                   matchlist.map((article, i) => (
                     <tr
                       id={i}
@@ -138,6 +139,21 @@ const TableManagement = ({
                       <td>{article.role}</td>
                     </tr>
                   ))}
+                   {matchlist.length > 0 &&
+                viewTable === "administrativeStaff" &&
+                matchlist.map(
+                  (article, i) =>
+                    article.role === "admin" && (
+                      <tr
+                        id={i}
+                        key={i}
+                        onClick={() => showModalDisplay(article)}
+                      >
+                        <td>{article.name}</td>
+                        <td>{article.role}</td>
+                      </tr>
+                    )
+                )}
             </tbody>
           </Table>
         </div>

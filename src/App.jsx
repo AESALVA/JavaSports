@@ -25,7 +25,6 @@ function App() {
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
-  const [personalList, setPersonalList] = useState([]);
 
   const addUser = (u) => {
     fetch("https://java-sports-back.vercel.app/users/register", {
@@ -118,10 +117,7 @@ function App() {
       .then((json) => setUsersA(json));
   }, []);
 
-  // useEffect(() => {
-  //   usersA && setPersonalList(usersA.filter((user) => user.role === "admin"));
-  // }, []);
-
+ 
   const confirmDEL = (titleNews) => {
     const index = articles.map((article) => article.title).indexOf(titleNews);
     articles.splice(index, 1);
@@ -156,8 +152,6 @@ function App() {
         setAction={setAction}
         confirmDEL={confirmDEL}
         confirmDELUsers={confirmDELUsers}
-        personalList={personalList}
-        setPersonalList={setPersonalList}
       />
     </BrowserRouter>
   );

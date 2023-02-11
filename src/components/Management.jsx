@@ -18,8 +18,6 @@ const Management = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
-  personalList,
-  setPersonalList,
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
@@ -50,12 +48,10 @@ const Management = ({
 
   return (
     <Container className="main-container d-flex flex-column">
-      <div>
-        {action}
-        <h3 className="text-center mt-5">
-          Administración <FontAwesomeIcon icon={faHouse} />
-        </h3>
-      </div>
+      <div className="mb-3" id="title-admin">
+          {action}
+          <h5 className="text-center titulo-aboutus">ADMINISTRACIÓN</h5>
+        </div>
       <div className="mt-5">
         <Tabs
           defaultActiveKey="news"
@@ -99,7 +95,7 @@ const Management = ({
               viewTable="administrativeStaff"
               articles={articles}
               setArticles={setArticles}
-              users={personalList}
+              users={users}
               setAction={setAction}
               confirmINS={confirmINS}
               confirmDEL={confirmDEL}
