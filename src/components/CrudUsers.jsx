@@ -270,11 +270,9 @@ const CrudUsers = ({
                 onChange={(e) => setRoleUser(e.target.value)}
                 disabled={editableFields}
               >
-                {view !== "administrativeStaff" && (
                   <option className="text-dark" value={roleUser}>
                     {roleUser}
                   </option>
-                )}
               </Form.Select>
             </Form.Group>
           </Form>
