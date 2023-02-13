@@ -87,30 +87,35 @@ const CrudUsers = ({
 
   const confirmDelete = () => {
     //eliminar usuario por propiedad name, si o si se debe pasar el body para que no borre nunca el "admin"
-    confirmDELUsers(nameUser);
-    user.name = nameUser;
-    user.role = roleUser;
-    user.mail = mailUser;
-    user.password = "";
+if (info.role!=="admin") {
+  confirmDELUsers(nameUser);
+  user.name = nameUser;
+  user.role = roleUser;
+  user.mail = mailUser;
+  user.password = "";
 
-    if (!info._id) {
-      fetch(`https://java-sports-back.vercel.app/users/search`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(info),
-      })
-        .then((res) => res.json())
-        .then((json) =>
-          fetch(`https://java-sports-back.vercel.app/users/delete/${json}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(info),
-          })
-        )
-        .catch((error) => console.log(error));
-    }
-    messages("El usuario ha sido eliminado!", "success");
-    handleClose();
+  if (!info._id) {
+    fetch(`https://java-sports-back.vercel.app/users/search`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(info),
+    })
+      .then((res) => res.json())
+      .then((json) =>
+        fetch(`https://java-sports-back.vercel.app/users/delete/${json}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(info),
+        })
+      )
+      .catch((error) => console.log(error));
+  }
+  messages("El usuario ha sido eliminado!", "success");
+  handleClose();
+}else{
+  messages("El usuario administrador no puede ser eliminado!", "success");
+  handleClose();
+}   
   };
 
   const confirmUpdate = async () => {
