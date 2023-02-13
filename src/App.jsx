@@ -124,8 +124,11 @@ function App() {
   };
 
   const confirmDELUsers = (userName) => {
-    const index = usersA.map((user) => user.name).indexOf(userName);
-    usersA.splice(index, 1);
+    if(userName !== "Valentina" || "Eduardo"){
+      const index = usersA.map((user) => user.name).indexOf(userName);
+      usersA.splice(index, 1);
+    }
+   
   };
 
   return (
