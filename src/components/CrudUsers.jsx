@@ -87,67 +87,71 @@ const CrudUsers = ({
 
   const confirmDelete = () => {
     //eliminar usuario por propiedad name, si o si se debe pasar el body para que no borre nunca el "admin"
-if (info.role!=="admin") {
-  confirmDELUsers(nameUser);
-  user.name = nameUser;
-  user.role = roleUser;
-  user.mail = mailUser;
-  user.password = "";
+    if (info.role !== "admin") {
+      confirmDELUsers(nameUser);
+      user.name = nameUser;
+      user.role = roleUser;
+      user.mail = mailUser;
+      user.password = "";
 
-  if (!info._id) {
-    fetch(`https://java-sports-back.vercel.app/users/search`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(info),
-    })
-      .then((res) => res.json())
-      .then((json) =>
-        fetch(`https://java-sports-back.vercel.app/users/delete/${json}`, {
-          method: "DELETE",
+      if (!info._id) {
+        fetch(`https://java-sports-back.vercel.app/users/search`, {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(info),
         })
-      )
-      .catch((error) => console.log(error));
-  }
-  messages("El usuario ha sido eliminado!", "success");
-  handleClose();
-}else{
-  messages("El usuario administrador no puede ser eliminado!", "error");
-  handleClose();
-}   
+          .then((res) => res.json())
+          .then((json) =>
+            fetch(`https://java-sports-back.vercel.app/users/delete/${json}`, {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(info),
+            })
+          )
+          .catch((error) => console.log(error));
+      }
+      messages("El usuario ha sido eliminado!", "success");
+      handleClose();
+    } else {
+      messages("El usuario administrador no puede ser eliminado!", "error");
+      handleClose();
+    }
   };
 
-  const confirmUpdate = async () => {
-    if (!info._id) {
-      await fetch(`https://java-sports-back.vercel.app/users/search`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(info),
-      })
-        .then((res) => res.json())
-        .then((json) =>
-          fetch(`https://java-sports-back.vercel.app/users/update/${json}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: nameUser,
-              mail: mailUser,
-              role: roleUser,
-            }),
-          })
-        )
-        .catch((error) => console.log(error));
+  const confirmUpdate = () => {
+    if (info.role !== "admin") {
+      if (!info._id) {
+        fetch(`https://java-sports-back.vercel.app/users/search`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(info),
+        })
+          .then((res) => res.json())
+          .then((json) =>
+            fetch(`https://java-sports-back.vercel.app/users/update/${json}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: nameUser,
+                mail: mailUser,
+                role: roleUser,
+              }),
+            })
+          )
+          .catch((error) => console.log(error));
 
-
-    // actualizar frontEnd.
-    info.name = nameUser;
-    info.role = roleUser;
-    info.mail = mailUser;
-
-    messages("El usuario se actualizó con éxito!", "success");
-    handleClose();
-  }}
+        // actualizar frontEnd.
+        info.name = nameUser;
+        info.role = roleUser;
+        info.mail = mailUser;
+      }
+      messages("El usuario se actualizó con éxito!", "success");
+      handleClose();
+    } else {
+      messages("El usuario administrador no puede ser modificado!", "error");
+      handleClose();
+    }
+  };
 
   const confirmNewUser = () => {
     user.name = nameUser;
@@ -275,9 +279,9 @@ if (info.role!=="admin") {
                 onChange={(e) => setRoleUser(e.target.value)}
                 disabled={editableFields}
               >
-                  <option className="text-dark" value={roleUser}>
-                    {roleUser}
-                  </option>
+                <option className="text-dark" value={roleUser}>
+                  {!roleUser ? "Usuario" : roleUser}
+                </option>
               </Form.Select>
             </Form.Group>
           </Form>
