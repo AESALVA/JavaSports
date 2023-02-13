@@ -113,7 +113,7 @@ if (info.role!=="admin") {
   messages("El usuario ha sido eliminado!", "success");
   handleClose();
 }else{
-  messages("El usuario administrador no puede ser eliminado!", "success");
+  messages("El usuario administrador no puede ser eliminado!", "error");
   handleClose();
 }   
   };
