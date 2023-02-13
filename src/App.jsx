@@ -98,8 +98,10 @@ function App() {
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
-      .then((json) => setArticles(json));
-  }, []);
+      .then((json) => setArticles(json))
+      .finally(()=>setAction(false));
+      
+  }, [action]);
 
   //COMENTARIOS
 
