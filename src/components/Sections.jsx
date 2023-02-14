@@ -85,6 +85,10 @@ const Sections = ({ article, auth, commentsContainer }) => {
     );
   };
 
+  const commentsLength = showComment.filter(
+    (comment) => comment.id === article._id
+  ).length;
+
   useEffect(() => {
     setShowComment(commentsContainer);
   }, [commentsContainer]);
@@ -104,9 +108,7 @@ const Sections = ({ article, auth, commentsContainer }) => {
       <div className="commentArea-container sections">
         <h4 className="comments-title">
           All Comments {""}
-          {showComment.filter((comment) => comment.id === article._id).length >
-            0 &&
-            showComment.filter((comment) => comment.id === article._id).length}
+          {commentsLength > 0 && commentsLength}
         </h4>
         <input
           className="w-100 sections input-comments mt-3"
