@@ -25,6 +25,7 @@ function App() {
 
   const [auth, setAuth] = useState({ user: "", pass: "", role: "" });
 
+
   const addUser = (u) => {
     fetch("https://java-sports-back.vercel.app/users/register", {
       method: "POST",
@@ -97,8 +98,10 @@ function App() {
   useEffect(() => {
     fetch("https://java-sports-back.vercel.app/articles/all")
       .then((res) => res.json())
-      .then((json) => setArticles(json));
-  }, []);
+      .then((json) => setArticles(json))
+      .finally(()=>setAction(false));
+      
+  }, [action]);
 
   //COMENTARIOS
 
@@ -116,14 +119,18 @@ function App() {
       .then((json) => setUsersA(json));
   }, []);
 
+
   const confirmDEL = (titleNews) => {
     const index = articles.map((article) => article.title).indexOf(titleNews);
     articles.splice(index, 1);
   };
 
   const confirmDELUsers = (userName) => {
-    const index = usersA.map((user) => user.name).indexOf(userName);
-    usersA.splice(index, 1);
+    if(userName !== "Valentina" || "Eduardo"){
+      const index = usersA.map((user) => user.name).indexOf(userName);
+      usersA.splice(index, 1);
+    }
+   
   };
 
   return (

@@ -127,8 +127,8 @@ const TableManagement = ({
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : matchlist.length > 0 &&
-                  viewTable !== "administrativeStaff" &&
+                : matchlist.length > 0 && 
+                viewTable !== "administrativeStaff" &&
                   matchlist.map((article, i) => (
                     <tr
                       id={i}

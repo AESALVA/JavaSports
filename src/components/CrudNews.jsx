@@ -192,6 +192,7 @@ const CrudNews = ({
   };
 
   const confirmNew = () => {
+    setAction(true)
     news.categories = !categoryNameNews ? "football" : categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
@@ -231,15 +232,15 @@ const CrudNews = ({
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => setNewArticle(json))
+        .then((json) => fetch(
+          `https://java-sports-back.vercel.app/articles/delete/${json._id}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          }
+        ))
         .catch((error) => console.log(error));
-      fetch(
-        `https://java-sports-back.vercel.app/articles/delete/${newArticle._id}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      
     } else {
       fetch(
         `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
