@@ -5,8 +5,6 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import "../styles/LikeCounter.css";
-import { Row } from "react-bootstrap";
-
 
 const LikeCounter = ({
   addLikes,
@@ -40,7 +38,7 @@ const LikeCounter = ({
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
-    } 
+    }
 
     const aux = [...showComment];
     const delAux = aux.filter((a) => a !== comment);
@@ -49,26 +47,29 @@ const LikeCounter = ({
 
   const [showLikes, setShowLikes] = useState([]);
 
-  const showList = ()=>{
+  const showList = () => {
     if (!showLikes) {
-      setShowLikes([])
+      setShowLikes([]);
     } else {
-      setShowLikes(comment.likes)
+      setShowLikes(comment.likes);
     }
-  }
+  };
   return (
-    <div onMouseEnter={()=>showList()} onMouseLeave={()=>setShowLikes([])}>
+    <div onMouseEnter={() => showList()} onMouseLeave={() => setShowLikes([])}>
       <Button
         disabled={comment.likes.find((c) => c === auth.user)}
         variant="secondary"
         onClick={() => addCounter(counter, 1)}
         className="border-0"
-        
       >
         {comment.likes.length > 0 && comment.likes.length}{" "}
         <FontAwesomeIcon icon={faThumbsUp} />
-        
-      </Button>{" "}<ul className="LikeList">{showLikes.map((c,i)=>(<li key={i}>{c}</li>))}</ul>
+      </Button>{" "}
+      <ul className="LikeList">
+        {showLikes.map((c, i) => (
+          <li key={i}>{c}</li>
+        ))}
+      </ul>
       {auth.role === "admin" && (
         <Button variant="secondary" onClick={() => deleteComment(comment._id)}>
           <FontAwesomeIcon icon={faTrashCan} />
