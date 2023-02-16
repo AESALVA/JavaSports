@@ -1,0 +1,8 @@
+.LikeList{
+list-style-type: none;
+padding-left: 0;
+max-width: 10rem;
+position: absolute;
+background-color: var(--grayColor);
+font-size: 0.8rem;
+}
