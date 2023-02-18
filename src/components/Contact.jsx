@@ -103,16 +103,13 @@ const Contacto = () => {
 
   return (
     <div className="container-fluid px-0 main-container d-flex flex-column">
-      {/* Primer columna */}
-      {/* <div className="imgbanner"></div> */}
-      {/* 2 columna */}
+      {/* 1 columna */}
       <div className="d-flex flex-column pt-5">
-        <h3 className="text-center titulo-aboutus mt-4">Contáctanos!</h3>
         {/* Fomulario */}
+        <h3 className="text-center titulo-aboutus mt-4">Contáctanos!</h3>
         <div className="d-flex justify-content-center px-0">
           <Form onSubmit={handleClick} ref={form} id="formulario">
-            <Row className="mb-2 mt-2">
-              <div className="row"></div>
+            <Row className="my-2">
               <Form.Group
                 as={Col}
                 className="mb-3 col-12 col-md-6"
