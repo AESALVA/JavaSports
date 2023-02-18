@@ -36,7 +36,8 @@ function App() {
         password: u.password,
         role: u.role,
       }),
-    }).then((res) => res.json().then((json) => console.log(json)));
+    });
+    usersA.push(u);
   };
 
   const validate = async (u, p) => {
