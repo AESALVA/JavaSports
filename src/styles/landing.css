@@ -19,7 +19,8 @@
 .card-img-style {
   min-width: 100%;
   min-height: 30vh;
-  object-fit: contain;
+  object-fit:cover;
+  padding: .3rem;
 }
 
 /* BREAKPOITS */
