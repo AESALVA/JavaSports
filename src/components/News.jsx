@@ -18,6 +18,7 @@ const News = ({ sizeCard, view, article, auth }) => {
               variant="top"
               src={article.img}
               className="fluid card-img-style"
+              alt="notice_picture"
             />
           </Link>
           <Card.Body className="">
