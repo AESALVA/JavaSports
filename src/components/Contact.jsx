@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 import "../styles/Contact.css";
 import "../styles/styles.css";
 import emailjs from "@emailjs/browser";
-import { FormGroup } from "react-bootstrap";
 import { useRef } from "react";
 
 const Contacto = () => {
@@ -26,18 +25,18 @@ const Contacto = () => {
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 5, max: 25 })
+      validator.isLength(n, { min: 3, max: 25 })
     );
   };
   const validateLastname = (l) => {
     return (
       validator.matches(l, "^[a-zA-Z ]*$") &&
-      validator.isLength(l, { min: 5, max: 25 })
+      validator.isLength(l, { min: 3, max: 25 })
     );
   };
   const validateMail = (m) => {
     return (
-      validator.isLength(m, { min: 5, max: 36 }) &&
+      validator.isLength(m, { min: 10, max: 36 }) &&
       validator.isEmail(m, {
         allow_display_name: false,
         require_display_name: false,
@@ -53,7 +52,7 @@ const Contacto = () => {
   const validateText = (t) => {
     return (
       validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 5, max: 185 })
+      validator.isLength(t, { min: 10, max: 185 })
     );
   };
 
@@ -126,7 +125,6 @@ const Contacto = () => {
                   type="text"
                   placeholder="Ingrese su nombre"
                   onInput={(e) => setName(e.target.value)}
-                  onBlur={() => setFirstName(false)}
                   name="name"
                   value={name}
                 />
@@ -148,7 +146,6 @@ const Contacto = () => {
                   type="text"
                   placeholder="Ingrese su apellido"
                   onInput={(e) => setLastname(e.target.value)}
-                  onBlur={() => setFirstLastname(false)}
                   name="lastname"
                   value={lastname}
                 ></Form.Control>
@@ -168,7 +165,6 @@ const Contacto = () => {
                 type="Email"
                 placeholder="Ingrese su email"
                 onInput={(e) => setMail(e.target.value)}
-                onBlur={() => setFirstMail(false)}
                 name="mail"
                 value={mail}
               />
@@ -210,7 +206,7 @@ const Contacto = () => {
         </div>
         {/* MAPA */}
         <div className="container-fluid px-0 pb-5 pt-3">
-          <h4 className="titulo-aboutus text-center my-4">Nuestra ubicacion</h4>
+          <h4 className="titulo-aboutus text-center my-4">Nuestra ubicación</h4>
           <div className="container-fluid d-flex justify-content-center mb-5 ">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.102370777448!2d-65.20939048436118!3d-26.836696096503207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1669045414605!5m2!1ses-419!2sar"

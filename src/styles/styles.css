@@ -34,10 +34,13 @@ body {
 .sections-fonts {
   margin: 2rem 0;
 }
+#title-sections {
+  font-size: 1.3rem;
+}
 .commentArea-container {
   background-color: rgba(255, 255, 255, 0.055);
-  border: 1px solid var(--darkColor);
-  padding: 2rem;
+  /* border: 1px solid var(--darkColor); */
+  padding: 1rem;
   min-height: 20rem;
 }
 .comments-title {

@@ -60,7 +60,6 @@ const LikeCounter = ({
         disabled={comment.likes.find((c) => c === auth.user)}
         variant="secondary"
         onClick={() => addCounter(counter, 1)}
-        className="border-0"
       >
         {comment.likes.length > 0 && comment.likes.length}{" "}
         <FontAwesomeIcon icon={faThumbsUp} />
@@ -71,7 +70,10 @@ const LikeCounter = ({
         ))}
       </ul>
       {auth.role === "admin" && (
-        <Button variant="secondary" onClick={() => deleteComment(comment._id)}>
+        <Button
+          className="btn-red btn-red-border"
+          onClick={() => deleteComment(comment._id)}
+        >
           <FontAwesomeIcon icon={faTrashCan} />
         </Button>
       )}
