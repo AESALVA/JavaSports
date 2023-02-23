@@ -66,6 +66,10 @@ if(validatePassword(password) && validatePassword(repeatPassword) && validateTok
 }
   }
 
+  const HandleBack =()=>{
+    navigate("/")
+  }
+
 useEffect(() => {
   setMessage("")
 }, [password,repeatPassword,token])
@@ -126,14 +130,22 @@ useEffect(() => {
           {!validateToken(token) && !firstToken && (<span className="message">Clave Token incorrecta</span>)}
         </FloatingLabel>
       </div>
-      <Button
+     {message==="Contraseña actualizada con éxito !"?( <><Button
+        className="btnConfirm m-5 mx-auto"
+        onClick={() => HandleBack()}
+        size="lg"
+      >
+        Volver
+      </Button>
+      </>):(<> <Button
         className="btnConfirm m-5 mx-auto"
         onClick={() => HandleClick()}
         size="lg"
       >
         Enviar
       </Button>
-      <span className="message mx-auto">{message}</span>
+      <span className="message mx-auto">{message}</span></>)}
+     
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -61,6 +61,8 @@ const PassRecovery = ({ isLoaded, setIsLoaded }) => {
         }
       })
       .finally(() => setIsLoaded(false));
+      setMail("");
+      setFirstMail(true);
   };
 
   return (
