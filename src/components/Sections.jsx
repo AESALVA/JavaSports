@@ -94,9 +94,11 @@ const Sections = ({ article, auth, commentsContainer }) => {
   }, [commentsContainer]);
 
   return (
-    <Container className="sections py-5">
-      <Card className="mx-auto text-center sections border-0 ">
-        <Card.Title className="sections-fonts">{article.title}</Card.Title>
+    <Container className="sections">
+      <Card className="mx-auto text-center commentArea-container border-0 ">
+        <Card.Title id="title-sections" className="sections-fonts">
+          {article.title}
+        </Card.Title>
         <Card.Img variant="top" src={article.img} />
         <Card.Body>
           <Card.Text>{article.imgTitle}</Card.Text>
@@ -105,9 +107,9 @@ const Sections = ({ article, auth, commentsContainer }) => {
         <Card.Img variant="top" src={article.imgTwo} />
         <Card.Body className="sections-fonts">{article.synopsis}</Card.Body>
       </Card>
-      <div className="commentArea-container sections">
+      <div className="commentArea-container my-4">
         <h4 className="comments-title">
-          All Comments {""}
+          Comentarios {""}
           {commentsLength > 0 && commentsLength}
         </h4>
         <input
@@ -126,8 +128,7 @@ const Sections = ({ article, auth, commentsContainer }) => {
           }
         />
         <Button
-          variant="secondary"
-          className="mt-2"
+          className=" btn-gray btn-gray-border btn-form mt-2"
           onClick={() => validateComments(comment.comment) && addComment()}
         >
           <FontAwesomeIcon icon={faComment} /> Comentar
