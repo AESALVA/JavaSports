@@ -81,7 +81,31 @@
 }
 
 @media (min-width: 992px) {
+  .profile-img img {
+    width: 9rem;
+    height: 9rem;
+  }
+  #contact-profiles #profile-valentina,
+  #contact-profiles #profile-eduardo {
+    width: 19rem;
+    height: 26rem;
+  }
 }
 
 @media (min-width: 1200px) {
+  .profile-img img {
+    width: 12rem;
+    height: 12rem;
+  }
+  #contact-profiles #profile-valentina,
+  #contact-profiles #profile-eduardo {
+    width: 23rem;
+    height: 30rem;
+  }
+  #contact-profiles p {
+    font-size: 18px;
+  }
+  #contact-profiles h4 {
+    font-size: 23px;
+  }
 }
