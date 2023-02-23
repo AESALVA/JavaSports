@@ -137,6 +137,7 @@ useEffect(() => {
       >
         Volver
       </Button>
+      <span className="message mx-auto">{message}</span>
       </>):(<> <Button
         className="btnConfirm m-5 mx-auto"
         onClick={() => HandleClick()}
