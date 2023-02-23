@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 import "../styles/Contact.css";
 import "../styles/styles.css";
 import emailjs from "@emailjs/browser";
-import { FormGroup } from "react-bootstrap";
 import { useRef } from "react";
 
 const Contacto = () => {
@@ -26,18 +25,18 @@ const Contacto = () => {
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 5, max: 25 })
+      validator.isLength(n, { min: 3, max: 25 })
     );
   };
   const validateLastname = (l) => {
     return (
       validator.matches(l, "^[a-zA-Z ]*$") &&
-      validator.isLength(l, { min: 5, max: 25 })
+      validator.isLength(l, { min: 3, max: 25 })
     );
   };
   const validateMail = (m) => {
     return (
-      validator.isLength(m, { min: 5, max: 36 }) &&
+      validator.isLength(m, { min: 10, max: 36 }) &&
       validator.isEmail(m, {
         allow_display_name: false,
         require_display_name: false,
@@ -53,7 +52,7 @@ const Contacto = () => {
   const validateText = (t) => {
     return (
       validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 5, max: 185 })
+      validator.isLength(t, { min: 10, max: 185 })
     );
   };
 
@@ -126,7 +125,6 @@ const Contacto = () => {
                   type="text"
                   placeholder="Ingrese su nombre"
                   onInput={(e) => setName(e.target.value)}
-                  onBlur={() => setFirstName(false)}
                   name="name"
                   value={name}
                 />
@@ -148,7 +146,6 @@ const Contacto = () => {
                   type="text"
                   placeholder="Ingrese su apellido"
                   onInput={(e) => setLastname(e.target.value)}
-                  onBlur={() => setFirstLastname(false)}
                   name="lastname"
                   value={lastname}
                 ></Form.Control>
@@ -168,7 +165,6 @@ const Contacto = () => {
                 type="Email"
                 placeholder="Ingrese su email"
                 onInput={(e) => setMail(e.target.value)}
-                onBlur={() => setFirstMail(false)}
                 name="mail"
                 value={mail}
               />
