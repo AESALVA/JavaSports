@@ -165,7 +165,10 @@ const CrudUsers = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-    messages("El usuario se registró con éxito!", "success");
+    messages(
+      "El usuario se registró con éxito. Se generó la contraseña: 'JavaSports1234',  deberá cambiarla para tener una mejor seguridad",
+      "success"
+    );
   };
 
   const confirmINS_UPD = () => {
@@ -277,7 +280,7 @@ const CrudUsers = ({
                 aria-label="Seleccionar rol"
                 value={roleUser || ""}
                 onChange={(e) => setRoleUser(e.target.value)}
-                disabled={editableFields}
+                disabled={true}
               >
                 <option className="text-dark" value={roleUser}>
                   {!roleUser ? "Usuario" : roleUser}

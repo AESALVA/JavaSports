@@ -1,18 +1,10 @@
-.imgbanner {
-  width: 100%;
-  background-image: url(https://www.fundacioncanal.com/canaleduca/wp-content/uploads/2016/05/4_16_destacado.jpg);
-  height: 405px;
-  background-position: center;
-  background-size: cover;
-}
-
 .mapa {
   border-radius: 1rem;
 }
 
 #formulario {
   padding: 1rem;
-  margin: 1rem;
+  margin: 2rem;
   background-color: var(--grayColor);
   border: solid 0.1rem var(--darkColor);
   border-radius: 1rem;

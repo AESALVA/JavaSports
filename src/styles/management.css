@@ -92,7 +92,7 @@
   color: white !important;
 }
 
-#title-admin {
+.title-admin {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +101,7 @@
   border-radius: 3%;
   height: 3rem;
 }
-#title-admin h5 {
+.title-admin h5 {
   font-weight: bold;
 }
 /* BREAKPOINTS */

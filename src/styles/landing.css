@@ -16,13 +16,12 @@
   border-radius: 80%;
 }
 /* IMAGEN-> ESTILO PARA QUE TODOS TENGAN EL MISMO TAMAÑO  */
-.card-img-style{
+.card-img-style {
   min-width: 100%;
   min-height: 30vh;
   object-fit:cover;
   padding: .3rem;
 }
-
 
 /* BREAKPOITS */
 
@@ -33,9 +32,9 @@
   }
 }
 
-/* @media (min-width: 1200px) { */
-/* .card-img-style {
-  min-width: 100%;
-  min-height: 43vh;
-} */
-/* } */
+@media (min-width: 1200px) {
+  .card-img-style {
+    min-width: 100%;
+    min-height: 43vh;
+  }
+}
