@@ -48,10 +48,10 @@ const Management = ({
 
   return (
     <Container className="main-container d-flex flex-column">
-      <div className="mb-3" id="title-admin">
-          {action}
-          <h5 className="text-center titulo-aboutus">ADMINISTRACIÓN</h5>
-        </div>
+      <div className="mb-3 title-admin">
+        {action}
+        <h5 className="text-center titulo-aboutus">ADMINISTRACIÓN</h5>
+      </div>
       <div className="mt-5">
         <Tabs
           defaultActiveKey="news"
