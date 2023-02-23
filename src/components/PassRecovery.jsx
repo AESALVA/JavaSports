@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -61,7 +61,13 @@ const PassRecovery = ({ isLoaded, setIsLoaded }) => {
         }
       })
       .finally(() => setIsLoaded(false));
+      setMail("");
+      setFirstMail(true);
   };
+
+  const handleBack = ()=>{
+    navigate("/");
+  }
 
   return (
     <>
@@ -114,14 +120,21 @@ const PassRecovery = ({ isLoaded, setIsLoaded }) => {
                   />
                 </Form.Group>
               </Form>
-              <Button
+              {message==="¡ email enviado con exito !"?(<><Button
+                className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
+                size="lg"
+                type="submit"
+                onClick={() => handleBack()}
+              >
+                <h4 className="m-auto py-2 px-4">Volver</h4>
+              </Button></>):(<><Button
                 className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
                 size="lg"
                 type="submit"
                 onClick={() => HandleClick()}
               >
                 <h4 className="m-auto py-2 px-4">Enviar</h4>
-              </Button>
+              </Button></>)}
             </Modal.Body>
           </>
         )}
