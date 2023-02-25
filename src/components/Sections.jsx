@@ -96,10 +96,10 @@ const Sections = ({ article, auth, commentsContainer }) => {
   return (
     <Container className="sections">
       <Card className="mx-auto text-center commentArea-container border-0 ">
-        <Card.Title id="title-sections" className="sections-fonts">
+        <Card.Title id="title-sections" className="sections-fonts my-5">
           {article.title}
         </Card.Title>
-        <Card.Img variant="top" src={article.img} />
+        <Card.Img variant="top" src={article.img} className="mt-3" />
         <Card.Body className="body-sections">
           <Card.Text>{article.imgTitle}</Card.Text>
         </Card.Body>
