@@ -27,9 +27,9 @@ const SearchContainer = ({ articles, search, auth }) => {
       <Container id="main-container">
         {search && articlesList.length > 0 ? (
           <div>
-            <h2 className="text-center my-5 title-search">
+            <h4 className="text-center my-5 title-search">
               RESULTADOS PARA: {search.toUpperCase()}
-            </h2>
+            </h4>
             <SearchList matchList={articlesList} auth={auth} />
           </div>
         ) : (

@@ -12,7 +12,7 @@ const News = ({ sizeCard, view, article, auth }) => {
   return (
     <>
       <Container className={`${stylesAtHome} ${sizeCard}`}>
-        <Card>
+        <Card className="card-news">
           <Link to={`/SectionsContainer/${article._id}`} className="">
             <Card.Img
               variant="top"
