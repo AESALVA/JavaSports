@@ -65,15 +65,12 @@ const Contacto = () => {
       validateLastname(lastname) &&
       validateText(text)
     ) {
-      emailjs
-        .sendForm(
-          "service_6te7sr6",
-          "template_wo5g1cg",
-          form.current,
-          "ugkrjxlh9YCbw85u7"
-        )
-        .then((result) => console.log(result.text))
-        .catch((error) => console.log(error));
+      emailjs.sendForm(
+        "service_6te7sr6",
+        "template_wo5g1cg",
+        form.current,
+        "ugkrjxlh9YCbw85u7"
+      );
       Swal.fire({
         title: "JavaSports",
         text: "Su mensaje ha sido enviado!",

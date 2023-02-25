@@ -100,18 +100,22 @@ const Sections = ({ article, auth, commentsContainer }) => {
           {article.title}
         </Card.Title>
         <Card.Img variant="top" src={article.img} />
-        <Card.Body>
+        <Card.Body className="body-sections">
           <Card.Text>{article.imgTitle}</Card.Text>
         </Card.Body>
-        <Card.Body className="sections-fonts">{article.description}</Card.Body>
+        <Card.Body className="sections-fonts body-sections">
+          {article.description}
+        </Card.Body>
         <Card.Img variant="top" src={article.imgTwo} />
-        <Card.Body className="sections-fonts">{article.synopsis}</Card.Body>
+        <Card.Body className="sections-fonts body-sections">
+          {article.synopsis}
+        </Card.Body>
       </Card>
-      <div className="commentArea-container my-4">
-        <h4 className="comments-title">
+      <div className="commentArea-container my-5">
+        <p className="comments-title">
           Comentarios {""}
           {commentsLength > 0 && commentsLength}
-        </h4>
+        </p>
         <input
           className="w-100 sections input-comments mt-3"
           placeholder="Ingrese su comentario"
@@ -128,20 +132,21 @@ const Sections = ({ article, auth, commentsContainer }) => {
           }
         />
         <Button
-          className=" btn-gray btn-gray-border btn-form mt-2"
+          id="btn-comments"
+          className="btn-dark btn-dark-border btn-form my-2"
           onClick={() => validateComments(comment.comment) && addComment()}
         >
-          <FontAwesomeIcon icon={faComment} /> Comentar
+          <FontAwesomeIcon icon={faComment} /> <span>Comentar</span>
         </Button>
         {showComment.map(
           (comment, i) =>
             comment.id === article._id && (
-              <Row key={i} className="p-4">
-                <Col>
-                  <FontAwesomeIcon icon={faUser} /> ({comment.user})
+              <Row id="perfil-comments" key={i} className="py-2 my-2">
+                <Col id="name-perfil">
+                  <FontAwesomeIcon icon={faUser} /> {comment.user}
                 </Col>
                 <span> {comment.comment}</span>
-                <span>
+                <span className="mt-2">
                   <LikeCounter
                     addLikes={addLikes}
                     comment={comment}

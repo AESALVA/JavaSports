@@ -55,10 +55,14 @@ const LikeCounter = ({
     }
   };
   return (
-    <div onMouseEnter={() => showList()} onMouseLeave={() => setShowLikes([])}>
+    <div
+      id="likeCounter-buttons"
+      onMouseEnter={() => showList()}
+      onMouseLeave={() => setShowLikes([])}
+    >
       <Button
         disabled={comment.likes.find((c) => c === auth.user)}
-        variant="secondary"
+        className="btn-dark"
         onClick={() => addCounter(counter, 1)}
       >
         {comment.likes.length > 0 && comment.likes.length}{" "}
@@ -71,7 +75,7 @@ const LikeCounter = ({
       </ul>
       {auth.role === "admin" && (
         <Button
-          className="btn-red btn-red-border"
+          className="btn-dark btn-dark-border"
           onClick={() => deleteComment(comment._id)}
         >
           <FontAwesomeIcon icon={faTrashCan} />
