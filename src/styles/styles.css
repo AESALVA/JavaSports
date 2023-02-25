@@ -34,20 +34,40 @@ body {
 .sections-fonts {
   margin: 2rem 0;
 }
+#title-sections {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
 .commentArea-container {
-  background-color: rgba(255, 255, 255, 0.055);
-  border: 1px solid var(--darkColor);
-  padding: 2rem;
+  background-color: rgba(169, 165, 165, 0.068);
+  /* border: 1px solid var(--darkColor); */
+  padding: 1.5rem;
   min-height: 20rem;
 }
 .comments-title {
   color: var(--redColor);
+  font-weight: bold;
+  font-size: 17px;
   padding: 0.1rem;
   border-bottom: 0.1px solid var(--darkColor);
 }
-.input-comments:focus {
-  outline: 1px solid var(--grayColor);
+
+.input-comments {
+  background-color: rgba(169, 165, 165, 0.049);
+  padding: 1px;
 }
+
+.input-comments:focus {
+  outline: none;
+}
+#btn-comments {
+  font-size: 10px;
+}
+#btn-comments span {
+  /* color: var(--redColor); */
+  margin-left: 2px;
+}
+
 /* titulos */
 .title {
   font-weight: 700;
@@ -181,6 +201,29 @@ body {
   background-color: transparent !important;
   border: 1px solid var(--darkColor) !important;
 }
+.btn-dark-border {
+  border: 1px solid var(--darkColor);
+}
+
+#name-perfil {
+  color: var(--redColor);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#perfil-comments {
+  /* background-color: rgba(169, 165, 165, 0.04); */
+  border-bottom: 1px solid rgba(169, 165, 165, 0.128);
+}
+
+#perfil-comments,
+#perfil-comments span {
+  font-size: 12px;
+}
+
+#likeCounter-buttons button {
+  font-size: 13px;
+}
 
 #modalLogin span {
   color: var(--redColor);
@@ -211,6 +254,7 @@ body {
   }
 }
 
+/* SMALL  */
 @media (max-width: 767.98px) {
   .btn-login {
     display: none;
@@ -225,6 +269,8 @@ body {
     padding: 0 2rem;
   }
 }
+
+/* TABLET */
 @media (min-width: 767.98px) {
   .link_styles {
     display: none;
@@ -232,10 +278,81 @@ body {
   .text-error {
     font-size: 15px;
   }
+
+  #btn-comments {
+    font-size: 13px;
+  }
+
+  #perfil-comments,
+  #perfil-comments span {
+    font-size: 14px;
+  }
+  #name-perfil {
+    font-size: 14px;
+  }
+  #likeCounter-buttons button {
+    font-size: 11px;
+  }
+  .comments-title {
+    font-size: 16px;
+  }
+
+  .body-sections {
+    font-size: 16px;
+  }
 }
 
+/* PC */
 @media (min-width: 992px) {
   .text-error {
     font-size: 17px;
+  }
+  #btn-comments {
+    font-size: 13px;
+  }
+  .comments-title {
+    font-size: 24px;
+  }
+  #title-sections {
+    font-size: 23px;
+  }
+  .body-sections {
+    font-size: 19px;
+  }
+  #perfil-comments,
+  #perfil-comments span {
+    font-size: 18px;
+  }
+  #name-perfil {
+    font-size: 18px;
+  }
+  #btn-comments {
+    font-size: 15px;
+  }
+  #likeCounter-buttons button {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #btn-comments {
+    font-size: 15px;
+  }
+  #perfil-comments,
+  #perfil-comments span {
+    font-size: 18px;
+  }
+  #name-perfil {
+    font-size: 18px;
+  }
+
+  #likeCounter-buttons button {
+    font-size: 14px;
+  }
+  .comments-title {
+    font-size: 25px;
+  }
+  .body-sections {
+    font-size: 20px;
   }
 }
