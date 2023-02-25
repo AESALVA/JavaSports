@@ -87,7 +87,8 @@ span .navbar-Toggle {
 .SectionsList {
   list-style-type: none;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0;
+  /* padding: 0 1rem; */
 }
 .SectionsList li:hover {
   background-color: #4f4e57c8;
