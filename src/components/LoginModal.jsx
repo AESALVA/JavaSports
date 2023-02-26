@@ -28,9 +28,9 @@ const LoginModal = ({
   const [firstPassword, setFirstPassword] = useState(true);
   const [wrongCredentials, setWrongCredentials] = useState("");
   const navigate = useNavigate();
+
   const handleValidation = async (e) => {
     e.preventDefault();
-
     validate(name, password);
     login(name, password);
     auth.role === false &&
@@ -47,13 +47,13 @@ const LoginModal = ({
     }
   }, [auth]);
 
-  const validateName = (n) => {
+  const validateName = (n = "hol") => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
       validator.isLength(n, { min: 5, max: 36 })
     );
   };
-  const validatePassword = (n) => {
+  const validatePassword = (n = "hol") => {
     return (
       validator.isLength(n, { min: 8, max: 20 }) &&
       validator.isStrongPassword(n, {
@@ -79,8 +79,12 @@ const LoginModal = ({
     setFirstName(true);
     setFirstPassword(true);
     setShow(false);
+    setWrongCredentials("");
   };
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    setWrongCredentials("");
+  };
   return (
     <>
       {!auth.user ? (
@@ -139,8 +143,8 @@ const LoginModal = ({
                 />
               </Link>
             </Modal.Header>
-            <h2 className="mx-auto mt-4">Iniciar Sesión</h2>
-            <Modal.Body className="mx-auto bg-dark">
+            <h3 className="mx-auto mt-4">Iniciar Sesión</h3>
+            <Modal.Body className="mx-auto bg-dark" id="modal-body-one">
               ¿ No tienes cuenta ?{" "}
               <Link
                 onClick={handleClose}
@@ -151,7 +155,7 @@ const LoginModal = ({
               </Link>{" "}
             </Modal.Body>
             <Modal.Body className="mb-3 py-4 px-4 bg-dark">
-              <Form>
+              <Form id="form-login">
                 <Form.Group className="mb-3 bg-dark" controlId="formBasicEmail">
                   <Form.Label>
                     Usuario{" "}
@@ -164,7 +168,7 @@ const LoginModal = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onBlur={() => setFirstName(false)}
-                    className="p-2"
+                    className="p-1"
                     type="text"
                     placeholder="Usuario"
                   />
@@ -181,12 +185,12 @@ const LoginModal = ({
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     onBlur={() => setFirstPassword(false)}
-                    className="p-2"
+                    className="p-1"
                     type="password"
                     placeholder="Contraseña"
                   />
                 </Form.Group>
-                <Form.Text className="text-danger">
+                <Form.Text>
                   <Link
                     to="/PassRecovery"
                     onClick={handleClose}

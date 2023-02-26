@@ -1,3 +1,11 @@
+#modal-body-one {
+  font-size: 13px;
+}
+
+#form-login {
+  font-size: 13px;
+}
+
 /* Oculto boton */
 @media (max-width: 767.98px) {
   #btn-login {
@@ -5,14 +13,26 @@
   }
 }
 
+/* TABLET */
 @media (min-width: 767.98px) {
   #btn-login {
     font-size: 13px;
   }
-  /* #btn-login svg {
-    width: 12px;
-    height: 15px;
-  } */
+
+  #modal-body-one {
+    font-size: 15px;
+  }
+
+  #form-login {
+    font-size: 15px;
+  }
+}
+
+/* pc */
+@media (min-width: 992px) {
+  #modal-body-one {
+    font-size: 17px;
+  }
 }
 
 @media (min-width: 1200px) {
