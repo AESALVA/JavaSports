@@ -118,8 +118,6 @@ const CrudNews = ({
   };
 
   const confirmUpdate = () => {
-    console.log("entro para confirmar");
-
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -275,7 +273,6 @@ const CrudNews = ({
   };
 
   const confirmUPD = () => {
-    console.log("action" + action);
     //Confirmo INSERT o UPDATE
     switch (action) {
       case "new":
