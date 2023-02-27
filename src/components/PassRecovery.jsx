@@ -65,6 +65,10 @@ const PassRecovery = ({ isLoaded, setIsLoaded }) => {
       setFirstMail(true);
   };
 
+  const handleBack = ()=>{
+    navigate("/");
+  }
+
   return (
     <>
       <div className="FondoPass d-xl-block mx-auto">
@@ -116,14 +120,21 @@ const PassRecovery = ({ isLoaded, setIsLoaded }) => {
                   />
                 </Form.Group>
               </Form>
-              <Button
+              {message==="¡ email enviado con exito !"?(<><Button
+                className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
+                size="lg"
+                type="submit"
+                onClick={() => handleBack()}
+              >
+                <h4 className="m-auto py-2 px-4">Volver</h4>
+              </Button></>):(<><Button
                 className="mx-auto px-xs-5 my-md-5 my-xs-5 btn-gray btn-gray-border"
                 size="lg"
                 type="submit"
                 onClick={() => HandleClick()}
               >
                 <h4 className="m-auto py-2 px-4">Enviar</h4>
-              </Button>
+              </Button></>)}
             </Modal.Body>
           </>
         )}

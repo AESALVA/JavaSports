@@ -118,8 +118,6 @@ const CrudNews = ({
   };
 
   const confirmUpdate = () => {
-    console.log("entro para confirmar");
-
     // Actualizar el objeto article con los nuevos cambios.
     article._id = idNews;
     article.title = titleNews;
@@ -192,7 +190,7 @@ const CrudNews = ({
   };
 
   const confirmNew = () => {
-    setAction(true)
+    setAction(true);
     news.categories = !categoryNameNews ? "football" : categoryNameNews;
     news.title = titleNews;
     news.img = imgNews;
@@ -232,15 +230,16 @@ const CrudNews = ({
         body: JSON.stringify(news),
       })
         .then((res) => res.json())
-        .then((json) => fetch(
-          `https://java-sports-back.vercel.app/articles/delete/${json._id}`,
-          {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-          }
-        ))
+        .then((json) =>
+          fetch(
+            `https://java-sports-back.vercel.app/articles/delete/${json._id}`,
+            {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+        )
         .catch((error) => console.log(error));
-      
     } else {
       fetch(
         `https://java-sports-back.vercel.app/articles/delete/${article._id}`,
@@ -274,7 +273,6 @@ const CrudNews = ({
   };
 
   const confirmUPD = () => {
-    console.log("action" + action);
     //Confirmo INSERT o UPDATE
     switch (action) {
       case "new":
@@ -528,10 +526,7 @@ const CrudNews = ({
               {action !== "new" ? action : "Confirmar"}
             </Button>
           )}
-          <Button
-            className="btn-gray btn-gray-border btn-form"
-            onClick={handleClose}
-          >
+          <Button className="btn-gray btn-gray-border" onClick={handleClose}>
             Cancelar
           </Button>
         </Modal.Footer>
