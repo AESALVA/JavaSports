@@ -6,8 +6,8 @@
 }
 
 #icons-notFound {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .container-notFound {
@@ -19,9 +19,26 @@
   min-height: 80vh;
 }
 
-/* @media (min-width: 767.98px) {
+.container-notFound p {
+  font-size: 14px;
+}
+
+@media (min-width: 767.98px) {
+  #icons-notFound {
+    width: 4rem;
+    height: 4rem;
+  }
+  .container-notFound p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
   #icons-notFound {
     width: 5rem;
     height: 5rem;
   }
-} */
+  .container-notFound p {
+    font-size: 18px;
+  }
+}

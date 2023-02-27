@@ -26,6 +26,16 @@
 .card-news {
   background-color: #e3e1ebe7;
 }
+#icons-destacada {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+#icons-destacada svg {
+  width: 25px;
+  height: 25px;
+}
 
 /* BREAKPOITS */
 
@@ -40,5 +50,16 @@
   .card-img-style {
     min-width: 100%;
     min-height: 43vh;
+  }
+
+  #icons-destacada {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
+
+  #icons-destacada svg {
+    width: 30px;
+    height: 30px;
   }
 }
