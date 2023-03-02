@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-
+import ScrollToTop from "./components/ScrollToTop";
 import Main from "./views/main";
 
 function App() {
@@ -136,6 +136,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Main
         login={login}
         logout={logout}

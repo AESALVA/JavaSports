@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "../styles/Footer.css";
 import { Col, Row } from "react-bootstrap";
+import LoginModal from "./LoginModal";
 
-function Footer() {
+function Footer({ auth, login, logout, validate, isLoaded, location }) {
   return (
     <>
       <div className="footer mt-auto col-12 col-md-8">
@@ -24,9 +25,14 @@ function Footer() {
             <Link to="/Aboutus" className="no-underline m-2">
               <h6>Sobre Nosotros</h6>
             </Link>
-            <Link to="/Aboutus" className="no-underline m-2 d-none d-md-block">
-              <h6>Ingresar</h6>
-            </Link>
+            <LoginModal
+              login={login}
+              logout={logout}
+              validate={validate}
+              auth={auth}
+              isLoaded={isLoaded}
+              location={location}
+            />
           </ul>
         </div>
         <div id="footer-socialIcons">
