@@ -52,6 +52,7 @@ const Main = ({
         setIsLoaded={setIsLoaded}
       />
       <Routes>
+        
         <Route path="/aboutus" element={<Aboutus />} />
         <Route
           element={
@@ -117,7 +118,12 @@ const Main = ({
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route element={<Landing articles={articles} auth={auth} />} path="/" />
       </Routes>
-      <Footer />
+      <Footer  validate={validate}
+        login={login}
+        auth={auth}
+        logout={logout}
+        isLoaded={isLoaded}
+        location={"Footer"}/>
     </Container>
   );
 };
