@@ -11,6 +11,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "../styles/loginModal.css";
 import CloseButton from "react-bootstrap/CloseButton";
 import Loader from "./Loader";
+import "../styles/Footer.css";
 
 const LoginModal = ({
   auth,
@@ -20,6 +21,7 @@ const LoginModal = ({
   setAuth,
   isLoaded,
   setIsLoaded,
+  location
 }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -87,7 +89,15 @@ const LoginModal = ({
   };
   return (
     <>
-      {!auth.user ? (
+   {location ? (<>{!auth.user? (
+        <Link className="no-underline m-2" id="footer-links" onClick={handleShow}>
+          <h6>Ingresar</h6>
+        </Link>
+      ) : (
+        <Link to="/" className="no-underline m-2" onClick={handleClick}>
+          <h6>Cerrar sesión</h6> 
+        </Link>
+      )}</>):(<>{!auth.user ? (
         <Button
           className="btn-gray btn-gray-border "
           id="btn-login"
@@ -116,7 +126,9 @@ const LoginModal = ({
         <Link className="modal_styles link_styles" onClick={handleClick}>
           <FontAwesomeIcon icon={faUser} className="me-2" /> Cerrar sesión
         </Link>
-      )}
+      )}</>)}
+      
+      
 
       {/* MODAL */}
 
