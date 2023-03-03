@@ -111,6 +111,7 @@ const Main = ({
               setAction={setAction}
               confirmDEL={confirmDEL}
               confirmDELUsers={confirmDELUsers}
+              setIsLoaded={setIsLoaded}
             />
           }
           path="/Management"
