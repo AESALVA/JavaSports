@@ -61,7 +61,6 @@ const LikeCounter = ({
       onMouseLeave={() => setShowLikes([])}
     >
       <Button
-        disabled={comment.likes.find((c) => c === auth.user)}
         className="btn-dark"
         onClick={() => addCounter(counter, 1)}
       >
