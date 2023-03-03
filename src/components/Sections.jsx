@@ -25,41 +25,81 @@ const Sections = ({ article, auth, commentsContainer }) => {
     const aux = [...showComment];
     aux.map((a) => {
       if (a.comment === comment.comment) {
-        a.likes = [...a.likes, auth.user];
-        if (!a._id) {
-          fetch(`https://java-sports-back.vercel.app/comments/search`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(a),
-          })
-            .then((res) => res.json())
-            .then((json) =>
-              fetch(
-                "https://java-sports-back.vercel.app/comments/update/" + json,
-                {
-                  method: "PUT",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    comment: a.comment,
-                    user: a.user,
-                    likes: a.likes,
-                  }),
-                }
-              )
-            );
-        } else {
-          fetch(
-            "https://java-sports-back.vercel.app/comments/update/" + a._id,
-            {
-              method: "PUT",
+        if (a.likes.find((l) => l === auth.user)) {
+          const auxLikes = a.likes.filter((like) => like !== auth.user);
+          if (!a._id) {
+            fetch(`https://java-sports-back.vercel.app/comments/search`, {
+              method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                comment: a.comment,
-                user: a.user,
-                likes: a.likes,
-              }),
-            }
-          );
+              body: JSON.stringify(a),
+            })
+              .then((res) => res.json())
+              .then((json) =>
+                fetch(
+                  "https://java-sports-back.vercel.app/comments/update/" + json,
+                  {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      comment: a.comment,
+                      user: a.user,
+                      likes: auxLikes,
+                    }),
+                  }
+                )
+              );
+          } else {
+            fetch(
+              "https://java-sports-back.vercel.app/comments/update/" + a._id,
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  comment: a.comment,
+                  user: a.user,
+                  likes: auxLikes,
+                }),
+              }
+            );
+          }
+          a.likes = [...auxLikes];
+        } else {
+          a.likes = [...a.likes, auth.user];
+          if (!a._id) {
+            fetch(`https://java-sports-back.vercel.app/comments/search`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(a),
+            })
+              .then((res) => res.json())
+              .then((json) =>
+                fetch(
+                  "https://java-sports-back.vercel.app/comments/update/" + json,
+                  {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      comment: a.comment,
+                      user: a.user,
+                      likes: a.likes,
+                    }),
+                  }
+                )
+              );
+          } else {
+            fetch(
+              "https://java-sports-back.vercel.app/comments/update/" + a._id,
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  comment: a.comment,
+                  user: a.user,
+                  likes: a.likes,
+                }),
+              }
+            );
+          }
         }
       }
       return a;
