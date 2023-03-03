@@ -118,7 +118,7 @@ function App() {
     fetch("https://java-sports-back.vercel.app/users/all")
       .then((res) => res.json())
       .then((json) => setUsersA(json));
-  }, []);
+  }, [isLoaded]);
 
 
   const confirmDEL = (titleNews) => {

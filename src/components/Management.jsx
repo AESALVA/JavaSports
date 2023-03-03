@@ -18,6 +18,7 @@ const Management = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
+  setIsLoaded
 }) => {
   const navigate = useNavigate();
   // let articlesManagement = articles; //le asigno por primera vez lo que llega de app.
@@ -86,6 +87,7 @@ const Management = ({
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
               auth={auth}
+              setIsLoaded={setIsLoaded}
             />
           </Tab>
           <Tab
@@ -105,6 +107,7 @@ const Management = ({
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
               auth={auth}
+              setIsLoaded={setIsLoaded}
             />
           </Tab>
         </Tabs>

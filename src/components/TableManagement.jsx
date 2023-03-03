@@ -21,6 +21,7 @@ const TableManagement = ({
   confirmDELUsers,
   confirmINS_Users,
   auth,
+  setIsLoaded
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
@@ -56,6 +57,7 @@ const TableManagement = ({
     setActionAMB("display");
     setViewInfo(article);
     handleShow();
+    setIsLoaded(false);
   };
 
   useEffect(() => {
@@ -184,6 +186,7 @@ const TableManagement = ({
         confirmDELUsers={confirmDELUsers}
         confirmINS_Users={confirmINS_Users}
         auth={auth}
+        setIsLoaded={setIsLoaded}
       />
     </>
   );
