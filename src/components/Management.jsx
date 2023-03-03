@@ -70,6 +70,7 @@ const Management = ({
               messages={messages}
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
+              auth={auth}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
@@ -84,6 +85,7 @@ const Management = ({
               messages={messages}
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
+              auth={auth}
             />
           </Tab>
           <Tab
@@ -102,6 +104,7 @@ const Management = ({
               messages={messages}
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
+              auth={auth}
             />
           </Tab>
         </Tabs>
