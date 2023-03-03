@@ -20,6 +20,7 @@ const TableManagement = ({
   messages,
   confirmDELUsers,
   confirmINS_Users,
+  auth,
 }) => {
   const [showModalNews, setShowModalNews] = useState(false);
   const [showModalUsers, setShowModalUsers] = useState(false);
@@ -127,8 +128,8 @@ const TableManagement = ({
                       <td>{article.categories}</td>
                     </tr>
                   ))
-                : matchlist.length > 0 && 
-                viewTable !== "administrativeStaff" &&
+                : matchlist.length > 0 &&
+                  viewTable !== "administrativeStaff" &&
                   matchlist.map((article, i) => (
                     <tr
                       id={i}
@@ -182,6 +183,7 @@ const TableManagement = ({
         messages={messages}
         confirmDELUsers={confirmDELUsers}
         confirmINS_Users={confirmINS_Users}
+        auth={auth}
       />
     </>
   );

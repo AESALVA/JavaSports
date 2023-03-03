@@ -22,6 +22,7 @@ const CrudUsers = ({
   messages,
   confirmDELUsers,
   confirmINS_Users,
+  auth,
 }) => {
   // estado para usuario
   // const [idUsers, setIdUsers] = useState("");
@@ -280,11 +281,16 @@ const CrudUsers = ({
                 aria-label="Seleccionar rol"
                 value={roleUser || ""}
                 onChange={(e) => setRoleUser(e.target.value)}
-                disabled={true}
+                disabled={editableFields}
               >
-                <option className="text-dark" value={roleUser}>
-                  {!roleUser ? "Usuario" : roleUser}
+                <option className="text-dark" value="user">
+                  Usuario
                 </option>
+                {auth.role === "admin" && (
+                  <option className="text-dark" value="admin">
+                    Administrador
+                  </option>
+                )}
               </Form.Select>
             </Form.Group>
           </Form>
