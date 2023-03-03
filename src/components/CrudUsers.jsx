@@ -23,6 +23,7 @@ const CrudUsers = ({
   confirmDELUsers,
   confirmINS_Users,
   auth,
+  setIsLoaded
 }) => {
   // estado para usuario
   // const [idUsers, setIdUsers] = useState("");
@@ -119,8 +120,12 @@ const CrudUsers = ({
     }
   };
 
+  const Admin_1 = "Eduardo";
+  const Admin_2 = "Valentina";
+
   const confirmUpdate = () => {
-    if (info.role !== "admin") {
+    setIsLoaded(true);
+    if (info.name !== Admin_1 && info.name !== Admin_2) {
       if (!info._id) {
         fetch(`https://java-sports-back.vercel.app/users/search`, {
           method: "POST",
