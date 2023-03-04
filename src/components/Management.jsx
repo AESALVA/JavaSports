@@ -72,6 +72,7 @@ const Management = ({
               confirmDELUsers={confirmDELUsers}
               confirmINS_Users={confirmINS_Users}
               auth={auth}
+              setIsLoaded={setIsLoaded}
             />
           </Tab>
           <Tab eventKey="users" title="Usuarios registrados" className="">
