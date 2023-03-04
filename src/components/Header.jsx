@@ -21,6 +21,7 @@ const Header = ({
   setSectionByCategory,
   isLoaded,
   setIsLoaded,
+  top
 }) => {
   return (
     <>
@@ -118,6 +119,7 @@ const Header = ({
                 auth={auth}
                 isLoaded={isLoaded}
                 setIsLoaded={setIsLoaded}
+                top={top}
               />
             </div>
             {auth.role === "admin" && (
@@ -224,6 +226,7 @@ const Header = ({
                     auth={auth}
                     isLoaded={isLoaded}
                     setIsLoaded={setIsLoaded}
+                    top={top}
                   />
                 </div>
 

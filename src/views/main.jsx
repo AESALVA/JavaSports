@@ -37,6 +37,7 @@ const Main = ({
   setAction,
   confirmDEL,
   confirmDELUsers,
+  top
 }) => {
   return (
     <Container fluid className="main-container d-flex flex-column p-0">
@@ -50,6 +51,7 @@ const Main = ({
         setSectionByCategory={setSectionByCategory}
         isLoaded={isLoaded}
         setIsLoaded={setIsLoaded}
+        top={top}
       />
       <Routes>
         
@@ -120,6 +122,7 @@ const Main = ({
         <Route element={<Landing articles={articles} auth={auth} />} path="/" />
       </Routes>
       <Footer  validate={validate}
+      top={top}
         login={login}
         auth={auth}
         logout={logout}
