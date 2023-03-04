@@ -13,6 +13,7 @@ import CloseButton from "react-bootstrap/CloseButton";
 import Loader from "./Loader";
 import "../styles/Footer.css";
 
+
 const LoginModal = ({
   auth,
   login,
@@ -21,7 +22,8 @@ const LoginModal = ({
   setAuth,
   isLoaded,
   setIsLoaded,
-  location
+  location,
+  top
 }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -86,6 +88,7 @@ const LoginModal = ({
   const handleShow = () => {
     setShow(true);
     setWrongCredentials("");
+    top();
   };
   return (
     <>
