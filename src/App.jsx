@@ -4,6 +4,8 @@ import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Main from "./views/main";
+import { useLocation } from "react-router-dom";
+
 
 function App() {
   //Indicador de categoria id
@@ -133,7 +135,9 @@ function App() {
     }
    
   };
-
+  const top =()=>{
+    window.scrollTo(0, 0);
+  }
   return (
     <BrowserRouter>
     <ScrollToTop />
@@ -159,6 +163,7 @@ function App() {
         setAction={setAction}
         confirmDEL={confirmDEL}
         confirmDELUsers={confirmDELUsers}
+        top={top}
       />
     </BrowserRouter>
   );

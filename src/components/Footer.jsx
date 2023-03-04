@@ -5,18 +5,18 @@ import "../styles/Footer.css";
 import { Col, Row } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 
-function Footer({ auth, login, logout, validate, isLoaded, location }) {
+function Footer({ auth, login, logout, validate, isLoaded, location, top }) {
   return (
     <>
       <div className="footer mt-auto col-12 col-md-8">
         <div id="footer-logo" className="">
-          <Link to="/">
+          <Link onClick={top} to="/">
             <img src="/img/LogoJS.jpg" className="logo" alt="logo" />
           </Link>
         </div>
         <div id="footer-links">
           <ul className="list-unstyled ">
-            <Link to="/" className="no-underline m-2">
+            <Link onClick={top} to="/" className="no-underline m-2">
               <h6>Home</h6>
             </Link>
             <Link to="/Contact" className="no-underline m-2">
@@ -32,6 +32,7 @@ function Footer({ auth, login, logout, validate, isLoaded, location }) {
               auth={auth}
               isLoaded={isLoaded}
               location={location}
+              top={top}
             />
           </ul>
         </div>
