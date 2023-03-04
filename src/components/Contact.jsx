@@ -22,21 +22,30 @@ const Contacto = () => {
   const [firstMail, setFirstMail] = useState(true);
   const [firstText, setFirstText] = useState(true);
   const form = useRef();
+
+  // Estado para las validaciones
+  let patron = /\w+\s\w+\s?.+/; //patron para las descripciones
+  // Inicializo variables que cargan mensaje de error:
+  const [errorName, setErrorName] = useState("");
+  const [errorLastName, setErrorLastName] = useState("");
+  const [errorMail, setErrorMail] = useState("");
+  const [errorMsj, setErrorMsj] = useState("");
+
   const validateName = (n) => {
     return (
       validator.matches(n, "^[a-zA-Z ]*$") &&
-      validator.isLength(n, { min: 3, max: 25 })
+      validator.isLength(n, { min: 3, max: 30 })
     );
   };
   const validateLastname = (l) => {
     return (
       validator.matches(l, "^[a-zA-Z ]*$") &&
-      validator.isLength(l, { min: 3, max: 25 })
+      validator.isLength(l, { min: 3, max: 30 })
     );
   };
-  const validateMail = (m) => {
+  const validateMail = (m = "prueba@gmail") => {
     return (
-      validator.isLength(m, { min: 10, max: 36 }) &&
+      validator.isLength(m, { min: 10, max: 60 }) &&
       validator.isEmail(m, {
         allow_display_name: false,
         require_display_name: false,
@@ -49,11 +58,52 @@ const Contacto = () => {
       })
     );
   };
-  const validateText = (t) => {
-    return (
-      validator.matches(t, "^[a-zA-Z0-9 ]*$") &&
-      validator.isLength(t, { min: 10, max: 185 })
-    );
+
+  const validateText = (t = "hol") => {
+    return patron.test(t) && validator.isLength(t, { min: 5, max: 600 });
+  };
+
+  const loadErrors = () => {
+    // ERROR NOMBRE
+    if (!validateName(name)) {
+      //Si hay error en el nombre, me fijo cual error es
+      !validator.matches(name, "^[a-zA-Z ]*$")
+        ? setErrorName("Debe ingresar caracteres de la A-Z.")
+        : setErrorName("El nombre debe contener entre 3 y 30 caracteres.");
+    }
+
+    // ERROR APELLIDO
+    if (!validateLastname(lastname)) {
+      //Si hay error en el nombre, me fijo cual error es
+      !validator.matches(lastname, "^[a-zA-Z ]*$")
+        ? setErrorLastName("Debe ingresar caracteres de la A-Z.")
+        : setErrorLastName(
+            "El apellido debe contener entre 3 y 30 caracteres."
+          );
+    }
+    // ERROR EMAIL
+    if (!validateMail(mail)) {
+      !validator.isEmail(mail, {
+        allow_display_name: false,
+        require_display_name: false,
+        allow_utf8_local_part: true,
+        require_tld: true,
+        allow_ip_domain: false,
+        domain_specific_validation: false,
+        blacklisted_chars: "",
+        host_blacklist: [],
+      })
+        ? setErrorMail("Email invalido")
+        : setErrorMail("El email debe contener entre 10 y 60 caracteres.");
+    }
+    // ERROR MENSAJE
+    if (!validateText(text)) {
+      !validator.isLength(text, { min: 10, max: 600 })
+        ? setErrorMsj("Su mensaje debe contener entre  10 y 600 caracteres.")
+        : setErrorMsj(
+            "Su mensaje debe contener caracteres de la A-Z, números y signos de puntuación si desea."
+          );
+    }
   };
 
   const handleClick = (e) => {
@@ -88,6 +138,8 @@ const Contacto = () => {
       setFirstLastname(true);
       setFirstText(true);
     } else {
+      // Cargar mensajes de error en el campo erroneo
+      loadErrors();
       setFirstName(false);
       setFirstMail(false);
       setFirstLastname(false);
@@ -114,7 +166,7 @@ const Contacto = () => {
                 <Form.Label>
                   Nombre
                   {!validateName(name) && !firstName && (
-                    <span className="text-danger ms-3">Error</span>
+                    <span className="text-danger ms-3">{errorName}</span>
                   )}
                 </Form.Label>
                 <Form.Control
@@ -135,7 +187,7 @@ const Contacto = () => {
                 <Form.Label>
                   Apellido
                   {!validateLastname(lastname) && !firstLastname && (
-                    <span className="text-danger ms-3">Error</span>
+                    <span className="text-danger ms-3">{errorLastName}</span>
                   )}{" "}
                 </Form.Label>
                 <Form.Control
@@ -152,9 +204,7 @@ const Contacto = () => {
               <Form.Label>
                 Email
                 {!validateMail(mail) && !firstMail && (
-                  <span className="text-danger ms-3">
-                    Error, el email no es válido.
-                  </span>
+                  <span className="text-danger ms-3">{errorMail}</span>
                 )}
               </Form.Label>
               <Form.Control
@@ -176,15 +226,14 @@ const Contacto = () => {
                 <Form.Label>
                   Mensaje
                   {!validateText(text) && !firstText && (
-                    <span className="text-danger ms-3">Error</span>
+                    <span className="text-danger ms-3">{errorMsj}</span>
                   )}{" "}
                 </Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  placeholder="Ingrese un mensaje"
+                  placeholder="Su mensaje debe contener caracteres de la A-Z, números y signos de puntuación si desea."
                   onInput={(e) => setText(e.target.value)}
-                  onBlur={() => setFirstText(false)}
                   name="text"
                   value={text}
                 />
