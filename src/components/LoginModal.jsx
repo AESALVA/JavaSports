@@ -39,6 +39,7 @@ const LoginModal = ({
     login(name, password);
     auth.role === false &&
       setWrongCredentials("Usuario y/o Contraseña incorrectos!");
+      top();
   };
 
   useEffect(() => {
@@ -75,6 +76,7 @@ const LoginModal = ({
 
   const handleClick = () => {
     logout();
+    top();
   };
 
   const handleClose = () => {
@@ -88,7 +90,6 @@ const LoginModal = ({
   const handleShow = () => {
     setShow(true);
     setWrongCredentials("");
-    top();
   };
   return (
     <>
@@ -140,7 +141,7 @@ const LoginModal = ({
         show={show}
         onHide={handleClose}
         keyboard={false}
-        contentClassName="bg-dark "
+        contentClassName="bg-dark h-100"
       >
         {isLoaded ? (
           <Loader />
