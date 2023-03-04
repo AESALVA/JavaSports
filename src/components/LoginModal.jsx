@@ -49,6 +49,7 @@ const LoginModal = ({
       handleClose();
       setName("");
       setPassword("");
+      top();
     }
   }, [auth]);
 
@@ -141,7 +142,7 @@ const LoginModal = ({
         show={show}
         onHide={handleClose}
         keyboard={false}
-        contentClassName="bg-dark h-100"
+        contentClassName="bg-dark"
       >
         {isLoaded ? (
           <Loader />
